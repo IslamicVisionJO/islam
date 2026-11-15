@@ -1,0 +1,16 @@
+{
+  "generatedAt": "2026-11-15T07:25:49.159422+00:00",
+  "testedBuildSha256": "7874233f95346c9f0e7ef223ff19171901c006b2b6086fba1eb322c9f33370d4",
+  "unitPassed": 103,
+  "soloGamesPassed": 13,
+  "onlineGamesPassed": 13,
+  "sceneViewportCasesPassed": 26,
+  "widths": [
+    390,
+    1280
+  ],
+  "localPostgreSQL": true,
+  "authTransport": "simulated",
+  "liveSupabaseVerified": false,
+  "hostedNetworkBlock": "CONNECT 403"
+}

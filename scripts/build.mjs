@@ -15,7 +15,7 @@ if (Object.keys(authConfig).some(k=>!['url','publishableKey'].includes(k))) thro
 if (/^sb_secret_/i.test(authConfig.publishableKey||'')) throw Error('Secret server key cannot be embedded');
 if ((authConfig.publishableKey||'').split('.').length===3) { const role=JSON.parse(Buffer.from(authConfig.publishableKey.split('.')[1],'base64url').toString()).role; if(role!=='anon') throw Error('Only public anon key may be embedded'); }
 const vendor=await bundle({stdin:{contents:"export {createClient} from '@supabase/supabase-js';",resolveDir:root},bundle:true,format:'iife',globalName:'SupabaseSDK',target:'es2022',platform:'browser',write:false,minify:true,legalComments:'eof'});
-const sources = await Promise.all(['core', 'storage', 'auth', 'ui', 'online', 'educational-core', 'educational', 'controller'].map(name => read(`src/${name}.js`)));
+const sources = await Promise.all(['core', 'storage', 'auth', 'ui', 'online', 'educational-core', 'educational-boards', 'educational-scenes', 'educational', 'controller'].map(name => read(`src/${name}.js`)));
 // Canonical editorial metadata stays in data/questions.json. Embed only fields used by the offline runtime.
 const runtimeQuestions = { ...questions, questions: questions.questions.map(q => ({
   id:q.id,unit_id:q.unit_id,lesson_id:q.lesson_id,difficulty:q.difficulty,type:q.type,topic:q.topic,
@@ -25,7 +25,7 @@ const runtimeQuestions = { ...questions, questions: questions.questions.map(q =>
 })) };
 const code = `${vendor.outputFiles[0].text}\nconst AUTH_CONFIG=${JSON.stringify(authConfig)};\nconst EMBEDDED_LESSONS=${JSON.stringify(lessons)};\nconst EMBEDDED_QUESTIONS=${JSON.stringify(runtimeQuestions)};\n${sources.join('\n')}`;
 new vm.Script(code, { filename: 'app.bundle.js' });
-const css = await read('src/styles.css');
+const css = (await Promise.all(['styles','educational-boards','educational-scenes'].map(name=>read(`src/${name}.css`)))).join('\n');
 // Inline the canonical brand icon so Pages and the standalone HTML need no asset request.
 const favicon = 'data:image/svg+xml,' + encodeURIComponent(await read('assets/favicon.svg'));
 const html = `<!doctype html>

@@ -43,7 +43,7 @@ async function login(page,email){
  await page.waitForFunction(()=>S.ready&&Auth.current().mode==='account'&&db.status().userId===Auth.current().user.id);
 }
 async function online(page){await page.evaluate(()=>go('online'));await page.waitForSelector('[data-action="online-create"]');}
-async function step(name,fn){const started=Date.now();try{await fn();results.push({name,status:'passed',milliseconds:Date.now()-started});console.log('PASS '+name);}catch(error){results.push({name,status:'failed',error:error.stack,milliseconds:Date.now()-started});console.error('FAIL '+name+': '+error.message);}}
+async function step(name,fn){const started=Date.now();try{await fn();results.push({name,status:'passed',milliseconds:Date.now()-started});console.log('PASS '+name);}catch(error){results.push({name,status:'failed',error:error.stack,milliseconds:Date.now()-started});console.error('FAIL '+name+': '+error.message);await mkdir('artifacts',{recursive:true});if(host)await host.screenshot({path:'artifacts/online-failure.png',fullPage:true});await writeFile('test-results/educational-online-failure.json',JSON.stringify({name,error:error.stack,host:host?await host.locator('body').innerText():null},null,2));throw error;}}
 const user=id=>backend.users.find(u=>u.id===id);const snapshot=async id=>{const r=await backend.call({name:'duel_state',args:{p_room_id:roomID},user:user(id)});assert.equal(r.error,null);return r.data;};
 const click=async(page,a,v)=>page.locator(`[data-edu="${a}"]${v===undefined?'':`[data-value="${v}"]`}`).first().click();
 async function solve(page,q){if(q.type==='matching'){for(const p of q.answer.pairs){await click(page,'left',p.left_id);await click(page,'right',p.right_id);}await click(page,'submit');}else if(q.type==='ordering'){for(const id of q.answer.ordered_ids)await click(page,'order',id);await click(page,'submit');}else await click(page,'answer',q.type==='true_false'?String(q.answer.value):q.answer.option_id);}
@@ -70,7 +70,8 @@ try{
     if(pos+1<questions.length&&game!==9)await click(page,'next');
    }
   }
-  if(await host.locator('[data-action="online-refresh"]').count())await host.locator('[data-action="online-refresh"]').click();await host.waitForSelector('.online-result');await guest.waitForSelector('.online-result');const a=await snapshot(ids.host),b=await snapshot(ids.guest);assert.equal(a.status,'completed');assert.deepEqual(a.result,b.result);assert.equal(a.result.winner_id,null);assert.ok(a.result.scores.every(x=>x.score>0));for(const page of [host,guest])assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'screen overflow');
+  // Wait for automatic room synchronization; a manual refresh button disappears when completion arrives.
+  await host.waitForSelector('.online-result');await guest.waitForSelector('.online-result');const a=await snapshot(ids.host),b=await snapshot(ids.guest);assert.equal(a.status,'completed');assert.deepEqual(a.result,b.result);assert.equal(a.result.winner_id,null);assert.ok(a.result.scores.every(x=>x.score>0));for(const page of [host,guest])assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'screen overflow');
  });
  assert.ok(results.every(x=>x.status==='passed'));assert.deepEqual(browserErrors,[]);assert.deepEqual(externalRequests,[]);await host.screenshot({path:'artifacts/educational-online-result.png',fullPage:true});await writeFile(new URL('test-results/educational-online-ui.json',root),JSON.stringify({results,browserErrors,externalRequests,sqlBackend:true,authTransport:'simulated',liveSupabase:false,testedBuildSha256},null,2));
 }finally{for(const c of contexts)await c.close();await browser.close();await backend.db.close();}
