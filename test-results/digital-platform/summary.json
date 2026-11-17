@@ -13,6 +13,12 @@
   "onlineGamesPassed": 13,
   "onlineEdgePassed": 5,
   "liveSupabase": false,
-  "published": false,
-  "checkNote": "Initial npm run check failed at obsolete audio test / build marker. Fixed and reran affected checks and all remaining check subcommands successfully."
+  "published": true,
+  "checkNote": "Initial npm run check failed at obsolete audio test / build marker. Fixed and reran affected checks and all remaining check subcommands successfully.",
+  "githubDeploymentConfirmed": true,
+  "deploymentRun": "https://github.com/ayoubalbtoosh/islam/actions/runs/44047455340",
+  "deploymentCommit": "9aee0866299cd2dd266010e05098cfb524b08fd6",
+  "latestUnitTests": 107,
+  "liveWebsiteDirectTest": "proxy CONNECT blocked with HTTP 403",
+  "publishedBuildSha256": "1d943e3b628b8db8f0a575d374dbb3edbac39a170686a2498be9e210e495f34c"
 }
