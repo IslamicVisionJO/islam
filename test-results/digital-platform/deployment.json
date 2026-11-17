@@ -1,13 +1,12 @@
 {
-  "runNumber": 13,
-  "runUrl": "https://github.com/ayoubalbtoosh/islam/actions/runs/44047455340",
-  "state": {
-    "status": "WORKFLOW_RUN_STATUS_COMPLETED",
-    "conclusion": "WORKFLOW_RUN_CONCLUSION_SUCCESS"
-  },
-  "createdAt": {
-    "timestamp": "2026-11-17T08:31:25Z",
-    "isToday": true,
-    "isCurrentYear": true
-  }
+  "runUrl": "https://github.com/ayoubalbtoosh/islam/actions/runs/44171311579",
+  "status": "Success",
+  "pagesCommit": "0f173d01be0ddab863810c031c371b62bd62185e",
+  "sourceCommit": "462ad254c3926280fdd54544d50a3c551958698d",
+  "buildSha256": "0f0ac4e9f3b2aa179d0e1c9b02bce57545ff57f9b568f6cb7782d2456b779bfa",
+  "name": "التربية الإسلامية برؤية رقمية",
+  "commitConfirmedInRunPage": true,
+  "checkedAt": "2026-11-17T20:40:05.966331+00:00",
+  "directSiteCheck": "Blocked by environment proxy: CONNECT 403",
+  "liveSupabaseVerified": false
 }

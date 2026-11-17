@@ -1,7 +1,7 @@
 {
   "verifiedAt": "2026-11-17T20:37:40.248966+00:00",
   "buildSha256": "0f0ac4e9f3b2aa179d0e1c9b02bce57545ff57f9b568f6cb7782d2456b779bfa",
-  "sourceCommit": "b3e28b297e5859a1b361bfc27ccd13816ccaee65",
+  "sourceCommit": "462ad254c3926280fdd54544d50a3c551958698d",
   "units": 112,
   "browserPassed": 35,
   "authPassed": 13,
@@ -20,5 +20,9 @@
   "checkComplete": true,
   "liveSupabase": false,
   "migration006AppliedLive": false,
-  "publicationPending": true
+  "publicationPending": false,
+  "published": true,
+  "githubDeploymentConfirmed": true,
+  "deploymentRun": "https://github.com/ayoubalbtoosh/islam/actions/runs/44171311579",
+  "deploymentCommit": "0f173d01be0ddab863810c031c371b62bd62185e"
 }
