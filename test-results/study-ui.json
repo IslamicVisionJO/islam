@@ -1,0 +1,9 @@
+{
+  "unseenDoesNotSkip": true,
+  "randomWithoutDuplicates": 18,
+  "examOriginalQuestions": 7,
+  "textSolutions": true,
+  "reducedEffectsPersist": true,
+  "accountIsolation": true,
+  "phone": true
+}

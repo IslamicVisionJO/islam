@@ -1,0 +1,442 @@
+
+> tahadi-tawjihi-islamic@2.4.3 check
+> npm run build && npm test && npm run test:browser && npm run test:auth && npm run test:online:sql && npm run test:online:browser && npm run test:background && npm run test:games && npm run test:games:online && npm run test:sql-editor && npm run test:learning && npm run test:study && npm run test:million && npm run test:scenes
+
+
+> tahadi-tawjihi-islamic@2.4.3 build
+> node scripts/build.mjs
+
+Production + standalone built: 4 units, 26 lessons, 2340 bank records, 3850797 bytes.
+SQL Editor copy guide built: 12 parts, 697980 bytes.
+Million wallet copy guide built.
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice
+
+> tahadi-tawjihi-islamic@2.4.3 test
+> node --test --test-isolation=none tests/*.test.mjs
+
+✔ unconfigured service is honest and guest progress never persists (10.680628ms)
+✔ public configuration rejects service-role secrets and invalid origins (3.447266ms)
+✔ server-approved identity alone sets admin role and prepares isolated account storage (25.898201ms)
+✔ server-disabled identity is signed out and no account progress opened (1.593706ms)
+✔ password is sent only to official SDK, never app state, progress or admin RPC (3.474355ms)
+✔ email signup sends site password only to official SDK and reloads only a server-approved session (2.876715ms)
+✔ confirmation-required signup never creates an authenticated state or a progress scope (2.125877ms)
+✔ signup validation and provider errors never claim successful registration (1.956602ms)
+✔ signup never opens an account rejected by the server or replaces an authenticated account (3.077804ms)
+✔ cloud restore validates record schema and canonical bank before local hydration (64.748721ms)
+✔ cloud saves use per-account CAS and internal metadata is never uploaded (34.034305ms)
+✔ concurrent-device revision conflict preserves local progress rather than overwriting remote (22.997258ms)
+✔ failed cloud request reports no confirmed save and leaves account cache intact (43.399034ms)
+✔ reset advances cloud revision to empty snapshot and prevents restored deleted progress (32.012864ms)
+✔ failed cloud reset does not erase local account progress (16.755875ms)
+✔ administrator APIs use server RPC checks without submitting passwords or roles (10.871277ms)
+✔ student details require an administrator and valid target, then check identity again before return (17.120485ms)
+✔ choosing another identity never imports previous account or guest data (35.392844ms)
+✔ offline cloud failure cannot prevent local logout or erase saved account cache (21.46905ms)
+✔ SDK identity changes suspend account writes before another identity can use its cached records (16.50641ms)
+✔ save RPC carries expected user identity so token-change race cannot write A progress under B (17.420346ms)
+✔ online RPC requires an account, restricts endpoints and checks admin before sending (8.368358ms)
+✔ online RPC discards response after account change and never writes study progress (15.562191ms)
+✔ online RPC reports missing migration and safe room errors without leaking backend details (1.521653ms)
+✔ email confirmation keeps only a valid room invitation in the return URL (2.023785ms)
+✔ authenticated bootstrap initializes auth and storage before any profile reads (7.390638ms)
+✔ account name keeps explicit stored name and uses email when account name is blank (11.459908ms)
+✔ guest and signed-out bootstrap leave user name empty and do not fabricate an account (5.159854ms)
+✔ Web Lock rejects second tab before auth init or storage preparation (2.958455ms)
+✔ Web Lock boot still initializes auth in order and holds the writer lock (4.09891ms)
+✔ auth storage preparation failure renders retry and performs no profile reads (2.891944ms)
+✔ guest and signed-out cannot export, parse an import, or confirm a pending import (4.887905ms)
+✔ account reset delegates cloud and local clearing to Auth then reloads (2.338407ms)
+✔ account cloud reset failure preserves current round and releases reset guards (2.112448ms)
+✔ guest reset clears only in-memory scope without calling account reset (2.032733ms)
+✔ queued session snapshot cannot write to a newly switched account scope (2.46203ms)
+✔ import discards foreign cloud revision and preserves current account metadata (2.395812ms)
+✔ pending import from a previous account cannot replace the next account data (2.208684ms)
+✔ legacy controller without Auth keeps direct bootstrap behavior (1.839449ms)
+✔ account backup export excludes internal cloud revision metadata (2.156222ms)
+✔ auth replacement blocks draft capture before draining queued saves and preserves chosen cloud round (2.355579ms)
+✔ auth replacement rollback retains current round and restores flags without replacing state (2.375091ms)
+✔ auth replacement waits in-flight finish and rollback does not resurrect completed round (2.47766ms)
+✔ auth replacement drain failure releases guards and preserves local round (3.550263ms)
+✔ auth replacement rollback releases completed failed-finish busy state without deleting retained round (3.15966ms)
+✔ All 13 adapters preserve scope and canonical provenance for 26 lessons and four units (53.176917ms)
+✔ Letter terms exclude quotes, retain definitions and Arabic repeat letters (2.312473ms)
+✔ Backup validation rejects a forged cross-lesson activity, duplicate question and unknown game (4.585571ms)
+✔ all original records: schema accepts approved bank; native wrong shapes fail safely (50.955159ms)
+✔ each native question answer survives presentation shuffle (104.230615ms)
+✔ six repeated attempts use a whole bag without duplicate and avoid previous round (38.811053ms)
+✔ score timeout is unattempted and no wrong-answer points (63.380275ms)
+✔ exam respects scope/easy and never substitutes hard (46.653479ms)
+✔ duel creates 20 questions for 10 each with equal pair difficulty/topic and no duplicate (33.826445ms)
+✔ duel handoff waits without decrement and alternates exactly (41.349921ms)
+✔ expired answer cannot score; single submission auto-advances once (57.535122ms)
+✔ last exam answer retained, revision allowed, explicit finish is idempotent (42.075099ms)
+✔ exam expires during modal and away from game, not after 45 min per question (37.32387ms)
+✔ ordinary paused round preserves remaining time; partial draft saved (38.598759ms)
+✔ endless extension exhausts finite pool without repeat (51.324026ms)
+✔ two concurrent clicks record one answer and transition once (38.559707ms)
+✔ duel streak looks only at the current competitor history (37.514917ms)
+✔ failed atomic result write preserves active round and rolls back XP (47.100776ms)
+✔ duel replay prioritizes different question set when pool is sufficient (118.495799ms)
+✔ new challenge refuses to replace an active saved round (35.187192ms)
+✔ valid backup import waits for confirmation and cancellation preserves data (31.729234ms)
+✔ confirmed import replaces in one operation then reloads without stale active writes (65.9333ms)
+✔ mistake review honors selected unit and difficulty (27.564523ms)
+✔ reset drains queued active saves and pagehide cannot recreate cleared progress (28.239525ms)
+✔ failed reset releases guards and preserves active round and cache (31.137221ms)
+✔ single-writer boot refuses another tab without initializing or writing (28.888796ms)
+✔ single-writer boot holds exclusive lock through app lifetime and releases on pagehide (75.113448ms)
+✔ answer storage failure renders recoverable lock; next retries save before advancing (29.041233ms)
+✔ 26 genuine videos, unit distribution, source excerpts and corrected pages (741.859039ms)
+✔ watch intervals merge without credit for gaps or seeks (2.001401ms)
+✔ all lesson guides preserve canonical answers, explanations and source pages (29.628293ms)
+✔ million loss at every question pays zero, including timeout and early exit (1.260263ms)
+✔ only a complete unique unexpired winning round earns the prize (0.583545ms)
+✔ simulated audience always totals 100 percent and can be wrong (0.54358ms)
+✔ guest can see account requirement without reading rooms or scheduling polling (2.216718ms)
+✔ polling pauses while hidden, resumes on visibility, and stops for a terminal result (2.301989ms)
+✔ an answer waits for an in-flight poll and never overlaps RPCs (2.266604ms)
+✔ a stopped or changed identity cannot apply a late room response (2.632492ms)
+✔ failed polling backs off, prevents blind answer resubmission, then recovers (1.257191ms)
+✔ private question output is escaped and polling does not replace unchanged question controls (1.357562ms)
+✔ sound respects mute, video suppression, volume and exam secrecy (1.135525ms)
+✔ explicit guest never reads or writes any persistent storage, including settings and bags (2.766391ms)
+✔ each guest selection starts fresh and guest progress never migrates into an account (1.283298ms)
+✔ accounts use separate namespaces and legacy records stay untouched (1.30454ms)
+✔ account UUID validation rejects unsafe selectors before touching storage (1.251442ms)
+✔ account IndexedDB names are isolated; guest does not attempt even a backend probe (2.422366ms)
+✔ switch cancels queued old writes and explicit old tokens cannot leak across accounts (1.491563ms)
+✔ subscribers receive account snapshots only; hydration is silent and unsubscribe works (2.107179ms)
+✔ legacy default behavior is retained until an explicit identity selection (1.0525ms)
+✔ cloud metadata accepts only nonnegative integer revision and a SHA-256 hash (2.913026ms)
+✔ silent metadata writes never schedule another cloud save and metadata remains account-isolated (0.96905ms)
+✔ switch waits for an in-flight IndexedDB transaction and closes only the old account connection (7.106172ms)
+✔ legacy localStorage records survive initialization and writes are isolated snapshots (1.927834ms)
+✔ queued batch persists related result/profile changes and deletes active together (1.613957ms)
+✔ denied storage stays usable in memory and explicitly reports non-persistence (0.752133ms)
+✔ quota failure retains this tab progress and announces fallback instead of claiming persistence (1.20125ms)
+✔ backup validates before replacement; malformed/prototype/unknown keys are rejected (2.54376ms)
+✔ valid legacy backup roundtrips without clearing separate data on a failed validation (1.440704ms)
+✔ active backups reject foreign questions and replace question text/answers with bundled content (1.790012ms)
+✔ duplicate results and malformed response IDs are rejected (1.436086ms)
+✔ duel imports require both players, finite separate scores and an explicit valid winner (1.543543ms)
+✔ result import rejects invalid rewards, duplicate question items and invalid optional scopes (1.781441ms)
+✔ achievement imports require a map of valid dated entries (1.195916ms)
+✔ active session imports accept real current epoch values and validate optional runtime settings (2.187961ms)
+✔ visited lesson metadata roundtrips but cannot inject invalid last lesson or timestamps (2.476026ms)
+✔ 724 textual source entries cover all lessons without missing IDs or answers (3.189633ms)
+✔ 26 original exam questions have complete answer key and source provenance (0.556749ms)
+ℹ tests 112
+ℹ suites 0
+ℹ pass 112
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2930.677798
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice
+
+> tahadi-tawjihi-islamic@2.4.3 test:browser
+> node tests/browser.spec.mjs
+
+PASS initial load, real data counts, creator separate from learner
+PASS lesson visit is distinct from solved/completed/mastered and survives reload
+PASS 78 actual lesson-level sessions, all requested timer choices and exam counts
+PASS all four units, 26 lessons and three difficulty setup pages
+PASS actual setup buttons select level, lesson, count and timer
+PASS native answer interface: multiple_choice
+PASS native answer interface: fill_blank
+PASS native answer interface: true_false
+PASS native answer interface: multi_select
+PASS native answer interface: matching
+PASS native answer interface: ordering
+PASS training feedback is opt-in and compound partial answer survives reload
+PASS all eleven modes start and finish; session counts are unique
+PASS six-second mode excludes long compound types; deadline timeout progresses once
+PASS late answer is rejected, repeated answer and finish are idempotent
+PASS replay and persistent rotation avoid previous round with enough alternatives
+PASS duel readiness, equal per-player questions, alternation, hidden answers, winner and replay
+PASS duel tie derives from answers and survives reload at handoff
+PASS exam difficulty and unit filters, total 45 minutes, last answer kept editable
+PASS exam timeout submits while confirmation modal is open, once only
+PASS settings persist after fresh page, export JSON, malformed import rejected
+PASS IndexedDB actual backup export/import roundtrip restores profile and completed results
+PASS storage denied retains playable session and reports memory fallback
+PASS desktop and phone layouts, no horizontal overflow, all pages and light theme
+PASS exam reload preserves deadline and saved answer, revised answer reaches final result
+PASS 360px game/setup/results: matching ordering, exam navigation stay within viewport
+PASS mistake scope honors selected unit and difficulty buttons update pressed state
+PASS injected active-save failure keeps answer locked and Next retry preserves it
+PASS second tab cannot overwrite progress and acquires writer lock after first closes
+PASS closing Chromium process and reopening same profile preserves ongoing exam
+PASS sound toggle initializes short Web Audio effects and mute persists
+PASS confirmed reset clears active session and does not resurrect it on reload
+PASS fixed daily weekly counts and endless setup labels match actual rules
+SKIP standalone file opens without network dependencies: Managed Chromium policy blocks file:// navigation; local Windows file opening remains untested.
+PASS standalone inline bundle renders in opaque origin without external requests
+PASS no browser JavaScript or console errors
+35 passed, 0 failed.
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice
+
+> tahadi-tawjihi-islamic@2.4.3 test:auth
+> node tests/auth-ui.spec.mjs
+
+PASS explicit unconfigured fixture shows honest login gate without nickname bypass
+PASS production guest bridge under unconfigured fixture is temporary isolated and cleared by reload
+PASS auth gate and guest banner fit phone tablet desktop and preserve source attribution
+PASS public email signup confirmation leaves user signed out and clears site passwords
+PASS signup tabs are accessible and mismatched site passwords never reach authentication
+PASS mocked rejected credentials stay signed out and clear password without logging it
+PASS public email signup accepts other domains and Gmail with private progress and no self-admin
+PASS mocked account A/B storage is separate and account A restores from cloud in fresh browser context
+PASS mocked SDK identity change cannot upload account A progress under account B
+PASS owner roster and student details expose safe progress without credentials and preserve disable controls
+PASS mocked offline cloud cannot trap sign-out and preserves account cache
+PASS mocked cloud conflict requires explicit choice and cancellation does not overwrite data
+PASS no unexpected browser errors in auth UI checks
+13 passed, 0 failed.
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice
+
+> tahadi-tawjihi-islamic@2.4.3 test:online:sql
+> node --test supabase/tests/online-duels.test.mjs
+
+✔ 004 additive migration, canonical bank, grants and Auth/progress preservation (2182.775066ms)
+✔ room joins, own-room recovery, privacy, one guest and valid ordered answers (1434.76976ms)
+✔ server scores, terminal persistence, recent history and authorized admin pagination (1430.792963ms)
+✔ tie, timeout, forfeit, expiry, blocked identity and room-rate limits (1352.706898ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6953.097946
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice
+
+> tahadi-tawjihi-islamic@2.4.3 test:online:browser
+> node tests/online-ui.spec.mjs
+
+PASS Email sign-in opens independent mobile and desktop accounts; stored progress remains separate
+PASS Host creates an invite code; another authenticated client joins the same server room
+PASS Reload reconnects the player to the active room without resetting deadline or progress
+PASS Five shared questions are scored by PostgreSQL and final result appears on both clients
+PASS Server denies unrelated student access and exposes saved result to the existing owner admin
+PASS No unhandled browser errors or external requests; build unchanged during checks
+6 passed, 0 failed.
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice
+
+> tahadi-tawjihi-islamic@2.4.3 test:background
+> node tests/background-ui.spec.mjs
+
+PASS Header offers a large unnamed preset palette instead of free color inputs on every page
+PASS Preset choices save automatically and independently for page and menu after reload
+PASS White and black preset backgrounds keep main and menu text independently readable
+PASS Saving ordinary player settings preserves both preset choices and needs no free color input
+PASS Each default reset leaves the other saved color and account preferences unchanged
+PASS Keyboard navigation selects presets without submitting game answers and Escape restores focus
+PASS Preset panel and independently colored mobile menu fit 360 and 390 pixel screens
+PASS Matching inline book favicon decodes and the frozen build has no browser errors or external requests
+8 passed, 0 failed.
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice
+
+> tahadi-tawjihi-islamic@2.4.3 test:games
+> node --test tests/educational-content.test.mjs && node tests/educational-ui.spec.mjs && node tests/educational-lifecycle.spec.mjs
+
+✔ All 13 adapters preserve scope and canonical provenance for 26 lessons and four units (315.583538ms)
+✔ Letter terms exclude quotes, retain definitions and Arabic repeat letters (4.352988ms)
+✔ Backup validation rejects a forged cross-lesson activity, duplicate question and unknown game (8.60334ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 646.435674
+[{"game":1,"rounds":15,"score":1000000,"passed":true},{"game":2,"rounds":8,"score":800,"passed":true},{"game":3,"rounds":5,"score":500,"passed":true},{"game":4,"rounds":8,"score":800,"passed":true},{"game":5,"rounds":8,"score":800,"passed":true},{"game":6,"rounds":12,"score":2800,"passed":true},{"game":7,"rounds":8,"score":800,"passed":true},{"game":8,"rounds":8,"score":1276,"passed":true},{"game":9,"rounds":8,"score":800,"passed":true},{"game":10,"rounds":5,"score":500,"passed":true},{"game":11,"rounds":8,"score":800,"passed":true},{"game":12,"rounds":8,"score":800,"passed":true},{"game":13,"rounds":8,"score":800,"passed":true}]
+PASS educational lifecycle, touch, timers, administrator view, account isolation and actual temporary guest
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice
+
+> tahadi-tawjihi-islamic@2.4.3 test:games:online
+> node --test supabase/tests/educational-online.test.mjs && node tests/educational-online-ui.spec.mjs && node tests/educational-online-edge.spec.mjs
+
+✔ 005: all thirteen game types share canonical scope, custom deadlines, server scores and private receipts (4784.948766ms)
+✔ 005: rejection, retry, early submission, timeout, migration repeatability and legacy preservation (2906.010527ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7904.715583
+PASS Game 1: two clients complete the actual activity with server-scored results
+PASS Game 2: two clients complete the actual activity with server-scored results
+PASS Game 3: two clients complete the actual activity with server-scored results
+PASS Game 4: two clients complete the actual activity with server-scored results
+PASS Game 5: two clients complete the actual activity with server-scored results
+PASS Game 6: two clients complete the actual activity with server-scored results
+PASS Game 7: two clients complete the actual activity with server-scored results
+PASS Game 8: two clients complete the actual activity with server-scored results
+PASS Game 9: two clients complete the actual activity with server-scored results
+PASS Game 10: two clients complete the actual activity with server-scored results
+PASS Game 11: two clients complete the actual activity with server-scored results
+PASS Game 12: two clients complete the actual activity with server-scored results
+PASS Game 13: two clients complete the actual activity with server-scored results
+PASS Icons, all-game custom solo timers, replay preservation and invalid duration recovery
+PASS Escape wrong-answer retry survives polling and is accepted once by the server
+PASS Wheel animation remains visible until it stops at its chosen question
+PASS Offline rejection preserves a retryable question and resumed room deadline
+PASS Fifteen-second shared deadline expires in real time after player reload
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice
+
+> tahadi-tawjihi-islamic@2.4.3 test:sql-editor
+> node --test supabase/tests/sql-editor-install.test.mjs && node tests/sql-editor-guide.spec.mjs
+
+✔ SQL Editor parts remain below 60KB, deterministic and synchronized with the canonical migration (194.831444ms)
+✔ Separate SQL Editor runs install exact original content, reject partial setup, survive retries and preserve student/room records (2937.391158ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3508.33871
+PASS SQL copy guide: all 12 exact parts, clipboard fallback, manual confirmation and mobile layout
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice
+
+> tahadi-tawjihi-islamic@2.4.3 test:learning
+> node --test tests/learning.test.mjs && node tests/learning-ui.spec.mjs && node tests/learning-rewards.spec.mjs
+
+✔ 26 genuine videos, unit distribution, source excerpts and corrected pages (1255.062359ms)
+✔ watch intervals merge without credit for gaps or seeks (4.274701ms)
+✔ all lesson guides preserve canonical answers, explanations and source pages (59.2244ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1487.094201
+PASS {
+  lessons: 26,
+  tabs: 130,
+  liveSupabase: false,
+  range: true,
+  seekDoesNotComplete: true,
+  reviewReload: true,
+  accountIsolation: true
+}
+PASS reward rollback, cancellation and reload idempotency
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice
+
+> tahadi-tawjihi-islamic@2.4.3 test:study
+> node --test tests/study-content.test.mjs && node tests/study-ui.spec.mjs
+
+✔ 724 textual source entries cover all lessons without missing IDs or answers (3.282742ms)
+✔ 26 original exam questions have complete answer key and source provenance (2.993084ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 126.20073
+PASS {
+  unseenDoesNotSkip: true,
+  randomWithoutDuplicates: 18,
+  examOriginalQuestions: 7,
+  textSolutions: true,
+  reducedEffectsPersist: true,
+  accountIsolation: true,
+  phone: true
+}
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice
+
+> tahadi-tawjihi-islamic@2.4.3 test:million
+> node --test tests/million-policy.test.mjs supabase/tests/million-rewards.test.mjs && node tests/million-ui.spec.mjs
+
+✔ server millionaire: losses at all 15 stages, exit, timeout, win once, privacy and isolation (3255.973258ms)
+✔ million loss at every question pays zero, including timeout and early exit (6.654793ms)
+✔ only a complete unique unexpired winning round earns the prize (0.490894ms)
+✔ simulated audience always totals 100 percent and can be wrong (3.71663ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3740.307763
+PASS server-backed millionaire UI, loss, win, aids and reload
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice
+
+> tahadi-tawjihi-islamic@2.4.3 test:scenes
+> node tests/scenes.spec.mjs
+
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

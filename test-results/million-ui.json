@@ -1,0 +1,9 @@
+{
+  "serverChecked": true,
+  "lossZero": true,
+  "winWalletOnce": true,
+  "reload": true,
+  "aidsPersist": true,
+  "networkRetry": true,
+  "liveSupabase": false
+}
