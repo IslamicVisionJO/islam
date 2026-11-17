@@ -1,3 +1,4 @@
+import './accept-confirmations.mjs';
 import {chromium} from 'playwright';
 import fs from 'node:fs/promises';
 import assert from 'node:assert/strict';
@@ -6,7 +7,7 @@ const browser=await chromium.launch({executablePath:'/usr/bin/chromium',args:['-
 const fixture=await fs.readFile('tests/fixtures/authorized-account.js','utf8');const results=[];
 try{for(const width of [390,1280]){
  const page=await browser.newPage({viewport:{width,height:900}});const errors=[];page.on('pageerror',e=>errors.push(e.message));
- await page.route('http://127.0.0.1:4173/**',async route=>{const r=await route.fetch();await route.fulfill({response:r,body:(await r.text()).replace('startApplication();',fixture+'\nstartApplication();')});});
+ await page.route('http://127.0.0.1:4173/**',async route=>{if(route.request().resourceType()!=='document'){await route.continue();return;}const r=await route.fetch();await route.fulfill({response:r,body:(await r.text()).replace('startApplication();',fixture+'\nstartApplication();')});});
  await page.goto('http://127.0.0.1:4173');await page.waitForFunction(()=>S.ready);await page.evaluate(()=>go('educational'));
  const click=async(a,v)=>page.locator(`[data-edu=${a}]${v===undefined?'':`[data-value="${v}"]`}`).first().click();
  for(let game=0;game<13;game++){

@@ -1,0 +1,18 @@
+{
+  "buildSha256": "8b07324f950b2e1c26e43fe41212b7407a0753867e730624c4e51dd9167a1592",
+  "units": 106,
+  "browserPassed": 35,
+  "browserFileProtocolSkipped": true,
+  "authPassed": 13,
+  "duelBrowserPassed": 6,
+  "backgroundPassed": 8,
+  "learningLessons": 26,
+  "learningTabs": 130,
+  "gamesCompleted": 13,
+  "scenesPassed": 26,
+  "onlineGamesPassed": 13,
+  "onlineEdgePassed": 5,
+  "liveSupabase": false,
+  "published": false,
+  "checkNote": "Initial npm run check failed at obsolete audio test / build marker. Fixed and reran affected checks and all remaining check subcommands successfully."
+}

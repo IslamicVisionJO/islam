@@ -1,26 +1,17 @@
 import http from 'node:http';
-import { readFile, stat } from 'node:fs/promises';
+import {stat} from 'node:fs/promises';
+import {createReadStream} from 'node:fs';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
-
-const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../dist');
-const port = Number(process.env.PORT || 4173);
-const types = { '.html': 'text/html; charset=utf-8', '.json': 'application/json; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.svg': 'image/svg+xml' };
-const server = http.createServer(async (request, response) => {
-  try {
-    const pathname = decodeURIComponent(new URL(request.url, 'http://localhost').pathname);
-    if (pathname === '/favicon.ico') { response.writeHead(204); response.end(); return; }
-    const filename = path.resolve(root, `.${pathname === '/' ? '/index.html' : pathname}`);
-    if (filename !== root && !filename.startsWith(root + path.sep)) { response.writeHead(403); response.end(); return; }
-    const info = await stat(filename);
-    if (!info.isFile()) throw new Error('not-file');
-    const body = await readFile(filename);
-    response.writeHead(200, { 'Content-Type': types[path.extname(filename)] || 'application/octet-stream', 'Cache-Control': 'no-cache', 'X-Content-Type-Options': 'nosniff' });
-    response.end(body);
-  } catch {
-    response.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
-    response.end('File not found. Run npm run build first.');
-  }
-});
-server.listen(port, '0.0.0.0', () => console.log(`Development server listening on port ${port}`));
-for (const signal of ['SIGTERM', 'SIGINT']) process.on(signal, () => server.close(() => process.exit(0)));
+import {fileURLToPath} from 'node:url';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../dist');
+const types={'.html':'text/html; charset=utf-8','.json':'application/json','.mp4':'video/mp4','.png':'image/png','.ttf':'font/ttf','.css':'text/css','.js':'text/javascript','.svg':'image/svg+xml'};
+const server=http.createServer(async(req,res)=>{try{
+ if(!['GET','HEAD'].includes(req.method)){res.writeHead(405);res.end();return;}
+ let p=decodeURIComponent(new URL(req.url,'http://localhost').pathname);if(p==='/islam'){res.writeHead(301,{Location:'/islam/'});res.end();return;}if(p.startsWith('/islam/'))p=p.slice(6);if(p.endsWith('/'))p+='index.html';
+ const file=path.resolve(root,'.'+p);if(!file.startsWith(root+path.sep))throw Error('path');const info=await stat(file);if(!info.isFile())throw Error('file');
+ let start=0,end=info.size-1,status=200;const headers={'Content-Type':types[path.extname(file)]||'application/octet-stream','Accept-Ranges':'bytes','X-Content-Type-Options':'nosniff'};
+ if(req.headers.range){const m=/^bytes=(\d*)-(\d*)$/.exec(req.headers.range);if(!m||!m[1]&&!m[2]){res.writeHead(416,{'Content-Range':`bytes */${info.size}`});res.end();return;}if(!m[1])start=Math.max(0,info.size-Number(m[2]));else{start=Number(m[1]);if(m[2])end=Math.min(end,Number(m[2]));}if(start>end||start>=info.size){res.writeHead(416,{'Content-Range':`bytes */${info.size}`});res.end();return;}status=206;headers['Content-Range']=`bytes ${start}-${end}/${info.size}`;}
+ headers['Content-Length']=end-start+1;res.writeHead(status,headers);if(req.method==='HEAD')res.end();else createReadStream(file,{start,end}).on('error',()=>res.destroy()).pipe(res);
+ }catch{res.writeHead(404);res.end('File not found');}});
+server.listen(Number(process.env.PORT||4173),'0.0.0.0',()=>console.log('Development server ready'));
+for(const sig of ['SIGINT','SIGTERM'])process.on(sig,()=>server.close(()=>process.exit(0)));

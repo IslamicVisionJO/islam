@@ -359,8 +359,8 @@ await test('closing Chromium process and reopening same profile preserves ongoin
 });
 await test('sound toggle initializes short Web Audio effects and mute persists',async()=>{
   await fresh();await page.locator('[data-action="toggle-sound"]').click();
-  await page.waitForFunction(()=>S.settings.sounds&&typeof audioContext!=='undefined');
-  assert.ok(await page.evaluate(()=>['running','suspended'].includes(audioContext.state)));
+  await page.waitForFunction(()=>S.settings.sounds&&Sound.status()!=='uninitialized');
+  assert.ok(await page.evaluate(()=>['running','suspended'].includes(Sound.status())));
   await page.evaluate(()=>{for(const kind of ['tap','start','tick','timeout','point','achievement','turn','finish','win','tie'])playSound(kind);});
   assert.equal(await page.locator('audio').count(),0);
   await page.locator('[data-action="toggle-sound"]').click();await page.waitForFunction(()=>!S.settings.sounds);await page.reload();await page.waitForFunction(()=>S.valid.length&&document.querySelector('#main-content'));assert.equal(await page.evaluate(()=>S.settings.sounds),false);

@@ -1,4 +1,4 @@
-import { readFile, writeFile, mkdir, rm } from 'node:fs/promises';
+import { readFile, writeFile, mkdir, rm, cp } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import vm from 'node:vm';
@@ -15,7 +15,7 @@ if (Object.keys(authConfig).some(k=>!['url','publishableKey'].includes(k))) thro
 if (/^sb_secret_/i.test(authConfig.publishableKey||'')) throw Error('Secret server key cannot be embedded');
 if ((authConfig.publishableKey||'').split('.').length===3) { const role=JSON.parse(Buffer.from(authConfig.publishableKey.split('.')[1],'base64url').toString()).role; if(role!=='anon') throw Error('Only public anon key may be embedded'); }
 const vendor=await bundle({stdin:{contents:"export {createClient} from '@supabase/supabase-js';",resolveDir:root},bundle:true,format:'iife',globalName:'SupabaseSDK',target:'es2022',platform:'browser',write:false,minify:true,legalComments:'eof'});
-const sources = await Promise.all(['core', 'storage', 'auth', 'ui', 'online', 'educational-core', 'educational-boards', 'educational-scenes', 'educational', 'controller'].map(name => read(`src/${name}.js`)));
+const sources = await Promise.all(['core', 'storage', 'auth', 'sound', 'ui', 'online', 'educational-core', 'educational-boards', 'educational-scenes', 'educational', 'learning', 'controller'].map(name => read(`src/${name}.js`)));
 // Canonical editorial metadata stays in data/questions.json. Embed only fields used by the offline runtime.
 const runtimeQuestions = { ...questions, questions: questions.questions.map(q => ({
   id:q.id,unit_id:q.unit_id,lesson_id:q.lesson_id,difficulty:q.difficulty,type:q.type,topic:q.topic,
@@ -23,9 +23,12 @@ const runtimeQuestions = { ...questions, questions: questions.questions.map(q =>
   source:{printed_pages:q.source?.printed_pages,pdf_pages:q.source?.pdf_pages},
   review:{source_checked:q.review?.source_checked,excluded:q.review?.excluded,verification_status:q.review?.verification_status}
 })) };
-const code = `${vendor.outputFiles[0].text}\nconst AUTH_CONFIG=${JSON.stringify(authConfig)};\nconst EMBEDDED_LESSONS=${JSON.stringify(lessons)};\nconst EMBEDDED_QUESTIONS=${JSON.stringify(runtimeQuestions)};\n${sources.join('\n')}`;
+const learning=JSON.parse(await read('data/learning-manifest.json'));
+const media=JSON.parse(await read('config/media.json'));
+const summaries=JSON.parse(await read('data/lesson-summaries.json'));
+const code = `${vendor.outputFiles[0].text}\nconst LEARNING_DATA=${JSON.stringify(learning)}; const MEDIA_CONFIG=${JSON.stringify(media)}; const LESSON_SUMMARIES=${JSON.stringify(summaries)};\nconst AUTH_CONFIG=${JSON.stringify(authConfig)};\nconst EMBEDDED_LESSONS=${JSON.stringify(lessons)};\nconst EMBEDDED_QUESTIONS=${JSON.stringify(runtimeQuestions)};\n${sources.join('\n')}`;
 new vm.Script(code, { filename: 'app.bundle.js' });
-const css = (await Promise.all(['styles','educational-boards','educational-scenes'].map(name=>read(`src/${name}.css`)))).join('\n');
+const css = (await Promise.all(['styles','educational-boards','educational-scenes','learning'].map(name=>read(`src/${name}.css`)))).join('\n');
 // Inline the canonical brand icon so Pages and the standalone HTML need no asset request.
 const favicon = 'data:image/svg+xml,' + encodeURIComponent(await read('assets/favicon.svg'));
 const html = `<!doctype html>
@@ -34,10 +37,10 @@ const html = `<!doctype html>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#082c23">
-<meta name="description" content="منصة تحدي التوجيهي في التربية الإسلامية، بتحديات فردية ومواجهات واختبارات. إنشاء الطالب أيوب محمد البطوش.">
+<meta name="description" content="التربية الإسلامية برؤية رقمية، بإشراف الأستاذ محمد الطميزي. مادة التربية الإسلامية | الثاني ثانوي BTEC. إنشاء الطالب أيوب محمد البطوش.">
 <meta name="color-scheme" content="dark light">
 <link rel="icon" type="image/svg+xml" sizes="any" href="${favicon}">
-<title>تحدي التوجيهي | التربية الإسلامية</title>
+<title>التربية الإسلامية برؤية رقمية</title>
 <style>${css.replace(/<\/style/gi, '<\\/style')}</style>
 </head>
 <body>
@@ -57,3 +60,5 @@ console.log(`Production + standalone built: ${lessons.length} units, ${lessons.f
 // The admin copy guide is independent of the student app and contains no credentials.
 await (await import('./split-educational-online.mjs')).writeEditorParts({root});
 await import('./build-online-setup.mjs');
+
+await cp(path.join(root,'public'),path.join(root,'dist'),{recursive:true});

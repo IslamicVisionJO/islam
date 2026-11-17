@@ -1,3 +1,4 @@
+import './accept-confirmations.mjs';
 /** Two isolated browser clients, real PostgreSQL game RPCs, simulated Email Auth transport. */
 import assert from 'node:assert/strict';
 import {readFile,writeFile,mkdir} from 'node:fs/promises';

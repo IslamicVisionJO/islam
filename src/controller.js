@@ -97,7 +97,7 @@ async function submitAnswer(response=null,timeout=false){
   s.answers[index]={response:r,correct,elapsed:limit===null?elapsed:Math.min(limit,elapsed),points,timedOut:timeout,timestamp:new Date().toISOString()};
   s.draft=null;S.selected=null;
   if(s.mode==='hearts'&&!correct)s.hearts--;
-  if(s.feedback&&!timeout)s.phase='feedback';
+  if(s.feedback&&!timeout){s.phase='feedback';playSound(correct?'correct':'wrong');}
   await saveSession();render();return true;
  }catch(error){render();throw error;}finally{S.busy=false;}
 }
@@ -377,7 +377,7 @@ async function initialize(){
   const active=safeSaved('active',saved[4],null);
   if(active?.questions?.length&&!S.results.some(r=>r.id===active.id)){S.session=active;}
   if(S.session){S.session.finishing=false;S.page='game';S.selected=S.session.draft??(S.session.mode==='exam'?S.session.answers[S.session.current]?.response??null:null);resumeSessionClock();}
-  S.ready=true;render();
+  S.ready=true;render();Learning.restore();
   if(typeof Online!=='undefined'&&new URL(location.href).searchParams.has('room')&&identity?.mode==='account')go('online');
   if(S.session&&['locked','feedback','advancing'].includes(S.session.phase)){S.session.phase='locked';await nextQuestion();}
   await clockTick();

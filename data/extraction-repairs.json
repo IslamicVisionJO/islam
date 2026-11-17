@@ -1,0 +1,23 @@
+{
+  "method": "Visual excerpts; extracted Arabic labels are not presented as corrected source text.",
+  "pageCorrections": {
+    "u03_l01": {
+      "start": 92
+    },
+    "u04_l06": {
+      "end": 178,
+      "excludedBlankPage": 179
+    }
+  },
+  "endPagesSource": "Solutions PDF contents, pages 2–3, excluding unit separator pages",
+  "counts": {
+    "cards": 406,
+    "activities": 117,
+    "assessment": 201
+  },
+  "limitations": [
+    "No exhaustive religious/editorial review of every answer",
+    "Image excerpts currently lack full accessible Arabic transcription",
+    "Activity page provenance is the lesson range, not a verified individual activity page"
+  ]
+}

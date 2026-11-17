@@ -1,8 +1,9 @@
+import './accept-confirmations.mjs';
 import {chromium} from 'playwright';import fs from 'node:fs/promises';import assert from 'node:assert/strict';
 const browser=await chromium.launch({executablePath:'/usr/bin/chromium',headless:true,args:['--no-sandbox']});
 const fixture=await fs.readFile('tests/fixtures/authorized-account.js','utf8');const base='http://127.0.0.1:4173';
 try{
- const context=await browser.newContext({viewport:{width:360,height:800},hasTouch:true});const page=await context.newPage();await page.route(base+'/**',async route=>{const r=await route.fetch();await route.fulfill({response:r,body:(await r.text()).replace('startApplication();',fixture+'\nstartApplication();')});});await page.goto(base);await page.waitForFunction(()=>S.valid.length>0);await page.evaluate(()=>go('educational'));
+ const context=await browser.newContext({viewport:{width:360,height:800},hasTouch:true});const page=await context.newPage();await page.route(base+'/**',async route=>{if(route.request().resourceType()!=='document'){await route.continue();return;}const r=await route.fetch();await route.fulfill({response:r,body:(await r.text()).replace('startApplication();',fixture+'\nstartApplication();')});});await page.goto(base);await page.waitForFunction(()=>S.valid.length>0);await page.evaluate(()=>go('educational'));
  // Curated terms preserve source definitions in the three previously uncovered lessons.
  for(const id of ['u01_l02','u01_l06','u03_l03']){await page.selectOption('#edu-unit',id.slice(0,3));await page.selectOption('#edu-lesson',id);await page.locator('[data-edu=start][data-value="7"]').tap();await page.locator('[data-edu=letter]').first().tap();await page.locator('[data-edu=undo]').tap();await page.locator('[data-edu=spell]').tap();assert.equal(await page.evaluate(()=>S.profile.educationalActive.feedback.correct),false);await page.locator('[data-edu=finish]').tap();await page.locator('[data-edu=catalog]').tap();}
  // An escape-room wrong answer cannot open the next lock.

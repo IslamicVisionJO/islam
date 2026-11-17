@@ -1,0 +1,9 @@
+{
+  "lessons": 26,
+  "tabs": 130,
+  "liveSupabase": false,
+  "range": true,
+  "seekDoesNotComplete": true,
+  "reviewReload": true,
+  "accountIsolation": true
+}

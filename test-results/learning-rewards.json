@@ -1,0 +1,7 @@
+{
+  "confirmationCancel": true,
+  "saveFailureRollback": true,
+  "xpOnce": true,
+  "reload": true,
+  "liveSupabase": false
+}
