@@ -25,6 +25,10 @@ export async function createDuelServer({educationalFiles=['migrations/005_educat
  const serialize=fn=>{const op=queue.then(fn);queue=op.catch(()=>{});return op;};
  const offline=new Set(),calls=[];
  const sql={
+ million_start:['select public.million_start($1,$2,$3) as value',a=>[a.p_unit,a.p_lesson,a.p_seconds]],
+ million_answer:['select public.million_answer($1,$2,$3) as value',a=>[a.p_session,a.p_question,a.p_answer]],
+ million_finish:['select public.million_finish($1) as value',a=>[a.p_session]],
+ million_wallet:['select public.million_wallet() as value',()=>[]],
   record_login:['select public.record_login() as value',()=>[]],
   read_progress:['select row_to_json(p) as value from public.user_progress p where user_id=$1',a=>[a.user_id]],
   save_user_progress:['select public.save_user_progress($1::jsonb,$2::bigint,$3::uuid) as value',a=>[JSON.stringify(a.p_records),a.p_expected_revision,a.p_user_id]],

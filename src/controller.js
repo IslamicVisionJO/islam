@@ -377,7 +377,7 @@ async function initialize(){
   const active=safeSaved('active',saved[4],null);
   if(active?.questions?.length&&!S.results.some(r=>r.id===active.id)){S.session=active;}
   if(S.session){S.session.finishing=false;S.page='game';S.selected=S.session.draft??(S.session.mode==='exam'?S.session.answers[S.session.current]?.response??null:null);resumeSessionClock();}
-  S.ready=true;render();Learning.restore();
+  S.millionWallet=null;S.ready=true;render();Learning.restore();if(authState().mode==='account'&&typeof Auth.millionRpc==='function'){const walletToken=storageScope();void Auth.millionRpc('million_wallet').then(w=>{if(walletToken===storageScope()){S.millionWallet={coins:w.coins,token:walletToken};if(S.page==='educational')render();}}).catch(()=>{});}
   if(typeof Online!=='undefined'&&new URL(location.href).searchParams.has('room')&&identity?.mode==='account')go('online');
   if(S.session&&['locked','feedback','advancing'].includes(S.session.phase)){S.session.phase='locked';await nextQuestion();}
   await clockTick();

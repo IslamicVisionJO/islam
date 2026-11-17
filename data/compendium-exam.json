@@ -1,0 +1,678 @@
+[
+  {
+    "id": "compendium-exam-01",
+    "lessonId": "u01_l01",
+    "question": "ما الفكرة التي تؤكدها الآية (286) من سورة البقرة؟",
+    "options": [
+      {
+        "id": "أ",
+        "text": "التشديد بلا رخصة"
+      },
+      {
+        "id": "ب",
+        "text": "التكليف ضمن الوسع"
+      },
+      {
+        "id": "ج",
+        "text": "محاسبة الناس على أعمال غيرهم"
+      },
+      {
+        "id": "د",
+        "text": "عدم الحاجة للدعاء"
+      }
+    ],
+    "answer": "ب",
+    "sourcePdfPage": 38,
+    "answerPdfPage": 40
+  },
+  {
+    "id": "compendium-exam-02",
+    "lessonId": "u01_l02",
+    "question": "أي الأدلة يعتمد على التأمل في نظام الكون؟",
+    "options": [
+      {
+        "id": "أ",
+        "text": "العقلي"
+      },
+      {
+        "id": "ب",
+        "text": "اللغوي فقط"
+      },
+      {
+        "id": "ج",
+        "text": "التاريخي فقط"
+      },
+      {
+        "id": "د",
+        "text": "الإحصائي فقط"
+      }
+    ],
+    "answer": "أ",
+    "sourcePdfPage": 38,
+    "answerPdfPage": 40
+  },
+  {
+    "id": "compendium-exam-03",
+    "lessonId": "u01_l03",
+    "question": "ما آخر مراحل التحدي بالإتيان بمثل القرآن؟",
+    "options": [
+      {
+        "id": "أ",
+        "text": "بكتاب كامل"
+      },
+      {
+        "id": "ب",
+        "text": "بعشر سور"
+      },
+      {
+        "id": "ج",
+        "text": "بآية من التوراة"
+      },
+      {
+        "id": "د",
+        "text": "بسورة واحدة"
+      }
+    ],
+    "answer": "د",
+    "sourcePdfPage": 38,
+    "answerPdfPage": 40
+  },
+  {
+    "id": "compendium-exam-04",
+    "lessonId": "u01_l04",
+    "question": "من الذي يملك صلاحية تغيير المنكر بإجراء ملزم؟",
+    "options": [
+      {
+        "id": "أ",
+        "text": "أي عابر"
+      },
+      {
+        "id": "ب",
+        "text": "أي مجموعة أصدقاء"
+      },
+      {
+        "id": "ج",
+        "text": "الجهة المختصة"
+      },
+      {
+        "id": "د",
+        "text": "من يشاهد الموقف"
+      }
+    ],
+    "answer": "ج",
+    "sourcePdfPage": 38,
+    "answerPdfPage": 40
+  },
+  {
+    "id": "compendium-exam-05",
+    "lessonId": "u01_l05",
+    "question": "أي الأحداث يأتي بعد البعث؟",
+    "options": [
+      {
+        "id": "أ",
+        "text": "الحشر"
+      },
+      {
+        "id": "ب",
+        "text": "الولادة"
+      },
+      {
+        "id": "ج",
+        "text": "الطفولة"
+      },
+      {
+        "id": "د",
+        "text": "الهجرة"
+      }
+    ],
+    "answer": "أ",
+    "sourcePdfPage": 38,
+    "answerPdfPage": 40
+  },
+  {
+    "id": "compendium-exam-06",
+    "lessonId": "u01_l06",
+    "question": "متى يُحتاج إلى الاجتهاد؟",
+    "options": [
+      {
+        "id": "أ",
+        "text": "مع نص قطعي واضح لا يقبل النظر"
+      },
+      {
+        "id": "ب",
+        "text": "في مسألة مستجدة قابلة للاستنباط"
+      },
+      {
+        "id": "ج",
+        "text": "لإلغاء جميع الأحكام"
+      },
+      {
+        "id": "د",
+        "text": "دون معرفة المصادر"
+      }
+    ],
+    "answer": "ب",
+    "sourcePdfPage": 38,
+    "answerPdfPage": 40
+  },
+  {
+    "id": "compendium-exam-07",
+    "lessonId": "u02_l01",
+    "question": "بماذا وجهت آيات الأعراف في الأكل والشرب؟",
+    "options": [
+      {
+        "id": "أ",
+        "text": "المنع التام"
+      },
+      {
+        "id": "ب",
+        "text": "الاستغناء عن الغذاء"
+      },
+      {
+        "id": "ج",
+        "text": "الاعتدال دون إسراف"
+      },
+      {
+        "id": "د",
+        "text": "التفاخر بالمال"
+      }
+    ],
+    "answer": "ج",
+    "sourcePdfPage": 38,
+    "answerPdfPage": 40
+  },
+  {
+    "id": "compendium-exam-08",
+    "lessonId": "u02_l02",
+    "question": "أي المصالح لا نص خاص بإقرارها أو إلغائها وتوافق المقاصد؟",
+    "options": [
+      {
+        "id": "أ",
+        "text": "ملغاة"
+      },
+      {
+        "id": "ب",
+        "text": "مرسلة"
+      },
+      {
+        "id": "ج",
+        "text": "مخالفة للنص"
+      },
+      {
+        "id": "د",
+        "text": "وهمية"
+      }
+    ],
+    "answer": "ب",
+    "sourcePdfPage": 38,
+    "answerPdfPage": 40
+  },
+  {
+    "id": "compendium-exam-09",
+    "lessonId": "u02_l03",
+    "question": "أي الكتب ترتب أحاديثها بحسب أسماء الصحابة؟",
+    "options": [
+      {
+        "id": "أ",
+        "text": "المسانيد"
+      },
+      {
+        "id": "ب",
+        "text": "السنن"
+      },
+      {
+        "id": "ج",
+        "text": "كتب اللغة"
+      },
+      {
+        "id": "د",
+        "text": "كتب التفسير"
+      }
+    ],
+    "answer": "أ",
+    "sourcePdfPage": 38,
+    "answerPdfPage": 40
+  },
+  {
+    "id": "compendium-exam-10",
+    "lessonId": "u02_l04",
+    "question": "ما الدرس المستفاد من حديث الثلاثة نفر؟",
+    "options": [
+      {
+        "id": "أ",
+        "text": "ترك الزواج"
+      },
+      {
+        "id": "ب",
+        "text": "الصيام المستمر لكل الناس"
+      },
+      {
+        "id": "ج",
+        "text": "عدم النوم"
+      },
+      {
+        "id": "د",
+        "text": "الاعتدال واتباع سنة النبي ﷺ"
+      }
+    ],
+    "answer": "د",
+    "sourcePdfPage": 38,
+    "answerPdfPage": 40
+  },
+  {
+    "id": "compendium-exam-11",
+    "lessonId": "u02_l05",
+    "question": "إلى من أرسل النبي ﷺ دحية الكلبي؟",
+    "options": [
+      {
+        "id": "أ",
+        "text": "كسرى"
+      },
+      {
+        "id": "ب",
+        "text": "هرقل"
+      },
+      {
+        "id": "ج",
+        "text": "المقوقس"
+      },
+      {
+        "id": "د",
+        "text": "النجاشي"
+      }
+    ],
+    "answer": "ب",
+    "sourcePdfPage": 38,
+    "answerPdfPage": 40
+  },
+  {
+    "id": "compendium-exam-12",
+    "lessonId": "u02_l06",
+    "question": "ما سبب تسمية جيش تبوك جيش العسرة؟",
+    "options": [
+      {
+        "id": "أ",
+        "text": "بسبب شدة الحر وقلة الموارد وبعد الطريق"
+      },
+      {
+        "id": "ب",
+        "text": "لأنه لم يكن منظمًا"
+      },
+      {
+        "id": "ج",
+        "text": "لقلة عدد الصحابة جدًا"
+      },
+      {
+        "id": "د",
+        "text": "لعدم وجود داعٍ للخروج"
+      }
+    ],
+    "answer": "أ",
+    "sourcePdfPage": 38,
+    "answerPdfPage": 40
+  },
+  {
+    "id": "compendium-exam-13",
+    "lessonId": "u02_l07",
+    "question": "أي صورة تمثل المشاركة السياسية للمرأة؟",
+    "options": [
+      {
+        "id": "أ",
+        "text": "منعها من التعبير"
+      },
+      {
+        "id": "ب",
+        "text": "سلب حقها في المشورة"
+      },
+      {
+        "id": "ج",
+        "text": "المشاركة في البيعة والرأي"
+      },
+      {
+        "id": "د",
+        "text": "التمييز بسبب الجنس"
+      }
+    ],
+    "answer": "ج",
+    "sourcePdfPage": 38,
+    "answerPdfPage": 40
+  },
+  {
+    "id": "compendium-exam-14",
+    "lessonId": "u03_l01",
+    "question": "ما صفة إنفاق عباد الرحمن؟",
+    "options": [
+      {
+        "id": "أ",
+        "text": "البخل التام"
+      },
+      {
+        "id": "ب",
+        "text": "الإسراف"
+      },
+      {
+        "id": "ج",
+        "text": "ترك الإنفاق مطلقًا"
+      },
+      {
+        "id": "د",
+        "text": "الاعتدال"
+      }
+    ],
+    "answer": "د",
+    "sourcePdfPage": 39,
+    "answerPdfPage": 40
+  },
+  {
+    "id": "compendium-exam-15",
+    "lessonId": "u03_l02",
+    "question": "متى يكون الطلاق بائنًا بينونة كبرى؟",
+    "options": [
+      {
+        "id": "أ",
+        "text": "بعد الطلقة الثالثة"
+      },
+      {
+        "id": "ب",
+        "text": "في كل طلقة أولى"
+      },
+      {
+        "id": "ج",
+        "text": "قبل الزواج"
+      },
+      {
+        "id": "د",
+        "text": "في مجرد خلاف"
+      }
+    ],
+    "answer": "أ",
+    "sourcePdfPage": 39,
+    "answerPdfPage": 40
+  },
+  {
+    "id": "compendium-exam-16",
+    "lessonId": "u03_l03",
+    "question": "ما عدة الأرملة غير الحامل؟",
+    "options": [
+      {
+        "id": "أ",
+        "text": "ثلاثة أيام"
+      },
+      {
+        "id": "ب",
+        "text": "شهر واحد"
+      },
+      {
+        "id": "ج",
+        "text": "أربعة أشهر وعشرة أيام"
+      },
+      {
+        "id": "د",
+        "text": "ثلاثة قروء"
+      }
+    ],
+    "answer": "ج",
+    "sourcePdfPage": 39,
+    "answerPdfPage": 40
+  },
+  {
+    "id": "compendium-exam-17",
+    "lessonId": "u03_l04",
+    "question": "ما الحد الأصلي الأعلى للوصية دون إجازة الورثة؟",
+    "options": [
+      {
+        "id": "أ",
+        "text": "نصف التركة"
+      },
+      {
+        "id": "ب",
+        "text": "ثلث التركة"
+      },
+      {
+        "id": "ج",
+        "text": "كل التركة"
+      },
+      {
+        "id": "د",
+        "text": "ثلاثة أرباعها"
+      }
+    ],
+    "answer": "ب",
+    "sourcePdfPage": 39,
+    "answerPdfPage": 40
+  },
+  {
+    "id": "compendium-exam-18",
+    "lessonId": "u03_l05",
+    "question": "ما أول ما يُراعى قبل تقسيم الإرث؟",
+    "options": [
+      {
+        "id": "أ",
+        "text": "تقسيم المال مباشرة دون حقوق"
+      },
+      {
+        "id": "ب",
+        "text": "إهمال الديون"
+      },
+      {
+        "id": "ج",
+        "text": "التبرع بكل المال"
+      },
+      {
+        "id": "د",
+        "text": "تجهيز المتوفى والديون والوصية النافذة بحسب ترتيبها"
+      }
+    ],
+    "answer": "د",
+    "sourcePdfPage": 39,
+    "answerPdfPage": 40
+  },
+  {
+    "id": "compendium-exam-19",
+    "lessonId": "u03_l06",
+    "question": "ما تعريف الوسطية؟",
+    "options": [
+      {
+        "id": "أ",
+        "text": "الاعتدال بين الإفراط والتفريط"
+      },
+      {
+        "id": "ب",
+        "text": "ترك العمل"
+      },
+      {
+        "id": "ج",
+        "text": "التشدد في كل شيء"
+      },
+      {
+        "id": "د",
+        "text": "التقصير في الواجب"
+      }
+    ],
+    "answer": "أ",
+    "sourcePdfPage": 39,
+    "answerPdfPage": 40
+  },
+  {
+    "id": "compendium-exam-20",
+    "lessonId": "u03_l07",
+    "question": "ما الميزة الأساس للوقف؟",
+    "options": [
+      {
+        "id": "أ",
+        "text": "زوال الأصل فورًا"
+      },
+      {
+        "id": "ب",
+        "text": "اختصاصه بالمال الكثير فقط"
+      },
+      {
+        "id": "ج",
+        "text": "استمرار منفعة الأصل المحبوس"
+      },
+      {
+        "id": "د",
+        "text": "عدم وجود مقصد اجتماعي"
+      }
+    ],
+    "answer": "ج",
+    "sourcePdfPage": 39,
+    "answerPdfPage": 40
+  },
+  {
+    "id": "compendium-exam-21",
+    "lessonId": "u04_l01",
+    "question": "لماذا يفلس بعض الناس في الآخرة وفق الحديث؟",
+    "options": [
+      {
+        "id": "أ",
+        "text": "لأنهم لا يملكون مالً ا في الدنيا فقط"
+      },
+      {
+        "id": "ب",
+        "text": "بسبب ظلمهم للناس وضياع حسناتهم في المظالم"
+      },
+      {
+        "id": "ج",
+        "text": "لأنهم تعلموا"
+      },
+      {
+        "id": "د",
+        "text": "لأنهم مسافرون"
+      }
+    ],
+    "answer": "ب",
+    "sourcePdfPage": 39,
+    "answerPdfPage": 40
+  },
+  {
+    "id": "compendium-exam-22",
+    "lessonId": "u04_l02",
+    "question": "أي مستوى مقاصدي يرفع الحرج والمشقة؟",
+    "options": [
+      {
+        "id": "أ",
+        "text": "الضروريات"
+      },
+      {
+        "id": "ب",
+        "text": "التحسينيات"
+      },
+      {
+        "id": "ج",
+        "text": "الممنوعات"
+      },
+      {
+        "id": "د",
+        "text": "الحاجيات"
+      }
+    ],
+    "answer": "د",
+    "sourcePdfPage": 39,
+    "answerPdfPage": 40
+  },
+  {
+    "id": "compendium-exam-23",
+    "lessonId": "u04_l03",
+    "question": "أي الجرائم يترك تحديد عقوبتها للسلطة المختصة؟",
+    "options": [
+      {
+        "id": "أ",
+        "text": "جرائم التعزير"
+      },
+      {
+        "id": "ب",
+        "text": "جميع جرائم الحدود"
+      },
+      {
+        "id": "ج",
+        "text": "جميع أحكام الميراث"
+      },
+      {
+        "id": "د",
+        "text": "جميع العبادات"
+      }
+    ],
+    "answer": "أ",
+    "sourcePdfPage": 39,
+    "answerPdfPage": 40
+  },
+  {
+    "id": "compendium-exam-24",
+    "lessonId": "u04_l04",
+    "question": "ما من مبادئ حجة الوداع؟",
+    "options": [
+      {
+        "id": "أ",
+        "text": "التفاخر بالأنساب"
+      },
+      {
+        "id": "ب",
+        "text": "إهمال الأمانة"
+      },
+      {
+        "id": "ج",
+        "text": "صيانة الدماء والأموال والأعراض"
+      },
+      {
+        "id": "د",
+        "text": "إباحة الظلم"
+      }
+    ],
+    "answer": "ج",
+    "sourcePdfPage": 39,
+    "answerPdfPage": 40
+  },
+  {
+    "id": "compendium-exam-25",
+    "lessonId": "u04_l05",
+    "question": "ما صورة المسؤولية المجتمعية؟",
+    "options": [
+      {
+        "id": "أ",
+        "text": "إتلاف المرافق"
+      },
+      {
+        "id": "ب",
+        "text": "التطوع وحماية المال العام"
+      },
+      {
+        "id": "ج",
+        "text": "ترويج الشائعات"
+      },
+      {
+        "id": "د",
+        "text": "الإضرار بالبيئة"
+      }
+    ],
+    "answer": "ب",
+    "sourcePdfPage": 39,
+    "answerPdfPage": 40
+  },
+  {
+    "id": "compendium-exam-26",
+    "lessonId": "u04_l06",
+    "question": "متى صدر الإعلان العالمي لحقوق الإنسان؟",
+    "options": [
+      {
+        "id": "أ",
+        "text": "622 م"
+      },
+      {
+        "id": "ب",
+        "text": "1918 م"
+      },
+      {
+        "id": "ج",
+        "text": "2000 م"
+      },
+      {
+        "id": "د",
+        "text": "1948 م"
+      }
+    ],
+    "answer": "د",
+    "sourcePdfPage": 39,
+    "answerPdfPage": 40
+  }
+]

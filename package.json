@@ -10,7 +10,7 @@
     "dev": "node scripts/build.mjs && node scripts/serve.mjs",
     "test": "node --test --test-isolation=none tests/*.test.mjs",
     "test:browser": "node tests/browser.spec.mjs",
-    "check": "npm run build && npm test && npm run test:browser && npm run test:auth && npm run test:online:sql && npm run test:online:browser && npm run test:background && npm run test:games && npm run test:games:online && npm run test:sql-editor",
+    "check": "npm run build && npm test && npm run test:browser && npm run test:auth && npm run test:online:sql && npm run test:online:browser && npm run test:background && npm run test:games && npm run test:games:online && npm run test:sql-editor && npm run test:learning && npm run test:study && npm run test:million && npm run test:scenes",
     "test:auth": "node tests/auth-ui.spec.mjs",
     "test:online:sql": "node --test supabase/tests/online-duels.test.mjs",
     "test:online:browser": "node tests/online-ui.spec.mjs",
@@ -19,7 +19,9 @@
     "test:games:online": "node --test supabase/tests/educational-online.test.mjs && node tests/educational-online-ui.spec.mjs && node tests/educational-online-edge.spec.mjs",
     "test:sql-editor": "node --test supabase/tests/sql-editor-install.test.mjs && node tests/sql-editor-guide.spec.mjs",
     "test:learning": "node --test tests/learning.test.mjs && node tests/learning-ui.spec.mjs && node tests/learning-rewards.spec.mjs",
-    "test:scenes": "node tests/scenes.spec.mjs"
+    "test:scenes": "node tests/scenes.spec.mjs",
+    "test:study": "node --test tests/study-content.test.mjs && node tests/study-ui.spec.mjs",
+    "test:million": "node --test tests/million-policy.test.mjs supabase/tests/million-rewards.test.mjs && node tests/million-ui.spec.mjs"
   },
   "engines": {
     "node": ">=22.8"

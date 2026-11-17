@@ -1,5 +1,7 @@
-"""Import genuine attachments; retain visual excerpts when PDF Arabic extraction is unreliable."""
+"""Import genuine attachments with Arabic coordinate transcription and audit excerpts."""
 import fitz,glob,json,re,zipfile,pathlib,hashlib,sys
+from pdf_coordinates import extract
+text_by_image={}
 root=pathlib.Path(__file__).resolve().parents[1]; source=pathlib.Path(sys.argv[1] if len(sys.argv)>1 else '/workspace/attachments')
 out=root/'public/content';out.mkdir(parents=True,exist_ok=True)
 units=json.loads((root/'data/lessons.json').read_text()); lessons=[dict(l) for u in units for l in u['lessons']]
@@ -21,9 +23,9 @@ def lines(page):
  return [(y,' '.join(s['text'] for s in sorted(ss,key=lambda s:-s['bbox'][2])),min(s['bbox'][1] for s in ss)) for y,ss in sorted(groups.items()) if 48<y<795]
 def crop(doc,pi,y1,y2,name):
  if y2-y1<2:return None
- f=name+'.png';doc[pi].get_pixmap(matrix=fitz.Matrix(2,2),clip=fitz.Rect(48,y1,doc[pi].rect.width-48,y2)).save(out/f);return 'content/'+f
+ f=name+'.png';text_by_image['content/'+f]=extract(doc[pi],fitz.Rect(48,y1,doc[pi].rect.width-48,y2));doc[pi].get_pixmap(matrix=fitz.Matrix(2,2),clip=fitz.Rect(48,y1,doc[pi].rect.width-48,y2)).save(out/f);return 'content/'+f
 for kind,prefix in [('cards','مكثف'),('solutions','حلول')]:
- doc=fitz.open(next(source.glob('* /x'),None)) if False else fitz.open(next(source.glob('*/'+prefix+'*.pdf')))
+ doc=fitz.open(next(source.glob('*/'+prefix+'*.pdf')))
  active=None;category='activities';pending=None;entries=[]
  def finish(pi,y):
   global pending
@@ -66,6 +68,15 @@ for kind,prefix in [('cards','مكثف'),('solutions','حلول')]:
     if answer is None:pending=(rec,sp,sy,(pi,top-1))
   if kind=='cards' and pi==35:finish(pi,794);break
  finish(len(doc)-1,794)
-manifest={'units':[{**u,'lessons':[l for l in lessons if l['unitId']==u['id']]} for u in units],'extraction':'Visual source excerpts preserve Arabic glyphs; labels are navigation metadata, not a corrected transcription.'}
+for l in lessons:
+ for category in ['cards','activities','assessment']:
+  for rec in l[category]:
+   rec['question']='\n'.join(text_by_image[p] for p in rec['questionImages'])
+   rec['answer']='\n'.join(text_by_image[p] for p in rec['answerImages'])
+   rec['question']=re.sub(r'^(?:س\s*\d+|نشاط\s*\d+)\s*[|.]?\s*','',rec['question']).strip()
+   rec['answer']=re.sub(r'^(?:ج\s*|:?الإجابة\s*:?\s*)','',rec['answer']).strip()
+   rec['answer']=re.sub(r'(?m)^الوحدة[^\n]* / الدرس \d+\s*$', '', rec['answer']).strip()
+   rec['textReview']='coordinate-extracted; independent review pending'
+manifest={'units':[{**u,'lessons':[l for l in lessons if l['unitId']==u['id']]} for u in units],'extraction':'Arabic coordinate transcription; original image excerpts retained for audit. Independent editorial verification pending.'}
 (root/'data/learning-manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2))
 print({k:sum(len(l[k]) for l in lessons) for k in ['cards','activities','assessment']})

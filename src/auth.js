@@ -232,5 +232,6 @@ const Auth=(()=>{
   }
   return data;
  }
- return {init,current,prepareStorage,signInEmail,signUpEmail,enterGuest,signOut,syncNow,flush,resolveConflict,resetProgress,adminRoster,adminStudentDetails,adminAllowAccount,adminDisableAccount,publicConfig,duelRpc};
+ async function millionRpc(name,args={}){if(!['million_start','million_answer','million_finish','million_wallet'].includes(name))throw Error('طلب غير صالح');requireAccount();const id=state.user.id;await checkSession(id);const {data,error}=await client.rpc(name,args);await checkSession(id);if(error)throw Error('تعذر تأكيد مكافآت المليون على الخادم. يلزم تفعيل الترقية 006 أو استعادة الاتصال.');return data;}
+ return {millionRpc,init,current,prepareStorage,signInEmail,signUpEmail,enterGuest,signOut,syncNow,flush,resolveConflict,resetProgress,adminRoster,adminStudentDetails,adminAllowAccount,adminDisableAccount,publicConfig,duelRpc};
 })();

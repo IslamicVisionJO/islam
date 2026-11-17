@@ -1,5 +1,5 @@
 {
-  "method": "Visual excerpts; extracted Arabic labels are not presented as corrected source text.",
+  "method": "Arabic coordinate reconstruction from original PDF character positions; textual questions and answers share one source in lesson and whole-book views. Visual excerpts retained for audit only.",
   "pageCorrections": {
     "u03_l01": {
       "start": 92
@@ -17,7 +17,45 @@
   },
   "limitations": [
     "No exhaustive religious/editorial review of every answer",
-    "Image excerpts currently lack full accessible Arabic transcription",
+    "All 724 entries have accessible Arabic text; independent religious/editorial verification remains pending.",
     "Activity page provenance is the lesson range, not a verified individual activity page"
-  ]
+  ],
+  "logicalGlyphRepairs": {
+    "األ": "الأ",
+    "اإل": "الإ",
+    "اآل": "الآ"
+  },
+  "glyphRepairCountsInTextCards": {
+    "األ": 33,
+    "اإل": 9,
+    "اآل": 2
+  },
+  "removedRunningHeadersFromAnswerIds": [
+    "u01_l01-assessment-14",
+    "u01_l02-assessment-7",
+    "u01_l03-assessment-4",
+    "u01_l04-assessment-7",
+    "u01_l05-assessment-8",
+    "u01_l06-assessment-8",
+    "u02_l01-assessment-9",
+    "u02_l02-assessment-10",
+    "u02_l03-assessment-7",
+    "u02_l04-assessment-8",
+    "u02_l05-assessment-8",
+    "u02_l06-assessment-10",
+    "u02_l07-assessment-7",
+    "u03_l01-assessment-9",
+    "u03_l02-assessment-7",
+    "u03_l03-assessment-6",
+    "u03_l04-assessment-8",
+    "u03_l05-assessment-8",
+    "u03_l06-assessment-8",
+    "u03_l07-assessment-6",
+    "u04_l01-assessment-5",
+    "u04_l02-assessment-9",
+    "u04_l03-assessment-7",
+    "u04_l04-assessment-9",
+    "u04_l05-assessment-5"
+  ],
+  "glyphRepairEvidence": "Lam-alif order checked against rendered original compendium PDF page 38; only glyph order, not answer meaning, changed. Next-lesson running headers removed from previous answer."
 }

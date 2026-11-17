@@ -15,7 +15,7 @@ if (Object.keys(authConfig).some(k=>!['url','publishableKey'].includes(k))) thro
 if (/^sb_secret_/i.test(authConfig.publishableKey||'')) throw Error('Secret server key cannot be embedded');
 if ((authConfig.publishableKey||'').split('.').length===3) { const role=JSON.parse(Buffer.from(authConfig.publishableKey.split('.')[1],'base64url').toString()).role; if(role!=='anon') throw Error('Only public anon key may be embedded'); }
 const vendor=await bundle({stdin:{contents:"export {createClient} from '@supabase/supabase-js';",resolveDir:root},bundle:true,format:'iife',globalName:'SupabaseSDK',target:'es2022',platform:'browser',write:false,minify:true,legalComments:'eof'});
-const sources = await Promise.all(['core', 'storage', 'auth', 'sound', 'ui', 'online', 'educational-core', 'educational-boards', 'educational-scenes', 'educational', 'learning', 'controller'].map(name => read(`src/${name}.js`)));
+const sources = await Promise.all(['core', 'storage', 'auth', 'sound', 'ui', 'online', 'educational-core', 'educational-boards', 'educational-scenes', 'educational', 'study', 'learning', 'controller'].map(name => read(`src/${name}.js`)));
 // Canonical editorial metadata stays in data/questions.json. Embed only fields used by the offline runtime.
 const runtimeQuestions = { ...questions, questions: questions.questions.map(q => ({
   id:q.id,unit_id:q.unit_id,lesson_id:q.lesson_id,difficulty:q.difficulty,type:q.type,topic:q.topic,
@@ -25,9 +25,10 @@ const runtimeQuestions = { ...questions, questions: questions.questions.map(q =>
 })) };
 const learning=JSON.parse(await read('data/learning-manifest.json'));
 const media=JSON.parse(await read('config/media.json'));
+const compendiumExam=JSON.parse(await read('data/compendium-exam.json'));
 const guides=JSON.parse(await read('data/lesson-guides.json'));
 const summaries=JSON.parse(await read('data/lesson-summaries.json'));
-const code = `${vendor.outputFiles[0].text}\nconst LEARNING_DATA=${JSON.stringify(learning)}; const MEDIA_CONFIG=${JSON.stringify(media)}; const LESSON_SUMMARIES=${JSON.stringify(summaries)}; const LESSON_GUIDES=${JSON.stringify(guides)};\nconst AUTH_CONFIG=${JSON.stringify(authConfig)};\nconst EMBEDDED_LESSONS=${JSON.stringify(lessons)};\nconst EMBEDDED_QUESTIONS=${JSON.stringify(runtimeQuestions)};\n${sources.join('\n')}`;
+const code = `${vendor.outputFiles[0].text}\nconst COMPENDIUM_EXAM=${JSON.stringify(compendiumExam)}; const LEARNING_DATA=${JSON.stringify(learning)}; const MEDIA_CONFIG=${JSON.stringify(media)}; const LESSON_SUMMARIES=${JSON.stringify(summaries)}; const LESSON_GUIDES=${JSON.stringify(guides)};\nconst AUTH_CONFIG=${JSON.stringify(authConfig)};\nconst EMBEDDED_LESSONS=${JSON.stringify(lessons)};\nconst EMBEDDED_QUESTIONS=${JSON.stringify(runtimeQuestions)};\n${sources.join('\n')}`;
 new vm.Script(code, { filename: 'app.bundle.js' });
 const css = (await Promise.all(['styles','educational-boards','educational-scenes','learning'].map(name=>read(`src/${name}.css`)))).join('\n');
 // Inline the canonical brand icon so Pages and the standalone HTML need no asset request.
@@ -61,5 +62,6 @@ console.log(`Production + standalone built: ${lessons.length} units, ${lessons.f
 // The admin copy guide is independent of the student app and contains no credentials.
 await (await import('./split-educational-online.mjs')).writeEditorParts({root});
 await import('./build-online-setup.mjs');
+await import('./build-million-setup.mjs');
 
 await cp(path.join(root,'public'),path.join(root,'dist'),{recursive:true});
