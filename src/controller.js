@@ -186,7 +186,7 @@ async function finishSession(){
   catch(error){S.results.length=oldLength;S.profile=oldProfile;S.mistakes=oldMistakes;s.phase='locked';notify('تعذر حفظ النتيجة. احتُفظ بالجولة، حاول الإنهاء مجددًا أو صدّر التقدم.');render();throw error;}
   S.finished=result;S.session=null;S.selected=null;
   if(typeof persistAchievements==='function')await persistAchievements().catch(()=>notify('حُفظت النتيجة، وتعذر حفظ تاريخ الإنجاز الآن.'));
-  playSound(s.mode==='duel'?(winner===null?'tie':'win'):'finish');go('result');
+  playSound(S.profile.level>(oldProfile.level||1)?'level':s.mode==='duel'?(winner===null?'tie':'win'):'finish');go('result');
  })();
  try{return await finishingPromise;}finally{finishingPromise=null;S.busy=previousBusy;}
 }

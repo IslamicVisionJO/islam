@@ -5,3 +5,5 @@ artifacts/
 dist/videos/
 dist/content/
 dist/fonts/
+dist/.nojekyll
+dist/release.json

@@ -25,8 +25,9 @@ const runtimeQuestions = { ...questions, questions: questions.questions.map(q =>
 })) };
 const learning=JSON.parse(await read('data/learning-manifest.json'));
 const media=JSON.parse(await read('config/media.json'));
+const guides=JSON.parse(await read('data/lesson-guides.json'));
 const summaries=JSON.parse(await read('data/lesson-summaries.json'));
-const code = `${vendor.outputFiles[0].text}\nconst LEARNING_DATA=${JSON.stringify(learning)}; const MEDIA_CONFIG=${JSON.stringify(media)}; const LESSON_SUMMARIES=${JSON.stringify(summaries)};\nconst AUTH_CONFIG=${JSON.stringify(authConfig)};\nconst EMBEDDED_LESSONS=${JSON.stringify(lessons)};\nconst EMBEDDED_QUESTIONS=${JSON.stringify(runtimeQuestions)};\n${sources.join('\n')}`;
+const code = `${vendor.outputFiles[0].text}\nconst LEARNING_DATA=${JSON.stringify(learning)}; const MEDIA_CONFIG=${JSON.stringify(media)}; const LESSON_SUMMARIES=${JSON.stringify(summaries)}; const LESSON_GUIDES=${JSON.stringify(guides)};\nconst AUTH_CONFIG=${JSON.stringify(authConfig)};\nconst EMBEDDED_LESSONS=${JSON.stringify(lessons)};\nconst EMBEDDED_QUESTIONS=${JSON.stringify(runtimeQuestions)};\n${sources.join('\n')}`;
 new vm.Script(code, { filename: 'app.bundle.js' });
 const css = (await Promise.all(['styles','educational-boards','educational-scenes','learning'].map(name=>read(`src/${name}.css`)))).join('\n');
 // Inline the canonical brand icon so Pages and the standalone HTML need no asset request.
@@ -44,7 +45,7 @@ const html = `<!doctype html>
 <style>${css.replace(/<\/style/gi, '<\\/style')}</style>
 </head>
 <body>
-<div id="app"><div class="fatal"><h1>تحدي التوجيهي</h1><p>جارٍ تحميل المنصة…</p></div></div>
+<div id="app"><div class="fatal"><h1>التربية الإسلامية برؤية رقمية</h1><p>جارٍ تحميل المنصة…</p></div></div>
 <noscript>يرجى تفعيل JavaScript لتشغيل التحديات وتسجيل الدخول.</noscript>
 <script>${code.replace(/<\/script/gi, '<\\/script')}</script>
 </body>
