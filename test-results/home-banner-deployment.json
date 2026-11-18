@@ -1,0 +1,12 @@
+{
+  "runUrl": "https://github.com/ayoubalbtoosh/islam/actions/runs/44237460161",
+  "status": "Success",
+  "pagesCommit": "6d0495974c8ef948aed890bcaabd06ea8984ea22",
+  "commitMatched": true,
+  "release": {
+    "sourceCommit": "42d9103008d95a21455b2d1ced86f2d606cafdf2",
+    "buildSha256": "f55e72c5862def75fdaf0500b8b0b03e4b9a5f7e1d06266fa6b4a22d64ac3587",
+    "name": "\u0627\u0644\u062a\u0631\u0628\u064a\u0629 \u0627\u0644\u0625\u0633\u0644\u0627\u0645\u064a\u0629 \u0628\u0631\u0624\u064a\u0629 \u0631\u0642\u0645\u064a\u0629"
+  },
+  "directLiveBrowserVerified": false
+}
