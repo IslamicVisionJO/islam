@@ -1,48 +1,48 @@
 {
-  "generatedAt": "2026-11-17T14:39:53.138Z",
-  "testedBuildSha256": "0f0ac4e9f3b2aa179d0e1c9b02bce57545ff57f9b568f6cb7782d2456b779bfa",
+  "generatedAt": "2026-11-18T10:08:18.272Z",
+  "testedBuildSha256": "e3fdc08fa5f80df24b9b09e0e81979111fa9b0470c88507fc2bdb31aa65013fc",
   "passed": 8,
   "failed": 0,
   "results": [
     {
       "name": "Header offers a large unnamed preset palette instead of free color inputs on every page",
       "status": "passed",
-      "milliseconds": 558
+      "milliseconds": 366
     },
     {
       "name": "Preset choices save automatically and independently for page and menu after reload",
       "status": "passed",
-      "milliseconds": 1494
+      "milliseconds": 1024
     },
     {
       "name": "White and black preset backgrounds keep main and menu text independently readable",
       "status": "passed",
-      "milliseconds": 1363
+      "milliseconds": 1249
     },
     {
       "name": "Saving ordinary player settings preserves both preset choices and needs no free color input",
       "status": "passed",
-      "milliseconds": 811
+      "milliseconds": 575
     },
     {
       "name": "Each default reset leaves the other saved color and account preferences unchanged",
       "status": "passed",
-      "milliseconds": 1267
+      "milliseconds": 1289
     },
     {
       "name": "Keyboard navigation selects presets without submitting game answers and Escape restores focus",
       "status": "passed",
-      "milliseconds": 385
+      "milliseconds": 432
     },
     {
       "name": "Preset panel and independently colored mobile menu fit 360 and 390 pixel screens",
       "status": "passed",
-      "milliseconds": 1365
+      "milliseconds": 1061
     },
     {
       "name": "Matching inline book favicon decodes and the frozen build has no browser errors or external requests",
       "status": "passed",
-      "milliseconds": 14
+      "milliseconds": 13
     }
   ],
   "errors": [],

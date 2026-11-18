@@ -1,0 +1,5 @@
+PASS Icons, all-game custom solo timers, replay preservation and invalid duration recovery
+PASS Escape wrong-answer retry survives polling and is accepted once by the server
+PASS Wheel animation remains visible until it stops at its chosen question
+PASS Offline rejection preserves a retryable question and resumed room deadline
+PASS Fifteen-second shared deadline expires in real time after player reload

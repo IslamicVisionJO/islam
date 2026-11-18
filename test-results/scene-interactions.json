@@ -1,0 +1,10 @@
+{
+  "gateMotion": true,
+  "hoverEdgeStable": true,
+  "boardMotion": true,
+  "wheelAligned": true,
+  "flowOnlyWhenConnected": true,
+  "reducedMotion": true,
+  "soundEvents": true,
+  "legacyReviewAndLink": true
+}

@@ -1,0 +1,24 @@
+{
+  "buildSha256": "9e5f1038022837957b62fdbcd8193b42164dc640124efb6054f62d01eb26b5cc",
+  "node": "24.22.1",
+  "browser": "Chromium",
+  "soloGames": 13,
+  "onlineSimulatedGames": 13,
+  "onlineEdgeScenarios": 5,
+  "sceneViewports": [
+    390,
+    1280
+  ],
+  "sceneCases": 26,
+  "lessons": 26,
+  "lessonTabs": 104,
+  "homeBannerViewports": [
+    360,
+    390,
+    1280
+  ],
+  "unitTests": 112,
+  "liveSupabaseTested": false,
+  "deploymentConfirmed": false,
+  "aggregateCheck": "Initial check stopped on hover instability; affected and remaining suites subsequently passed separately."
+}

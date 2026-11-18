@@ -1,0 +1,30 @@
+import './accept-confirmations.mjs';
+import {chromium} from 'playwright';
+import fs from 'node:fs/promises';
+import assert from 'node:assert/strict';
+const browser=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox']});
+const fixture=await fs.readFile('tests/fixtures/authorized-account.js','utf8');
+const report={};
+try{
+ const page=await browser.newPage({viewport:{width:390,height:844}});
+ const errors=[];page.on('pageerror',e=>errors.push(e.message));
+ await page.route('http://127.0.0.1:4173/**',async route=>{if(route.request().resourceType()!=='document')return route.continue();const r=await route.fetch();await route.fulfill({response:r,body:(await r.text()).replace('startApplication();',fixture+'\nstartApplication();')});});
+ await page.goto('http://127.0.0.1:4173/islam/');await page.waitForFunction(()=>S.ready);
+ await page.evaluate(()=>{window.soundEvents=[];const play=Sound.play;Sound.play=k=>{soundEvents.push(k);play(k);};go('educational');});
+ const click=async(a,v)=>page.locator(`[data-edu="${a}"]${v===undefined?'':`[data-value="${v}"]`}`).first().click();
+ const finish=async()=>{await click('finish');await click('catalog');};
+ await click('start',4);const correct=await page.evaluate(()=>String(S.byId.get(S.profile.educationalActive.ids[0]).answer.value));
+ await page.evaluate(v=>document.querySelector(`[data-gate="${v}"]`).click(),correct);
+ assert.equal(await page.locator('.edu-selection-flight').count(),1);
+ await page.waitForFunction(()=>S.profile.educationalActive.feedback?.correct);
+ await page.waitForTimeout(400);assert.equal(await page.locator('.edu-selection-flight').count(),0);assert.equal(await page.locator('.scene-correct').count(),1);report.gateMotion=true;const next=page.locator('[data-edu=next]');await next.scrollIntoViewIfNeeded();const box=await next.boundingBox();await page.mouse.move(box.x+box.width/2,box.y+1);await page.waitForTimeout(250);assert.equal(await next.evaluate(el=>getComputedStyle(el).transform),'none');const stable=await next.boundingBox();await page.waitForTimeout(100);assert.deepEqual(await next.boundingBox(),stable);report.hoverEdgeStable=true;await finish();
+ await click('start',5);await page.evaluate(()=>document.querySelector('[data-edu=board]').click());assert.equal(await page.locator('.edu-selection-flight').count(),1);await page.waitForFunction(()=>S.profile.educationalActive.open);report.boardMotion=true;await finish();
+ await click('start',3);await click('spin');await page.waitForFunction(()=>S.profile.educationalActive.open);
+ assert.equal(await page.locator('.edu-wheel').count(),1);assert.ok((await page.locator('.edu-wheel').evaluate(el=>getComputedStyle(el).backgroundImage)).includes('conic-gradient'));
+ const alignment=await page.evaluate(()=>{const g=S.profile.educationalActive;return ((g.angle+g.index*360/g.ids.length)%360+360)%360;});assert.ok(alignment<.01);report.wheelAligned=true;await finish();
+ await click('start',11);const answer=await page.evaluate(()=>S.byId.get(S.profile.educationalActive.ids[0]).answer.option_id);await click('answer',answer);assert.equal(await page.locator('.edu-flow.connected').count(),0);let rotations=await page.evaluate(()=>S.profile.educationalActive.rotations);for(let i=0;i<rotations.length;i++)if(rotations[i]%2)await click('rotate',i);assert.equal(await page.locator('.edu-flow.connected').count(),1);assert.notEqual(await page.locator('.edu-water').first().evaluate(el=>getComputedStyle(el).animationName),'none');report.flowOnlyWhenConnected=true;await finish();
+ await page.emulateMedia({reducedMotion:'reduce'});await click('start',4);await page.evaluate(()=>document.querySelector('[data-gate]').click());assert.equal(await page.locator('.edu-selection-flight').count(),0);report.reducedMotion=true;await finish();
+ const sounds=await page.evaluate(()=>soundEvents);for(const kind of ['start','spin','stop','unlock','connect','correct'])assert.ok(sounds.includes(kind),kind);report.soundEvents=true;
+ await page.evaluate(async()=>{await Learning.save('u01_l01',{review:{'u01_l01-cards-1':true}});location.hash='#learning/u01_l01/cards';});await page.waitForFunction(()=>S.page==='learning'&&document.querySelector('video'));assert.equal(await page.locator('.learning-tabs [role=tab]').count(),4);await page.reload();await page.waitForFunction(()=>S.ready&&S.page==='learning');assert.equal(await page.evaluate(()=>S.profile.learning.u01_l01.review['u01_l01-cards-1']),true);await page.evaluate(()=>Study.open());assert.equal(await page.locator('[data-study=difficult]').getAttribute('aria-pressed'),'true');report.legacyReviewAndLink=true;
+ assert.deepEqual(errors,[]);await fs.writeFile('test-results/scene-interactions.json',JSON.stringify(report,null,2));console.log('PASS',report);
+}finally{await browser.close();}

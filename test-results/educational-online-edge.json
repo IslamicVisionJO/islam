@@ -3,27 +3,27 @@
     {
       "name": "Icons, all-game custom solo timers, replay preservation and invalid duration recovery",
       "status": "passed",
-      "milliseconds": 8221
+      "milliseconds": 9547
     },
     {
       "name": "Escape wrong-answer retry survives polling and is accepted once by the server",
       "status": "passed",
-      "milliseconds": 9154
+      "milliseconds": 7795
     },
     {
       "name": "Wheel animation remains visible until it stops at its chosen question",
       "status": "passed",
-      "milliseconds": 5520
+      "milliseconds": 5222
     },
     {
       "name": "Offline rejection preserves a retryable question and resumed room deadline",
       "status": "passed",
-      "milliseconds": 5189
+      "milliseconds": 4893
     },
     {
       "name": "Fifteen-second shared deadline expires in real time after player reload",
       "status": "passed",
-      "milliseconds": 16394
+      "milliseconds": 16147
     }
   ],
   "browserErrors": [],

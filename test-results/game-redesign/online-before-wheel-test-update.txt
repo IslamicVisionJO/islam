@@ -1,0 +1,61 @@
+
+> tahadi-tawjihi-islamic@2.4.3 test:games:online
+> node --test supabase/tests/educational-online.test.mjs && node tests/educational-online-ui.spec.mjs && node tests/educational-online-edge.spec.mjs
+
+✔ 005: all thirteen game types share canonical scope, custom deadlines, server scores and private receipts (7789.466215ms)
+✔ 005: rejection, retry, early submission, timeout, migration repeatability and legacy preservation (3060.630217ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 11053.475481
+PASS Game 1: two clients complete the actual activity with server-scored results
+PASS Game 2: two clients complete the actual activity with server-scored results
+PASS Game 3: two clients complete the actual activity with server-scored results
+PASS Game 4: two clients complete the actual activity with server-scored results
+PASS Game 5: two clients complete the actual activity with server-scored results
+PASS Game 6: two clients complete the actual activity with server-scored results
+PASS Game 7: two clients complete the actual activity with server-scored results
+PASS Game 8: two clients complete the actual activity with server-scored results
+PASS Game 9: two clients complete the actual activity with server-scored results
+PASS Game 10: two clients complete the actual activity with server-scored results
+PASS Game 11: two clients complete the actual activity with server-scored results
+PASS Game 12: two clients complete the actual activity with server-scored results
+PASS Game 13: two clients complete the actual activity with server-scored results
+PASS Icons, all-game custom solo timers, replay preservation and invalid duration recovery
+PASS Escape wrong-answer retry survives polling and is accepted once by the server
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+1 !== 0
+
+    at file:///workspace/islam/tests/educational-online-edge.spec.mjs:61:325
+    at async step (file:///workspace/islam/tests/educational-online-edge.spec.mjs:47:59)
+    at async file:///workspace/islam/tests/educational-online-edge.spec.mjs:61:2
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+1 !== 0
+
+    at file:///workspace/islam/tests/educational-online-edge.spec.mjs:61:325
+    at async step (file:///workspace/islam/tests/educational-online-edge.spec.mjs:47:59)
+    at async file:///workspace/islam/tests/educational-online-edge.spec.mjs:61:2 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 1,
+  expected: 0,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.22.1
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.3
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.3
+npm notice To update run: npm install -g npm@12.2.3
+npm notice
