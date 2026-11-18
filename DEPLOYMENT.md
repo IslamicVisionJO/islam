@@ -68,3 +68,9 @@ python scripts/publish-pages.py --push
 رابط المكثف الشامل: `/islam/#compendium`. إعادة تحميله واستعادة المراجعة تستخدم التخزين المعزول للحساب الحالي.
 
 آخر نشر مؤكد لهذا الإصدار: https://github.com/ayoubalbtoosh/islam/actions/runs/44171311579 — Success، والتزام `gh-pages`: `0f173d01be0ddab863810c031c371b62bd62185e`.
+
+## الإصدار الحالي — 2026-11-18
+
+نُقل المستودع إلى https://github.com/IslamicVisionJO/islam . رابط الموقع الحالي المعلن في المستودع: https://islamicvisionjo.github.io/islam/ . مراجع المالك السابق أعلاه تاريخية.
+
+نشر مشاهد الألعاب الـ13 وتبويبات الدروس الأربعة مؤكد Success: https://github.com/IslamicVisionJO/islam/actions/runs/44285183621 . بصمة الإصدار ونتائج الفحوص وحدود تحقق الإنتاج في `test-results/game-redesign/verification.json` و`DIGITAL_PLATFORM_REPORT.md`. لا يثبت هذا تفعيل خدمات البريد ومحفظة Supabase بحساب إنتاج؛ اختبارات الخدمات محلية بالمحاكاة.

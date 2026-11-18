@@ -19,6 +19,12 @@
   ],
   "unitTests": 112,
   "liveSupabaseTested": false,
-  "deploymentConfirmed": false,
-  "aggregateCheck": "Initial check stopped on hover instability; affected and remaining suites subsequently passed separately."
+  "deploymentConfirmed": true,
+  "aggregateCheck": "Initial check stopped on hover instability; affected and remaining suites subsequently passed separately.",
+  "deploymentStatus": "Success",
+  "deploymentRun": "https://github.com/IslamicVisionJO/islam/actions/runs/44285183621",
+  "pagesCommit": "e62b108ef54621c24261af50ca815c629c321767",
+  "sourceCommit": "df193826c1efe382f8d94399c0a998e26ed71f30",
+  "siteUrl": "https://islamicvisionjo.github.io/islam/",
+  "directLiveBrowserTested": false
 }
