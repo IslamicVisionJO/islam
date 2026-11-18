@@ -1,0 +1,12 @@
+{
+  "original": "home-hero-original.jpg",
+  "originalSha256": "696d37d1289cf2f9dc7bc6bceb547ee200255defc2b99688c2749d5d7a85242b",
+  "cropBox": [
+    0,
+    46,
+    1600,
+    395
+  ],
+  "display": "public/assets/home-hero.webp",
+  "encoding": "lossless WebP; retained pixels exactly equal decoded original crop; no AI editing"
+}
