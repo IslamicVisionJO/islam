@@ -209,12 +209,248 @@ body{font-family:"Segoe UI",Tahoma,Arial,sans-serif;line-height:1.75}button,inpu
 .ministerial-options label:has(:checked){border-color:var(--gold);background:var(--panel2)}
 .ministerial-options input{width:auto;accent-color:var(--gold);flex:none}
 .ministerial-options strong{color:var(--gold);margin-inline-end:6px}
+
+.auth-story-resources {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-block: 8px 24px;
+}
+.auth-story-resources .auth-feature-list { margin: 0; flex: 1 1 190px; }
+.site-qr { margin-inline-start: auto; text-align: center; }
+.site-qr-actions { display: flex; align-items: center; justify-content: center; }
+.site-qr-actions button, .site-qr-dialog-head button {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  min-height: 44px; border: none; background: transparent; color: #f0d797;
+  font: inherit; font-size: .76rem; cursor: pointer;
+}
+.site-qr-actions .site-qr-more { min-width: 44px; }
+.site-qr-actions button:hover { text-decoration: underline; }
+.site-qr figure { margin: 0; }
+.site-qr figcaption { color: #ebf2e9; font-size: .72rem; margin-bottom: 7px; }
+.site-qr figure img {
+  display: block; margin-inline: auto; border-radius: 6px; background: white;
+  image-rendering: pixelated; max-width: 100%; height: auto;
+}
+.site-qr-dialog {
+  width: min(350px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); overflow: auto;
+  background: var(--panel); color: var(--fg); border: 1px solid var(--line);
+  border-radius: 16px; padding: 18px 20px; text-align: start; margin: auto;
+}
+.site-qr-dialog::backdrop { background: rgb(4 21 15 / 72%); }
+.site-qr-dialog-head { display: flex; align-items: center; justify-content: space-between; }
+.site-qr-dialog-head h2 { margin: 0; font-size: 1.1rem; }
+.site-qr-dialog-head button { min-width: 44px; color: var(--fg); }
+.site-qr-dialog label { display: block; margin: 12px 0 5px; font-size: .8rem; }
+.site-qr-dialog input { width: 100%; }
+.site-qr-options { display: grid; gap: 8px; margin-top: 14px; }
+.site-qr-options > * {
+  display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px;
+  text-decoration: none; border: 1px solid var(--line); border-radius: 9px;
+  color: var(--fg); background: var(--panel2); font: inherit; font-size: .84rem; cursor: pointer;
+}
+.site-qr-status { font-size: .78rem; margin: 9px 0 0; }
+.site-qr-status:empty { display: none; }
+@media(max-width:760px) {
+  .auth-story-resources { display: grid; gap: 14px; margin: 17px 0 0; }
+  .site-qr { margin-inline: auto; }
+}
+
+.knowledge-page {
+  display: grid;
+  gap: clamp(1.8rem,4vw,3.25rem);
+  overflow-wrap: anywhere;
+}
+.knowledge-page .heading { margin: 0; }
+.knowledge-page .sr-only {
+  position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden;
+  clip-path: inset(50%); white-space: nowrap;
+}
+.knowledge-section h2, .knowledge-topic-skill, .knowledge-controls, .knowledge-dialog header {
+  display: flex; align-items: center; gap: .75rem;
+}
+.knowledge-section h2 { margin-block-end: 1rem; }
+.knowledge-section-icon {
+  display: inline-grid; place-items: center;
+  width: 2.5rem; height: 2.5rem; border-radius: .75rem;
+  background: var(--panel2); color: var(--gold); border: 1px solid var(--line); flex-shrink: 0;
+}
+.knowledge-grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit,minmax(min(100%,15rem),1fr)); }
+.knowledge-empty, .knowledge-topic, .knowledge-card, .knowledge-tool, .knowledge-error {
+  background: var(--panel); border: 1px solid var(--line); border-radius: 1rem;
+}
+.knowledge-empty, .knowledge-error {
+  display: flex; align-items: center; gap: 1rem; padding: clamp(1.25rem,4vw,2.25rem);
+}
+.knowledge-empty > svg { color: var(--gold); }
+.knowledge-empty strong { display: block; margin-block-end: .2rem; }
+.knowledge-topic, .knowledge-tool, .knowledge-card-body {
+  display: flex; flex-direction: column; align-items: flex-start; gap: .6rem;
+  min-width: 0; padding: 1.25rem;
+}
+.knowledge-topic p, .knowledge-card p, .knowledge-tool p, .knowledge-empty p { font-size: .91rem; line-height: 1.85; }
+.knowledge-topic-skill { color: var(--sub); gap: .35rem; font-size: .82rem; }
+.knowledge-topic-skill svg { color: var(--gold); }
+.knowledge-topic details {
+  border-block-start: 1px solid var(--line); margin-block-start: auto; padding-block-start: .65rem; width: 100%;
+}
+.knowledge-topic summary { font-weight: 700; cursor: pointer; width: fit-content; min-height: 2.3rem; align-content: center; }
+.knowledge-topic details[open] p { padding-block-start: .45rem; }
+.knowledge-page :is(summary,a,button):focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+.knowledge-card { position: relative; display: flex; flex-direction: column; min-width: 0; }
+.knowledge-card-body { flex: 1; }
+.knowledge-card-body > p {
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+}
+.knowledge-card-body .text-link { margin-block-start: auto; min-height: 2.6rem; }
+.knowledge-card-body .text-link::after { content: ''; position: absolute; inset: 0; border-radius: 1rem; }
+.knowledge-meta { display: flex; align-items: center; gap: .3rem .8rem; flex-wrap: wrap; font-size: .81rem; color: var(--sub); }
+.knowledge-meta:empty { display: none; }
+.knowledge-card:hover, .knowledge-card:focus-within, .knowledge-tool:hover { border-color: var(--green); }
+.knowledge-picture {
+  display: grid; place-items: center; background: var(--panel2); aspect-ratio: 16 / 9;
+  width: 100%; overflow: hidden; border-start-start-radius: 1rem; border-start-end-radius: 1rem;
+  color: var(--sub); font-size: .85rem;
+}
+.knowledge-picture img { object-fit: cover; width: 100%; height: 100%; min-height: 0; }
+.knowledge-image-status { padding: .75rem; text-align: center; }
+.knowledge-image-status button { position: relative; z-index: 1; }
+.knowledge-tool-url { font-size: .82rem; margin-block-start: auto; color: var(--sub); }
+.knowledge-dialog {
+  margin: auto; width: min(36rem,calc(100% - 1.5rem)); max-height: calc(100dvh - 2rem); overflow: auto;
+  padding: clamp(1rem,4vw,1.75rem); color: var(--fg); background: var(--panel);
+  border: 1px solid var(--line); border-radius: 1rem; box-shadow: var(--shadow);
+}
+.knowledge-dialog[open] { display: grid; gap: 1rem; }
+.knowledge-dialog::backdrop { background: rgb(4 18 13 / .75); }
+.knowledge-dialog header { justify-content: space-between; }
+.knowledge-dialog .icon-btn { flex-shrink: 0; }
+.knowledge-dialog .knowledge-picture { aspect-ratio: 4 / 3; border-radius: .75rem; }
+.knowledge-dialog .knowledge-picture img { object-fit: contain; }
+.knowledge-dialog p { white-space: pre-line; }
+.knowledge-controls { justify-content: center; flex-wrap: wrap; }
+.knowledge-controls span { font-size: .85rem; color: var(--sub); }
+@media (max-width: 480px) {
+  .knowledge-empty { align-items: flex-start; }
+  .knowledge-error { align-items: flex-start; flex-direction: column; }
+}
+
+.ka-tabs,
+.ka-heading,
+.ka-controls,
+.ka-form-actions,
+.ka-row-actions,
+.ka-photos figcaption div {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .7rem;
+}
+.ka-tabs {
+  margin-block-end: 1.5rem;
+  border-bottom: 1px solid var(--line);
+  padding-block-end: 1rem;
+}
+.ka-tabs [aria-pressed="true"] {
+  border-color: var(--gold);
+  background: var(--panel2);
+  color: var(--fg);
+}
+.ka-heading { justify-content: space-between; }
+.ka-heading h1 { font-size: clamp(1.4rem, 4vw, 2.2rem); }
+.ka-work { display: grid; gap: 1rem; min-width: 0; }
+.ka-work :is(input:not([type=checkbox]), textarea, select) {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: .55rem;
+  padding: .6rem .75rem;
+  background: var(--panel2);
+  color: var(--fg);
+  font: inherit;
+}
+.ka-work textarea { resize: vertical; }
+.ka-work textarea:focus-visible { outline: 3px solid var(--gold); }
+.ka-work label {
+  min-width: 0;
+  display: grid;
+  gap: .3rem;
+  font-size: .92rem;
+}
+.ka-controls { align-items: end; margin-block-end: 1.5rem; }
+.ka-controls label:first-child { flex: 2 1 14rem; }
+.ka-controls label:nth-child(2) { flex: 1 1 9rem; }
+.ka-work [hidden] { display: none !important; }
+.ka-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-block: 1rem;
+  border-top: 1px solid var(--line);
+}
+.ka-row-info { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.ka-row h2 { font-size: 1rem; }
+.ka-row-info p { font-size: .85rem; }
+.ka-thumb {
+  width: 3.2rem;
+  height: 3.2rem;
+  object-fit: cover;
+  border-radius: .5rem;
+  background: var(--panel2);
+}
+.ka-sr {
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+#ka-form fieldset { min-width: 0; margin: 0; padding: 0; border: 0; }
+#ka-form legend { margin-block-end: 1.2rem; font-weight: bold; font-size: 1.2rem; }
+.ka-fields { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1rem; }
+.ka-wide { grid-column: 1 / -1; }
+.ka-media { margin-block: 1.5rem; padding-block: 1.2rem; border-block: 1px solid var(--line); }
+.ka-media h3 { margin-block-end: .4rem; }
+.ka-media p { margin-block-end: .8rem; font-size: .85rem; }
+.ka-photos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(min(100%,11rem),1fr));
+  gap: .8rem;
+}
+.ka-photos figure {
+  margin: 1rem 0 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: .8rem;
+}
+.ka-photos img {
+  width: 100%;
+  height: 8rem;
+  object-fit: contain;
+  background: var(--panel2);
+}
+.ka-photos figcaption { display: grid; gap: .55rem; padding: .65rem; font-size: .8rem; }
+.ka-photos figcaption div { gap: .35rem; }
+.ka-work .ka-consent { display: flex; align-items: center; gap: .65rem; }
+.ka-consent input { flex: none; width: 1.25rem; height: 1.25rem; }
+.ka-form-actions { margin-block-start: 1.25rem; }
+@media (max-width: 640px) {
+  .ka-fields { grid-template-columns: minmax(0,1fr); }
+  .ka-row { flex-wrap: wrap; gap: .65rem; }
+  .ka-row-actions { flex-basis: 100%; }
+  #knowledge-admin .btn { min-height: 44px; white-space: normal; }
+}
 </style>
 </head>
 <body>
 <div id="app"><div class="fatal"><h1>التربية الإسلامية برؤية رقمية</h1><p>جارٍ تحميل المنصة…</p></div></div>
 <noscript>يرجى تفعيل JavaScript لتشغيل التحديات وتسجيل الدخول.</noscript>
-<script>var SupabaseSDK=(()=>{var Ut=Object.defineProperty;var zs=Object.getOwnPropertyDescriptor;var Js=Object.getOwnPropertyNames;var Ys=Object.prototype.hasOwnProperty;var Xs=(r,e)=>{for(var t in e)Ut(r,t,{get:e[t],enumerable:!0})},Qs=(r,e,t,s)=>{if(e&&typeof e=="object"||typeof e=="function")for(let n of Js(e))!Ys.call(r,n)&&n!==t&&Ut(r,n,{get:()=>e[n],enumerable:!(s=zs(e,n))||s.enumerable});return r};var Zs=r=>Qs(Ut({},"__esModule",{value:!0}),r);var co={};Xs(co,{createClient:()=>Gs});var en=Symbol.for("@supabase/supabase-js.traceContextExtractor");function _r(){return globalThis[en]}function ne(r,e){var t={};for(var s in r)Object.prototype.hasOwnProperty.call(r,s)&&e.indexOf(s)<0&&(t[s]=r[s]);if(r!=null&&typeof Object.getOwnPropertySymbols=="function")for(var n=0,s=Object.getOwnPropertySymbols(r);n<s.length;n++)e.indexOf(s[n])<0&&Object.prototype.propertyIsEnumerable.call(r,s[n])&&(t[s[n]]=r[s[n]]);return t}function wr(r,e,t,s){function n(i){return i instanceof t?i:new t(function(o){o(i)})}return new(t||(t=Promise))(function(i,o){function a(u){try{c(s.next(u))}catch(h){o(h)}}function l(u){try{c(s.throw(u))}catch(h){o(h)}}function c(u){u.done?i(u.value):n(u.value).then(a,l)}c((s=s.apply(r,e||[])).next())})}var br=r=>r?(...e)=>r(...e):(...e)=>fetch(...e);var ge=class extends Error{constructor(e,t="FunctionsError",s){super(e),this.name=t,this.context=s}toJSON(){return{name:this.name,message:this.message,context:this.context}}},Le=class extends ge{constructor(e){super("Failed to send a request to the Edge Function","FunctionsFetchError",e)}},ye=class extends ge{constructor(e){super("Relay Error invoking the Edge Function","FunctionsRelayError",e)}},me=class extends ge{constructor(e){super("Edge Function returned a non-2xx status code","FunctionsHttpError",e)}},$e;(function(r){r.Any="any",r.ApNortheast1="ap-northeast-1",r.ApNortheast2="ap-northeast-2",r.ApSouth1="ap-south-1",r.ApSoutheast1="ap-southeast-1",r.ApSoutheast2="ap-southeast-2",r.CaCentral1="ca-central-1",r.EuCentral1="eu-central-1",r.EuWest1="eu-west-1",r.EuWest2="eu-west-2",r.EuWest3="eu-west-3",r.SaEast1="sa-east-1",r.UsEast1="us-east-1",r.UsWest1="us-west-1",r.UsWest2="us-west-2"})($e||($e={}));var Ue=class{constructor(e,{headers:t={},customFetch:s,region:n=$e.Any}={}){this.url=e,this.headers=t,this.region=n,this.fetch=br(s)}setAuth(e){this.headers.Authorization=`Bearer ${e}`}invoke(e){return wr(this,arguments,void 0,function*(t,s={}){var n,i;let o,a,l;try{let{headers:c,method:u,body:h,signal:f,timeout:d}=s,p={},{region:g}=s;g||(g=this.region);let y=new URL(`${this.url}/${t}`);g&&g!=="any"&&(p["x-region"]=g,y.searchParams.set("forceFunctionRegion",g));let _,b=!!c&&Object.keys(c).some(Ne=>Ne.toLowerCase()==="content-type");h&&!b?typeof Blob<"u"&&h instanceof Blob||h instanceof ArrayBuffer?(p["Content-Type"]=h.type||"application/octet-stream",_=h):typeof h=="string"?(p["Content-Type"]="text/plain",_=h):typeof FormData<"u"&&h instanceof FormData?_=h:(p["Content-Type"]="application/json",_=JSON.stringify(h)):h&&typeof h!="string"&&!(typeof Blob<"u"&&h instanceof Blob)&&!(h instanceof ArrayBuffer)&&!(typeof FormData<"u"&&h instanceof FormData)?_=JSON.stringify(h):_=h;let w=f;d&&(a=new AbortController,o=setTimeout(()=>a.abort(),d),f?(w=a.signal,l=()=>a.abort(),f.addEventListener("abort",l)):w=a.signal);let E=yield this.fetch(y.toString(),{method:u||"POST",headers:Object.assign(Object.assign(Object.assign({},p),this.headers),c),body:_,signal:w}).catch(Ne=>{throw new Le(Ne)}),j=E.headers.get("x-relay-error");if(j&&j==="true")throw new ye(E);if(!E.ok)throw new me(E);let k=((n=E.headers.get("Content-Type"))!==null&&n!==void 0?n:"text/plain").split(";")[0].trim().toLowerCase(),A;return k==="application/json"?A=yield E.json():k==="application/octet-stream"||k==="application/pdf"?A=yield E.blob():k==="text/event-stream"?A=E:k==="multipart/form-data"?A=yield E.formData():A=yield E.text(),{data:A,error:null,response:E}}catch(c){return{data:null,error:c,response:c instanceof me||c instanceof ye?c.context:void 0}}finally{o&&clearTimeout(o),l&&((i=s.signal)===null||i===void 0||i.removeEventListener("abort",l))}})}};var oe=class extends Error{constructor(r){super(r.message),this.name="PostgrestError",this.details=r.details,this.hint=r.hint,this.code=r.code}toJSON(){return{name:this.name,message:this.message,details:this.details,hint:this.hint,code:this.code}}},Rr=3,Sr=r=>Math.min(1e3*2**r,3e4),tn=[520,503],Or=["GET","HEAD","OPTIONS"];function De(r){"@babel/helpers - typeof";return De=typeof Symbol=="function"&&typeof Symbol.iterator=="symbol"?function(e){return typeof e}:function(e){return e&&typeof Symbol=="function"&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},De(r)}function rn(r,e){if(De(r)!="object"||!r)return r;var t=r[Symbol.toPrimitive];if(t!==void 0){var s=t.call(r,e||"default");if(De(s)!="object")return s;throw new TypeError("@@toPrimitive must return a primitive value.")}return(e==="string"?String:Number)(r)}function sn(r){var e=rn(r,"string");return De(e)=="symbol"?e:e+""}function nn(r,e,t){return(e=sn(e))in r?Object.defineProperty(r,e,{value:t,enumerable:!0,configurable:!0,writable:!0}):r[e]=t,r}function Er(r,e){var t=Object.keys(r);if(Object.getOwnPropertySymbols){var s=Object.getOwnPropertySymbols(r);e&&(s=s.filter(function(n){return Object.getOwnPropertyDescriptor(r,n).enumerable})),t.push.apply(t,s)}return t}function ie(r){for(var e=1;e<arguments.length;e++){var t=arguments[e]!=null?arguments[e]:{};e%2?Er(Object(t),!0).forEach(function(s){nn(r,s,t[s])}):Object.getOwnPropertyDescriptors?Object.defineProperties(r,Object.getOwnPropertyDescriptors(t)):Er(Object(t)).forEach(function(s){Object.defineProperty(r,s,Object.getOwnPropertyDescriptor(t,s))})}return r}function kr(r,e){return new Promise(t=>{if(e?.aborted){t();return}let s=setTimeout(()=>{e?.removeEventListener("abort",n),t()},r);function n(){clearTimeout(s),t()}e?.addEventListener("abort",n)})}function on(r,e,t,s){return!(!s||t>=Rr||!Or.includes(r)||!tn.includes(e))}async function xr(r,e,t,s){let n=0;for(;;){let l=ie({},t.headers);n>0&&(l["X-Retry-Count"]=String(n));let c;try{c=await r(e,{method:t.method,headers:l,body:t.body,signal:t.signal})}catch(u){var i;if(u?.name==="AbortError"||u?.code==="ABORT_ERR"||u?.name==="TimeoutError"&&(!((i=t.signal)===null||i===void 0)&&i.aborted)||!Or.includes(t.method))throw u;if(s&&n<Rr){let h=Sr(n);n++,await kr(h,t.signal);continue}throw u}if(on(t.method,c.status,n,s)){var o,a;let u=(o=(a=c.headers)===null||a===void 0?void 0:a.get("Retry-After"))!==null&&o!==void 0?o:null,h=u!==null?Math.max(0,parseInt(u,10)||0)*1e3:Sr(n);await c.text(),n++,await kr(h,t.signal);continue}return c}}var an=class{constructor(r){var e,t,s,n,i;this.shouldThrowOnError=!1,this.retryEnabled=!0,this.method=r.method,this.url=r.url,this.headers=new Headers(r.headers),this.schema=r.schema,this.body=r.body,this.shouldThrowOnError=(e=r.shouldThrowOnError)!==null&&e!==void 0?e:!1,this.signal=r.signal,this.isMaybeSingle=(t=r.isMaybeSingle)!==null&&t!==void 0?t:!1,this.shouldStripNulls=(s=r.shouldStripNulls)!==null&&s!==void 0?s:!1,this.urlLengthLimit=(n=r.urlLengthLimit)!==null&&n!==void 0?n:8e3,this.retryEnabled=(i=r.retry)!==null&&i!==void 0?i:!0,r.fetch?this.fetch=r.fetch:this.fetch=fetch}throwOnError(){return this.shouldThrowOnError=!0,this}stripNulls(){if(this.headers.get("Accept")==="text/csv")throw new Error("stripNulls() cannot be used with csv()");return this.shouldStripNulls=!0,this}setHeader(r,e){return this.headers=new Headers(this.headers),this.headers.set(r,e),this}retry(r){return this.retryEnabled=r,this}then(r,e){var t=this;if(this.schema===void 0||(["GET","HEAD"].includes(this.method)?this.headers.set("Accept-Profile",this.schema):this.headers.set("Content-Profile",this.schema)),this.method!=="GET"&&this.method!=="HEAD"&&this.headers.set("Content-Type","application/json"),this.shouldStripNulls){let o=this.headers.get("Accept");o==="application/vnd.pgrst.object+json"?this.headers.set("Accept","application/vnd.pgrst.object+json;nulls=stripped"):(!o||o==="application/json")&&this.headers.set("Accept","application/vnd.pgrst.array+json;nulls=stripped")}let s=this.fetch,i=(async()=>{let o={};t.headers.forEach((l,c)=>{o[c]=l});let a=await xr(s,t.url.toString(),{method:t.method,headers:o,body:JSON.stringify(t.body,(l,c)=>typeof c=="bigint"?c.toString():c),signal:t.signal},t.retryEnabled);return await t.processResponse(a)})();return this.shouldThrowOnError||(i=i.catch(o=>{var a;let l="",c="",u="",h=o?.cause;if(h){var f,d,p,g;let b=(f=h?.message)!==null&&f!==void 0?f:"",w=(d=h?.code)!==null&&d!==void 0?d:"";l=`${(p=o?.name)!==null&&p!==void 0?p:"FetchError"}: ${o?.message}`,l+=`
+<script>const KNOWLEDGE_TOPICS=[{"title":"الحج والرياضيات","subject":"العدّ والمسافة","icon":"flag","introduction":"يبدأ السعي من الصفا. يُحسب الانتقال إلى المروة شوطًا، والعودة إلى الصفا شوطًا ثانيًا.","example":"يتكوّن السعي من سبعة أشواط. إذا أتمّ الحاج ثلاثة أشواط بقيت له أربعة. ولحساب مسافة السعي نضرب طول الشوط الواحد في سبعة."},{"title":"الزكاة والرياضيات","subject":"النسب المئوية","icon":"chart","introduction":"ربع العشر يساوي ٢٫٥٪، أي جزءًا واحدًا من أربعين. نستعمل هذه النسبة في حساب زكاة النقود عند استيفاء شروطها.","example":"إذا كان المبلغ الخاضع لزكاة النقود ٤٬٠٠٠ دينار، وبلغ النصاب وحال عليه الحول، فربع عشره يساوي ٤٬٠٠٠ ÷ ٤٠ = ١٠٠ دينار."},{"title":"المواريث والرياضيات","subject":"الكسور","icon":"book","introduction":"يساعد توحيد المقامات في جمع الكسور ومقارنة الأنصبة بعد تحديدها وفق أحكام المواريث.","example":"للتدرّب على الجمع، نكتب النصف على صورة ربعين. عند جمعه مع ربع نحصل على ثلاثة أرباع. تحديد نصيب كل وارث يحتاج إلى معرفة الورثة وأحكام المسألة."}];
+const SITE_SHARE={"url":"https://islamicvisionjo.github.io/islam/","png":"data:image/png;base64,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"};
+var SupabaseSDK=(()=>{var Ut=Object.defineProperty;var zs=Object.getOwnPropertyDescriptor;var Js=Object.getOwnPropertyNames;var Ys=Object.prototype.hasOwnProperty;var Xs=(r,e)=>{for(var t in e)Ut(r,t,{get:e[t],enumerable:!0})},Qs=(r,e,t,s)=>{if(e&&typeof e=="object"||typeof e=="function")for(let n of Js(e))!Ys.call(r,n)&&n!==t&&Ut(r,n,{get:()=>e[n],enumerable:!(s=zs(e,n))||s.enumerable});return r};var Zs=r=>Qs(Ut({},"__esModule",{value:!0}),r);var co={};Xs(co,{createClient:()=>Gs});var en=Symbol.for("@supabase/supabase-js.traceContextExtractor");function _r(){return globalThis[en]}function ne(r,e){var t={};for(var s in r)Object.prototype.hasOwnProperty.call(r,s)&&e.indexOf(s)<0&&(t[s]=r[s]);if(r!=null&&typeof Object.getOwnPropertySymbols=="function")for(var n=0,s=Object.getOwnPropertySymbols(r);n<s.length;n++)e.indexOf(s[n])<0&&Object.prototype.propertyIsEnumerable.call(r,s[n])&&(t[s[n]]=r[s[n]]);return t}function wr(r,e,t,s){function n(i){return i instanceof t?i:new t(function(o){o(i)})}return new(t||(t=Promise))(function(i,o){function a(u){try{c(s.next(u))}catch(h){o(h)}}function l(u){try{c(s.throw(u))}catch(h){o(h)}}function c(u){u.done?i(u.value):n(u.value).then(a,l)}c((s=s.apply(r,e||[])).next())})}var br=r=>r?(...e)=>r(...e):(...e)=>fetch(...e);var ge=class extends Error{constructor(e,t="FunctionsError",s){super(e),this.name=t,this.context=s}toJSON(){return{name:this.name,message:this.message,context:this.context}}},Le=class extends ge{constructor(e){super("Failed to send a request to the Edge Function","FunctionsFetchError",e)}},ye=class extends ge{constructor(e){super("Relay Error invoking the Edge Function","FunctionsRelayError",e)}},me=class extends ge{constructor(e){super("Edge Function returned a non-2xx status code","FunctionsHttpError",e)}},$e;(function(r){r.Any="any",r.ApNortheast1="ap-northeast-1",r.ApNortheast2="ap-northeast-2",r.ApSouth1="ap-south-1",r.ApSoutheast1="ap-southeast-1",r.ApSoutheast2="ap-southeast-2",r.CaCentral1="ca-central-1",r.EuCentral1="eu-central-1",r.EuWest1="eu-west-1",r.EuWest2="eu-west-2",r.EuWest3="eu-west-3",r.SaEast1="sa-east-1",r.UsEast1="us-east-1",r.UsWest1="us-west-1",r.UsWest2="us-west-2"})($e||($e={}));var Ue=class{constructor(e,{headers:t={},customFetch:s,region:n=$e.Any}={}){this.url=e,this.headers=t,this.region=n,this.fetch=br(s)}setAuth(e){this.headers.Authorization=`Bearer ${e}`}invoke(e){return wr(this,arguments,void 0,function*(t,s={}){var n,i;let o,a,l;try{let{headers:c,method:u,body:h,signal:f,timeout:d}=s,p={},{region:g}=s;g||(g=this.region);let y=new URL(`${this.url}/${t}`);g&&g!=="any"&&(p["x-region"]=g,y.searchParams.set("forceFunctionRegion",g));let _,b=!!c&&Object.keys(c).some(Ne=>Ne.toLowerCase()==="content-type");h&&!b?typeof Blob<"u"&&h instanceof Blob||h instanceof ArrayBuffer?(p["Content-Type"]=h.type||"application/octet-stream",_=h):typeof h=="string"?(p["Content-Type"]="text/plain",_=h):typeof FormData<"u"&&h instanceof FormData?_=h:(p["Content-Type"]="application/json",_=JSON.stringify(h)):h&&typeof h!="string"&&!(typeof Blob<"u"&&h instanceof Blob)&&!(h instanceof ArrayBuffer)&&!(typeof FormData<"u"&&h instanceof FormData)?_=JSON.stringify(h):_=h;let w=f;d&&(a=new AbortController,o=setTimeout(()=>a.abort(),d),f?(w=a.signal,l=()=>a.abort(),f.addEventListener("abort",l)):w=a.signal);let E=yield this.fetch(y.toString(),{method:u||"POST",headers:Object.assign(Object.assign(Object.assign({},p),this.headers),c),body:_,signal:w}).catch(Ne=>{throw new Le(Ne)}),j=E.headers.get("x-relay-error");if(j&&j==="true")throw new ye(E);if(!E.ok)throw new me(E);let k=((n=E.headers.get("Content-Type"))!==null&&n!==void 0?n:"text/plain").split(";")[0].trim().toLowerCase(),A;return k==="application/json"?A=yield E.json():k==="application/octet-stream"||k==="application/pdf"?A=yield E.blob():k==="text/event-stream"?A=E:k==="multipart/form-data"?A=yield E.formData():A=yield E.text(),{data:A,error:null,response:E}}catch(c){return{data:null,error:c,response:c instanceof me||c instanceof ye?c.context:void 0}}finally{o&&clearTimeout(o),l&&((i=s.signal)===null||i===void 0||i.removeEventListener("abort",l))}})}};var oe=class extends Error{constructor(r){super(r.message),this.name="PostgrestError",this.details=r.details,this.hint=r.hint,this.code=r.code}toJSON(){return{name:this.name,message:this.message,details:this.details,hint:this.hint,code:this.code}}},Rr=3,Sr=r=>Math.min(1e3*2**r,3e4),tn=[520,503],Or=["GET","HEAD","OPTIONS"];function De(r){"@babel/helpers - typeof";return De=typeof Symbol=="function"&&typeof Symbol.iterator=="symbol"?function(e){return typeof e}:function(e){return e&&typeof Symbol=="function"&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},De(r)}function rn(r,e){if(De(r)!="object"||!r)return r;var t=r[Symbol.toPrimitive];if(t!==void 0){var s=t.call(r,e||"default");if(De(s)!="object")return s;throw new TypeError("@@toPrimitive must return a primitive value.")}return(e==="string"?String:Number)(r)}function sn(r){var e=rn(r,"string");return De(e)=="symbol"?e:e+""}function nn(r,e,t){return(e=sn(e))in r?Object.defineProperty(r,e,{value:t,enumerable:!0,configurable:!0,writable:!0}):r[e]=t,r}function Er(r,e){var t=Object.keys(r);if(Object.getOwnPropertySymbols){var s=Object.getOwnPropertySymbols(r);e&&(s=s.filter(function(n){return Object.getOwnPropertyDescriptor(r,n).enumerable})),t.push.apply(t,s)}return t}function ie(r){for(var e=1;e<arguments.length;e++){var t=arguments[e]!=null?arguments[e]:{};e%2?Er(Object(t),!0).forEach(function(s){nn(r,s,t[s])}):Object.getOwnPropertyDescriptors?Object.defineProperties(r,Object.getOwnPropertyDescriptors(t)):Er(Object(t)).forEach(function(s){Object.defineProperty(r,s,Object.getOwnPropertyDescriptor(t,s))})}return r}function kr(r,e){return new Promise(t=>{if(e?.aborted){t();return}let s=setTimeout(()=>{e?.removeEventListener("abort",n),t()},r);function n(){clearTimeout(s),t()}e?.addEventListener("abort",n)})}function on(r,e,t,s){return!(!s||t>=Rr||!Or.includes(r)||!tn.includes(e))}async function xr(r,e,t,s){let n=0;for(;;){let l=ie({},t.headers);n>0&&(l["X-Retry-Count"]=String(n));let c;try{c=await r(e,{method:t.method,headers:l,body:t.body,signal:t.signal})}catch(u){var i;if(u?.name==="AbortError"||u?.code==="ABORT_ERR"||u?.name==="TimeoutError"&&(!((i=t.signal)===null||i===void 0)&&i.aborted)||!Or.includes(t.method))throw u;if(s&&n<Rr){let h=Sr(n);n++,await kr(h,t.signal);continue}throw u}if(on(t.method,c.status,n,s)){var o,a;let u=(o=(a=c.headers)===null||a===void 0?void 0:a.get("Retry-After"))!==null&&o!==void 0?o:null,h=u!==null?Math.max(0,parseInt(u,10)||0)*1e3:Sr(n);await c.text(),n++,await kr(h,t.signal);continue}return c}}var an=class{constructor(r){var e,t,s,n,i;this.shouldThrowOnError=!1,this.retryEnabled=!0,this.method=r.method,this.url=r.url,this.headers=new Headers(r.headers),this.schema=r.schema,this.body=r.body,this.shouldThrowOnError=(e=r.shouldThrowOnError)!==null&&e!==void 0?e:!1,this.signal=r.signal,this.isMaybeSingle=(t=r.isMaybeSingle)!==null&&t!==void 0?t:!1,this.shouldStripNulls=(s=r.shouldStripNulls)!==null&&s!==void 0?s:!1,this.urlLengthLimit=(n=r.urlLengthLimit)!==null&&n!==void 0?n:8e3,this.retryEnabled=(i=r.retry)!==null&&i!==void 0?i:!0,r.fetch?this.fetch=r.fetch:this.fetch=fetch}throwOnError(){return this.shouldThrowOnError=!0,this}stripNulls(){if(this.headers.get("Accept")==="text/csv")throw new Error("stripNulls() cannot be used with csv()");return this.shouldStripNulls=!0,this}setHeader(r,e){return this.headers=new Headers(this.headers),this.headers.set(r,e),this}retry(r){return this.retryEnabled=r,this}then(r,e){var t=this;if(this.schema===void 0||(["GET","HEAD"].includes(this.method)?this.headers.set("Accept-Profile",this.schema):this.headers.set("Content-Profile",this.schema)),this.method!=="GET"&&this.method!=="HEAD"&&this.headers.set("Content-Type","application/json"),this.shouldStripNulls){let o=this.headers.get("Accept");o==="application/vnd.pgrst.object+json"?this.headers.set("Accept","application/vnd.pgrst.object+json;nulls=stripped"):(!o||o==="application/json")&&this.headers.set("Accept","application/vnd.pgrst.array+json;nulls=stripped")}let s=this.fetch,i=(async()=>{let o={};t.headers.forEach((l,c)=>{o[c]=l});let a=await xr(s,t.url.toString(),{method:t.method,headers:o,body:JSON.stringify(t.body,(l,c)=>typeof c=="bigint"?c.toString():c),signal:t.signal},t.retryEnabled);return await t.processResponse(a)})();return this.shouldThrowOnError||(i=i.catch(o=>{var a;let l="",c="",u="",h=o?.cause;if(h){var f,d,p,g;let b=(f=h?.message)!==null&&f!==void 0?f:"",w=(d=h?.code)!==null&&d!==void 0?d:"";l=`${(p=o?.name)!==null&&p!==void 0?p:"FetchError"}: ${o?.message}`,l+=`
 
 Caused by: ${(g=h?.name)!==null&&g!==void 0?g:"Error"}: ${b}`,w&&(l+=` (${w})`),h?.stack&&(l+=`
 ${h.stack}`)}else{var y;l=(y=o?.stack)!==null&&y!==void 0?y:""}let _=this.url.toString().length;return o?.name==="AbortError"||o?.code==="ABORT_ERR"?(u="",c="Request was aborted (timeout or manual cancellation)",_>this.urlLengthLimit&&(c+=`. Note: Your request URL is ${_} characters, which may exceed server limits. If selecting many fields, consider using views. If filtering with large arrays (e.g., .in('id', [many IDs])), consider using an RPC function to pass values server-side.`)):(h?.name==="HeadersOverflowError"||h?.code==="UND_ERR_HEADERS_OVERFLOW")&&(u="",c="HTTP headers exceeded server limits (typically 16KB)",_>this.urlLengthLimit&&(c+=`. Your request URL is ${_} characters. If selecting many fields, consider using views. If filtering with large arrays (e.g., .in('id', [200+ IDs])), consider using an RPC function instead.`)),{success:!1,error:{message:`${(a=o?.name)!==null&&a!==void 0?a:"FetchError"}: ${o?.message}`,details:l,hint:c,code:u},data:null,count:null,status:0,statusText:""}})),i.then(r,e)}async processResponse(r){var e=this;let t=null,s=null,n=null,i=r.status,o=r.statusText;if(r.ok){var a,l;if(e.method!=="HEAD"){var c;let d=await r.text();if(d!=="")if(e.headers.get("Accept")==="text/csv")s=d;else if(e.headers.get("Accept")&&(!((c=e.headers.get("Accept"))===null||c===void 0)&&c.includes("application/vnd.pgrst.plan+text")))s=d;else try{s=JSON.parse(d)}catch{if(t={message:d},s=null,e.shouldThrowOnError)throw new oe({message:d,details:"",hint:"",code:""})}}let h=(a=e.headers.get("Prefer"))===null||a===void 0?void 0:a.match(/count=(exact|planned|estimated)/),f=(l=r.headers.get("content-range"))===null||l===void 0?void 0:l.split("/");if(h&&f&&f.length>1&&(n=parseInt(f[1])),e.isMaybeSingle&&Array.isArray(s))if(s.length>1){if(t={code:"PGRST116",details:`Results contain ${s.length} rows, application/vnd.pgrst.object+json requires 1 row`,hint:null,message:"JSON object requested, multiple (or no) rows returned"},s=null,n=null,i=406,o="Not Acceptable",e.shouldThrowOnError){var u;throw new oe(ie(ie({},t),{},{hint:(u=t.hint)!==null&&u!==void 0?u:""}))}}else s.length===1?s=s[0]:s=null}else{let h=await r.text();try{t=JSON.parse(h),Array.isArray(t)&&r.status===404&&(s=[],t=null,i=200,o="OK")}catch{r.status===404&&h===""?(i=204,o="No Content"):t={message:h}}if(t&&e.shouldThrowOnError)throw new oe(t)}return{success:t===null,error:t,data:s,count:n,status:i,statusText:o}}returns(){return this}overrideTypes(){return this}},ln=class extends an{throwOnError(){return super.throwOnError()}select(r){let e=!1,t=(r??"*").split("").map(s=>/\s/.test(s)&&!e?"":(s==='"'&&(e=!e),s)).join("");return this.url.searchParams.set("select",t),this.headers.append("Prefer","return=representation"),this}order(r,{ascending:e=!0,nullsFirst:t,foreignTable:s,referencedTable:n=s}={}){let i=n?`${n}.order`:"order",o=this.url.searchParams.get(i);return this.url.searchParams.set(i,`${o?`${o},`:""}${r}.${e?"asc":"desc"}${t===void 0?"":t?".nullsfirst":".nullslast"}`),this}limit(r,{foreignTable:e,referencedTable:t=e}={}){let s=typeof t>"u"?"limit":`${t}.limit`;return this.url.searchParams.set(s,`${r}`),this}range(r,e,{foreignTable:t,referencedTable:s=t}={}){let n=typeof s>"u"?"offset":`${s}.offset`,i=typeof s>"u"?"limit":`${s}.limit`;return this.url.searchParams.set(n,`${r}`),this.url.searchParams.set(i,`${e-r+1}`),this}abortSignal(r){return this.signal=r,this}single(){return this.headers.set("Accept","application/vnd.pgrst.object+json"),this}maybeSingle(){return this.isMaybeSingle=!0,this}csv(){return this.headers.set("Accept","text/csv"),this}geojson(){return this.headers.set("Accept","application/geo+json"),this}explain({analyze:r=!1,verbose:e=!1,settings:t=!1,buffers:s=!1,wal:n=!1,format:i="text"}={}){var o;let a=[r?"analyze":null,e?"verbose":null,t?"settings":null,s?"buffers":null,n?"wal":null].filter(Boolean).join("|"),l=(o=this.headers.get("Accept"))!==null&&o!==void 0?o:"application/json";return this.headers.set("Accept",`application/vnd.pgrst.plan+${i}; for="${l}"; options=${a};`),i==="json"?this:this}rollback(){return this.headers.append("Prefer","tx=rollback"),this}returns(){return this}maxAffected(r){return this.headers.append("Prefer","handling=strict"),this.headers.append("Prefer",`max-affected=${r}`),this}},Tr=new RegExp("[,()]"),ve=class extends ln{throwOnError(){return super.throwOnError()}eq(r,e){return this.url.searchParams.append(r,`eq.${e}`),this}neq(r,e){return this.url.searchParams.append(r,`neq.${e}`),this}gt(r,e){return this.url.searchParams.append(r,`gt.${e}`),this}gte(r,e){return this.url.searchParams.append(r,`gte.${e}`),this}lt(r,e){return this.url.searchParams.append(r,`lt.${e}`),this}lte(r,e){return this.url.searchParams.append(r,`lte.${e}`),this}like(r,e){return this.url.searchParams.append(r,`like.${e}`),this}likeAllOf(r,e){return this.url.searchParams.append(r,`like(all).{${e.join(",")}}`),this}likeAnyOf(r,e){return this.url.searchParams.append(r,`like(any).{${e.join(",")}}`),this}ilike(r,e){return this.url.searchParams.append(r,`ilike.${e}`),this}ilikeAllOf(r,e){return this.url.searchParams.append(r,`ilike(all).{${e.join(",")}}`),this}ilikeAnyOf(r,e){return this.url.searchParams.append(r,`ilike(any).{${e.join(",")}}`),this}regexMatch(r,e){return this.url.searchParams.append(r,`match.${e}`),this}regexIMatch(r,e){return this.url.searchParams.append(r,`imatch.${e}`),this}is(r,e){return this.url.searchParams.append(r,`is.${e}`),this}isDistinct(r,e){return this.url.searchParams.append(r,`isdistinct.${e}`),this}in(r,e){let t=Array.from(new Set(e)).map(s=>typeof s=="string"&&Tr.test(s)?`"${s}"`:`${s}`).join(",");return this.url.searchParams.append(r,`in.(${t})`),this}notIn(r,e){let t=Array.from(new Set(e)).map(s=>typeof s=="string"&&Tr.test(s)?`"${s}"`:`${s}`).join(",");return this.url.searchParams.append(r,`not.in.(${t})`),this}contains(r,e){return typeof e=="string"?this.url.searchParams.append(r,`cs.${e}`):Array.isArray(e)?this.url.searchParams.append(r,`cs.{${e.join(",")}}`):this.url.searchParams.append(r,`cs.${JSON.stringify(e)}`),this}containedBy(r,e){return typeof e=="string"?this.url.searchParams.append(r,`cd.${e}`):Array.isArray(e)?this.url.searchParams.append(r,`cd.{${e.join(",")}}`):this.url.searchParams.append(r,`cd.${JSON.stringify(e)}`),this}rangeGt(r,e){return this.url.searchParams.append(r,`sr.${e}`),this}rangeGte(r,e){return this.url.searchParams.append(r,`nxl.${e}`),this}rangeLt(r,e){return this.url.searchParams.append(r,`sl.${e}`),this}rangeLte(r,e){return this.url.searchParams.append(r,`nxr.${e}`),this}rangeAdjacent(r,e){return this.url.searchParams.append(r,`adj.${e}`),this}overlaps(r,e){return typeof e=="string"?this.url.searchParams.append(r,`ov.${e}`):this.url.searchParams.append(r,`ov.{${e.join(",")}}`),this}textSearch(r,e,{config:t,type:s}={}){let n="";s==="plain"?n="pl":s==="phrase"?n="ph":s==="websearch"&&(n="w");let i=t===void 0?"":`(${t})`;return this.url.searchParams.append(r,`${n}fts${i}.${e}`),this}match(r){return Object.entries(r).filter(([e,t])=>t!==void 0).forEach(([e,t])=>{this.url.searchParams.append(e,`eq.${t}`)}),this}not(r,e,t){return this.url.searchParams.append(r,`not.${e}.${t}`),this}or(r,{foreignTable:e,referencedTable:t=e}={}){let s=t?`${t}.or`:"or";return this.url.searchParams.append(s,`(${r})`),this}filter(r,e,t){return this.url.searchParams.append(r,`${e}.${t}`),this}},cn=class{constructor(r,{headers:e={},schema:t,fetch:s,urlLengthLimit:n=8e3,retry:i}){this.url=r,this.headers=new Headers(e),this.schema=t,this.fetch=s,this.urlLengthLimit=n,this.retry=i}cloneRequestState(){return{url:new URL(this.url.toString()),headers:new Headers(this.headers)}}select(r,e){let{head:t=!1,count:s}=e??{},n=t?"HEAD":"GET",i=!1,o=(r??"*").split("").map(c=>/\s/.test(c)&&!i?"":(c==='"'&&(i=!i),c)).join(""),{url:a,headers:l}=this.cloneRequestState();return a.searchParams.set("select",o),s&&l.append("Prefer",`count=${s}`),new ve({method:n,url:a,headers:l,schema:this.schema,fetch:this.fetch,urlLengthLimit:this.urlLengthLimit,retry:this.retry})}insert(r,{count:e,defaultToNull:t=!0}={}){var s;let n="POST",{url:i,headers:o}=this.cloneRequestState();if(e&&o.append("Prefer",`count=${e}`),t||o.append("Prefer","missing=default"),Array.isArray(r)){let a=r.reduce((l,c)=>l.concat(Object.keys(c)),[]);if(a.length>0){let l=[...new Set(a)].map(c=>`"${c}"`);i.searchParams.set("columns",l.join(","))}}return new ve({method:n,url:i,headers:o,schema:this.schema,body:r,fetch:(s=this.fetch)!==null&&s!==void 0?s:fetch,urlLengthLimit:this.urlLengthLimit,retry:this.retry})}upsert(r,{onConflict:e,ignoreDuplicates:t=!1,count:s,defaultToNull:n=!0}={}){var i;let o="POST",{url:a,headers:l}=this.cloneRequestState();if(l.append("Prefer",`resolution=${t?"ignore":"merge"}-duplicates`),e!==void 0&&a.searchParams.set("on_conflict",e),s&&l.append("Prefer",`count=${s}`),n||l.append("Prefer","missing=default"),Array.isArray(r)){let c=r.reduce((u,h)=>u.concat(Object.keys(h)),[]);if(c.length>0){let u=[...new Set(c)].map(h=>`"${h}"`);a.searchParams.set("columns",u.join(","))}}return new ve({method:o,url:a,headers:l,schema:this.schema,body:r,fetch:(i=this.fetch)!==null&&i!==void 0?i:fetch,urlLengthLimit:this.urlLengthLimit,retry:this.retry})}update(r,{count:e}={}){var t;let s="PATCH",{url:n,headers:i}=this.cloneRequestState();return e&&i.append("Prefer",`count=${e}`),new ve({method:s,url:n,headers:i,schema:this.schema,body:r,fetch:(t=this.fetch)!==null&&t!==void 0?t:fetch,urlLengthLimit:this.urlLengthLimit,retry:this.retry})}delete({count:r}={}){var e;let t="DELETE",{url:s,headers:n}=this.cloneRequestState();return r&&n.append("Prefer",`count=${r}`),new ve({method:t,url:s,headers:n,schema:this.schema,fetch:(e=this.fetch)!==null&&e!==void 0?e:fetch,urlLengthLimit:this.urlLengthLimit,retry:this.retry})}};function un(r,e){try{let o=JSON.parse(r);if(o&&typeof o=="object"&&!Array.isArray(o)){var t,s,n,i;return new oe({message:String((t=o.message)!==null&&t!==void 0?t:r),details:(s=o.details)!==null&&s!==void 0?s:"",hint:(n=o.hint)!==null&&n!==void 0?n:"",code:(i=o.code)!==null&&i!==void 0?i:""})}}catch{}return new oe({message:r||e,details:"",hint:"",code:""})}function Ar(r,e,t){var s;let n=r;return{success:!1,error:new oe({message:`${(s=n?.name)!==null&&s!==void 0?s:"FetchError"}: ${n?.message}`,details:"",hint:"",code:""}),data:null,count:null,status:e,statusText:t}}function hn(r,e){return e===void 0||e<=0?r:(t,s)=>{let n=new AbortController,i=setTimeout(()=>n.abort(),e),o=s?.signal;if(o){if(o.aborted)return clearTimeout(i),r(t,s);let a=()=>{clearTimeout(i),n.abort()};return o.addEventListener("abort",a,{once:!0}),r(t,ie(ie({},s),{},{signal:n.signal})).finally(()=>{clearTimeout(i),o.removeEventListener("abort",a)})}return r(t,ie(ie({},s),{},{signal:n.signal})).finally(()=>clearTimeout(i))}}var Cr=class Pr{constructor(e,{headers:t={},schema:s,fetch:n,timeout:i,urlLengthLimit:o=8e3,retry:a,wrapFetch:l}={}){this.url=e,this.headers=new Headers(t),this.schemaName=s,this.urlLengthLimit=o,this.timeout=i,this.wrapFetch=l,this.baseFetch=n??globalThis.fetch,this.fetch=this.baseFetch?this.decorateFetch(this.baseFetch):void 0,this.retry=a}decorateFetch(e){return hn(this.wrapFetch?this.wrapFetch(e):e,this.timeout)}from(e,t){var s,n;if(!e||typeof e!="string"||e.trim()==="")throw new Error("Invalid relation name: relation must be a non-empty string.");return new cn(new URL(`${this.url}/${e}`),{headers:new Headers(this.headers),schema:this.schemaName,fetch:t?.fetch?this.decorateFetch(t.fetch):this.fetch,urlLengthLimit:(s=t?.urlLengthLimit)!==null&&s!==void 0?s:this.urlLengthLimit,retry:(n=t?.retry)!==null&&n!==void 0?n:this.retry})}schema(e){return new Pr(this.url,{headers:this.headers,schema:e,fetch:this.baseFetch,timeout:this.timeout,wrapFetch:this.wrapFetch,urlLengthLimit:this.urlLengthLimit,retry:this.retry})}async getOpenApiSpec(){var e=this,t;let s=new Headers(e.headers);s.set("Accept","application/openapi+json"),e.schemaName&&s.set("Accept-Profile",e.schemaName);let n={};s.forEach((c,u)=>{n[u]=c});let i=(t=e.fetch)!==null&&t!==void 0?t:globalThis.fetch,o;try{var a;o=await xr(i,`${e.url}/`,{method:"GET",headers:n},(a=e.retry)!==null&&a!==void 0?a:!0)}catch(c){return Ar(c,0,"")}let l;try{l=await o.text()}catch(c){return Ar(c,o.status,o.statusText)}if(o.ok)try{return{success:!0,error:null,data:JSON.parse(l),count:null,status:o.status,statusText:o.statusText}}catch{}return{success:!1,error:un(l,o.statusText),data:null,count:null,status:o.status,statusText:o.statusText}}rpc(e,t={},{head:s=!1,get:n=!1,count:i}={}){var o;let a,l=new URL(`${this.url}/rpc/${e}`),c,u=d=>d!==null&&typeof d=="object"&&(!Array.isArray(d)||d.some(u)),h=s&&Object.values(t).some(u);h?(a="POST",c=t):s||n?(a=s?"HEAD":"GET",Object.entries(t).filter(([d,p])=>p!==void 0).map(([d,p])=>[d,Array.isArray(p)?`{${p.join(",")}}`:`${p}`]).forEach(([d,p])=>{l.searchParams.append(d,p)})):(a="POST",c=t);let f=new Headers(this.headers);return h?f.set("Prefer",i?`count=${i},return=minimal`:"return=minimal"):i&&f.set("Prefer",`count=${i}`),new ve({method:a,url:l,headers:f,schema:this.schemaName,body:c,fetch:(o=this.fetch)!==null&&o!==void 0?o:fetch,urlLengthLimit:this.urlLengthLimit,retry:this.retry})}};var Dt=class{constructor(){}static detectEnvironment(){var e;if(typeof WebSocket<"u")return{type:"native",wsConstructor:WebSocket};let t=globalThis;if(typeof globalThis<"u"&&typeof t.WebSocket<"u")return{type:"native",wsConstructor:t.WebSocket};let s=typeof global<"u"?global:void 0;if(s&&typeof s.WebSocket<"u")return{type:"native",wsConstructor:s.WebSocket};if(typeof globalThis<"u"&&typeof t.WebSocketPair<"u"&&typeof globalThis.WebSocket>"u")return{type:"cloudflare",error:"Cloudflare Workers detected. WebSocket clients are not supported in Cloudflare Workers.",workaround:"Use Cloudflare Workers WebSocket API for server-side WebSocket handling, or deploy to a different runtime."};if(typeof globalThis<"u"&&t.EdgeRuntime||typeof navigator<"u"&&(!((e=navigator.userAgent)===null||e===void 0)&&e.includes("Vercel-Edge")))return{type:"unsupported",error:"Edge runtime detected (Vercel Edge/Netlify Edge). WebSockets are not supported in edge functions.",workaround:"Use serverless functions or a different deployment target for WebSocket functionality."};let n=globalThis.process;if(n){let i=n.versions;if(i&&i.node)return{type:"unsupported",error:"Node.js detected but native WebSocket not found.",workaround:"Ensure you are running Node.js 22+ or provide a WebSocket implementation via the transport option."}}return{type:"unsupported",error:"Unknown JavaScript runtime without WebSocket support.",workaround:"Ensure you're running in a supported environment (browser, Node.js, Deno) or provide a custom WebSocket implementation."}}static getWebSocketConstructor(){let e=this.detectEnvironment();if(e.wsConstructor)return e.wsConstructor;let t=e.error||"WebSocket not supported in this environment.";throw e.workaround&&(t+=`
@@ -870,7 +1106,29 @@ const Auth=(()=>{
   return data;
  }
  async function millionRpc(name,args={}){if(!['million_start','million_answer','million_finish','million_wallet'].includes(name))throw Error('طلب غير صالح');requireAccount();const id=state.user.id;await checkSession(id);const {data,error}=await client.rpc(name,args);await checkSession(id);if(error)throw Error('تعذر تأكيد مكافآت المليون على الخادم. يلزم تفعيل الترقية 006 أو استعادة الاتصال.');return data;}
- return {millionRpc,init,current,prepareStorage,signInEmail,signUpEmail,enterGuest,signOut,syncNow,flush,resolveConflict,resetProgress,adminRoster,adminStudentDetails,adminAllowAccount,adminDisableAccount,publicConfig,duelRpc};
+ // Use the current account's existing SDK client for school content, including guest reads.
+ async function knowledgeRpc(name,args={}){
+  const read=name==='knowledge_list'||name==='knowledge_image';
+  const write=['knowledge_save_achievement','knowledge_save_tool','knowledge_delete'].includes(name);
+  if(!read&&!write)fail('طلب غير صالح.');
+  await init();
+  if(!client)fail('خدمة المحتوى المدرسي غير مفعّلة.');
+  const admin=write||args.p_admin===true;
+  if(admin)requireAdmin();
+  const id=state.user?.id;
+  if(id)await checkSession(id);
+  const {data,error}=await client.rpc(name,args);
+  if(id)await checkSession(id);
+  if(error){
+   if(error.code==='40001')fail('تغيّر السجل منذ فتحه. حدّث القائمة ثم أعد المحاولة.');
+   if(error.code==='42501')fail('لا يملك الحساب صلاحية تنفيذ هذا الطلب.');
+   if(['PGRST202','42883','42P01'].includes(error.code))fail('المحتوى المدرسي بانتظار تفعيل تحديث قاعدة البيانات.');
+   if(['22023','22007','22008','23514','22P02','22001'].includes(error.code))fail('راجع البيانات المدخلة وصيغة الصور وأحجامها ثم أعد المحاولة.');
+   fail('تعذّر الاتصال بخدمة المحتوى المدرسي. تحقق من الاتصال وأعد تحميل القائمة.');
+  }
+  return data;
+ }
+ return {knowledgeRpc,millionRpc,init,current,prepareStorage,signInEmail,signUpEmail,enterGuest,signOut,syncNow,flush,resolveConflict,resetProgress,adminRoster,adminStudentDetails,adminAllowAccount,adminDisableAccount,publicConfig,duelRpc};
 })();
 
 /** Central generated audio; no network assets or correctness cues during exams. */
@@ -895,6 +1153,91 @@ function HomeHeroBanner(){
  return `<section class="home-hero-banner" aria-label="البانر الرسمي للمنصة"><img src="${e(HOME_HERO.src)}" width="${HOME_HERO.width}" height="${HOME_HERO.height}" alt="التربية الإسلامية برؤية رقمية — الأستاذ محمد الطميزي — الثاني ثانوي BTEC" fetchpriority="high" loading="eager" decoding="async"></section>`;
 }
 
+const siteQrFilename = 'islamic-education-website-qr.png';
+
+function siteQrView() {
+  if (!SITE_SHARE) return '';
+  const url = e(SITE_SHARE.url);
+  return `<div class="site-qr">
+    <div class="site-qr-actions">
+      <button type="button" data-site-qr="share" title="مشاركة الموقع">
+        <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m9 10.5 6.5-4m-6.5 7 6.5 4"/></svg>
+        مشاركة الموقع
+      </button>
+      <button type="button" data-site-qr="options" class="site-qr-more" title="خيارات المشاركة" aria-label="خيارات نسخ رابط الموقع وتنزيل الرمز" aria-haspopup="dialog">•••</button>
+    </div>
+    <figure><figcaption>امسح الرمز لزيارة الموقع</figcaption><img src="${SITE_SHARE.png}" width="148" height="148" alt="رمز QR لرابط المنصة"></figure>
+    <dialog class="site-qr-dialog" aria-labelledby="site-qr-dialog-title">
+      <div class="site-qr-dialog-head"><h2 id="site-qr-dialog-title">مشاركة الموقع</h2>
+        <button type="button" data-site-qr="close" aria-label="إغلاق خيارات المشاركة">${ico('close',18)}</button></div>
+      <label for="site-public-link">رابط المنصة</label>
+      <input id="site-public-link" dir="ltr" readonly value="${url}">
+      <div class="site-qr-options">
+        <button type="button" data-site-qr="copy">نسخ الرابط</button>
+        <a href="${SITE_SHARE.png}" download="${siteQrFilename}">${ico('download',17)} تنزيل رمز QR بصيغة PNG</a>
+        <a href="https://wa.me/?text=${encodeURIComponent(SITE_SHARE.url)}" target="_blank" rel="noopener noreferrer">مشاركة عبر واتساب</a>
+      </div>
+      <p class="site-qr-status" role="status" aria-live="polite"></p>
+    </dialog>
+  </div>`;
+}
+
+function openSiteQrOptions(dialog, message = '') {
+  dialog.querySelector('[role=status]').textContent = message;
+  if (!dialog.open) dialog.showModal();
+}
+
+async function copySiteQrLink(dialog) {
+  const input = dialog.querySelector('input');
+  const status = dialog.querySelector('[role=status]');
+  try {
+    await navigator.clipboard.writeText(SITE_SHARE.url);
+    status.textContent = 'تم نسخ رابط الموقع.';
+  } catch {
+    input.focus();
+    input.select();
+    try {
+      if (document.execCommand('copy')) {
+        status.textContent = 'تم نسخ رابط الموقع.';
+        return;
+      }
+    } catch {}
+    status.textContent = 'حدّدنا الرابط لك. اختر نسخ من قائمة جهازك.';
+  }
+}
+
+async function shareSiteQr(button, dialog) {
+  if (typeof navigator.share !== 'function') return openSiteQrOptions(dialog);
+  if (button.getAttribute('aria-busy') === 'true') return;
+  button.setAttribute('aria-busy', 'true');
+  try {
+    let payload = {title: 'التربية الإسلامية برؤية رقمية', url: SITE_SHARE.url};
+    if (typeof navigator.canShare === 'function' && typeof File === 'function') {
+      const data = atob(SITE_SHARE.png.split(',')[1]);
+      const file = new File([Uint8Array.from(data, char => char.charCodeAt(0))], siteQrFilename, {type: 'image/png'});
+      const withImage = {...payload, files: [file]};
+      if (navigator.canShare(withImage)) payload = withImage;
+    }
+    await navigator.share(payload);
+  } catch (error) {
+    if (error.name !== 'AbortError') openSiteQrOptions(dialog, 'تعذرت المشاركة المباشرة. اختر إحدى الطرق المتاحة.');
+  } finally {
+    button.removeAttribute('aria-busy');
+  }
+}
+
+document.addEventListener('click', event => {
+  const button = event.target.closest('[data-site-qr]');
+  if (!button) return;
+  const dialog = button.closest('.site-qr').querySelector('dialog');
+  switch (button.dataset.siteQr) {
+    case 'share': shareSiteQr(button, dialog); break;
+    case 'options': openSiteQrOptions(dialog); break;
+    case 'copy': copySiteQrLink(dialog); break;
+    case 'close': dialog.close(); break;
+  }
+});
+
 const app=document.getElementById('app');
 const STUDENT_CREDIT='إنشاء الطالب أيوب محمد البطوش';
 const TIME_OPTIONS=[6,10,15,20,30,40,45,60,90,120];
@@ -913,7 +1256,7 @@ const allLessons=()=>S.units.flatMap(u=>u.lessons);
 const saveState=async()=>{const token=db.scopeToken?.();await db.batch({profile:clone(S.profile),settings:clone(S.settings)},[],token===undefined?{}:{scopeToken:token});};
 const notify=message=>{const el=document.createElement('div');el.className='toast';el.textContent=message;document.body.append(el);setTimeout(()=>el.remove(),3200);};
 const playSound=(kind='tap')=>Sound.play(kind);
-const nav=[['home','الرئيسية','home'],['learning','شرح الدروس','book'],['compendium','مكثف الكتاب كامل','list'],['units','الدروس والأسئلة','book'],['educational','ألعاب','sparkle'],['challenges','التحديات','zap'],['online','مواجهة أونلاين','users'],['mistakes','مراجعة الأخطاء','refresh'],['stats','الإحصائيات','chart'],['achievements','الإنجازات','award'],['about','حول المنصة','info'],['settings','الإعدادات','settings']];
+const nav=[['home','الرئيسية','home'],['learning','شرح الدروس','book'],['compendium','مكثف الكتاب كامل','list'],['units','الدروس والأسئلة','book'],['knowledge','التكامل المعرفي','book'],['educational','ألعاب','sparkle'],['challenges','التحديات','zap'],['online','مواجهة أونلاين','users'],['mistakes','مراجعة الأخطاء','refresh'],['stats','الإحصائيات','chart'],['achievements','إنجازاتي','award'],['about','حول المنصة','info'],['settings','الإعدادات','settings']];
 function levelFromXp(xp){return Math.floor(Math.sqrt((xp||0)/180))+1;}
 function soloResults(){return S.results.filter(r=>r.mode!=='duel');}
 function lessonMetrics(id){
@@ -1026,7 +1369,7 @@ function homeView(){
  <div class="section-header"><div><span class="eyebrow">اختر طريقتك</span><h2>للتعلّم أكثر من طريق</h2></div><button class="text-link" data-action="navigate" data-page="challenges">جميع التحديات ${ico('arrow',16)}</button></div>
  <section class="surface panel"><h2>${ico('users')} واجه صديقك أونلاين</h2><p>كل لاعب من جهازه وحسابه، مع رمز دعوة ونتيجة محفوظة للمواجهة.</p><button class="btn btn-primary" data-action="navigate" data-page="online">مواجهة أونلاين ${ico('arrow',18)}</button></section><div class="path-grid"><button class="path-card path-blue" data-action="setup" data-mode="duel"><span class="path-icon">${ico('users',27)}</span><span class="tag">على جهاز واحد</span><h3>تحدي لاعبين | 1 ضد 1</h3><p>صديق، سؤال، ومنافسة عادلة. لمن ستكون الغلبة؟</p><span class="path-cta">تحدَّ صديقك ${ico('arrow',18)}</span></button><button class="path-card path-gold" data-action="setup" data-mode="exam"><span class="path-icon">${ico('clock',27)}</span><span class="tag">45 دقيقة</span><h3>اختبر جاهزيتك</h3><p>امتحان شامل بمستواك المختار، ونتيجة مفصّلة عند التسليم.</p><span class="path-cta">إعداد الامتحان ${ico('arrow',18)}</span></button><button class="path-card" data-action="setup" data-mode="daily"><span class="path-icon">${ico('fire',27)}</span><span class="tag">يتجدد يوميًا</span><h3>تحدّي اليوم</h3><p>عشر فرص جديدة لتثبت لنفسك ما تعلّمته.</p><span class="path-cta">اقبل التحدي ${ico('arrow',18)}</span></button></div>
  <div class="section-header"><div><span class="eyebrow">خريطة التعلّم</span><h2>منهجك، وحدةً بوحدة</h2></div><button class="text-link" data-action="navigate" data-page="units">كل الدروس ${ico('arrow',16)}</button></div>${unitCards()}
- <div class="dashboard-lower"><section class="surface panel"><h2>${ico('award')} أحدث إنجازاتك</h2>${achievements.length?achievements.map(a=>`<div class="earned-row">${ico(a.icon)}<span>${a.title}<small>${a.date?new Date(a.date).toLocaleDateString('ar-JO'):''}</small></span>${ico('check',16)}</div>`).join(''):'<p class="muted">إنجازك الأول ينتظرك. أكمل جولة لتبدأ مجموعتك.</p>'}<button class="text-link" data-action="navigate" data-page="achievements">استكشف الإنجازات ${ico('arrow',16)}</button></section><section class="surface panel"><h2>${ico('rotate')} آخر محطة</h2><p>${last||S.profile.lastLessonId?e(byLesson(lastLesson)?.name||'جولة متنوعة'):'لم تبدأ أي جولة بعد. اختر درسًا يناسبك؛ كل الدروس متاحة.'}</p><p class="muted">البنك المستورد: ${nf(S.questions.length)} سؤالًا، المتاح للعب: ${nf(S.valid.length)}. مراجعة علمية جزئية؛ راجع توثيق السؤال في النتائج.</p><button class="text-link" data-action="navigate" data-page="about">عن المحتوى والمنصة ${ico('arrow',16)}</button></section></div>`;
+ <div class="dashboard-lower"><section class="surface panel"><h2>${ico('award')} أحدث إنجازاتك</h2>${achievements.length?achievements.map(a=>`<div class="earned-row">${ico(a.icon)}<span>${a.title}<small>${a.date?new Date(a.date).toLocaleDateString('ar-JO'):''}</small></span>${ico('check',16)}</div>`).join(''):'<p class="muted">إنجازك الأول ينتظرك. أكمل جولة لتبدأ مجموعتك.</p>'}<button class="text-link" data-action="navigate" data-page="achievements">استكشف إنجازاتي ${ico('arrow',16)}</button></section><section class="surface panel"><h2>${ico('rotate')} آخر محطة</h2><p>${last||S.profile.lastLessonId?e(byLesson(lastLesson)?.name||'جولة متنوعة'):'لم تبدأ أي جولة بعد. اختر درسًا يناسبك؛ كل الدروس متاحة.'}</p><p class="muted">البنك المستورد: ${nf(S.questions.length)} سؤالًا، المتاح للعب: ${nf(S.valid.length)}. مراجعة علمية جزئية؛ راجع توثيق السؤال في النتائج.</p><button class="text-link" data-action="navigate" data-page="about">عن المحتوى والمنصة ${ico('arrow',16)}</button></section></div>`;
 }
 function unitCards(){return `<div class="unit-card-grid">${S.units.map((u,i)=>{const answered=u.lessons.reduce((sum,l)=>sum+lessonMetrics(l.id).unique,0),count=unitQuestions(u.id).length;return `<button class="unit-map-card" data-action="unit" data-unit="${u.id}"><span class="unit-index">0${i+1}</span><span class="unit-book">${ico('book',23)}</span><h3>${e(u.name)}</h3><p>${e(u.theme)}</p><div class="unit-count">${nf(u.lessons.length)} دروس <span>${nf(count)} سؤالًا</span></div><div class="bar"><i style="width:${count?Math.round(answered/count*100):0}%"></i></div><div class="unit-map-footer">${nf(count?Math.round(answered/count*100):0)}% تغطية ${ico('arrow',17)}</div></button>`;}).join('')}</div>`;}
 function unitsView(){return `${heroTitle('خريطة المنهج','أربع وحدات، وكل درس بداية جديدة للتعلّم')}${unitCards()}${lessonDirectory(true)}`;}
@@ -1069,7 +1412,7 @@ function statsView(){const t=statsTotals(),solo=soloResults();const days=[...Arr
  <section class="surface panel"><h2>سجل المواجهات — ${nf(duels.length)}</h2>${duels.length?duels.slice().reverse().map(r=>`<div class="history-row"><span>${e(r.players?.join(' × '))}<small>${new Date(r.at).toLocaleString('ar-JO')}</small></span><strong>${(r.duelScores||[]).map(n=>nf(n)).join(' : ')}</strong><button class="text-link" data-action="view-result" data-result="${e(r.id)}">عرض النتيجة</button></div>`).join(''):'<p class="muted">لم تُلعب مواجهات بعد. تحفظ نتائج كل لاعب منفصلة داخل الجولة.</p>'}</section>
  <section class="surface panel"><h2>آخر النتائج الفردية</h2>${solo.slice(-10).reverse().map(r=>`<div class="history-row"><span>${e(modes.find(m=>m[0]===r.mode)?.[1]||r.mode)}<small>${new Date(r.at).toLocaleString('ar-JO')}</small></span><strong>${nf(r.accuracy)}%</strong><button class="text-link" data-action="view-result" data-result="${e(r.id)}">مراجعة</button></div>`).join('')||'<p class="muted">لا توجد نتائج بعد.</p>'}</section>`;
 }
-function achievementsView(){const a=badges();return `${heroTitle('الإنجازات والمكافآت','كل إنجاز يعكس تقدمًا حقيقيًا في تعلمك')}
+function achievementsView(){const a=badges();return `${heroTitle('إنجازاتي','كل إنجاز يعكس تقدمًا حقيقيًا في تعلمك')}
  <section class="achievement-summary"><div>${ico('trophy',39)}<span><strong>${nf(a.filter(x=>x.unlocked).length)} / ${nf(a.length)}</strong><small>إنجازات حصلت عليها</small></span></div><div class="bar"><i style="width:${a.filter(x=>x.unlocked).length/a.length*100}%"></i></div></section>
  <div class="achievement-grid">${a.map(x=>`<article class="achievement-card ${x.unlocked?'unlocked':'locked'}"><div class="achievement-medal">${ico(x.icon,29)}</div><span class="achievement-state">${x.unlocked?'مكتمل':'لم يكتمل بعد'}</span><h3>${x.title}</h3><p>${x.desc}</p>${x.unlocked?`<span class="achievement-tick">${ico('check',16)} ${x.date?new Date(x.date).toLocaleDateString('ar-JO'):'مكتمل'}</span>`:''}</article>`).join('')}</div>`;}
 function settingsView(){return `${heroTitle('الإعدادات','خصّص تجربتك وتحكم في بياناتك الدراسية')}
@@ -1137,7 +1480,7 @@ function resultView(){
  ${correct.length?`<details class="surface panel correct-details"><summary>${ico('check',20)} عرض الأسئلة التي أجبت عنها بشكل صحيح (${nf(correct.length)})</summary><div class="review-list">${correct.map(x=>reviewCard(x,x.index,r,duel)).join('')}</div></details>`:''}
  </div>`;
 }
-function render(){document.documentElement.classList.toggle('effects-low',!!S.settings.lowEffects);Learning.beforeRender();if(authState().mode==='signed-out'){topShell('');return;}if(S.page==='admin'&&!authState().isAdmin)S.page='home';let view='';switch(S.page){case 'home':view=homeView();break;case 'compendium':view=Study.view();break;case 'learning':view=Learning.view();break;case 'units':view=unitsView();break;case 'unit':view=unitView();break;case 'lesson':view=lessonView();break;case 'educational':view=Educational.view();break;case 'challenges':view=challengesView();break;case 'setup':view=setupView();break;case 'online':view=Online.view();break;case 'game':view=gameView();break;case 'result':view=resultView();break;case 'mistakes':view=mistakesView();break;case 'stats':view=statsView();break;case 'achievements':view=achievementsView();break;case 'settings':view=settingsView();break;case 'about':view=aboutView();break;case 'admin':view=adminView();break;default:view=homeView();}topShell(view);Learning.bind();}
+function render(){document.documentElement.classList.toggle('effects-low',!!S.settings.lowEffects);Learning.beforeRender();if(S.page!=='admin'||!authState().isAdmin)KnowledgeAdmin.reset();if(authState().mode==='signed-out'){topShell('');Knowledge.bind();return;}if(S.page==='admin'&&!authState().isAdmin)S.page='home';let view='';switch(S.page){case 'home':view=homeView();break;case 'compendium':view=Study.view();break;case 'learning':view=Learning.view();break;case 'units':view=unitsView();break;case 'unit':view=unitView();break;case 'lesson':view=lessonView();break;case 'educational':view=Educational.view();break;case 'challenges':view=challengesView();break;case 'setup':view=setupView();break;case 'online':view=Online.view();break;case 'game':view=gameView();break;case 'result':view=resultView();break;case 'mistakes':view=mistakesView();break;case 'stats':view=statsView();break;case 'knowledge':view=Knowledge.view();break;case 'achievements':view=achievementsView();break;case 'settings':view=settingsView();break;case 'about':view=aboutView();break;case 'admin':view=KnowledgeAdmin.view(adminView);break;default:view=homeView();}topShell(view);Learning.bind();Knowledge.bind();if(S.page==='admin')KnowledgeAdmin.bind();}
 function go(page){if(page==='compendium')history.replaceState(null,'','#compendium');if(page!=='learning'&&page!=='compendium'&&(location.hash.startsWith('#learning')||location.hash==='#compendium'))history.replaceState(null,'',location.pathname+location.search);S.colorsOpen=false;if(S.page==='online'&&page!=='online')Online.stop();if(S.page==='game'&&page!=='game')pauseSession();if(page==='game')resumeSessionClock();S.page=page;S.menuOpen=false;S.selected=page==='game'?(S.session?.draft??(S.session?.mode==='exam'?S.session.answers[S.session.current]?.response:null)??null):null;S.modal=null;render();document.getElementById('main-content')?.focus({preventScroll:true});window.scrollTo({top:0,behavior:'instant'});if(page==='admin'&&authState().isAdmin&&!S.adminLoaded&&!S.adminLoading)queueMicrotask(loadAdminRoster);if(page==='online')void Online.open();}
 function lesson(id){if(!byLesson(id))return;S.lessonId=id;S.unitId=id.slice(0,3);S.profile.lastLessonId=id;S.profile.visitedLessons={...(S.profile.visitedLessons||{}),[id]:new Date().toISOString()};saveState().catch(()=>notify('تعذر حفظ زيارة الدرس.'));go('lesson');}
 function unit(id){if(!unitFor(id))return;S.unitId=id;S.lessonId=unitFor(id).lessons[0].id;go('unit');}
@@ -1162,7 +1505,7 @@ function authGateView(){
  const identity=authState(),enabled=identity.configured&&!S.authBusy,signup=S.authTab==='signup',message=S.authMessage||identity.error;
  const disabled=enabled?'':'disabled';
  const form=signup?`<form id="auth-signup-form" class="auth-form" aria-label="إنشاء حساب جديد"><label class="auth-field">الاسم<input id="signup-name" name="name" autocomplete="name" maxlength="80" required value="${e(S.signupName||'')}" ${disabled}></label><label class="auth-field">البريد الإلكتروني<input id="signup-email" type="email" name="email" dir="ltr" inputmode="email" autocomplete="email" maxlength="254" required value="${e(S.signupEmail||'')}" placeholder="student@example.com" ${disabled}></label><label class="auth-field">اختر كلمة مرور للموقع<input id="signup-password" type="password" name="password" dir="ltr" autocomplete="new-password" minlength="8" maxlength="256" required ${disabled}></label><label class="auth-field">تأكيد كلمة مرور الموقع<input id="signup-password-confirm" type="password" name="password-confirm" dir="ltr" autocomplete="new-password" minlength="8" maxlength="256" required ${disabled}></label><p class="auth-hint">أنشئ كلمة مرور خاصة بهذا الموقع من 8 أحرف على الأقل. لا تكتب كلمة مرور بريدك الإلكتروني.</p><p class="signup-privacy">${ico('shield',17)} يمكن لمسؤول المنصة الاطلاع على اسمك وبريدك وتقدمك ونتائجك وإجاباتك. كلمة المرور لا تُعرض له.</p><button class="btn btn-primary btn-full" type="submit" ${disabled} ${S.authBusy?'aria-busy="true"':''}>${S.authBusy?'جارٍ إنشاء الحساب…':'إنشاء حسابي'} ${ico('arrow',17)}</button></form>`:`<form id="auth-email-form" class="auth-form" aria-label="تسجيل الدخول"><label class="auth-field">البريد الإلكتروني<input id="auth-email" type="email" name="email" dir="ltr" inputmode="email" autocomplete="username" maxlength="254" required value="${e(S.authEmail||'')}" placeholder="student@example.com" ${disabled}></label><label class="auth-field">كلمة مرور الموقع<input id="auth-password" type="password" name="password" dir="ltr" autocomplete="current-password" maxlength="256" required ${disabled}></label><p class="auth-hint">استخدم كلمة المرور التي اخترتها لحسابك في هذا الموقع، وليس كلمة مرور بريدك الإلكتروني.</p><button class="btn btn-primary btn-full" type="submit" ${disabled} ${S.authBusy?'aria-busy="true"':''}>${S.authBusy?'جارٍ إكمال الدخول…':'دخول إلى حسابي'} ${ico('arrow',17)}</button></form>`;
- return `<main id="main-content" class="auth-screen" tabindex="-1"><section class="auth-story" aria-labelledby="auth-brand-title"><div class="auth-brand"><span class="brand-mark">${ico('book',30)}</span><div class="auth-wordmark"><strong id="auth-brand-title">التربية الإسلامية برؤية رقمية</strong><span>بإشراف الأستاذ محمد الطميزي</span></div></div><span class="auth-badge">مادة التربية الإسلامية | الثاني ثانوي BTEC</span><h1 class="auth-heading">رحلتك نحو الإتقان<br>تبدأ من <em>هنا.</em></h1><p class="auth-intro">أسئلة متجددة، تحديات متنوعة، ومراجعة تفهم بها أخطاءك. أنشئ حسابك لتتابع تقدمك، أو جرّب المنصة كضيف.</p><ul class="auth-feature-list"><li>${ico('book',21)} <span>دروس منظمة وتدريب بمستواك</span></li><li>${ico('users',21)} <span>تحديات فردية ومواجهات محلية وأونلاين</span></li><li>${ico('chart',21)} <span>تقدم مستقل لكل طالب مسجّل</span></li></ul><div class="auth-footer">${STUDENT_CREDIT}<small>مرجع الأسئلة: كتاب التربية الإسلامية المرفق – الفصل الثاني.</small></div></section><section class="auth-panel" aria-labelledby="auth-title"><span class="eyebrow">أهلًا بك في مساحتك التعليمية</span><h2 id="auth-title">${signup?'أنشئ حسابك':'تسجيل الدخول'}</h2><p class="auth-hint">التسجيل متاح بأي بريد إلكتروني وكلمة مرور خاصة بهذا الموقع.</p><div class="auth-tabs" role="tablist" aria-label="الدخول أو إنشاء حساب">${[['login','دخول'],['signup','حساب جديد']].map(([id,label])=>`<button id="auth-tab-${id}" role="tab" type="button" data-action="auth-tab" data-mode="${id}" aria-selected="${signup===(id==='signup')}" aria-controls="auth-credentials-panel" tabindex="${signup===(id==='signup')?'0':'-1'}" ${S.authBusy?'disabled':''}>${label}</button>`).join('')}</div>${!identity.configured?`<div class="auth-message" role="status">${ico('info',19)} <span>تسجيل الحسابات بانتظار التفعيل. يمكنك استخدام وضع الضيف الآن.</span></div>`:''}${message?`<div class="auth-message is-error" role="alert">${e(message)}</div>`:''}${S.authNotice?`<div class="auth-message is-notice" role="status">${ico('info',19)} <span>${e(S.authNotice)}</span></div>`:''}<div id="auth-credentials-panel" role="tabpanel" aria-labelledby="auth-tab-${signup?'signup':'login'}">${form}</div><div class="auth-divider"><span>تريد تجربة المنصة؟</span></div><button class="btn btn-outline auth-guest" type="button" data-action="guest-name" ${S.authBusy?'disabled':''}>${ico('users',19)} المتابعة كضيف</button><p class="auth-hint">الضيف بلا حساب. تقدمه مؤقت ويُمسح عند إغلاق الصفحة أو تحديثها.</p></section></main>`;
+ return `<main id="main-content" class="auth-screen" tabindex="-1"><section class="auth-story" aria-labelledby="auth-brand-title"><div class="auth-brand"><span class="brand-mark">${ico('book',30)}</span><div class="auth-wordmark"><strong id="auth-brand-title">التربية الإسلامية برؤية رقمية</strong><span>بإشراف الأستاذ محمد الطميزي</span></div></div><span class="auth-badge">مادة التربية الإسلامية | الثاني ثانوي BTEC</span><h1 class="auth-heading">رحلتك نحو الإتقان<br>تبدأ من <em>هنا.</em></h1><p class="auth-intro">أسئلة متجددة، تحديات متنوعة، ومراجعة تفهم بها أخطاءك. أنشئ حسابك لتتابع تقدمك، أو جرّب المنصة كضيف.</p><div class="auth-story-resources"><ul class="auth-feature-list"><li>${ico('book',21)} <span>دروس منظمة وتدريب بمستواك</span></li><li>${ico('users',21)} <span>تحديات فردية ومواجهات محلية وأونلاين</span></li><li>${ico('chart',21)} <span>تقدم مستقل لكل طالب مسجّل</span></li></ul>${siteQrView()}</div><div class="auth-footer">${STUDENT_CREDIT}</div></section><section class="auth-panel" aria-labelledby="auth-title"><span class="eyebrow">أهلًا بك في مساحتك التعليمية</span><h2 id="auth-title">${signup?'أنشئ حسابك':'تسجيل الدخول'}</h2><p class="auth-hint">التسجيل متاح بأي بريد إلكتروني وكلمة مرور خاصة بهذا الموقع.</p><div class="auth-tabs" role="tablist" aria-label="الدخول أو إنشاء حساب">${[['login','دخول'],['signup','حساب جديد']].map(([id,label])=>`<button id="auth-tab-${id}" role="tab" type="button" data-action="auth-tab" data-mode="${id}" aria-selected="${signup===(id==='signup')}" aria-controls="auth-credentials-panel" tabindex="${signup===(id==='signup')?'0':'-1'}" ${S.authBusy?'disabled':''}>${label}</button>`).join('')}</div>${!identity.configured?`<div class="auth-message" role="status">${ico('info',19)} <span>تسجيل الحسابات بانتظار التفعيل. يمكنك استخدام وضع الضيف الآن.</span></div>`:''}${message?`<div class="auth-message is-error" role="alert">${e(message)}</div>`:''}${S.authNotice?`<div class="auth-message is-notice" role="status">${ico('info',19)} <span>${e(S.authNotice)}</span></div>`:''}<div id="auth-credentials-panel" role="tabpanel" aria-labelledby="auth-tab-${signup?'signup':'login'}">${form}</div><div class="auth-divider"><span>تريد تجربة المنصة؟</span></div><button class="btn btn-outline auth-guest" type="button" data-action="guest-name" ${S.authBusy?'disabled':''}>${ico('users',19)} المتابعة كضيف</button><p class="auth-hint">الضيف بلا حساب. تقدمه مؤقت ويُمسح عند إغلاق الصفحة أو تحديثها.</p></section></main>`;
 }
 function cloudStatusLabel(identity=authState()){
  return ({synced:'تمت مزامنة تقدمك',syncing:'جارٍ مزامنة التقدم…',pending:'توجد تغييرات تنتظر المزامنة',offline:'المزامنة غير متاحة الآن',error:'تعذر تأكيد المزامنة',conflict:'توجد نسختان مختلفتان للتقدم',local:'لم تُؤكد المزامنة السحابية بعد',unconfigured:'المزامنة بانتظار تفعيل خدمة الحسابات',disabled:'المزامنة غير مفعلة',loading:'جارٍ التحقق من التقدم المحفوظ…'})[identity.cloudStatus]||'لم تُؤكد المزامنة السحابية بعد';
@@ -1744,6 +2087,683 @@ const Learning=(()=>{
  document.addEventListener('click',ev=>{const a=ev.target.closest('[data-guide-scroll]');if(a){ev.preventDefault();document.getElementById(a.dataset.guideScroll)?.scrollIntoView({block:'start'});}});
  document.addEventListener('keydown',ev=>{if(!ev.target.matches('.learning-tabs [role=tab]')||!['ArrowLeft','ArrowRight','Home','End'].includes(ev.key))return;ev.preventDefault();const buttons=[...document.querySelectorAll('.learning-tabs [role=tab]')],i=buttons.indexOf(ev.target),n=ev.key==='Home'?0:ev.key==='End'?buttons.length-1:(i+(ev.key==='ArrowLeft'?1:-1)+buttons.length)%buttons.length;const id=buttons[n].dataset.id;buttons[n].click();document.getElementById('learning-tab-'+id)?.focus();});
  return {view,bind,beforeRender,restore,open,mergeRanges,save,selectedLesson:()=>selected};
+})();
+
+// School-wide content lives in Supabase and uses the same session as the rest of the site.
+const KnowledgeAPI = (() => {
+ const MAX_IMAGE_BYTES = 2 * 1024 * 1024;
+ const MAX_TOTAL_BYTES = 8 * 1024 * 1024;
+ const MAX_IMAGES = 8;
+ const allowedTypes = new Set(['image/jpeg', 'image/png', 'image/webp']);
+ const fileTypes = {jpg:'image/jpeg', jpeg:'image/jpeg', png:'image/png', webp:'image/webp'};
+
+ async function list(admin = false) {
+  const data = await Auth.knowledgeRpc('knowledge_list', {p_admin:admin === true});
+  if (!Array.isArray(data?.achievements) || !Array.isArray(data?.tools))
+   throw Error('تعذر قراءة قائمة المحتوى المدرسي.');
+  const achievements = data.achievements.map(({place, ...row}) => ({...row, placement:place}));
+  const dateOf = row => row.event_date || row.created_at?.slice(0, 10) || '';
+  achievements.sort((a,b) => dateOf(b).localeCompare(dateOf(a)) ||
+    b.created_at.localeCompare(a.created_at) || a.id.localeCompare(b.id));
+  return {achievements, tools:data.tools};
+ }
+
+ async function imageUrl(image) {
+  if (!image?.id) throw Error('الصورة غير متاحة.');
+  const result = await Auth.knowledgeRpc('knowledge_image', {p_id:image.id});
+  if (!allowedTypes.has(result?.mime) || typeof result.data !== 'string' || !result.data.length)
+   throw Error('الصورة غير متاحة.');
+  return 'data:' + result.mime + ';base64,' + result.data;
+ }
+
+ function newImageType(file) {
+  const ext = file.name.split('.').pop().toLowerCase();
+  const mime = fileTypes[ext];
+  if (!allowedTypes.has(mime) || (file.type && file.type !== mime))
+   throw Error('اختر صورة بصيغة JPG أو PNG أو WebP.');
+  if (!file.size || file.size > MAX_IMAGE_BYTES) throw Error('الحد الأقصى لكل صورة ٢ ميبيبايت.');
+  return mime;
+ }
+
+ async function encodeImage(image) {
+  if (image.id) return {id:image.id};
+  const mime = newImageType(image);
+  const encoded = await new Promise((resolve, reject) => {
+   const reader = new FileReader();
+   reader.onload = () => resolve(reader.result);
+   reader.onerror = reader.onabort = () => reject(Error('تعذرت قراءة ملف الصورة.'));
+   reader.readAsDataURL(image);
+  });
+  return {mime, data:encoded.slice(encoded.indexOf(',') + 1)};
+ }
+
+ async function change(name, args) {
+  const result = await Auth.knowledgeRpc(name, args);
+  document.dispatchEvent(new Event('school-content-changed'));
+  return result;
+ }
+
+ function commonFields(row) {
+  return {
+   ...(row.id ? {id:row.id, updated_at:row.updated_at} : {}),
+   title:row.title?.trim(), description:row.description?.trim() || null,
+   category:row.category?.trim() || null, published:row.published === true
+  };
+ }
+
+ async function saveAchievement(row, images) {
+  if (images.length > MAX_IMAGES) throw Error('يمكن إرفاق ثماني صور على الأكثر.');
+  const total = images.reduce((sum, item) => sum + (item.id ? Number(item.bytes || 0) : item.size), 0);
+  if (total > MAX_TOTAL_BYTES) throw Error('يجب ألّا يتجاوز مجموع أحجام الصور ٨ ميبيبايت.');
+  const record = {...commonFields(row), participants:row.participants?.trim() || null,
+   place:row.placement?.trim() || null, event_date:row.event_date || null};
+  const encoded = await Promise.all(images.map(encodeImage));
+  return change('knowledge_save_achievement', {p_record:record, p_images:encoded});
+ }
+
+ function httpsUrl(value) {
+  try {
+   const url = new URL(value);
+   if (url.protocol === 'https:' && !url.username && !url.password && /^https:\/\//i.test(value) &&
+       !/[\s\\]/u.test(value)) return url.href;
+  } catch {}
+  return '';
+ }
+
+ function saveTool(row) {
+  const url = httpsUrl(row.url?.trim());
+  if (!url) throw Error('أدخل رابط HTTPS كاملًا دون معلومات دخول.');
+  return change('knowledge_save_tool', {p_record:{...commonFields(row), url}});
+ }
+
+ function remove(kind, row) {
+  return change('knowledge_delete', {p_kind:kind, p_id:row.id, p_updated_at:row.updated_at});
+ }
+
+ return {list, imageUrl, saveAchievement, saveTool, httpsUrl, MAX_IMAGES, MAX_TOTAL_BYTES, MAX_IMAGE_BYTES,
+  listAchievements:async admin => (await list(admin)).achievements,
+  listTools:async admin => (await list(admin)).tools,
+  deleteAchievement:row => remove('achievement',row), deleteTool:row => remove('tool',row)};
+})();
+
+// The three editorial examples are bundled from data/knowledge-topics.json.
+const Knowledge = (() => {
+
+  const fallbackAchievements = 'لا توجد إنجازات مضافة حاليًا';
+  const retryButton = '<button type="button" class="btn btn-outline btn-sm" data-k-retry>إعادة المحاولة</button>';
+  let disconnect = () => {};
+
+  function section(title, icon, content) {
+    return `<section class="knowledge-section"><h2><span class="knowledge-section-icon">${ico(icon,21)}</span>${title}</h2>${content}</section>`;
+  }
+
+  function view() {
+    const lessons = KNOWLEDGE_TOPICS.map(topic => `<article class="knowledge-topic">
+      <div class="knowledge-topic-skill">${ico(topic.icon,17)}${e(topic.subject)}</div>
+      <h3>${e(topic.title)}</h3><p>${e(topic.introduction)}</p>
+      <details><summary>اعرف المزيد<span class="sr-only"> عن ${e(topic.title)}</span></summary><p>${e(topic.example)}</p></details>
+    </article>`).join('');
+    return `<div id="knowledge-page" class="knowledge-page">
+      <header class="heading"><h1>التكامل المعرفي</h1></header>
+      ${section('الإنجازات والمسابقات والمشاركات', 'trophy', '<div data-k-achievements role="status">جارٍ تحميل الإنجازات…</div>')}
+      ${section('التربية الإسلامية في حياتنا', 'book', `<div class="knowledge-grid">${lessons}</div>`)}
+      ${section('مواقع وأدوات مفيدة', 'list', '<div data-k-tools role="status">جارٍ تحميل المواقع والأدوات…</div>')}
+      <dialog class="knowledge-dialog" aria-labelledby="knowledge-detail-title"></dialog>
+    </div>`;
+  }
+
+  function empty(icon, title, message) {
+    return `<div class="knowledge-empty">${ico(icon,30)}<div><strong>${title}</strong><p>${message}</p></div></div>`;
+  }
+
+  function metadata(record) {
+    let date = '';
+    if (record.event_date) {
+      const day = new Date(record.event_date + 'T00:00:00Z');
+      if (Number.isFinite(day.getTime())) {
+        date = `<time datetime="${e(record.event_date)}">${day.toLocaleDateString('ar-JO', {dateStyle:'medium', timeZone:'UTC'})}</time>`;
+      }
+    }
+    return [record.category && `<span>${e(record.category)}</span>`, record.placement && `<span>المركز: ${e(record.placement)}</span>`, date]
+      .filter(Boolean).join('');
+  }
+
+  function imageFrame(image, alt) {
+    return `<div class="knowledge-picture" data-k-image="${e(image.id)}">
+      <span class="knowledge-image-status">جارٍ تحميل الصورة…</span><img alt="${e(alt)}" decoding="async" hidden>
+    </div>`;
+  }
+
+  function card(record) {
+    return `<article class="knowledge-card">
+      ${record.images.length ? imageFrame(record.images[0], record.title) : ''}
+      <div class="knowledge-card-body"><div class="knowledge-meta">${metadata(record)}</div>
+        <h3>${e(record.title)}</h3>${record.description ? `<p>${e(record.description)}</p>` : ''}
+        <button type="button" class="text-link" data-k-open="${e(record.id)}" aria-label="عرض التفاصيل: ${e(record.title)}">عرض التفاصيل ${ico('arrow',17)}</button>
+      </div></article>`;
+  }
+
+  function linkCard(tool) {
+    const safe = KnowledgeAPI.httpsUrl(tool.url);
+    if (!safe) return '';
+    const url = new URL(safe);
+    return `<a class="knowledge-tool" href="${e(url.href)}" target="_blank" rel="noopener noreferrer">
+      ${tool.category ? `<span class="knowledge-meta">${e(tool.category)}</span>` : ''}<h3>${e(tool.title)}</h3>
+      ${tool.description ? `<p>${e(tool.description)}</p>` : ''}<span class="knowledge-tool-url" dir="ltr">${e(url.host)} ↗</span>
+      <span class="sr-only">يفتح في علامة تبويب جديدة</span></a>`;
+  }
+
+  function bind() {
+    disconnect();
+    const page = document.getElementById('knowledge-page');
+    if (!page) return;
+    const achievementList = page.querySelector('[data-k-achievements]');
+    const tools = page.querySelector('[data-k-tools]');
+    const dialog = page.querySelector('dialog');
+    let achievements = new Map();
+    let images = new Map();
+    let selected = null;
+    let index = 0;
+    let readVersion = 0;
+    let previousAchievements, previousLinks;
+    let lastReadAt = 0;
+
+    async function showImage(frame) {
+      const image = images.get(frame.dataset.kImage);
+      if (!image || !frame.isConnected || frame.dataset.loading) return;
+      frame.dataset.loading = 'true';
+      const img = frame.querySelector('img');
+      const status = frame.querySelector('.knowledge-image-status');
+      try {
+        const src = await KnowledgeAPI.imageUrl(image);
+        if (!frame.isConnected) return;
+        img.src = src;
+        await img.decode();
+        if (!frame.isConnected) return;
+        img.hidden = false;
+        status.hidden = true;
+      } catch {
+        if (frame.isConnected) {
+          delete frame.dataset.loading;
+          status.innerHTML = 'تعذر عرض الصورة. <button type="button" class="text-link" data-k-retry-image>إعادة تحميل الصورة</button>';
+        }
+      }
+    }
+
+    const observer = typeof IntersectionObserver === 'function' ? new IntersectionObserver(entries => {
+      for (const entry of entries) if (entry.isIntersecting) {
+        observer.unobserve(entry.target);
+        void showImage(entry.target);
+      }
+    }, {rootMargin:'100px'}) : null;
+
+    async function refresh() {
+      const version = ++readVersion;
+      lastReadAt = Date.now();
+      achievementList.setAttribute('aria-busy', 'true');
+      tools.setAttribute('aria-busy', 'true');
+      try {
+        const rows = await KnowledgeAPI.list();
+        if (!page.isConnected || version !== readVersion) return;
+        const published = rows.achievements.filter(item => item.published);
+        const signature = JSON.stringify(published);
+        if (signature !== previousAchievements) {
+          previousAchievements = signature;
+          achievements = new Map(published.map(item => [item.id, item]));
+          images = new Map(published.flatMap(item => item.images.map(image => [image.id, image])));
+          if (dialog.open && JSON.stringify(achievements.get(selected.id)) !== JSON.stringify(selected)) dialog.close();
+          observer?.disconnect();
+          achievementList.innerHTML = published.length ? `<div class="knowledge-grid">${published.map(card).join('')}</div>` :
+            empty('award', fallbackAchievements, 'سيتم عرض إنجازات طلاب المدرسة ومشاركاتهم في المسابقات والأنشطة الدينية هنا قريبًا.');
+          for (const frame of achievementList.querySelectorAll('[data-k-image]')) {
+            if (observer) observer.observe(frame);
+            else void showImage(frame);
+          }
+        }
+        const links = rows.tools.filter(tool => tool.published).map(linkCard).join('');
+        if (links !== previousLinks) {
+          previousLinks = links;
+          tools.innerHTML = links ? `<div class="knowledge-grid">${links}</div>` :
+            empty('book', 'لا توجد مواقع أو أدوات مضافة حاليًا', 'ستظهر هنا الروابط التعليمية التي ينشرها الأستاذ.');
+        }
+      } catch {
+        if (!page.isConnected || version !== readVersion) return;
+        previousAchievements = previousLinks = undefined;
+        observer?.disconnect();
+        if (dialog.open) dialog.close();
+        achievementList.innerHTML = `<div class="knowledge-error">تعذر تحميل الإنجازات. ${retryButton}</div>`;
+        tools.innerHTML = `<div class="knowledge-error">تعذر تحميل المواقع والأدوات. ${retryButton}</div>`;
+      } finally {
+        if (version === readVersion) {
+          achievementList.removeAttribute('aria-busy');
+          tools.removeAttribute('aria-busy');
+        }
+      }
+    }
+
+    function showSlide() {
+      const gallery = dialog.querySelector('[data-k-slide]');
+      const current = selected.images[index];
+      gallery.innerHTML = imageFrame(current, `${selected.title}، الصورة ${nf(index + 1)}`);
+      void showImage(gallery.firstElementChild);
+      const count = dialog.querySelector('[data-k-count]');
+      if (count) count.textContent = `الصورة ${nf(index + 1)} من ${nf(selected.images.length)}`;
+    }
+
+    function openRecord(record) {
+      selected = record;
+      index = 0;
+      dialog.innerHTML = `<header><h2 id="knowledge-detail-title">${e(record.title)}</h2>
+        <button type="button" class="icon-btn" data-k-close aria-label="إغلاق تفاصيل الإنجاز" autofocus>${ico('close',18)}</button></header>
+        ${record.images.length ? '<div data-k-slide></div>' : ''}
+        ${record.images.length > 1 ? '<div class="knowledge-controls"><button type="button" class="btn btn-outline btn-sm" data-k-step="-1">السابق</button><span data-k-count role="status"></span><button type="button" class="btn btn-outline btn-sm" data-k-step="1">التالي</button></div>' : ''}
+        <div class="knowledge-meta">${metadata(record)}</div>
+        ${record.description ? `<p>${e(record.description)}</p>` : ''}
+        ${record.participants ? `<p><strong>المشاركون</strong><br>${e(record.participants)}</p>` : ''}`;
+      dialog.showModal();
+      if (record.images.length) showSlide();
+    }
+
+    page.addEventListener('click', event => {
+      const button = event.target.closest('button');
+      if (!button) return;
+      if (button.hasAttribute('data-k-retry')) { button.disabled = true; void refresh(); }
+      if (button.hasAttribute('data-k-retry-image')) void showImage(button.closest('[data-k-image]'));
+      if (button.hasAttribute('data-k-close')) dialog.close();
+      const record = achievements.get(button.dataset.kOpen);
+      if (record) openRecord(record);
+      if (button.dataset.kStep && selected) {
+        index = (index + Number(button.dataset.kStep) + selected.images.length) % selected.images.length;
+        showSlide();
+      }
+    });
+    dialog.addEventListener('close', () => {
+      if (dialog.open) return;
+      dialog.replaceChildren();
+      selected = null;
+    });
+    function refreshVisible() {
+      if (page.isConnected && !document.hidden && Date.now() - lastReadAt > 1000) void refresh();
+    }
+    const interval = setInterval(refreshVisible, 60000);
+    document.addEventListener('school-content-changed', refresh);
+    window.addEventListener('focus', refreshVisible);
+    document.addEventListener('visibilitychange', refreshVisible);
+    disconnect = () => {
+      clearInterval(interval);
+      window.removeEventListener('focus', refreshVisible);
+      document.removeEventListener('visibilitychange', refreshVisible);
+      document.removeEventListener('school-content-changed', refresh);
+      observer?.disconnect();
+      disconnect = () => {};
+    };
+    void refresh();
+  }
+  return {view, bind};
+})();
+
+// School publishing tools are available inside the existing administrator workspace.
+const KnowledgeAdmin = (() => {
+  const sections = {
+    students: 'إدارة الطلاب',
+    achievements: 'إدارة الإنجازات والمسابقات',
+    tools: 'إدارة المواقع والأدوات'
+  };
+  let owner = null;
+  let section = 'students';
+  let state = null;
+  let imageObserver;
+
+  function clearEditor() {
+    for (const photo of state?.editor?.photos || []) {
+      if (photo.preview) URL.revokeObjectURL(photo.preview);
+    }
+    if (state) state.editor = null;
+  }
+
+  function reset() {
+    imageObserver?.disconnect();
+    clearEditor();
+    state = null;
+    owner = null;
+    section = 'students';
+  }
+
+  function active(snapshot = state) {
+    const identity = authState();
+    return snapshot && snapshot === state && S.page === 'admin' &&
+      identity.isAdmin && identity.user?.id === owner;
+  }
+
+  function view(studentView) {
+    const identity = authState();
+    if (!identity.isAdmin || !identity.user?.id) {
+      reset();
+      return '';
+    }
+    if (identity.user.id !== owner) {
+      reset();
+      owner = identity.user.id;
+    }
+    const tabs = Object.entries(sections).map(([key, label]) =>
+      `<button type="button" class="btn btn-outline" data-ka-tab="${key}" aria-pressed="${key === section}" ${state?.busy ? 'disabled' : ''}>${label}</button>`).join('');
+    return `<div id="knowledge-admin"><nav class="ka-tabs" aria-label="أقسام لوحة الإدارة">${tabs}</nav>
+      ${section === 'students' ? studentView() : content()}</div>`;
+  }
+
+  function changeSection(next) {
+    if (!(next in sections) || next === section || state?.busy) return;
+    clearEditor();
+    section = next;
+    state = next === 'students' ? null : {
+      rows: [], loading: true, loaded: false, busy: false, query: '', sort: 'newest',
+      feedback: '', error: '', editor: null
+    };
+    render();
+    document.querySelector(`[data-ka-tab="${next}"]`)?.focus();
+    if (state) void load(state);
+  }
+
+  async function load(snapshot) {
+    try {
+      const rows = section === 'achievements'
+        ? await KnowledgeAPI.listAchievements(true) : await KnowledgeAPI.listTools(true);
+      if (!active(snapshot)) return;
+      state.rows = rows;
+      state.loaded = true;
+    } catch (error) {
+      if (active(snapshot)) state.error = error.message || 'تعذر تحميل السجلات.';
+    } finally {
+      if (active(snapshot)) {
+        state.loading = false;
+        render();
+      }
+    }
+  }
+
+  function content() {
+    const achievements = section === 'achievements';
+    const addLabel = achievements ? 'إضافة إنجاز جديد' : 'إضافة موقع جديد';
+    const actions = state.editor ? '' :
+      `<button class="btn btn-primary" data-ka-action="new" ${state.loading || state.busy ? 'disabled' : ''}>${ico(achievements ? 'award' : 'book', 18)} ${addLabel}</button>`;
+    const messages = `<div aria-live="polite">${state.feedback ? `<p class="auth-message" role="status">${e(state.feedback)}</p>` : ''}</div>
+      ${state.error ? `<p class="auth-message is-error" role="alert">${e(state.error)}</p>` : ''}`;
+    return `<section class="ka-work" aria-labelledby="ka-heading">
+      <div class="ka-heading"><h1 id="ka-heading">${sections[section]}</h1>${actions}</div>
+      ${messages}${state.editor ? editorView() : listView()}</section>`;
+  }
+
+  function listView() {
+    return `<section class="surface panel"><div class="ka-controls">
+      <label>بحث<input type="search" data-ka-search placeholder="العنوان أو التصنيف" value="${e(state.query)}"></label>
+      <label>الترتيب<select data-ka-sort>
+        ${[['newest','الأحدث أولًا'],['oldest','الأقدم أولًا'],['title','العنوان']].map(([value,label]) =>
+          `<option value="${value}" ${state.sort === value ? 'selected' : ''}>${label}</option>`).join('')}
+      </select></label><button class="btn btn-outline" data-ka-action="refresh" ${state.busy || state.loading ? 'disabled' : ''}>${ico('refresh', 16)} تحديث</button>
+      </div><div class="ka-rows" data-ka-rows aria-busy="${state.loading}">${rowList()}</div></section>`;
+  }
+
+  function rowList() {
+    if (state.loading) return '<p role="status">جارٍ تحميل السجلات…</p>';
+    if (!state.loaded) return '';
+    const achievements = section === 'achievements';
+    const query = state.query.trim().toLocaleLowerCase('ar');
+    const rows = state.rows.filter(row =>
+      [row.title, row.category, row.participants].some(x => (x || '').toLocaleLowerCase('ar').includes(query)));
+    const sortDate = row => row.event_date || row.created_at;
+    rows.sort((a,b) => state.sort === 'title' ? a.title.localeCompare(b.title, 'ar') :
+      (state.sort === 'oldest' ? 1 : -1) * String(sortDate(a)).localeCompare(String(sortDate(b))));
+    if (!rows.length) return `<p>${query ? 'لا توجد نتائج تطابق البحث.' : achievements ? 'لا توجد إنجازات مضافة حاليًا' : 'لا توجد مواقع أو أدوات مضافة حاليًا.'}</p>`;
+    return rows.map(row => {
+      const photo = row.images?.[0];
+      const meta = [row.category, row.event_date, row.published ? 'منشور' : 'مسودة'].filter(Boolean);
+      return `<article class="ka-row">${photo ? serverImage(photo, row.title, 'ka-thumb') : ''}
+        <div class="ka-row-info"><h2>${e(row.title)}</h2><p>${meta.map(e).join(' · ')}</p></div>
+        <div class="ka-row-actions"><button class="btn btn-outline btn-sm" data-ka-action="edit" data-id="${e(row.id)}" ${state.busy ? 'disabled' : ''}>تعديل<span class="ka-sr"> ${e(row.title)}</span></button>
+        <button class="btn btn-danger btn-sm" data-ka-action="delete" data-id="${e(row.id)}" ${state.busy ? 'disabled' : ''}>حذف<span class="ka-sr"> ${e(row.title)}</span></button></div></article>`;
+    }).join('');
+  }
+
+  function serverImage(photo, alt, css = '') {
+    return `<img loading="lazy" class="${css}" data-ka-image="${e(photo.id)}" alt="${e(alt)}">`;
+  }
+
+  function edit(row = {}) {
+    clearEditor();
+    state.editor = {
+      record: {...row, published: !!row.published},
+      photos: (row.images || []).map(stored => ({stored})),
+      consent: false
+    };
+    state.error = state.feedback = '';
+    render();
+    document.querySelector('#ka-form [name="title"]')?.focus();
+  }
+
+  function field(name, label, limit, type = 'text', required = false) {
+    const value = e(state.editor.record[name]);
+    const attrs = `name="${name}" ${name === 'category' ? 'list="ka-categories"' : ''} ${required ? 'required' : ''} ${limit ? 'maxlength="'+limit+'"' : ''}`;
+    const input = type === 'textarea' ? `<textarea rows="4" ${attrs}>${value}</textarea>` :
+      `<input type="${type}" ${attrs} value="${value}" ${type === 'url' ? 'dir="ltr" placeholder="https://"' : ''}>`;
+    return `<label ${type === 'textarea' ? 'class="ka-wide"' : ''}>${label}${input}</label>`;
+  }
+
+  function editorView() {
+    const {record, photos, consent} = state.editor;
+    const achievement = section === 'achievements';
+    const name = achievement ? 'إنجاز' : 'موقع';
+    const categories = new Set([...(achievement ? ['مسابقة', 'مشاركة مدرسية', 'تكريم'] : ['حاسبة تعليمية', 'موقع تعليمي', 'أداة مرتبطة بالدروس']),
+      ...state.rows.map(row => row.category).filter(Boolean)]);
+    return `<form id="ka-form" class="surface panel"><fieldset ${state.busy ? 'disabled' : ''}>
+      <legend>${record.id ? 'تعديل' : 'إضافة'} ${name}</legend>
+      <div class="ka-fields">
+        ${field('title', achievement ? 'عنوان الإنجاز (مطلوب)' : 'عنوان الموقع (مطلوب)', 180, 'text', true)}
+        ${field('category', achievement ? 'نوع الإنجاز أو المسابقة' : 'التصنيف', 100)}
+        <datalist id="ka-categories">${[...categories].map(value => `<option value="${e(value)}"></option>`).join('')}</datalist>
+        ${field('description', 'الوصف', 2500, 'textarea')}
+        ${achievement ? `${field('participants', 'اسم الطالب أو الطلاب', 500)}${field('placement', 'المركز المحقق', 100)}
+          ${field('event_date', 'تاريخ المسابقة', null, 'date')}` : field('url', 'الرابط الخارجي (HTTPS، مطلوب)', 2048, 'url', true)}
+        <label>حالة النشر<select name="published">
+          <option value="draft" ${!record.published ? 'selected' : ''}>مسودة</option><option value="published" ${record.published ? 'selected' : ''}>منشور</option>
+        </select></label></div>
+      ${achievement ? `<section class="ka-media"><h3>صور الإنجاز</h3>
+       <p>حتى ٨ صور بصيغة JPG أو PNG أو WebP. الحد لكل صورة ٢ م.ب، وللمجموعة ٨ م.ب.</p>
+       <div class="ka-fields"><label>رفع الصورة الرئيسية<input type="file" data-ka-files="cover" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp"></label>
+       <label>رفع صور إضافية<input type="file" data-ka-files="additional" multiple accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp"></label></div>
+       <div class="ka-photos">${photos.map(photoView).join('')}</div></section>
+       <label class="ka-consent" ${needsConsent() ? '' : 'hidden'}><input type="checkbox" name="consent" ${consent ? 'checked' : ''} ${needsConsent() ? 'required' : ''}>تتوفر الموافقات اللازمة لنشر أسماء المشاركين أو صور الإنجاز.</label>` : ''}
+      <div class="ka-form-actions"><button type="submit" class="btn btn-primary">${state.busy ? 'جارٍ الحفظ…' : 'حفظ '+(achievement ? 'الإنجاز' : 'الموقع')}</button>
+      <button type="button" class="btn btn-outline" data-ka-action="cancel">إلغاء</button></div></fieldset></form>`;
+  }
+
+  function photoView(photo, index) {
+    const alt = index === 0 ? 'الصورة الرئيسية' : 'صورة إضافية '+nf(index);
+    return `<figure>${photo.file ? `<img src="${e(photo.preview)}" alt="${e(alt)}">` : serverImage(photo.stored, alt)}
+      <figcaption><strong>${e(alt)}</strong><div>
+      ${index ? `<button type="button" class="btn btn-outline btn-sm" data-ka-action="cover" data-index="${index}">تعيين كرئيسية</button>` : ''}
+      <button type="button" class="btn btn-outline btn-sm" data-ka-action="remove-photo" data-index="${index}">إزالة<span class="ka-sr"> ${e(alt)}</span></button></div></figcaption></figure>`;
+  }
+
+  function needsConsent() {
+    const {record, photos} = state.editor;
+    return section === 'achievements' && record.published && (record.participants?.trim() || photos.length);
+  }
+
+  function updateConsent(form) {
+    const checkbox = form.elements.namedItem('consent');
+    if (!checkbox) return;
+    checkbox.required = Boolean(needsConsent());
+    checkbox.closest('label').hidden = !checkbox.required;
+  }
+
+  function addPhotos(input) {
+    const files = [...input.files];
+    if (!files.length) return;
+    const {photos} = state.editor;
+    state.error = '';
+    if (files.some(file => !/\.(jpe?g|png|webp)$/i.test(file.name) || (file.type && !['image/jpeg','image/png','image/webp'].includes(file.type)))) {
+      state.error = 'اختر صورة بصيغة JPG أو PNG أو WebP.';
+    } else if (files.some(file => !file.size || file.size > KnowledgeAPI.MAX_IMAGE_BYTES)) {
+      state.error = 'يجب ألا تكون الصورة فارغة أو يتجاوز حجمها ٢ م.ب.';
+    } else if (photos.length + files.length > KnowledgeAPI.MAX_IMAGES) {
+      state.error = 'يمكن حفظ ٨ صور كحد أقصى لكل إنجاز.';
+    } else if (photos.reduce((size, p) => size + (p.file?.size || p.stored?.bytes || 0), 0) + files.reduce((size, f) => size + f.size, 0) > KnowledgeAPI.MAX_TOTAL_BYTES) {
+      state.error = 'يجب ألا يتجاوز مجموع أحجام الصور ٨ م.ب.';
+    } else {
+      const selected = files.map(file => ({file, preview: URL.createObjectURL(file)}));
+      if (input.dataset.kaFiles === 'cover') photos.unshift(...selected);
+      else photos.push(...selected);
+      state.editor.consent = false;
+    }
+    render();
+  }
+
+  async function mutate(snapshot, operation, pending, success) {
+    if (!active(snapshot) || state.busy) return;
+    state.busy = true;
+    state.error = '';
+    state.feedback = pending;
+    render();
+    try {
+      await operation();
+      if (!active(snapshot)) return;
+      clearEditor();
+      state.feedback = success;
+      state.loading = true;
+      state.loaded = false;
+      await load(snapshot);
+    } catch (error) {
+      if (active(snapshot)) {
+        state.feedback = '';
+        state.error = error.message || 'تعذر حفظ التغيير. تحقق من الاتصال وحاول مجددًا.';
+      }
+    } finally {
+      if (active(snapshot)) {
+        state.busy = false;
+        render();
+      }
+    }
+  }
+
+  function save(event) {
+    if (event.target.id !== 'ka-form') return;
+    event.preventDefault();
+    if (!active() || state.busy || !state.editor) return;
+    const {record, photos, consent} = state.editor;
+    if (needsConsent() && !consent) return;
+    const achievement = section === 'achievements';
+    const payload = {...record};
+    const images = photos.map(photo => photo.file || photo.stored);
+    void mutate(state, () => achievement ? KnowledgeAPI.saveAchievement(payload, images) : KnowledgeAPI.saveTool(payload),
+      images.some(img => img instanceof File) ? 'جارٍ رفع الصور وحفظ الإنجاز…' : 'جارٍ الحفظ…',
+      payload.published ? 'تم حفظ المحتوى ونشره.' : 'تم حفظ المسودة.');
+  }
+
+  function click(event) {
+    const tab = event.target.closest('[data-ka-tab]');
+    if (tab && authState().isAdmin) return changeSection(tab.dataset.kaTab);
+    const button = event.target.closest('[data-ka-action]');
+    if (!button || !active() || state.busy) return;
+    const action = button.dataset.kaAction;
+    const row = state.rows.find(x => x.id === button.dataset.id);
+    if (action === 'new') return edit();
+    if (action === 'edit' && row) return edit(row);
+    if (action === 'refresh') {
+      if (state.loading) return;
+      state.loading = true;
+      state.feedback = state.error = '';
+      render();
+      return void load(state);
+    }
+    if (action === 'delete' && row) {
+      const achievement = section === 'achievements';
+      const message = achievement ? 'سيُحذف الإنجاز وجميع صوره نهائيًا.' : 'سيُحذف الموقع من قائمة الأدوات نهائيًا.';
+      if (window.confirm(`هل تريد حذف «${row.title}»؟\n${message}`)) {
+        void mutate(state, () => achievement ? KnowledgeAPI.deleteAchievement(row) : KnowledgeAPI.deleteTool(row),
+          'جارٍ الحذف…', achievement ? 'تم حذف الإنجاز وصوره.' : 'تم حذف الموقع.');
+      }
+      return;
+    }
+    if (action === 'cancel') {
+      clearEditor();
+      state.feedback = state.error = '';
+      render();
+      document.querySelector('[data-ka-action="new"]')?.focus();
+      return;
+    }
+    if (!state.editor || !['cover','remove-photo'].includes(action)) return;
+    const photos = state.editor.photos;
+    const [photo] = photos.splice(Number(button.dataset.index), 1);
+    if (!photo) return;
+    if (action === 'cover') photos.unshift(photo);
+    else if (photo.preview) URL.revokeObjectURL(photo.preview);
+    render();
+  }
+
+  function change(event) {
+    if (!active() || state.busy) return;
+    const {target} = event;
+    if (target.hasAttribute('data-ka-files') && event.type === 'change') return addPhotos(target);
+    if (target.matches('[data-ka-search],[data-ka-sort]')) {
+      if (target.hasAttribute('data-ka-search')) state.query = target.value;
+      else state.sort = target.value;
+      document.querySelector('[data-ka-rows]').innerHTML = rowList();
+      observeImages();
+      return;
+    }
+    if (state.editor && target.form?.id === 'ka-form' && target.name) {
+      if (target.name === 'consent') state.editor.consent = target.checked;
+      else {
+        state.editor.record[target.name] = target.name === 'published' ? target.value === 'published' : target.value;
+        if (target.name === 'participants') state.editor.consent = false;
+        const checkbox = target.form.elements.namedItem('consent');
+        if (checkbox) checkbox.checked = state.editor.consent;
+      }
+      updateConsent(target.form);
+    }
+  }
+
+  function observeImages() {
+    imageObserver?.disconnect();
+    if (!active()) return;
+    const snapshot = state;
+    const photos = new Map(state.rows.flatMap(row => (row.images || []).map(photo => [photo.id, photo])));
+    const fetchImage = async image => {
+      const photo = photos.get(image.dataset.kaImage);
+      if (!photo) return;
+      try {
+        const url = await KnowledgeAPI.imageUrl(photo);
+        if (active(snapshot) && image.isConnected) image.src = url;
+      } catch {
+        if (image.isConnected) image.alt = 'تعذر تحميل معاينة الصورة';
+      }
+    };
+    if (typeof IntersectionObserver === 'function') {
+      imageObserver = new IntersectionObserver(entries => {
+        for (const entry of entries) if (entry.isIntersecting) {
+          imageObserver.unobserve(entry.target);
+          void fetchImage(entry.target);
+        }
+      }, {rootMargin: '150px'});
+    }
+    for (const image of document.querySelectorAll('#knowledge-admin [data-ka-image]')) {
+      if (imageObserver) imageObserver.observe(image);
+      else void fetchImage(image);
+    }
+  }
+
+  function bind() {
+    const root = document.getElementById('knowledge-admin');
+    if (!root || root.dataset.bound || !authState().isAdmin) return;
+    root.dataset.bound = 'true';
+    root.addEventListener('click', click);
+    root.addEventListener('input', change);
+    root.addEventListener('change', change);
+    root.addEventListener('submit', save);
+    observeImages();
+  }
+
+  return {view, bind, reset};
 })();
 
 /** Rules stay independent of rendering. Deadlines use wall time, including hidden tabs. */

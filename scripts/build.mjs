@@ -4,6 +4,7 @@ import path from 'node:path';
 import vm from 'node:vm';
 import {createHash} from 'node:crypto';
 import { build as bundle } from 'esbuild';
+import { buildSiteShare } from './site-qr.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const read = name => readFile(path.join(root, name), 'utf8');
@@ -35,12 +36,13 @@ if (Object.keys(authConfig).some(k=>!['url','publishableKey'].includes(k))) thro
 if (/^sb_secret_/i.test(authConfig.publishableKey||'')) throw Error('Secret server key cannot be embedded');
 if ((authConfig.publishableKey||'').split('.').length===3) { const role=JSON.parse(Buffer.from(authConfig.publishableKey.split('.')[1],'base64url').toString()).role; if(role!=='anon') throw Error('Only public anon key may be embedded'); }
 const vendor=await bundle({stdin:{contents:"export {createClient} from '@supabase/supabase-js';",resolveDir:root},bundle:true,format:'iife',globalName:'SupabaseSDK',target:'es2022',platform:'browser',write:false,minify:true,legalComments:'eof'});
+const knowledgeTopics = JSON.parse(await read('data/knowledge-topics.json'));
 const homeHero=JSON.parse(await read('config/home-hero.json'));
 if(homeHero.src){
  if(!/^assets\/[a-zA-Z0-9_-]+\.(png|jpg|jpeg|webp)$/.test(homeHero.src)||![homeHero.width,homeHero.height].every(n=>Number.isInteger(n)&&n>0))throw Error('Invalid original home banner configuration');
  await access(path.join(root,'public',homeHero.src));
 }
-const sources = await Promise.all(['core', 'storage', 'auth', 'sound', 'home-hero', 'ui', 'online', 'educational-core', 'educational-boards', 'educational-scenes', 'educational', 'study', 'ministerial', 'learning', 'controller'].map(name => read(`src/${name}.js`)));
+const sources = await Promise.all(['core', 'storage', 'auth', 'sound', 'home-hero', 'qr', 'ui', 'online', 'educational-core', 'educational-boards', 'educational-scenes', 'educational', 'study', 'ministerial', 'learning', 'knowledge-api', 'knowledge', 'knowledge-admin', 'controller'].map(name => read(`src/${name}.js`)));
 // Canonical editorial metadata stays in data/questions.json. Embed only fields used by the offline runtime.
 const runtimeRecord = q => ({
   id:q.id,unit_id:q.unit_id,lesson_id:q.lesson_id,difficulty:q.difficulty,type:q.type,topic:q.topic,
@@ -58,9 +60,9 @@ const media=JSON.parse(await read('config/media.json'));
 const compendiumExam=JSON.parse(await read('data/compendium-exam.json'));
 const guides=JSON.parse(await read('data/lesson-guides.json'));
 const summaries=JSON.parse(await read('data/lesson-summaries.json'));
-const code = `${vendor.outputFiles[0].text}\nconst REFINED_BANK_RELEASE=${Boolean(release)}; const MINISTERIAL_REVIEW=${JSON.stringify(ministerialQuestions)}; const HOME_HERO=${JSON.stringify(homeHero)}; const COMPENDIUM_EXAM=${JSON.stringify(compendiumExam)}; const LEARNING_DATA=${JSON.stringify(learning)}; const MEDIA_CONFIG=${JSON.stringify(media)}; const LESSON_SUMMARIES=${JSON.stringify(summaries)}; const LESSON_GUIDES=${JSON.stringify(guides)};\nconst AUTH_CONFIG=${JSON.stringify(authConfig)};\nconst EMBEDDED_LESSONS=${JSON.stringify(lessons)};\nconst EMBEDDED_QUESTIONS=${JSON.stringify(runtimeQuestions)};\n${sources.join('\n')}`;
+const code = `const KNOWLEDGE_TOPICS=${JSON.stringify(knowledgeTopics)};\nconst SITE_SHARE=${JSON.stringify(await buildSiteShare(root))};\n${vendor.outputFiles[0].text}\nconst REFINED_BANK_RELEASE=${Boolean(release)}; const MINISTERIAL_REVIEW=${JSON.stringify(ministerialQuestions)}; const HOME_HERO=${JSON.stringify(homeHero)}; const COMPENDIUM_EXAM=${JSON.stringify(compendiumExam)}; const LEARNING_DATA=${JSON.stringify(learning)}; const MEDIA_CONFIG=${JSON.stringify(media)}; const LESSON_SUMMARIES=${JSON.stringify(summaries)}; const LESSON_GUIDES=${JSON.stringify(guides)};\nconst AUTH_CONFIG=${JSON.stringify(authConfig)};\nconst EMBEDDED_LESSONS=${JSON.stringify(lessons)};\nconst EMBEDDED_QUESTIONS=${JSON.stringify(runtimeQuestions)};\n${sources.join('\n')}`;
 new vm.Script(code, { filename: 'app.bundle.js' });
-const css = (await Promise.all(['styles','educational-boards','educational-scenes','learning'].map(name=>read(`src/${name}.css`)))).join('\n');
+const css = (await Promise.all(['styles','educational-boards','educational-scenes','learning','qr','knowledge','knowledge-admin'].map(name=>read(`src/${name}.css`)))).join('\n');
 // Inline the canonical brand icon so Pages and the standalone HTML need no asset request.
 const favicon = 'data:image/svg+xml,' + encodeURIComponent(await read('assets/favicon.svg'));
 const html = `<!doctype html>

@@ -1,0 +1,47 @@
+.auth-story-resources {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-block: 8px 24px;
+}
+.auth-story-resources .auth-feature-list { margin: 0; flex: 1 1 190px; }
+.site-qr { margin-inline-start: auto; text-align: center; }
+.site-qr-actions { display: flex; align-items: center; justify-content: center; }
+.site-qr-actions button, .site-qr-dialog-head button {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  min-height: 44px; border: none; background: transparent; color: #f0d797;
+  font: inherit; font-size: .76rem; cursor: pointer;
+}
+.site-qr-actions .site-qr-more { min-width: 44px; }
+.site-qr-actions button:hover { text-decoration: underline; }
+.site-qr figure { margin: 0; }
+.site-qr figcaption { color: #ebf2e9; font-size: .72rem; margin-bottom: 7px; }
+.site-qr figure img {
+  display: block; margin-inline: auto; border-radius: 6px; background: white;
+  image-rendering: pixelated; max-width: 100%; height: auto;
+}
+.site-qr-dialog {
+  width: min(350px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); overflow: auto;
+  background: var(--panel); color: var(--fg); border: 1px solid var(--line);
+  border-radius: 16px; padding: 18px 20px; text-align: start; margin: auto;
+}
+.site-qr-dialog::backdrop { background: rgb(4 21 15 / 72%); }
+.site-qr-dialog-head { display: flex; align-items: center; justify-content: space-between; }
+.site-qr-dialog-head h2 { margin: 0; font-size: 1.1rem; }
+.site-qr-dialog-head button { min-width: 44px; color: var(--fg); }
+.site-qr-dialog label { display: block; margin: 12px 0 5px; font-size: .8rem; }
+.site-qr-dialog input { width: 100%; }
+.site-qr-options { display: grid; gap: 8px; margin-top: 14px; }
+.site-qr-options > * {
+  display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px;
+  text-decoration: none; border: 1px solid var(--line); border-radius: 9px;
+  color: var(--fg); background: var(--panel2); font: inherit; font-size: .84rem; cursor: pointer;
+}
+.site-qr-status { font-size: .78rem; margin: 9px 0 0; }
+.site-qr-status:empty { display: none; }
+@media(max-width:760px) {
+  .auth-story-resources { display: grid; gap: 14px; margin: 17px 0 0; }
+  .site-qr { margin-inline: auto; }
+}
