@@ -11,3 +11,5 @@ dist/release.json
 __pycache__/
 
 dist/assets/
+
+.review-dist/

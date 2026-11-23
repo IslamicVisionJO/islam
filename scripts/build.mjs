@@ -7,9 +7,22 @@ import { build as bundle } from 'esbuild';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const read = name => readFile(path.join(root, name), 'utf8');
 const lessons = JSON.parse(await read('data/lessons.json'));
-const questions = JSON.parse(await read('data/questions.json'));
+const reviewPreview = process.argv.includes('--review');
+const review = reviewPreview
+  ? await (await import('./review-bank.mjs')).loadReviewBank(new URL('../', import.meta.url), lessons)
+  : null;
+const legacyBank = JSON.parse(await read('data/questions.json'));
+const questions = review ? {questions: review.gameQuestions} : legacyBank;
+if (review) {
+  const legacyIds = new Set(legacyBank.questions.map(q=>q.id));
+  const candidates = [...review.gameQuestions, ...Object.values(review.ministerial).flatMap(levels=>Object.values(levels).flat())];
+  if (candidates.some(q=>legacyIds.has(q.id))) throw Error('Candidate IDs collide with archived question IDs.');
+}
+if (!review && questions.questions.some(q => q.delivery_allocation || q.review?.human_review_required && q.review?.teacher_approved === false)) {
+  throw Error('The candidate bank must stay outside the production build.');
+}
 const savedAuthConfig = JSON.parse(await read('config/auth.public.json'));
-const authConfig = {url:process.env.SUPABASE_URL||savedAuthConfig.url||'',publishableKey:process.env.SUPABASE_PUBLISHABLE_KEY||savedAuthConfig.publishableKey||''};
+const authConfig = review ? {url:"",publishableKey:""} : {url:process.env.SUPABASE_URL||savedAuthConfig.url||'',publishableKey:process.env.SUPABASE_PUBLISHABLE_KEY||savedAuthConfig.publishableKey||''};
 if(Object.keys(savedAuthConfig).some(k=>!['url','publishableKey'].includes(k))) throw Error('Unexpected auth configuration; never embed server secrets');
 if (Object.keys(authConfig).some(k=>!['url','publishableKey'].includes(k))) throw Error('Unexpected auth configuration; never embed server secrets');
 if (/^sb_secret_/i.test(authConfig.publishableKey||'')) throw Error('Secret server key cannot be embedded');
@@ -20,20 +33,22 @@ if(homeHero.src){
  if(!/^assets\/[a-zA-Z0-9_-]+\.(png|jpg|jpeg|webp)$/.test(homeHero.src)||![homeHero.width,homeHero.height].every(n=>Number.isInteger(n)&&n>0))throw Error('Invalid original home banner configuration');
  await access(path.join(root,'public',homeHero.src));
 }
-const sources = await Promise.all(['core', 'storage', 'auth', 'sound', 'home-hero', 'ui', 'online', 'educational-core', 'educational-boards', 'educational-scenes', 'educational', 'study', 'learning', 'controller'].map(name => read(`src/${name}.js`)));
+const sources = await Promise.all(['core', 'storage', 'auth', 'sound', 'home-hero', 'ui', 'online', 'educational-core', 'educational-boards', 'educational-scenes', 'educational', 'study', 'ministerial', 'learning', 'controller'].map(name => read(`src/${name}.js`)));
 // Canonical editorial metadata stays in data/questions.json. Embed only fields used by the offline runtime.
-const runtimeQuestions = { ...questions, questions: questions.questions.map(q => ({
+const runtimeRecord = q => ({
   id:q.id,unit_id:q.unit_id,lesson_id:q.lesson_id,difficulty:q.difficulty,type:q.type,topic:q.topic,
   prompt:q.prompt,payload:q.payload,answer:q.answer,explanation:q.explanation,
   source:{printed_pages:q.source?.printed_pages,pdf_pages:q.source?.pdf_pages},
   review:{source_checked:q.review?.source_checked,excluded:q.review?.excluded,verification_status:q.review?.verification_status}
-})) };
+});
+const runtimeQuestions = { ...questions, questions: questions.questions.map(runtimeRecord) };
+if (review) runtimeQuestions.archivedQuestions = legacyBank.questions.map(runtimeRecord);
 const learning=JSON.parse(await read('data/learning-manifest.json'));
 const media=JSON.parse(await read('config/media.json'));
 const compendiumExam=JSON.parse(await read('data/compendium-exam.json'));
 const guides=JSON.parse(await read('data/lesson-guides.json'));
 const summaries=JSON.parse(await read('data/lesson-summaries.json'));
-const code = `${vendor.outputFiles[0].text}\nconst HOME_HERO=${JSON.stringify(homeHero)}; const COMPENDIUM_EXAM=${JSON.stringify(compendiumExam)}; const LEARNING_DATA=${JSON.stringify(learning)}; const MEDIA_CONFIG=${JSON.stringify(media)}; const LESSON_SUMMARIES=${JSON.stringify(summaries)}; const LESSON_GUIDES=${JSON.stringify(guides)};\nconst AUTH_CONFIG=${JSON.stringify(authConfig)};\nconst EMBEDDED_LESSONS=${JSON.stringify(lessons)};\nconst EMBEDDED_QUESTIONS=${JSON.stringify(runtimeQuestions)};\n${sources.join('\n')}`;
+const code = `${vendor.outputFiles[0].text}\nconst MINISTERIAL_REVIEW=${JSON.stringify(review?.ministerial ?? null)}; const HOME_HERO=${JSON.stringify(homeHero)}; const COMPENDIUM_EXAM=${JSON.stringify(compendiumExam)}; const LEARNING_DATA=${JSON.stringify(learning)}; const MEDIA_CONFIG=${JSON.stringify(media)}; const LESSON_SUMMARIES=${JSON.stringify(summaries)}; const LESSON_GUIDES=${JSON.stringify(guides)};\nconst AUTH_CONFIG=${JSON.stringify(authConfig)};\nconst EMBEDDED_LESSONS=${JSON.stringify(lessons)};\nconst EMBEDDED_QUESTIONS=${JSON.stringify(runtimeQuestions)};\n${sources.join('\n')}`;
 new vm.Script(code, { filename: 'app.bundle.js' });
 const css = (await Promise.all(['styles','educational-boards','educational-scenes','learning'].map(name=>read(`src/${name}.css`)))).join('\n');
 // Inline the canonical brand icon so Pages and the standalone HTML need no asset request.
@@ -50,23 +65,31 @@ const html = `<!doctype html>
 <title>التربية الإسلامية برؤية رقمية</title>
 <style>${css.replace(/<\/style/gi, '<\\/style')}</style>
 </head>
-<body>
+<body>${review ? '<aside class="review-preview-banner" role="note">نسخة مراجعة محلية · أسئلة مرشحة بانتظار اعتماد المعلم</aside>' : ''}
 <div id="app"><div class="fatal"><h1>التربية الإسلامية برؤية رقمية</h1><p>جارٍ تحميل المنصة…</p></div></div>
 <noscript>يرجى تفعيل JavaScript لتشغيل التحديات وتسجيل الدخول.</noscript>
 <script>${code.replace(/<\/script/gi, '<\\/script')}</script>
 </body>
 </html>
 `;
-await mkdir(path.join(root, 'dist'), { recursive: true });
-await writeFile(path.join(root, 'dist/index.html'), html);
-await writeFile(path.join(root, 'standalone.html'), html);
-await writeFile(path.join(root, 'index.html'), html);
-await rm(path.join(root, 'dist/sw.js'), { force: true });
-console.log(`Production + standalone built: ${lessons.length} units, ${lessons.flatMap(u=>u.lessons).length} lessons, ${questions.questions.length} bank records, ${Buffer.byteLength(html)} bytes.`);
+if (review) {
+  const output = path.join(root, '.review-dist');
+  await mkdir(output, {recursive:true});
+  await cp(path.join(root,'public'),output,{recursive:true});
+  await writeFile(path.join(output,'index.html'), html);
+  console.log(`Local review build: 2340 ministerial candidates and ${questions.questions.length} game candidates.`);
+} else {
+  await mkdir(path.join(root, 'dist'), { recursive: true });
+  await writeFile(path.join(root, 'dist/index.html'), html);
+  await writeFile(path.join(root, 'standalone.html'), html);
+  await writeFile(path.join(root, 'index.html'), html);
+  await rm(path.join(root, 'dist/sw.js'), { force: true });
+  console.log(`Production + standalone built: ${lessons.length} units, ${lessons.flatMap(u=>u.lessons).length} lessons, ${questions.questions.length} bank records, ${Buffer.byteLength(html)} bytes.`);
 
-// The admin copy guide is independent of the student app and contains no credentials.
-await (await import('./split-educational-online.mjs')).writeEditorParts({root});
-await import('./build-online-setup.mjs');
-await import('./build-million-setup.mjs');
+  // The admin copy guide is independent of the student app and contains no credentials.
+  await (await import('./split-educational-online.mjs')).writeEditorParts({root});
+  await import('./build-online-setup.mjs');
+  await import('./build-million-setup.mjs');
 
-await cp(path.join(root,'public'),path.join(root,'dist'),{recursive:true});
+  await cp(path.join(root,'public'),path.join(root,'dist'),{recursive:true});
+}

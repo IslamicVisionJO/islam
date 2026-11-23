@@ -1,0 +1,461 @@
+{
+  "question_count": 65,
+  "verified_semantic_redundancies": [
+    {
+      "removed_id": "u02_l05_q103",
+      "retained_id": "u02_l05_q091",
+      "removed_question": "من الصحابي الذي حمل رسالة النبي ﷺ إلى ملك البحرين؟",
+      "retained_question": "من حامل رسالة النبي ﷺ إلى ملك البحرين وفق الدرس؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u02_l05_q111",
+      "retained_id": "u02_l05_q091",
+      "removed_question": "من الصحابي الذي أوفده النبي ﷺ إلى ملك البحرين بحسب عرض الدرس؟",
+      "retained_question": "من حامل رسالة النبي ﷺ إلى ملك البحرين وفق الدرس؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u03_l07_q135",
+      "retained_id": "u03_l07_q115",
+      "removed_question": "ما الذي يميز المستشفى المنصوري الوقفي في القاهرة في وصف الدرس؟",
+      "retained_question": "ما الذي ميّز المستشفى المنصوري الموقوف في القاهرة بحسب الكتاب؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u03_l03_q161",
+      "retained_id": "u03_l03_q101",
+      "removed_question": "متى يبدأ حساب العدة وفق تعريفها في الكتاب؟",
+      "retained_question": "متى يبدأ حساب العدة حسب تعريف الكتاب؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u04_l04_q171",
+      "retained_id": "u04_l04_q101",
+      "removed_question": "في أي سنة هجرية أدى النبي ﷺ حجة الوداع وفق الكتاب؟",
+      "retained_question": "في أي سنة هجرية خرج النبي ﷺ لأداء حجة الوداع؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u03_l04_q111",
+      "retained_id": "u03_l04_q101",
+      "removed_question": "ما حكم الوصية في أصلها كما ورد في الدرس؟",
+      "retained_question": "ما حكم الوصية في أصلها حسب الكتاب؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u03_l04_q121",
+      "retained_id": "u03_l04_q101",
+      "removed_question": "ما حكم الوصية من حيث الأصل كما بيّن الكتاب؟",
+      "retained_question": "ما حكم الوصية في أصلها حسب الكتاب؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u02_l01_q252",
+      "retained_id": "u02_l01_q197",
+      "removed_question": "معنى كلمة (مَخِيلَةٍ) في قول النبي ﷺ الوارد في التعلم القبلي ص48: «كُلُوا، وَاشْرَبُوا، وَالْبَسُوا، وَتَصَدَّقُوا فِي غَيْرِ إِسْرَافٍ وَلَا مَخِيلَةٍ» هو:",
+      "retained_question": "معنى كلمة (مَخِيلَة) في قول النبي ﷺ: «كُلُوا، وَاشْرَبُوا، وَالْبَسُوا، وَتَصَدَّقُوا فِي غَيْرِ إِسْرَافٍ وَلَا مَخِيلَةٍ» هو:",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u02_l04_q112",
+      "retained_id": "u02_l04_q108",
+      "removed_question": "ما العبادة التي ذكر الكتاب أنها كانت واجبة على النبي ﷺ ومندوبة لغيره؟",
+      "retained_question": "أي عبادة كانت واجبة على النبي ﷺ ومندوبة لغيره وفق الإثراء؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u04_l01_q171",
+      "retained_id": "u04_l01_q121",
+      "removed_question": "ما الغرض التربوي من سؤال النبي ﷺ أصحابه عن معنى المفلس في بداية الحديث؟",
+      "retained_question": "ما الغرض التعليمي من سؤال النبي ﷺ أصحابه عن معنى «المفلس» قبل بيانه؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u02_l04_q153",
+      "retained_id": "u02_l04_q104",
+      "removed_question": "كم سنة خدم أنس بن مالك رضي الله عنه النبي ﷺ كما ورد في التعريف براوي الحديث؟",
+      "retained_question": "كم سنة خدم أنس بن مالك النبي ﷺ بحسب التعريف بالراوي؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u03_l04_q230",
+      "retained_id": "u03_l04_q198",
+      "removed_question": "ما الحالتان اللتان تبطل فيهما الوصية وتصبح كأن لم تكن وفق الفقرة (هـ) ص116؟",
+      "retained_question": "ما الحالتان اللتان تبطل فيهما الوصية كما ورد في الفقرة (هـ) ص116؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u02_l06_q151",
+      "retained_id": "u02_l06_q102",
+      "removed_question": "كم بلغ عدد المسلمين في الجيش الذي خرج إلى تبوك وفق الكتاب؟",
+      "retained_question": "كم بلغ عدد جيش المسلمين المتجه إلى تبوك وفق الدرس؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u02_l06_q135",
+      "retained_id": "u02_l06_q102",
+      "removed_question": "كم بلغ تعداد جيش المسلمين في يوم تبوك كما ورد بالدرس؟",
+      "retained_question": "كم بلغ عدد جيش المسلمين المتجه إلى تبوك وفق الدرس؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u03_l03_q144",
+      "retained_id": "u03_l03_q134",
+      "removed_question": "مطلقة مدخول بها لا تحيض وليست حاملًا؛ ما العدة التي نص عليها جدول الكتاب؟",
+      "retained_question": "مطلقة مدخول بها لا تحيض وليست حاملًا؛ فما عدتها الواردة في الكتاب؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u03_l03_q135",
+      "retained_id": "u03_l03_q118",
+      "removed_question": "امرأة توفي عنها زوجها قبل الدخول وهي غير حامل؛ فما حكم المدة في الجدول؟",
+      "retained_question": "امرأة توفي عنها زوجها قبل الدخول وهي غير حامل؛ أي عدة ينص عليها الكتاب؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u02_l06_q155",
+      "retained_id": "u02_l06_q128",
+      "removed_question": "ما المدة التي أقامها النبي ﷺ في تبوك قبل الرجوع حسب الدرس؟",
+      "retained_question": "ما المدة التقريبية لإقامة النبي ﷺ في تبوك كما ورد بالدرس؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u03_l05_q138",
+      "retained_id": "u03_l05_q129",
+      "removed_question": "زوج توفيت زوجته وليس لها أولاد يرثونها؛ فما نصيبه في المثال المدرسي؟",
+      "retained_question": "إذا توفيت زوجة ولم يكن لها أولاد يرثونها، فما نصيب زوجها وفق المثال؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u03_l05_q155",
+      "retained_id": "u03_l05_q129",
+      "removed_question": "تركت امرأة زوجًا ولم تترك أولادًا يرثونها؛ ما نصيب الزوج في المثال المحدد بالكتاب؟",
+      "retained_question": "إذا توفيت زوجة ولم يكن لها أولاد يرثونها، فما نصيب زوجها وفق المثال؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u03_l03_q123",
+      "retained_id": "u03_l03_q102",
+      "removed_question": "ما عدة المطلقة بعد الدخول إذا كانت تحيض وغير حامل وفق الجدول؟",
+      "retained_question": "كم عدة المطلقة المدخول بها التي تحيض وليست حاملًا بحسب الجدول؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u03_l03_q153",
+      "retained_id": "u03_l03_q133",
+      "removed_question": "بعد طلاق امرأة مدخول بها من ذوات الحيض وغير حامل، أي مدة نص عليها جدول الدرس؟",
+      "retained_question": "مطلقة مدخول بها من ذوات الحيض وليست حاملًا؛ ما العدة التي يحددها الجدول؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u01_l05_q171",
+      "retained_id": "u01_l05_q142",
+      "removed_question": "كيف صنّف الدرس بعثة النبي ﷺ بين علامات اليوم الآخر؟",
+      "retained_question": "كيف يصنّف الدرس بعثة النبي محمد ﷺ ضمن علامات الساعة؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u02_l03_q132",
+      "retained_id": "u02_l03_q111",
+      "removed_question": "مَن الخليفة الذي أمر بجمع السنة النبوية بصورة منظمة كما في الدرس؟",
+      "retained_question": "أي خليفة وجّه إلى جمع السنة النبوية تدوينًا بصورة منظمة بحسب الدرس؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u02_l05_q205",
+      "retained_id": "u02_l05_q175",
+      "removed_question": "واحد من الصحابة الآتين حمله النبي ﷺ رسالته إلى (كسرى عظيم الفرس) هو:",
+      "retained_question": "من الذي حمل رسالة النبي ﷺ إلى كسرى عظيم الفرس؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u02_l07_q124",
+      "retained_id": "u02_l07_q102",
+      "removed_question": "أي صحابية كانت من النساء اللاتي شهدن بيعة العقبة الثانية بحسب الكتاب؟",
+      "retained_question": "أي صحابية ذكرت ضمن النساء المشاركات في بيعة العقبة الثانية؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u03_l04_q171",
+      "retained_id": "u03_l04_q141",
+      "removed_question": "متى ينفذ التبرع المالي في الوصية حسب تعريف الكتاب؟",
+      "retained_question": "متى يبدأ تنفيذ التبرع المالي المسمى بالوصية في تعريف الدرس؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u03_l02_q161",
+      "retained_id": "u03_l02_q111",
+      "removed_question": "ما المقصود بالنشوز في مقدمة درس الطلاق؟",
+      "retained_question": "ما المقصود بالنشوز الذي ورد في التعلم القبلي لدرس الطلاق؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u04_l01_q125",
+      "retained_id": "u04_l01_q102",
+      "removed_question": "ما معنى «متاع» في مفردات حديث المفلس؟",
+      "retained_question": "ما معنى كلمة «متاع» في مفردات الحديث الشريف؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u01_l05_q161",
+      "retained_id": "u01_l05_q123",
+      "removed_question": "ما المثال الذي صنّفه الكتاب من علامات اليوم الآخر الصغرى؟",
+      "retained_question": "ما المثال الذي يصنّفه الدرس ضمن علامات الساعة الصغرى؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u02_l07_q104",
+      "retained_id": "u02_l07_q096",
+      "removed_question": "ما الشرط الذي حدده الكتاب لتولي المرأة الوظائف العامة؟",
+      "retained_question": "بأي شرط يذكر الكتاب جواز تولّي المرأة الوظائف العامة؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u03_l05_q215",
+      "retained_id": "u03_l05_q103",
+      "removed_question": "ما نصيب الزوجة من تركة زوجها المتوفى إذا كان له أولاد يرثونه كما ورد في (الإثراء والتوسع) ص122؟",
+      "retained_question": "كم نصيب الزوجة من تركة زوجها إذا كان له أولاد يرثونه وفق المثال؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u03_l05_q156",
+      "retained_id": "u03_l05_q128",
+      "removed_question": "توفي رجل وله أبناء يرثونه؛ ما نصيب زوجته في المثال الذي ذكره الدرس؟",
+      "retained_question": "إذا توفي رجل وله أولاد يرثونه، فما نصيب زوجته في المثال الوارد بالدرس؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u02_l06_q177",
+      "retained_id": "u02_l06_q147",
+      "removed_question": "ما الاسم الذي أطلق على المسجد الذي أنشأه المنافقون لإحداث الفرقة في المدينة؟",
+      "retained_question": "ما الاسم الذي أطلقه الكتاب على البناء الذي أقامه المنافقون للتآمر في المدينة؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u02_l04_q246",
+      "retained_id": "u02_l04_q197",
+      "removed_question": "معنى التركيب (لَا يَمَلُّ اللَّهُ) في حديث: «فَوَاللَّهِ لَا يَمَلُّ اللَّهُ حَتَّى تَمَلُّوا» ص69 هو:",
+      "retained_question": "معنى التركيب (لَا يَمَلُّ اللَّهُ) في قول النبي ﷺ: «فَوَاللَّهِ لَا يَمَلُّ اللَّهُ حَتَّى تَمَلُّوا» هو:",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u02_l04_q141",
+      "retained_id": "u02_l04_q131",
+      "removed_question": "من الصحابي الذي روى حديث الرجال الثلاثة عن عبادة النبي ﷺ؟",
+      "retained_question": "من راوي حديث الثلاثة الذين سألوا عن عبادة النبي ﷺ في هذا الدرس؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u01_l05_q178",
+      "retained_id": "u01_l05_q111",
+      "removed_question": "ما الاسم الذي يطلق على المرحلة الفاصلة بين موت الإنسان والبعث؟",
+      "retained_question": "ما المصطلح الذي يطلق على المرحلة الفاصلة بين الدنيا والآخرة إلى البعث؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u04_l02_q234",
+      "retained_id": "u04_l02_q195",
+      "removed_question": "تشير العبارة الآتية: «فقدها لا يُؤثِّر في حياة الإنسان، لكنَّ وجودها يجعل للحياة بهجةً وجمالًا» إلى مفهوم:",
+      "retained_question": "\"الأخذ بما يليق بالإنسان من محاسن العادات، التي لا يُؤثر فقدها في حياة الإنسان، لكن وجودها يجعل للحياة بهجةً وجمالًا\"، هذا مفهوم:",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u03_l04_q146",
+      "retained_id": "u03_l04_q138",
+      "removed_question": "مات الموصى له قبل الموصي، فما نتيجة ذلك على الوصية الموجّهة إليه في الكتاب؟",
+      "retained_question": "إذا توفي الموصى له قبل الموصي، فماذا يحدث للوصية المعينة له وفق الدرس؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u02_l04_q245",
+      "retained_id": "u02_l04_q196",
+      "removed_question": "معنى كلمة (مَهْ) في قول النبي ﷺ في حديث السيدة عائشة ص69: «مَهْ، عَلَيْكُمْ بِمَا تُطِيقُونَ، فَوَاللَّهِ لَا يَمَلُّ اللَّهُ حَتَّى تَمَلُّوا» هو:",
+      "retained_question": "معنى كلمة (مَهْ) في قول النبي ﷺ في حديث عائشة رضي الله عنها: «مَهْ، عَلَيْكُمْ بِمَا تُطِيقُونَ» هو:",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u04_l04_q112",
+      "retained_id": "u04_l04_q095",
+      "removed_question": "إلى أي مرجع دعا النبي ﷺ المسلمين إلى الاعتصام في وصايا حجة الوداع؟",
+      "retained_question": "ما المرجع الذي دعت إليه وصية النبي ﷺ للاعتصام والهداية؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u02_l05_q280",
+      "retained_id": "u02_l05_q215",
+      "removed_question": "لماذا ذكر الكتاب ص74 أن معظم الزعماء داخل الجزيرة العربية الذين خاطبهم النبي ﷺ بأسمائهم دون ألقاب لم يكونوا ملوكًا حقيقيين؟",
+      "retained_question": "لماذا خاطب النبي ﷺ الملوك والزعماء داخل الجزيرة العربية بأسمائهم من دون ذكر ألقابهم؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u02_l03_q155",
+      "retained_id": "u02_l03_q104",
+      "removed_question": "من مؤلف شرح صحيح البخاري المسمى فتح الباري حسب الدرس؟",
+      "retained_question": "من صاحب «فتح الباري شرح صحيح البخاري» وفق الكتاب؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u03_l01_q262",
+      "retained_id": "u03_l01_q232",
+      "removed_question": "ما الصفة القرآنية التي استدل عليها الكتاب في (الإثراء والتوسع) ص98 بقوله تعالى: ﴿وَالَّذِينَ هُمْ لِأَمَانَاتِهِمْ وَعَهْدِهِمْ رَاعُونَ﴾ [المؤمنون: 8]؟",
+      "retained_question": "يدل النص الشرعي الآتي: \"﴿وَالَّذِينَ هُمْ لِأَمَانَاتِهِمْ وَعَهْدِهِمْ رَاعُونَ﴾\" [المؤمنون: 8] في (الإثراء والتوسع) على صفة:",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u03_l07_q269",
+      "retained_id": "u03_l07_q101",
+      "removed_question": "أين تقع (المدرسة النورية) التي أنشأها السلطان نور الدين زنكي رحمه الله كما ورد في الفقرة (أ) ص134؟",
+      "retained_question": "في أي مدينة أنشأ نور الدين زنكي المدرسة النورية؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u02_l07_q143",
+      "retained_id": "u02_l07_q093",
+      "removed_question": "أي صورة من صور المشاركة السياسية تمثّلها بيعة العقبة الثانية لبعض نساء الأنصار؟",
+      "retained_question": "ما دلالة مشاركة بعض نساء الأنصار في بيعة العقبة الثانية؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u03_l07_q229",
+      "retained_id": "u03_l07_q112",
+      "removed_question": "أنشأ السلطان صلاح الدين الأيوبي رحمه الله المدرسة الصلاحية في مدينة:",
+      "retained_question": "أي مدينة احتضنت المدرسة الصالحية التي أنشأها صلاح الدين الأيوبي وفق الكتاب؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u02_l03_q239",
+      "retained_id": "u02_l03_q211",
+      "removed_question": "ما الحديث النبوي الذي سافر لأجله الصحابي الجليل أبو أيوب الأنصاري رضي الله عنه من المدينة المنورة إلى مصر للتثبت منه من الصحابي عقبة بن عامر رضي الله عنه (صور مشرقة ص63)؟",
+      "retained_question": "ما الحديث النبوي الشريف الذي سافر الصحابي الجليل أبو أيوب الأنصاري رضي الله عنه من المدينة المنورة إلى مصر للتثبت منه من عقبة بن عامر رضي الله عنه؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u03_l04_q228",
+      "retained_id": "u03_l04_q207",
+      "removed_question": "يدل قوله تعالى في فقرة (الإثراء والتوسع) ص117: ﴿وَوَصَّى بِهَا إِبْرَاهِيمُ بَنِيهِ وَيَعْقُوبُ يَا بَنِيَّ إِنَّ اللَّهَ اصْطَفَى لَكُمُ الدِّينَ فَلَا تَمُوتُنَّ إِلَّا وَأَنتُم مُّسْلِمُونَ﴾ [البقرة: 132] على:",
+      "retained_question": "يدل النص الشرعي الآتي: \"﴿وَوَصَّى بِهَا إِبْرَاهِيمُ بَنِيهِ وَيَعْقُوبُ يَا بَنِيَّ إِنَّ اللَّهَ اصْطَفَى لَكُمُ الدِّينَ فَلَا تَمُوتُنَّ إِلَّا وَأَنتُم مُّسْلِمُونَ﴾\" [البقرة: 132] في (الإثراء والتوسع) على:",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u03_l06_q245",
+      "retained_id": "u03_l06_q223",
+      "removed_question": "ما آثار الغلو والتشدد في العبادات التي تُستنتج من حديث عبد الله بن عمرو رضي الله عنهما ص128: «فَإِنَّكَ إِذَا فَعَلْتَ ذَلِكَ هَجَمَتْ عَيْنُكَ، وَنَفِهَتْ نَفْسُكَ، وَإِنَّ لِنَفْسِكَ حَقًّا، وَلِأَهْلِكَ حَقًّا، فَصُمْ وَأَفْطِرْ، وَقُمْ وَنَمْ» (نشاط أتأمل وأستنتج)؟",
+      "retained_question": "يدل حديث عبد الله بن عمرو رضي الله عنهما ص128: «فَإِنَّكَ إِذَا فَعَلْتَ ذَلِكَ هَجَمَتْ عَيْنُكَ، وَنَفِهَتْ نَفْسُكَ، وَإِنَّ لِنَفْسِكَ حَقًّا، وَلِأَهْلِكَ حَقًّا، فَصُمْ وَأَفْطِرْ، وَقُمْ وَنَمْ» على:",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u03_l03_q241",
+      "retained_id": "u03_l03_q213",
+      "removed_question": "يدل قول النبي ﷺ في الفقرة (د) ص110: «لَا يَحِلُّ لِامْرَأَةٍ تُؤْمِنُ بِاللَّهِ وَالْيَوْمِ الْآخِرِ أَنْ تُحِدَّ عَلَى مَيِّتٍ فَوْقَ ثَلَاثٍ إِلَّا عَلَى زَوْجٍ أَرْبَعَةَ أَشْهُرٍ وَعَشْرًا» على حكمين متكاملين هما:",
+      "retained_question": "يدل قول النبي ﷺ: «لَا يَحِلُّ لِامْرَأَةٍ تُؤْمِنُ بِاللَّهِ وَالْيَوْمِ الْآخِرِ أَنْ تُحِدَّ عَلَى مَيِّتٍ فَوْقَ ثَلَاثٍ إِلَّا عَلَى زَوْجٍ أَرْبَعَةَ أَشْهُرٍ وَعَشْرًا» [رواه البخاري ومسلم] على:",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u03_l03_q134",
+      "retained_id": "u03_l03_q094",
+      "removed_question": "مطلقة مدخول بها لا تحيض وليست حاملًا؛ فما عدتها الواردة في الكتاب؟",
+      "retained_question": "امرأة مطلقة مدخول بها وليست حاملًا ولا تحيض؛ ما مدة عدتها حسب الجدول؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u03_l03_q125",
+      "retained_id": "u03_l03_q094",
+      "removed_question": "امرأة مدخول بها طُلقت وليست حاملًا، وهي من غير ذوات الحيض؛ ما مدة عدتها؟",
+      "retained_question": "امرأة مطلقة مدخول بها وليست حاملًا ولا تحيض؛ ما مدة عدتها حسب الجدول؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u01_l02_q175",
+      "retained_id": "u01_l02_q136",
+      "removed_question": "اهتداء المولود إلى الرضاعة من أمه بعد ولادته مثال على أي دليل؟",
+      "retained_question": "رضيع يتجه إلى الرضاعة دون أن يعلّمه أحد كيفية ذلك؛ ما الدليل الذي يوضحه المثال؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u01_l02_q273",
+      "retained_id": "u01_l02_q136",
+      "removed_question": "لاحظت أم أن مولودها الحديث يبحث بفمه عن ثديها ليرضع في الساعات الأولى لولادته من دون أي تعليم مسبق. أي دليل على وجود الله تتأمله هذه الأم؟",
+      "retained_question": "رضيع يتجه إلى الرضاعة دون أن يعلّمه أحد كيفية ذلك؛ ما الدليل الذي يوضحه المثال؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u01_l02_q143",
+      "retained_id": "u01_l02_q111",
+      "removed_question": "إلى أي نوع من الأدلة ينتمي الاستدلال بأن لكل مخلوق مُوجِدًا؟",
+      "retained_question": "ما الدليل العقلي الذي يقوم على أن لكل موجود سببًا وموجِدًا؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u04_l03_q135",
+      "retained_id": "u04_l03_q093",
+      "removed_question": "تعد مخالفة قوانين السير في التصنيف الوارد في الكتاب من أمثلة أي نوع؟",
+      "retained_question": "أي تصنيف يوافق مخالفة قوانين السير في أمثلة الكتاب؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u04_l03_q174",
+      "retained_id": "u04_l03_q093",
+      "removed_question": "إلى أي نوع تندرج مخالفة أنظمة المرور بحسب أمثلة الدرس؟",
+      "retained_question": "أي تصنيف يوافق مخالفة قوانين السير في أمثلة الكتاب؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u04_l03_q165",
+      "retained_id": "u04_l03_q113",
+      "removed_question": "إلى أي نوع من الجرائم ينسب الكتاب مخالفة أنظمة السير وإلقاء النفايات في الشارع؟",
+      "retained_question": "إلقاء النفايات في الشوارع ومخالفة قوانين السير مثالان لأي قسم ورد في الدرس؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u04_l02_q229",
+      "retained_id": "u04_l02_q173",
+      "removed_question": "حرص شاب على تناول الطعام الصحي وممارسة الرياضة بانتظام وأخذ المطاعيم الوقائية وإجراء الفحوصات الطبية الدورية. أي مقصد من مقاصد الشريعة يحققه بسلوكه؟",
+      "retained_question": "طالب يحافظ على صحته بالغذاء النافع والفحوص الوقائية، فأي مقصد يخدم سلوكه؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u04_l02_q178",
+      "retained_id": "u04_l02_q105",
+      "removed_question": "إباحة الجمع بين الصلوات للمسافر مثال على أي مرتبة من مراتب المقاصد؟",
+      "retained_question": "ما المرتبة التي تمثلها رخصة الجمع بين الصلوات للمسافر وفق أمثلة الكتاب؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u01_l03_q157",
+      "retained_id": "u01_l03_q137",
+      "removed_question": "إلى أي مجال نسب الكتاب وصف مرحلة العلقة في خلق الجنين؟",
+      "retained_question": "ما المجال الذي تنتمي إليه الإشارة إلى مراحل نمو الجنين في عرض إعجاز القرآن؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u02_l03_q112",
+      "retained_id": "u02_l03_q103",
+      "removed_question": "ما اسم أشهر المصنفات المترتبة على أسماء الصحابة ومنها كتاب الإمام أحمد بن حنبل؟",
+      "retained_question": "ما الاسم الذي يطلق على كتب الحديث المرتبة وفق أسماء الصحابة الرواة؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u02_l05_q141",
+      "retained_id": "u02_l05_q101",
+      "removed_question": "أي واقعة سبقت انطلاق دعوة الملوك والزعماء بالرسائل كما يشرح الدرس؟",
+      "retained_question": "ما الحدث الذي سبق إرسال الرسائل إلى الملوك والزعماء بحسب الدرس؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u02_l05_q171",
+      "retained_id": "u02_l05_q101",
+      "removed_question": "بعد أي حدث بارز وجّه النبي ﷺ رسائله إلى الملوك والزعماء في السنة السادسة للهجرة؟",
+      "retained_question": "ما الحدث الذي سبق إرسال الرسائل إلى الملوك والزعماء بحسب الدرس؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    },
+    {
+      "removed_id": "u03_l03_q175",
+      "retained_id": "u03_l03_q126",
+      "removed_question": "بماذا تنتهي عدة الحامل عند الطلاق أو وفاة الزوج؟",
+      "retained_question": "كيف تنتهي عدة المرأة الحامل سواء كانت مطلقة أو متوفى عنها زوجها وفق الجدول؟",
+      "reason": "same_lesson_same_fact_and_answer_without_new_assessment_goal"
+    }
+  ],
+  "identical_records": []
+}

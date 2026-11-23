@@ -1,0 +1,53 @@
+{
+  "input_count": 5200,
+  "retained_count": 5135,
+  "semantic_duplicates_removed": 65,
+  "identical_duplicates_removed": 0,
+  "wizari_count": 2340,
+  "games_count": 2795,
+  "lesson_count": 26,
+  "per_lesson": {
+    "easy": 30,
+    "medium": 30,
+    "hard": 30
+  },
+  "retained_by_bank": {
+    "second_2600": 2552,
+    "first_2600": 2583
+  },
+  "game_types": {
+    "multiple_choice": 2431,
+    "fill_blank": 26,
+    "true_false": 156,
+    "multi_select": 78,
+    "matching": 100,
+    "ordering": 4
+  },
+  "wizari_categories": {
+    "الإثراء والتوسع": 81,
+    "التعريفات والمفاهيم": 69,
+    "التقويم والمراجعة": 136,
+    "الخرائط المفاهيمية": 251,
+    "الفهم والتطبيق": 1615,
+    "المفردات والمعاني": 46,
+    "النصوص الشرعية ودلالاتها": 142
+  },
+  "reallocated_after_dedup": 53,
+  "additional_surface_copyedits": 727,
+  "risk_flags": {
+    "distractor_quality_check": 976,
+    "answer_not_literal_in_pdf_text": 3956,
+    "religious_text_visual_check": 824,
+    "correct_answer_unusually_long": 1296,
+    "long_stem_may_include_required_quran_quote": 82,
+    "long_stem": 288,
+    "long_option": 333
+  },
+  "validation_errors": [],
+  "all_pages_opened": 180,
+  "structural_validation_passed": true,
+  "independently_certified_question_count": 0,
+  "teacher_approved_count": 0,
+  "site_build_test": "NOT_RUN (GitHub clone unavailable in container)",
+  "status": "REVIEW_STAGE_NOT_CERTIFIED_NOT_PUBLISHED"
+}

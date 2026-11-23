@@ -30,7 +30,7 @@ function resumeSessionClock(){const s=S.session;if(!s)return;if(s.mode!=='exam'&
 function beginQuestion(s){const now=Date.now();s.questionStartedAt=now;s.elapsedBefore=0;s.pausedAt=null;s.draft=null;const limit=timerLimit(s);s.questionDeadline=limit===null?null:now+limit*1000;}
 function questionPool(mode,lessonId,level,scope){
  let p=S.valid;
- if(mode==='mistakes')p=Object.keys(S.mistakes).filter(id=>(S.mistakes[id]?.mastery||0)<100).map(id=>S.byId.get(id)).filter(Boolean);
+ if(mode==='mistakes')p=S.valid.filter(q=>S.mistakes[q.id]&&(S.mistakes[q.id].mastery||0)<100);
  else if(['training','speed','survival','hearts','duel'].includes(mode))p=p.filter(q=>q.lesson_id===lessonId);
  if(!['training','speed','survival','hearts','duel'].includes(mode)&&scope&&scope!=='all')p=p.filter(q=>q.unit_id===scope);
  p=p.filter(q=>level==='mixed'||q.difficulty===level);
@@ -363,7 +363,11 @@ window.addEventListener('pageshow',event=>{if(event.persisted)location.reload();
 async function initialize(){
  try{
   const [units,data]=[EMBEDDED_LESSONS,EMBEDDED_QUESTIONS];
-  S.units=units;S.questions=data.questions||[];S.valid=S.questions.filter(q=>validQuestion(q)&&q.review?.source_checked===true&&q.review?.excluded!==true);S.byId=new Map(S.questions.filter(validQuestion).map(q=>[q.id,q]));
+  const isReview = typeof MINISTERIAL_REVIEW!=='undefined' && MINISTERIAL_REVIEW!==null;
+  S.units=units;
+  S.questions=data.questions||[];
+  S.valid=S.questions.filter(q=>validQuestion(q)&&(isReview||q.review?.source_checked===true)&&q.review?.excluded!==true);
+  S.byId=new Map([...S.questions,...(isReview?data.archivedQuestions||[]:[])].filter(validQuestion).map(q=>[q.id,q]));
   const saved=await Promise.all([db.get('profile',null),db.get('settings',null),db.get('results',[]),db.get('mistakes',{}),db.get('active',null),db.get('achievements',{})]);
   const safeSaved=(key,value,fallback)=>{if(value===null||value===undefined)return fallback;try{return typeof validateBackup==='function'?validateBackup({app:'tahadi-islamic',version:1,records:{[key]:value}},S.byId)[key]:value;}catch(error){notify(`تعذر قراءة ${key} المحفوظ. بقيت البيانات الأصلية دون حذف ويمكن تصديرها للمراجعة.`);console.warn(error.message);return fallback;}};
   const profile=safeSaved('profile',saved[0],null),settings=safeSaved('settings',saved[1],null);

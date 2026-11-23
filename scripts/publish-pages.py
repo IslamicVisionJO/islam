@@ -3,6 +3,7 @@ import pathlib,subprocess,os,tempfile,json,hashlib,sys
 root=pathlib.Path(__file__).resolve().parents[1];dist=root/'dist'
 def git(*args,**kwargs):return subprocess.check_output(['git','-C',str(root),*args],text=True,**kwargs).strip()
 if not (dist/'index.html').is_file():raise SystemExit('Build the production site first.')
+if 'class="review-preview-banner"' in (dist/'index.html').read_text():raise SystemExit('Candidate review builds cannot be published.')
 if list(dist.rglob('*.pdf')):raise SystemExit('Original PDFs must not be published.')
 if len(list((dist/'videos').glob('*.mp4')))!=26:raise SystemExit('Expected 26 videos.')
 source=git('rev-parse','HEAD');git('fetch','origin','gh-pages');parent=git('rev-parse','FETCH_HEAD')
