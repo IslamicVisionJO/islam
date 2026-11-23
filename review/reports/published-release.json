@@ -1,0 +1,13 @@
+{
+  "sourceCommit": "05d7ef34d8a3a11cbf819882813ce3696c5086ff",
+  "buildSha256": "72b1de8e2f82c0935a85d8acdd52fc43373b7f3c8aa2e581f74b02074e503a09",
+  "name": "التربية الإسلامية برؤية رقمية",
+  "pagesCommit": "d84421aeabd58c5efcd96522bff8bc83f3262764",
+  "status": "Success",
+  "pagesRun": "https://github.com/IslamicVisionJO/islam/actions/runs/45285215958",
+  "site": "https://islamicvisionjo.github.io/islam/",
+  "ministerial": 2340,
+  "individual": 2795,
+  "supabaseBankUpdated": false,
+  "liveBrowserVerified": false
+}

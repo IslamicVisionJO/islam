@@ -3,67 +3,67 @@
     {
       "name": "Game 1: two clients complete the actual activity with server-scored results",
       "status": "passed",
-      "milliseconds": 25885
+      "milliseconds": 21826
     },
     {
       "name": "Game 2: two clients complete the actual activity with server-scored results",
       "status": "passed",
-      "milliseconds": 26454
+      "milliseconds": 17580
     },
     {
       "name": "Game 3: two clients complete the actual activity with server-scored results",
       "status": "passed",
-      "milliseconds": 9547
+      "milliseconds": 8933
     },
     {
       "name": "Game 4: two clients complete the actual activity with server-scored results",
       "status": "passed",
-      "milliseconds": 37666
+      "milliseconds": 33380
     },
     {
       "name": "Game 5: two clients complete the actual activity with server-scored results",
       "status": "passed",
-      "milliseconds": 8980
+      "milliseconds": 8650
     },
     {
       "name": "Game 6: two clients complete the actual activity with server-scored results",
       "status": "passed",
-      "milliseconds": 19562
+      "milliseconds": 20515
     },
     {
       "name": "Game 7: two clients complete the actual activity with server-scored results",
       "status": "passed",
-      "milliseconds": 14235
+      "milliseconds": 13996
     },
     {
       "name": "Game 8: two clients complete the actual activity with server-scored results",
       "status": "passed",
-      "milliseconds": 12284
+      "milliseconds": 9422
     },
     {
       "name": "Game 9: two clients complete the actual activity with server-scored results",
       "status": "passed",
-      "milliseconds": 33072
+      "milliseconds": 104162
     },
     {
       "name": "Game 10: two clients complete the actual activity with server-scored results",
       "status": "passed",
-      "milliseconds": 7476
+      "milliseconds": 7089
     },
     {
       "name": "Game 11: two clients complete the actual activity with server-scored results",
       "status": "passed",
-      "milliseconds": 13935
+      "milliseconds": 15273
     },
     {
       "name": "Game 12: two clients complete the actual activity with server-scored results",
       "status": "passed",
-      "milliseconds": 7818
+      "milliseconds": 7928
     },
     {
       "name": "Game 13: two clients complete the actual activity with server-scored results",
       "status": "passed",
-      "milliseconds": 47551
+      "milliseconds": 50606
     }
   ],
   "browserErrors": [],
@@ -71,5 +71,5 @@
   "sqlBackend": true,
   "authTransport": "simulated",
   "liveSupabase": false,
-  "testedBuildSha256": "9e5f1038022837957b62fdbcd8193b42164dc640124efb6054f62d01eb26b5cc"
+  "testedBuildSha256": "54fe6a9e275ef3299b844a7bda2ecb4952f6f48683ec736fb0657041e2f8172e"
 }
