@@ -363,11 +363,11 @@ window.addEventListener('pageshow',event=>{if(event.persisted)location.reload();
 async function initialize(){
  try{
   const [units,data]=[EMBEDDED_LESSONS,EMBEDDED_QUESTIONS];
-  const isReview = typeof MINISTERIAL_REVIEW!=='undefined' && MINISTERIAL_REVIEW!==null;
+  const hasRefinedBank = typeof MINISTERIAL_REVIEW!=='undefined' && MINISTERIAL_REVIEW!==null;
   S.units=units;
   S.questions=data.questions||[];
-  S.valid=S.questions.filter(q=>validQuestion(q)&&(isReview||q.review?.source_checked===true)&&q.review?.excluded!==true);
-  S.byId=new Map([...S.questions,...(isReview?data.archivedQuestions||[]:[])].filter(validQuestion).map(q=>[q.id,q]));
+  S.valid=S.questions.filter(q=>validQuestion(q)&&(hasRefinedBank||q.review?.source_checked===true)&&q.review?.excluded!==true);
+  S.byId=new Map([...S.questions,...(hasRefinedBank?data.archivedQuestions||[]:[])].filter(validQuestion).map(q=>[q.id,q]));
   const saved=await Promise.all([db.get('profile',null),db.get('settings',null),db.get('results',[]),db.get('mistakes',{}),db.get('active',null),db.get('achievements',{})]);
   const safeSaved=(key,value,fallback)=>{if(value===null||value===undefined)return fallback;try{return typeof validateBackup==='function'?validateBackup({app:'tahadi-islamic',version:1,records:{[key]:value}},S.byId)[key]:value;}catch(error){notify(`تعذر قراءة ${key} المحفوظ. بقيت البيانات الأصلية دون حذف ويمكن تصديرها للمراجعة.`);console.warn(error.message);return fallback;}};
   const profile=safeSaved('profile',saved[0],null),settings=safeSaved('settings',saved[1],null);

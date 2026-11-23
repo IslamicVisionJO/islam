@@ -87,7 +87,7 @@ const Online=(()=>{
  function view(){
   const header=heroTitle('مواجهة أونلاين','غرفة خاصة، رمز دعوة، وصديق يلعب من جهازه.');
   if(authState().mode!=='account')return `${header}<section class="surface panel"><h2>${ico('lock')} سجّل الدخول للمواجهة</h2><p>المواجهات الأونلاين تحتاج حسابين مسجلين لحفظ النتيجة وربطها بكل لاعب. تجربة الضيف تبقى مؤقتة.</p><button class="btn btn-primary" data-action="auth-signout">العودة لتسجيل الدخول</button></section>`;
-  return `${header}<div class="online-content">${state.error?`<div class="auth-message is-error" role="alert">${e(state.error)} <button class="text-link" data-action="online-retry">إعادة المحاولة</button></div>`:''}${state.notice?`<p class="auth-message is-notice" role="status">${e(state.notice)}</p>`:''}${state.loading?'<p class="muted" role="status">جارٍ تحميل الغرف…</p>':''}${state.room?roomView(state.room):lobby()}${history()}</div>`;
+  return `${header}<div class="online-content">${typeof REFINED_BANK_RELEASE!=='undefined'&&REFINED_BANK_RELEASE?'<p class="muted">أسئلة المواجهات يحددها خادم الغرف، وقد تختلف عن بنك التدريب الفردي.</p>':''}${state.error?`<div class="auth-message is-error" role="alert">${e(state.error)} <button class="text-link" data-action="online-retry">إعادة المحاولة</button></div>`:''}${state.notice?`<p class="auth-message is-notice" role="status">${e(state.notice)}</p>`:''}${state.loading?'<p class="muted" role="status">جارٍ تحميل الغرف…</p>':''}${state.room?roomView(state.room):lobby()}${history()}</div>`;
  }
  async function loadAdmin(offset=0){
   if(!authState().isAdmin||state.adminLoading)return;state.adminLoading=true;state.adminError='';paint();

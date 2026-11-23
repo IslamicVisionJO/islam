@@ -2,17 +2,20 @@ import './accept-confirmations.mjs';
 import {strict as assert} from 'node:assert';
 import {chromium} from 'playwright';
 
+const release = process.argv.includes('--release');
 const browser = await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox']});
 try {
  for (const width of [390,1280]) {
   const page = await browser.newPage({viewport:{width,height:900}});
   const errors = [];
   page.on('pageerror', error=>errors.push(error.message));
-  await page.goto('http://127.0.0.1:4174/islam/');
+  await page.goto(release?'http://127.0.0.1:4173/islam/':'http://127.0.0.1:4174/islam/');
   await page.locator('[data-action=guest-name]').click();
   await page.waitForFunction(()=>S.ready && Auth.current().mode==='guest');
-  const bank = await page.evaluate(()=>({count:S.valid.length,configured:Auth.current().configured}));
-  assert.deepEqual(bank,{count:2795,configured:false});
+  const bank = await page.evaluate(()=>({count:S.valid.length,released:REFINED_BANK_RELEASE,configured:Auth.current().configured}));
+  assert.equal(bank.count,2795);
+  assert.equal(bank.released,release);
+  if (!release) assert.equal(bank.configured,false);
   const history = await page.evaluate(()=>{
    const old = EMBEDDED_QUESTIONS.archivedQuestions[0];
    const progress = {name:'طالب',xp:12,coins:2,educationalActive:{

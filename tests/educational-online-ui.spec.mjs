@@ -35,13 +35,13 @@ async function newClient(viewport){
   return route.fulfill({status:200,contentType:'text/html;charset=utf-8',body:configured.replace('const Auth=(()=>{','SupabaseSDK=window.__fixtureSDK;\nconst Auth=(()=>{')});
  });
  const page=await context.newPage();page.on('pageerror',e=>browserErrors.push(e.message));
- await page.goto(base);await page.waitForFunction(()=>S.ready&&Auth.current().configured);
+ await page.goto(base);await page.waitForFunction(()=>typeof S!=='undefined'&&S.ready&&Auth.current().configured);
  return page;
 }
 async function login(page,email){
  await page.locator('#auth-email').fill(email);await page.locator('#auth-password').fill('local-test-password');
  await page.locator('#auth-email-form button[type=submit]').click();
- await page.waitForFunction(()=>S.ready&&Auth.current().mode==='account'&&db.status().userId===Auth.current().user.id);
+ await page.waitForFunction(()=>typeof S!=='undefined'&&S.ready&&Auth.current().mode==='account'&&db.status().userId===Auth.current().user.id);
 }
 async function online(page){await page.evaluate(()=>go('online'));await page.waitForSelector('[data-action="online-create"]');}
 async function step(name,fn){const started=Date.now();try{await fn();results.push({name,status:'passed',milliseconds:Date.now()-started});console.log('PASS '+name);}catch(error){results.push({name,status:'failed',error:error.stack,milliseconds:Date.now()-started});console.error('FAIL '+name+': '+error.message);await mkdir('artifacts',{recursive:true});if(host)await host.screenshot({path:'artifacts/online-failure.png',fullPage:true});await writeFile('test-results/educational-online-failure.json',JSON.stringify({name,error:error.stack,host:host?await host.locator('body').innerText():null},null,2));throw error;}}
@@ -58,7 +58,7 @@ try{
   const initial=await snapshot(ids.host);assert.equal(initial.activity.seconds,137);assert.equal(Date.parse(initial.deadline)-Date.parse(initial.started_at),137000);
   const questions=(await backend.serialize(()=>backend.db.query('select questions from school_private.duel_rooms where id=$1',[roomID]))).rows[0].questions;
   // Reconnection must preserve this room's configured deadline and exact activity content.
-  if(game===1){await host.reload();await host.waitForFunction(()=>S.ready&&Auth.current().mode==='account');await host.evaluate(()=>go('online'));await host.waitForSelector('.edu-play');assert.equal((await snapshot(ids.host)).deadline,initial.deadline);}
+  if(game===1){await host.reload();await host.waitForFunction(()=>typeof S!=='undefined'&&S.ready&&Auth.current().mode==='account');await host.evaluate(()=>go('online'));await host.waitForSelector('.edu-play');assert.equal((await snapshot(ids.host)).deadline,initial.deadline);}
   for(const [page,id] of [[host,ids.host],[guest,ids.guest]]){
    for(let pos=0;pos<questions.length;pos++){
     const q=questions[pos];if(game===3){await click(page,'spin');assert.equal(await page.locator('.edu-wheel').count(),1);await page.waitForTimeout(400);assert.equal(await page.locator('.edu-wheel').count(),1);await page.waitForTimeout(900);}if(game===5)await click(page,'board',pos);if(game===6&&pos===0){for(let i=0;i<Math.min(3,questions.length);i++)await click(page,'clue',i);await click(page,'open');}else if(game===6){await click(page,'open');}

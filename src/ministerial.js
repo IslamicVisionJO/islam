@@ -1,4 +1,4 @@
-/** Candidate exams are mounted only in the local review build. */
+/** Lesson exams use the independently indexed ministerial pool. */
 const Ministerial = (() => {
  const symbols = ['أ', 'ب', 'ج', 'د'];
  let attempt = null;
@@ -25,7 +25,7 @@ const Ministerial = (() => {
     ${button('start','أعد اختبار المستوى',level)}${button('reset','اختر مستوى آخر')}
     ${questions.map((q, i) => `<details class="learning-card"><summary>${nf(i+1)}. ${e(q.prompt)}</summary>
      <p>إجابتك: ${e(q.payload.options.find(o=>o.id===responses.get(q.id))?.text || 'لم تتم الإجابة')}</p>
-     <p>الإجابة في مفتاح المراجعة: ${e(describeAnswer(q))}</p><p>${e(q.explanation)}</p>
+     <p>${typeof REFINED_BANK_RELEASE!=='undefined'&&REFINED_BANK_RELEASE?'الإجابة الصحيحة:':'الإجابة في مفتاح المراجعة:'} ${e(describeAnswer(q))}</p><p>${e(q.explanation)}</p>
      <small>صفحة الكتاب: ${q.source.printed_pages.map(nf).join('، ')}</small></details>`).join('')}`;
   }
   const q = questions[index];

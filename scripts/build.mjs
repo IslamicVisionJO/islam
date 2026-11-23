@@ -2,27 +2,34 @@ import { access, readFile, writeFile, mkdir, rm, cp } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import vm from 'node:vm';
+import {createHash} from 'node:crypto';
 import { build as bundle } from 'esbuild';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const read = name => readFile(path.join(root, name), 'utf8');
 const lessons = JSON.parse(await read('data/lessons.json'));
 const reviewPreview = process.argv.includes('--review');
-const review = reviewPreview
+const release = !reviewPreview && !process.argv.includes('--legacy')
+  ? JSON.parse(await read('config/question-bank-release.json')) : null;
+if (release) {
+  for (const name of ['questions.json','lesson-wizari-index.json','games-challenges-index.json']) {
+    const hash = createHash('sha256').update(await read('review/bank/'+name)).digest('hex');
+    if (hash !== release.sha256?.[name]) throw Error('The approved bank has changed: '+name);
+  }
+}
+const bank = reviewPreview || release
   ? await (await import('./review-bank.mjs')).loadReviewBank(new URL('../', import.meta.url), lessons)
   : null;
 const legacyBank = JSON.parse(await read('data/questions.json'));
-const questions = review ? {questions: review.gameQuestions} : legacyBank;
-if (review) {
+if (legacyBank.questions.some(q=>q.delivery_allocation)) throw Error('The archived bank must stay separate.');
+const questions = bank ? {questions: bank.gameQuestions} : legacyBank;
+if (bank) {
   const legacyIds = new Set(legacyBank.questions.map(q=>q.id));
-  const candidates = [...review.gameQuestions, ...Object.values(review.ministerial).flatMap(levels=>Object.values(levels).flat())];
+  const candidates = [...bank.gameQuestions, ...Object.values(bank.ministerial).flatMap(levels=>Object.values(levels).flat())];
   if (candidates.some(q=>legacyIds.has(q.id))) throw Error('Candidate IDs collide with archived question IDs.');
 }
-if (!review && questions.questions.some(q => q.delivery_allocation || q.review?.human_review_required && q.review?.teacher_approved === false)) {
-  throw Error('The candidate bank must stay outside the production build.');
-}
 const savedAuthConfig = JSON.parse(await read('config/auth.public.json'));
-const authConfig = review ? {url:"",publishableKey:""} : {url:process.env.SUPABASE_URL||savedAuthConfig.url||'',publishableKey:process.env.SUPABASE_PUBLISHABLE_KEY||savedAuthConfig.publishableKey||''};
+const authConfig = reviewPreview ? {url:"",publishableKey:""} : {url:process.env.SUPABASE_URL||savedAuthConfig.url||'',publishableKey:process.env.SUPABASE_PUBLISHABLE_KEY||savedAuthConfig.publishableKey||''};
 if(Object.keys(savedAuthConfig).some(k=>!['url','publishableKey'].includes(k))) throw Error('Unexpected auth configuration; never embed server secrets');
 if (Object.keys(authConfig).some(k=>!['url','publishableKey'].includes(k))) throw Error('Unexpected auth configuration; never embed server secrets');
 if (/^sb_secret_/i.test(authConfig.publishableKey||'')) throw Error('Secret server key cannot be embedded');
@@ -42,13 +49,16 @@ const runtimeRecord = q => ({
   review:{source_checked:q.review?.source_checked,excluded:q.review?.excluded,verification_status:q.review?.verification_status}
 });
 const runtimeQuestions = { ...questions, questions: questions.questions.map(runtimeRecord) };
-if (review) runtimeQuestions.archivedQuestions = legacyBank.questions.map(runtimeRecord);
+if (bank) runtimeQuestions.archivedQuestions = legacyBank.questions.map(runtimeRecord);
+const ministerialQuestions = bank ? Object.fromEntries(Object.entries(bank.ministerial).map(([lesson,levels])=>[
+  lesson,Object.fromEntries(Object.entries(levels).map(([level,questions])=>[level,questions.map(runtimeRecord)]))
+])) : null;
 const learning=JSON.parse(await read('data/learning-manifest.json'));
 const media=JSON.parse(await read('config/media.json'));
 const compendiumExam=JSON.parse(await read('data/compendium-exam.json'));
 const guides=JSON.parse(await read('data/lesson-guides.json'));
 const summaries=JSON.parse(await read('data/lesson-summaries.json'));
-const code = `${vendor.outputFiles[0].text}\nconst MINISTERIAL_REVIEW=${JSON.stringify(review?.ministerial ?? null)}; const HOME_HERO=${JSON.stringify(homeHero)}; const COMPENDIUM_EXAM=${JSON.stringify(compendiumExam)}; const LEARNING_DATA=${JSON.stringify(learning)}; const MEDIA_CONFIG=${JSON.stringify(media)}; const LESSON_SUMMARIES=${JSON.stringify(summaries)}; const LESSON_GUIDES=${JSON.stringify(guides)};\nconst AUTH_CONFIG=${JSON.stringify(authConfig)};\nconst EMBEDDED_LESSONS=${JSON.stringify(lessons)};\nconst EMBEDDED_QUESTIONS=${JSON.stringify(runtimeQuestions)};\n${sources.join('\n')}`;
+const code = `${vendor.outputFiles[0].text}\nconst REFINED_BANK_RELEASE=${Boolean(release)}; const MINISTERIAL_REVIEW=${JSON.stringify(ministerialQuestions)}; const HOME_HERO=${JSON.stringify(homeHero)}; const COMPENDIUM_EXAM=${JSON.stringify(compendiumExam)}; const LEARNING_DATA=${JSON.stringify(learning)}; const MEDIA_CONFIG=${JSON.stringify(media)}; const LESSON_SUMMARIES=${JSON.stringify(summaries)}; const LESSON_GUIDES=${JSON.stringify(guides)};\nconst AUTH_CONFIG=${JSON.stringify(authConfig)};\nconst EMBEDDED_LESSONS=${JSON.stringify(lessons)};\nconst EMBEDDED_QUESTIONS=${JSON.stringify(runtimeQuestions)};\n${sources.join('\n')}`;
 new vm.Script(code, { filename: 'app.bundle.js' });
 const css = (await Promise.all(['styles','educational-boards','educational-scenes','learning'].map(name=>read(`src/${name}.css`)))).join('\n');
 // Inline the canonical brand icon so Pages and the standalone HTML need no asset request.
@@ -65,14 +75,14 @@ const html = `<!doctype html>
 <title>التربية الإسلامية برؤية رقمية</title>
 <style>${css.replace(/<\/style/gi, '<\\/style')}</style>
 </head>
-<body>${review ? '<aside class="review-preview-banner" role="note">نسخة مراجعة محلية · أسئلة مرشحة بانتظار اعتماد المعلم</aside>' : ''}
+<body>${reviewPreview ? '<aside class="review-preview-banner" role="note">نسخة مراجعة محلية · أسئلة مرشحة بانتظار اعتماد المعلم</aside>' : ''}
 <div id="app"><div class="fatal"><h1>التربية الإسلامية برؤية رقمية</h1><p>جارٍ تحميل المنصة…</p></div></div>
 <noscript>يرجى تفعيل JavaScript لتشغيل التحديات وتسجيل الدخول.</noscript>
 <script>${code.replace(/<\/script/gi, '<\\/script')}</script>
 </body>
 </html>
 `;
-if (review) {
+if (reviewPreview) {
   const output = path.join(root, '.review-dist');
   await mkdir(output, {recursive:true});
   await cp(path.join(root,'public'),output,{recursive:true});

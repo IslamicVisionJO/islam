@@ -453,6 +453,9 @@
     }
   ],
   "signals": {
+    "u01_l01_q102": [
+      "correct_longer_than_every_distractor"
+    ],
     "u01_l02_q245": [
       "correct_longer_than_every_distractor"
     ],
