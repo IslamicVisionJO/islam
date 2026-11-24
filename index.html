@@ -1365,6 +1365,7 @@ const Wall=(()=>{
     board.length?`<div class="wall-table"><table><thead><tr><th>الترتيب</th><th>الطالب</th><th>النقاط</th><th>الدقة</th><th>الصمود</th></tr></thead>
      <tbody>${board.map(r=>`<tr><td>${nf(r.rank)}</td><td>${e(r.name)}</td><td>${nf(r.score)}</td><td>${nf(r.accuracy)}٪</td><td>${fmt(r.elapsed)}</td></tr>`).join('')}</tbody></table></div>`:'<p>لا توجد نتائج لهذه الفترة.</p>'}</section>`;
  }
+ const onlineMatchButton='<button type="button" class="btn btn-outline" data-action="navigate" data-page="wall-online">تحدّ صديقك أونلاين</button>';
  function setup(){
   return `<section class="wall-lobby surface panel"><div class="wall-lobby-title"><span aria-hidden="true">▦</span>
    <h2>كم سؤالًا تجيب قبل أن يصل الجدار؟</h2></div>
@@ -1373,7 +1374,7 @@ const Wall=(()=>{
    ${select('wall-lesson','الدرس',[['all',unit==='all'?'جميع الدروس':'جميع دروس الوحدة'],...S.units.filter(u=>unit==='all'||u.id===unit).flatMap(u=>u.lessons.map(l=>[l.id,l.name]))],lesson)}
    ${select('wall-level','المستوى',Object.entries(levels),level)}</div>
    <p class="muted">تعطى الأولوية لأسئلة المستوى المختار، ثم تُستخدم الأسئلة المتاحة في النطاق نفسه.</p>
-   <div class="wall-actions">${online()?btn('ranked','ابدأ التحدي وحفظ النتيجة',pending||board===null||Boolean(boardError)):''}${btn('practice','ابدأ تدريبًا محليًا',pending)}</div>
+   <div class="wall-actions">${onlineMatchButton}${online()?btn('ranked','ابدأ التحدي وحفظ النتيجة',pending||board===null||Boolean(boardError)):''}${btn('practice','ابدأ تدريبًا محليًا',pending)}</div>
    ${authState().isAdmin?'<button class="btn btn-outline" data-action="navigate" data-page="wall-admin">إدارة سباق الجدار</button>':''}
    ${online()?'<p class="muted">تحفظ الجولات المكتملة أو المنتهية بخط الخطر في حسابك.</p>':'<p class="muted">سجّل الدخول للمشاركة في لوحة المتصدرين.</p>'}
   </section>${ranks()}`;
@@ -1530,7 +1531,7 @@ const Wall=(()=>{
   if(action==='exit'&&!confirm('إنهاء المحاولة الآن؟ المحاولة المنسحَب منها لا تدخل الترتيب.'))return;
   void act(action,b.dataset.value);
  });
- return {view,bind,enter,leave,play,bindScene,card:()=>`<article class="surface panel wall-catalog"><span class="edu-game-icon">${ico('eduBoard',38)}</span><h2>${name}</h2><p>ادفع الجدار بإجاباتك الصحيحة وابقَ في التحدي لأطول وقت.</p><button type="button" class="btn btn-gold" data-action="navigate" data-page="wall">ابدأ اللعبة</button><button type="button" class="btn btn-outline" data-action="navigate" data-page="wall-online">تحدّ صديقك أونلاين</button></article>`};
+ return {view,bind,enter,leave,play,bindScene,card:()=>`<article class="surface panel wall-catalog"><span class="edu-game-icon">${ico('eduBoard',38)}</span><h2>${name}</h2><p>ادفع الجدار بإجاباتك الصحيحة وابقَ في التحدي لأطول وقت.</p><button type="button" class="btn btn-gold" data-action="navigate" data-page="wall">ابدأ اللعبة</button>${onlineMatchButton}</article>`};
 })();
 
 const WallMatch=(()=>{
@@ -2495,7 +2496,7 @@ const Educational=(()=>{
  function setWallet(receipt){S.millionWallet={coins:receipt.walletCoins,token:storageScope()};}
  const C=EducationalContent;let startPending=false;let durationChoice='0',customSeconds='180',questionTimer='0',unit='all',lesson='all',g=null,token=null,write=Promise.resolve();
  const shuffle=a=>a.map(v=>[Math.random(),v]).sort((a,b)=>a[0]-b[0]).map(x=>x[1]);
- const btn=(label,action,value='',extra='')=>`<button type="button" class="btn btn-outline" data-edu="${action}" data-value="${e(value)}" ${extra}>${e(label)}</button>`;
+ const btn=(label,action,value='',extra='')=>`<button type="button" class="btn ${action==='start'?'btn-gold':'btn-outline'}" data-edu="${action}" data-value="${e(value)}" ${extra}>${e(label)}</button>`;
  const source=q=>`<p class="muted">${e(q.explanation)}<br>المصدر: كتاب التربية الإسلامية — صفحة ${e(q.source?.printed_pages?.join('، ')||'غير محددة')} • ${e(byLesson(q.lesson_id)?.name)}. اعتماد البنك العلمي جزئي؛ راجع الكتاب والمعلم.</p>`;
  const scoped=()=>C.pool(S.valid.filter(isStandaloneGameQuestion),unit,lesson);
  const current=()=>g&&S.byId.get(g.ids[g.index]);
