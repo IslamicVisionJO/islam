@@ -298,7 +298,8 @@ async function onAction(btn){const action=btn.dataset.action;if(action==='writer
  case 'colors-reset':await saveHeaderColor(btn.dataset.target,'');break;
  case 'navigate':
   if(btn.dataset.page==='learning')Learning.catalog();
-  else if(btn.dataset.page==='revision')Revision.open();
+  else if(btn.dataset.page==='units')Learning.questionsCatalog();
+  else if(btn.dataset.page==='revision'||btn.dataset.page==='compendium')Revision.open();
   else go(btn.dataset.page);
   break;
  case 'sidebar-compact':{
@@ -344,14 +345,7 @@ async function onAction(btn){const action=btn.dataset.action;if(action==='writer
 document.addEventListener('click',event=>{if(S.colorsOpen&&!event.target.closest('.appearance-picker'))closeHeaderColors();const b=event.target.closest('[data-action]');if(!b||b.disabled)return;if(b.classList.contains('modal-backdrop')&&event.target.closest('.modal'))return;event.preventDefault();onAction(b).catch(error=>{console.warn(error.message);notify('تعذر تنفيذ الإجراء: '+error.message);});});
 
 document.addEventListener('input',event=>{
- if(event.target?.id==='setting-theme'){applyAppearance({...S.settings,theme:event.target.value});return;}
- if(event.target?.id!=='lesson-search')return;
- const query=event.target.value.trim().toLocaleLowerCase('ar').normalize('NFKC');
- let visible=0;for(const card of document.querySelectorAll('#lesson-directory .direct-lesson-card')){
-  const text=card.querySelector('.direct-lesson-name')?.textContent.toLocaleLowerCase('ar').normalize('NFKC')||'';
-  card.hidden=!text.includes(query);if(!card.hidden)visible++;
- }
- const empty=document.getElementById('no-lessons');if(empty)empty.hidden=visible>0;
+ if(event.target?.id==='setting-theme')applyAppearance({...S.settings,theme:event.target.value});
 });
 document.addEventListener('submit',event=>{if(event.target?.id!=='setup-form')return;event.preventDefault();startForm().catch(error=>notify('تعذر بدء الجولة: '+error.message));});
 document.addEventListener('change',async event=>{try{const t=event.target;

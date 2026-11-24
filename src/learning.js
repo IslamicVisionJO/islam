@@ -34,15 +34,20 @@ const Learning=(()=>{
   });
  }
  const lessonTabs=[['video','الفيديو'],['explanation','الشرح'],['solutions','حلول الكتاب'],['quiz','اختبر فهمك'],['revision','المكثف']];
- function show(year,unit){
+ function show(year,unit,page='learning'){
   selected=null;
   selectedYear=year||null;
   selectedUnit=unit||null;
   search='';
-  history.replaceState(null,'','#learning'+(year?'/'+year.id:'')+(unit?'/'+unit.id:''));
-  go('learning');
+  history.replaceState(null,'',(page==='units'?'#questions':'#learning')+(year?'/'+year.id:'')+(unit?'/'+unit.id:''));
+  go(page);
  }
  function catalog(){show();}
+ function questionsCatalog(){show(null,null,'units');}
+ function questionsUnit(id){
+  const year=years.find(year=>year.units.some(unit=>unit.id===id));
+  if(year)show(year,year.units.find(unit=>unit.id===id),'units');
+ }
  function open(id,initialTab='video'){
   const lesson=catalogLessons.find(l=>l.id===id);
   if(!lesson)return;
@@ -68,13 +73,13 @@ const Learning=(()=>{
   if(location.hash==='#learning/solutions'){BookSolutions.open();return;}
   const solution=location.hash.match(/^#learning\/(u\d\d_l\d\d)\/solutions$/);
   if(solution){BookSolutions.open(solution[1]);return;}
-  if(location.hash==='#compendium'){Study.open();return;}
+  if(location.hash==='#compendium'){Revision.open();return;}
   const lesson=location.hash.match(/^#learning\/(?:btec[12]\/)?((?:s1_)?u\d\d_l\d\d)(?:\/([a-z]+))?$/);
   if(lesson){open(lesson[1],lesson[2]);return;}
-  const directory=location.hash.match(/^#learning(?:\/(btec[12])(?:\/((?:s1_)?u0[1-4]))?)?$/);
+  const directory=location.hash.match(/^#(learning|questions)(?:\/(btec[12])(?:\/((?:s1_)?u0[1-4]))?)?$/);
   if(directory){
-   const year=years.find(y=>y.id===directory[1]);
-   show(year,year?.units.find(unit=>unit.id===directory[2]));
+   const year=years.find(y=>y.id===directory[2]);
+   show(year,year?.units.find(unit=>unit.id===directory[3]),directory[1]==='questions'?'units':'learning');
   }
  }
  function completion(list){
@@ -96,36 +101,43 @@ const Learning=(()=>{
  }
  function trail(lesson){
   const action=(kind,id,title)=>`<button class="text-link" data-learning="${kind}" data-id="${id}">${e(title)}</button>`;
-  return `<nav class="learning-trail" aria-label="مسار الدرس">${action('catalog','','شرح الدروس')}
+  return `<nav class="learning-trail" aria-label="مسار الدرس">${action('catalog','',S.page==='units'?'الدروس والأسئلة':'شرح الدروس')}
    ${selectedYear?`<span aria-hidden="true">/</span>${action('year',selectedYear.id,selectedYear.name)}`:''}
    ${selectedUnit?`<span aria-hidden="true">/</span>${action('unit',selectedUnit.id,selectedUnit.name)}`:''}
    ${lesson?`<span aria-hidden="true">/</span><span aria-current="page">${e(lesson.name)}</span>`:''}</nav>`;
  }
  function directory(){
+  const questions=S.page==='units';
   if(!selectedYear){
    const last=catalogLessons.find(l=>l.id===S.profile.lastLearningLesson);
-   return `${heroTitle('شرح الدروس','اختر السنة الدراسية')}
+   return `${heroTitle(questions?'الدروس والأسئلة':'شرح الدروس','اختر السنة الدراسية')}
     <div class="learning-units">${years.map(year=>{
      const list=year.units.flatMap(unit=>unit.lessons),videos=list.filter(lesson=>lesson.video).length;
-     return `<section class="surface panel"><h2>${year.name}</h2><p>${nf(year.units.length)} وحدات • ${nf(list.length)} درسًا • ${nf(videos)} فيديو متاح</p>
-     ${completion(list)}<button class="btn btn-gold" data-learning="year" data-id="${year.id}" aria-label="اختر ${year.name}">اختر السنة</button></section>`;
+     return `<section class="surface panel"><h2>${year.name}</h2><p>${nf(year.units.length)} وحدات • ${nf(list.length)} درسًا${questions?'':' • '+nf(videos)+' فيديو متاح'}</p>
+     ${questions?'':completion(list)}<button class="btn btn-gold" data-learning="year" data-id="${year.id}" aria-label="اختر ${year.name}">اختر السنة</button></section>`;
     }).join('')}</div>
-    <div class="study-actions">${last?`<button class="btn btn-gold" data-learning="open" data-id="${last.id}">متابعة آخر درس · ${e(last.name)}</button>`:''}
+    ${questions?'':`<div class="study-actions">${last?`<button class="btn btn-gold" data-learning="open" data-id="${last.id}">متابعة آخر درس · ${e(last.name)}</button>`:''}
     <button class="btn btn-outline" data-learning="solutions-catalog">حلول كتاب السنة الثانية</button>
-    <button class="btn btn-outline" data-revision-page="1">المكثف الشامل</button></div>`;
+    <button class="btn btn-outline" data-revision-page="1">المكثف الشامل</button></div>`}`;
   }
   if(!selectedUnit)return `${trail()}${heroTitle(selectedYear.name,'اختر الوحدة')}
    <div class="learning-units">${selectedYear.units.map(unit=>`<section class="surface panel"><h2>${e(unit.name)}</h2>
-    ${completion(unit.lessons)}<button class="btn btn-gold" data-learning="unit" data-id="${unit.id}" aria-label="افتح ${e(unit.name)}">افتح الوحدة</button></section>`).join('')}</div>`;
+    ${questions?`<p>${nf(unit.lessons.length)} دروس</p>`:completion(unit.lessons)}<button class="btn btn-gold" data-learning="unit" data-id="${unit.id}" aria-label="افتح ${e(unit.name)}">افتح الوحدة</button></section>`).join('')}</div>`;
   const items=selectedUnit.lessons.filter(l=>normalize(l.name).includes(normalize(search)));
   return `${trail()}${heroTitle(e(selectedUnit.name),'اختر الدرس')}
    <label>البحث داخل الوحدة <input id="learning-search" type="search" value="${e(search)}" placeholder="اسم الدرس"></label>
    <div class="learning-units">${items.map(l=>{
     const result=S.results.findLast(row=>row.lessonId===l.id||(row.lessonIds?.length===1&&row.lessonIds[0]===l.id));
     const number=selectedUnit.lessons.indexOf(l)+1;
+    const details=questions?[]:[progress(l.id).completed?'اكتملت المشاهدة':l.video?'فيديو متاح':'الفيديو غير متاح'];
+    if(Number.isFinite(result?.accuracy))details.push('آخر نتيجة '+nf(result.accuracy)+'٪');
+    let destination=`data-learning="open" data-id="${l.id}"`;
+    if(questions)destination=selectedYear.id==='btec1'
+     ?`data-learning="quiz" data-id="${l.id}"`
+     :`data-action="lesson" data-lesson="${l.id}"`;
     return `<article class="surface panel"><small>الدرس ${nf(number)} · صفحة ${nf(l.startPage)}</small><h2>${e(l.name)}</h2>
-     <p>${progress(l.id).completed?'اكتملت المشاهدة':l.video?'فيديو متاح':'الفيديو غير متاح'}${Number.isFinite(result?.accuracy)?' · آخر نتيجة '+nf(result.accuracy)+'٪':''}</p>
-     <button class="btn btn-gold" data-learning="open" data-id="${l.id}" aria-label="افتح ${e(l.name)}">افتح الدرس</button></article>`;
+     ${details.length?`<p>${details.join(' · ')}</p>`:''}
+     <button class="btn btn-gold" ${destination} aria-label="افتح ${e(l.name)}">${questions?'أسئلة الدرس':'افتح الدرس'}</button></article>`;
    }).join('')}</div>${items.length?'':'<p>لم يُعثر على درس مطابق.</p>'}`;
  }
  function revisionPanel(lesson,title='مراجعة الدرس في المكثف'){
@@ -183,7 +195,7 @@ const Learning=(()=>{
   if(tab==='explanation'&&selectedYear.id==='btec2')body=`<div class="lesson-overview"><span class="eyebrow">افهم الفكرة ثم طبّقها</span><h2>شرح الدرس</h2><p>${e(LESSON_SUMMARIES[l.id])}</p></div><nav class="guide-topics" aria-label="محاور الشرح">${(LESSON_GUIDES[l.id]||[]).map((g,i)=>`<a href="#guide-${i}" data-guide-scroll="guide-${i}">${e(g.heading)}</a>`).join('')}</nav>${(LESSON_GUIDES[l.id]||[]).map((g,i)=>`<section class="guide-section" id="guide-${i}"><h3>${e(g.heading)}</h3>${g.items.map(x=>`<article><h4>${e(x.question)}</h4><p class="guide-answer">${e(x.answer)}</p><p>${e(x.explanation)}</p><small>مرجع الشرح في بنك المنصة: صفحة ${e(x.pages.join('، '))}</small></article>`).join('')}</section>`).join('')}<details class="guide-source-note"><summary>مصدر الشرح</summary><p>شرح منظم من تفسيرات بنك المنصة المرتبطة بالكتاب. لا يغني عن نص الكتاب وتوجيه المعلم؛ المراجعة العلمية المستقلة لكل فقرة لم تكتمل.</p></details><h3>تثبيت الفهم</h3><p>راجع محاور الشرح، ثم اختبر فهمك بأسئلة الدرس.</p><button class="btn btn-gold" data-learning="tab" data-id="quiz">اختبر فهمك الآن</button>`;
   if(tab==='revision')body=revisionPanel(l);
   if(tab==='solutions')body='<p>الحلول الكاملة الموثقة لهذا الدرس قيد الإعداد.</p>';
-  if(tab==='quiz'&&selectedYear.id==='btec1')body=reviewView(l);
+  if(tab==='quiz'&&selectedYear.id==='btec1')body=`<button class="text-link" data-learning="questions-unit" data-id="${selectedUnit.id}">أسئلة الوحدة</button>`+reviewView(l);
   if(tab==='quiz'&&selectedYear.id==='btec2')body=Ministerial.view(l)||`<p>اختبر هذا الدرس باستخدام بنك الأسئلة الحالي.</p><button class="btn btn-gold" data-action="lesson" data-lesson="${l.id}">انتقل إلى اختبار الدرس</button>`;
   return `${trail(l)}${heroTitle(e(l.name),`صفحات الكتاب ${l.startPage}–${l.endPage}`)}<div class="learning-tabs" role="tablist" aria-label="محتوى الدرس">${tabs.map(([id,name])=>`<button role="tab" aria-controls="lesson-panel" id="learning-tab-${id}" aria-selected="${tab===id}" data-learning="tab" data-id="${id}">${name}</button>`).join('')}</div><section class="surface panel learning-panel" id="lesson-panel" role="tabpanel" aria-labelledby="learning-tab-${tab}">${body}</section><div class="learning-toolbar">${i?`<button class="btn" data-learning="open" data-id="${yearLessons[i-1].id}">الدرس السابق</button>`:''}${i<yearLessons.length-1?`<button class="btn" data-learning="open" data-id="${yearLessons[i+1].id}">الدرس التالي</button>`:''}</div>`;
  }
@@ -202,9 +214,11 @@ const Learning=(()=>{
   const {learning:action,id}=b.dataset;
   if(action==='open'){open(id);return;}
   if(action==='solutions-catalog'){BookSolutions.open();return;}
-  if(action==='catalog'){catalog();return;}
-  if(action==='year'){const year=years.find(y=>y.id===id);if(year)show(year);return;}
-  if(action==='unit'){const unit=selectedYear?.units.find(u=>u.id===id);if(unit)show(selectedYear,unit);return;}
+  if(action==='quiz'){open(id,'quiz');return;}
+  if(action==='questions-unit'){questionsUnit(id);return;}
+  if(action==='catalog'){if(S.page==='units')questionsCatalog();else catalog();return;}
+  if(action==='year'){const year=years.find(y=>y.id===id);if(year)show(year,null,S.page==='units'?'units':'learning');return;}
+  if(action==='unit'){const unit=selectedYear?.units.find(u=>u.id===id);if(unit)show(selectedYear,unit,S.page==='units'?'units':'learning');return;}
   if(action==='tab'&&id==='solutions'&&selectedYear.id==='btec2'){BookSolutions.open(selected);return;}
   if(action==='tab'){
    if(!lessonTabs.some(([key])=>key===id))return;
@@ -232,5 +246,5 @@ const Learning=(()=>{
  window.addEventListener('hashchange',()=>{if(S.ready)restore();});
  document.addEventListener('click',ev=>{const a=ev.target.closest('[data-guide-scroll]');if(a){ev.preventDefault();document.getElementById(a.dataset.guideScroll)?.scrollIntoView({block:'start'});}});
  document.addEventListener('keydown',ev=>{if(!ev.target.matches('.learning-tabs [role=tab]')||!['ArrowLeft','ArrowRight','Home','End'].includes(ev.key))return;ev.preventDefault();const buttons=[...document.querySelectorAll('.learning-tabs [role=tab]')],i=buttons.indexOf(ev.target),n=ev.key==='Home'?0:ev.key==='End'?buttons.length-1:(i+(ev.key==='ArrowLeft'?1:-1)+buttons.length)%buttons.length;const id=buttons[n].dataset.id;buttons[n].click();document.getElementById('learning-tab-'+id)?.focus();});
- return {view,bind,beforeRender,restore,open,catalog,mergeRanges,save,updateProfile,progressView,selectedLesson:()=>selected};
+ return {view,directory,questionsCatalog,bind,beforeRender,restore,open,catalog,mergeRanges,save,updateProfile,progressView,selectedLesson:()=>selected};
 })();

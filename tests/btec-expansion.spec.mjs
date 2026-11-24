@@ -23,6 +23,37 @@ try {
   });
   await page.goto(origin);
   await page.waitForFunction(()=>S.ready);
+  assert.equal(await page.locator('.sidebar [data-page=revision]').count(),1);
+  assert.equal(await page.locator('.sidebar [data-page=compendium]').count(),0);
+  await page.goto(origin+'#compendium');
+  await page.getByRole('heading',{name:'المكثف الشامل',exact:true}).waitFor();
+  assert.match(page.url(),/#revision\/\d+$/);
+  await page.locator('.sidebar [data-page=units]').click();
+  for(const [year, prefix, counts] of [['btec1','s1_',[6,6,6,7]],['btec2','',[6,7,7,6]]]){
+    await page.locator(`.learning-units [data-id=${year}]`).click();
+    assert.equal(await page.locator('.learning-units [data-learning=unit]').count(),4);
+    for(const [index,count] of counts.entries()){
+      const unit=`${prefix}u0${index+1}`;
+      await page.locator(`.learning-units [data-id="${unit}"]`).click();
+      const cards=page.locator('.learning-units article button');
+      assert.equal(await cards.count(),count);
+      for(const card of await cards.all()){
+        const id=await card.getAttribute('data-id')||await card.getAttribute('data-lesson');
+        assert.ok(id.startsWith(unit+'_l'));
+      }
+      if(index===0){
+        await page.reload();
+        await cards.first().waitFor();
+        await cards.first().click();
+        if(year==='btec1')await page.getByText('أسئلة هذا الدرس بانتظار المراجعة العلمية والاعتماد.').waitFor();
+        else assert.equal(await page.locator('[data-mode=training][data-action=setup]').count(),3);
+        await page.getByRole('button',{name:'أسئلة الوحدة',exact:true}).click();
+        assert.equal(await cards.count(),count);
+      }
+      await page.locator('.learning-trail [data-learning=year]').click();
+    }
+    await page.locator('.learning-trail [data-learning=catalog]').click();
+  }
   await page.locator('.sidebar [data-page=learning]').click();
   assert.equal(await page.locator('.learning-units [data-learning=year]').count(),2);
   for(const [year, counts] of [['btec1',[6,6,6,7]],['btec2',[6,7,7,6]]]){
@@ -108,6 +139,11 @@ try {
   await drawStatus.waitFor();
   await page.waitForFunction(()=>document.querySelector('#revision-status')?.textContent.startsWith('صفحة '));
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
+  await page.locator('.mobile-bottom [data-page=units]').click();
+  await page.locator('.learning-units [data-id=btec2]').click();
+  await page.locator('.learning-units [data-id=u02]').click();
+  assert.equal(await page.locator('.learning-units [data-action=lesson]').count(),7);
+  assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
   await page.locator('[data-action=menu]').first().click();
   await page.locator('.sidebar [data-page=learning]').click();
   assert.ok(await page.getByRole('button',{name:/متابعة آخر درس/}).isVisible());
@@ -124,7 +160,7 @@ try {
   await page.getByText('الإجابة المرجعية في المسودة').click();
   assert.ok(await page.getByText(/مرجع الكتاب/).isVisible());
   assert.deepEqual(errors,[]);
-  console.log('PASS: 8 units and 51 lesson cards, 25 first-year MP4 videos and resume verified, first-year draft isolated, mobile and desktop PDF rendering, PDF search and deep links.');
+  console.log('PASS: single compendium entry, 8 question units split by year, 51 lesson cards, 25 first-year MP4 videos and resume verified, first-year draft isolated, mobile and desktop PDF rendering, PDF search and deep links.');
 } finally {
   await browser.close();
 }
