@@ -104,6 +104,7 @@ if (reviewPreview) {
   await (await import('./split-educational-online.mjs')).writeEditorParts({root});
   await import('./build-online-setup.mjs');
   await import('./build-million-setup.mjs');
+  await import('./build-wall-setup.mjs');
 
   await cp(path.join(root,'public'),path.join(root,'dist'),{recursive:true});
 }
