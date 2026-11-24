@@ -15,3 +15,6 @@ dist/assets/
 .review-dist/
 
 dist/vendor/
+
+dist/lesson-data/
+dist/revision-downloads/

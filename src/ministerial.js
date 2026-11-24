@@ -7,11 +7,22 @@ const Ministerial = (() => {
  const button = (action, label, value='', disabled=false) =>
   `<button type="button" class="btn btn-outline" data-ministerial="${action}" data-value="${e(value)}" ${disabled?'disabled':''}>${e(label)}</button>`;
 
+ function pool(id){
+  const academicId=Revision.meta(id)?.academicId;
+  if(!academicId)return MINISTERIAL_REVIEW?.[id]||Revision.loaded(id,'levels')?.levels;
+  const levels={easy:[],medium:[],hard:[]};
+  for(const q of ACADEMIC_STUDY[academicId].questions){
+   levels[q.difficulty].push({id:q.id,type:'multiple_choice',prompt:q.prompt,explanation:q.explanation,
+    payload:{options:q.options.map((text,i)=>({id:String(i),text}))},answer:{option_id:String(q.correct)},source:{printed_pages:[q.page]}});
+  }
+  return levels;
+ }
  function view(lesson) {
-  const levels = MINISTERIAL_REVIEW?.[lesson.id];
+  const levels = pool(lesson.id);
+  if(!levels&&MINISTERIAL_REVIEW&&!Revision.loaded(lesson.id,'levels'))return Revision.loading(lesson.id,'levels');
   if (!levels) return '';
   const unit = unitFor(lesson.unitId);
-  const title = `<h2>الاختبار الوزاري — ضع دائرة حول رمز الإجابة الصحيحة</h2><p>${e(unit?.name || '')} · ${e(lesson.name)}</p>`;
+  const title = `<h2>محاكاة وزارية تدريبية — اختر الإجابة الصحيحة</h2><p>${e(unit?.name || '')} · ${e(lesson.name)}</p>`;
   if (!attempt || attempt.lesson !== lesson.id || attempt.scope !== db.scopeToken()) {
    return title + '<p>اختر مستوى الاختبار</p><div class="study-actions">' +
     DIFFICULTIES.map(level => button('start', `المستوى ${{easy:'السهل',medium:'المتوسط',hard:'الصعب'}[level]}`, level)).join('') + '</div>';
@@ -52,7 +63,7 @@ const Ministerial = (() => {
   const control = event.target.closest('[data-ministerial]');
   if (!control) return;
   const lesson = Learning.selectedLesson();
-  const levels = MINISTERIAL_REVIEW?.[lesson];
+  const levels = pool(lesson);
   if (!levels) return;
   const action = control.dataset.ministerial;
   if (action==='start') {

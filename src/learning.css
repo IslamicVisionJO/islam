@@ -17,7 +17,7 @@
 
 .book-answer{margin:14px 0}.book-answer h2{font-size:1.2rem}.book-answer-text{white-space:pre-wrap;line-height:1.9}
 .book-answer[hidden]{display:none}.public-section{max-width:1040px;padding:24px;margin:auto}
-@media print{body:has(.book-solutions) :is(.sidebar,.topbar,.mobile-bottom,.site-footer,.skip-link,.identity-banner,.no-print){display:none!important}body:has(.book-solutions) :is(.layout,.main-column,.content){display:block;width:100%;margin:0;padding:0;color:#000;background:#fff}body:has(.book-solutions) .content> :not(.book-solutions,.academic-semester){display:none!important}.book-answer{break-inside:avoid;background:#fff!important;color:#000!important;box-shadow:none}}
+@media print{body:has(.book-solutions) :is(.sidebar,.topbar,.mobile-bottom,.site-footer,.skip-link,.identity-banner,.no-print){display:none!important}body:has(.book-solutions) :is(.layout,.main-column,.content){display:block;width:100%;margin:0;padding:0;color:#000;background:#fff}body:has(.book-solutions) .content> :not(.book-solutions,.academic-semester,.learning-panel:has(.book-solutions)){display:none!important}.book-answer{break-inside:avoid;background:#fff!important;color:#000!important;box-shadow:none}}
 
 .enrichment-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,245px),1fr));gap:16px;margin:18px 0}
 .enrichment-grid h2{font-size:1.2rem}.steam-achievements{margin-block:30px}.steam-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,120px),1fr));gap:8px}
@@ -51,3 +51,9 @@ html:fullscreen .layout:has(.revision-reader) :is(.sidebar,.topbar,.site-footer,
 @media(max-width:1080px) and (min-width:761px){
  .sidebar .nav-group summary{font-size:.65rem;padding-inline:.1rem}
 }
+.revision-list,.revision-entry,.revision-reader { min-width:0; overflow-wrap:anywhere; }
+.revision-entry { line-height:1.95; padding:1rem 0; border-bottom:1px solid var(--line); }
+.revision-entry p { white-space:pre-line; }
+.revision-reader select,.revision-reader input { max-width:100%; min-width:0; }
+.revision-entry [aria-pressed=true] { outline:2px solid var(--gold); }
+@media print {body:has(.revision-reader) :is(.sidebar,.topbar,.mobile-bottom,.no-print,.site-footer,.identity-banner){display:none!important}body:has(.revision-reader) :is(.layout,.main-column,.content,.revision-reader){display:block;width:100%;color:black;background:white}.revision-entry{break-inside:avoid}}

@@ -121,6 +121,10 @@ def load(path):
             assert row['answer'] and (136 if start == 137 else start) <= row['page'] <= lesson['endPage'], row
             if re.match(r'^[أبجد] — ', row['answer']):
                 row['option'] = row['answer'][0]
+            if row['id'] == 'academic-s1-u1-l01-q14':
+                row['question'] = row['question'].replace('فأل ّف', 'فألّف')
+            if row['id'] == 'academic-s1-u1-l01-q16':
+                row['answer'] = 'الآيات من 102 إلى 105 من سورة آل عمران، كما في ص 7؛ نشاط حفظ وتسميع.'
             if row['id'] == 'academic-s1-u4-l02-q13':
                 row['answer'] = 'ج — تحريم الجمع بين المرأة وعمتها أو خالتها في الزواج.'
                 row['editorialNote'] = 'ضُبط التعبير وفق بيان الدرس ونص الحديث في كتاب الطالب، ص 123.'

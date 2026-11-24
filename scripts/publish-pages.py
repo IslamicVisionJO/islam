@@ -6,8 +6,10 @@ if not (dist/'index.html').is_file():raise SystemExit('Build the production site
 if 'class="review-preview-banner"' in (dist/'index.html').read_text():raise SystemExit('Candidate review builds cannot be published.')
 revision=pathlib.Path('content/BTEC_Islamic_Education_Revision.pdf')
 pdfs={file.relative_to(dist) for file in dist.rglob('*.pdf')}
-if pdfs!={revision}:raise SystemExit('Only the supplied two-year revision guide PDF is allowed in dist.')
-if (dist/revision).read_bytes()!=(root/'public'/revision).read_bytes():raise SystemExit('The revision PDF must match the supplied asset.')
+allowed_pdfs={revision,*(pathlib.Path('revision-downloads',name+'.pdf') for name in ('full','semester-1','semester-2'))}
+if pdfs!=allowed_pdfs:raise SystemExit('Unexpected or missing revision PDF in dist.')
+for pdf in allowed_pdfs:
+ if (dist/pdf).read_bytes()!=(root/'public'/pdf).read_bytes():raise SystemExit('Incorrect revision PDF: '+str(pdf))
 if (dist/'first-btec-review').exists():raise SystemExit('First BTEC question candidates cannot be published.')
 second_btec=json.loads((root/'data/learning-manifest.json').read_text())['units']
 first_btec=json.loads((root/'data/first-btec-lessons.json').read_text())

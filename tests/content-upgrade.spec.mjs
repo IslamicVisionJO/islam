@@ -66,7 +66,8 @@ try{
  await admin.getByText('سيتم إضافة الإنجازات قريبًا.').waitFor();
  await visitor.reload();
  await visitor.getByText('سيتم إضافة الإنجازات قريبًا.').waitFor();
- assert.equal(await visitor.locator('.knowledge-section .enrichment-grid article').count(),16);
+ assert.equal(await visitor.locator('.knowledge-section .enrichment-grid article').count(),18);
+ assert.ok(await visitor.getByRole('link',{name:'الأمن الغذائي، الفصل الأول ص 143'}).isVisible());
  await visitor.evaluate(()=>location.hash='#life');
  await visitor.waitForFunction(()=>S.page==='knowledge'&&location.hash==='#steam');
  assert.equal(await visitor.getByRole('heading',{name:'التربية الإسلامية في حياتنا',exact:true}).count(),1);

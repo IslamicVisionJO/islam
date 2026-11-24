@@ -1,10 +1,11 @@
-import { access, readFile, writeFile, mkdir, rm, cp } from 'node:fs/promises';
+import { access, readdir, readFile, writeFile, mkdir, rm, cp } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import vm from 'node:vm';
 import {createHash} from 'node:crypto';
 import { build as bundle } from 'esbuild';
 import { validateFirstBtec } from './first-btec.mjs';
+import { revisionData } from './revision-data.mjs';
 import { buildSiteShare } from './site-qr.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -71,14 +72,6 @@ for (const unit of firstBtecLessons) for (const lesson of unit.lessons) {
   await access(path.join(root, 'public', video));
   lesson.video = video;
 }
-async function copyRevisionViewer(output) {
-  const target = path.join(output, 'vendor/pdfjs');
-  const source = path.join(root, 'node_modules/pdfjs-dist');
-  await mkdir(target, {recursive:true});
-  for (const name of ['pdf.min.mjs', 'pdf.worker.min.mjs']) await cp(path.join(source, 'build', name), path.join(target, name));
-  for (const name of ['LICENSE', 'cmaps', 'standard_fonts', 'wasm']) await cp(path.join(source, name), path.join(target, name), {recursive:true});
-}
-
 const bookSolutions=JSON.parse(await read('data/book-solutions.json'));
 const wallIds=JSON.parse(await read('data/wall-question-ids.json'));
 const media=JSON.parse(await read('config/media.json'));
@@ -89,7 +82,25 @@ const academicSemester=JSON.parse(await read('data/academic-semester-one.json'))
 const academicStudy=JSON.parse(await read('data/academic-semester-one-study.json'));
 const academicMemorization=JSON.parse(await read('data/academic-memorization.json'));
 const academicResources=JSON.parse(await read('data/academic-semester-resources.json'));
-const code = `const ACADEMIC_MEMORIZATION=${JSON.stringify(academicMemorization)}; const ACADEMIC_RESOURCES=${JSON.stringify(academicResources)}; const ACADEMIC_SEMESTER=${JSON.stringify(academicSemester)}; const ACADEMIC_STUDY=${JSON.stringify(academicStudy)};\nconst WALL_QUESTION_IDS=${JSON.stringify(wallIds)}; const KNOWLEDGE_TOPICS=${JSON.stringify(knowledgeTopics)};\nconst SITE_SHARE=${JSON.stringify(await buildSiteShare(root))};\n${vendor.outputFiles[0].text}\nconst REFINED_BANK_RELEASE=${Boolean(release)}; const MINISTERIAL_REVIEW=${JSON.stringify(ministerialQuestions)}; const BOOK_SOLUTIONS=${JSON.stringify(bookSolutions.lessons)}; const HOME_HERO=${JSON.stringify(homeHero)}; const COMPENDIUM_EXAM=${JSON.stringify(compendiumExam)}; const LEARNING_DATA=${JSON.stringify(learning)}; const FIRST_BTEC_LESSONS=${JSON.stringify(firstBtecLessons)}; const LOCAL_REVIEW=${reviewPreview}; const MEDIA_CONFIG=${JSON.stringify(media)}; const LESSON_SUMMARIES=${JSON.stringify(summaries)}; const LESSON_GUIDES=${JSON.stringify(guides)};\nconst AUTH_CONFIG=${JSON.stringify(authConfig)};\nconst EMBEDDED_LESSONS=${JSON.stringify(lessons)};\nconst EMBEDDED_QUESTIONS=${JSON.stringify(runtimeQuestions)};\n${sources.join('\n')}`;
+const revision=revisionData({review:reviewPreview});
+const outputDir=path.join(root,reviewPreview?'.review-dist':'dist','lesson-data');
+await mkdir(outputDir,{recursive:true});
+const lessonFiles={};
+for(const lesson of revision.catalog){
+ lessonFiles[lesson.id]={};
+ for(const [kind,records] of Object.entries({rows:revision.chapters[lesson.id],levels:ministerialQuestions?.[lesson.id]})){
+  if(!records)continue;
+  const payload=JSON.stringify({[kind]:records});
+  const file=lesson.id+'-'+kind+'-'+createHash('sha256').update(payload).digest('hex').slice(0,12)+'.json';
+  await writeFile(path.join(outputDir,file),payload);
+  lessonFiles[lesson.id][kind]=file;
+ }
+}
+const currentFiles=new Set(Object.values(lessonFiles).flatMap(Object.values));
+for(const name of await readdir(outputDir)){
+  if(/^(?:s1_)?u\d{2}_l\d{2}-(?:(?:rows|levels)-)?[0-9a-f]{12}\.json$/.test(name)&&!currentFiles.has(name))await rm(path.join(outputDir,name));
+}
+const code = `const REVISION_CATALOG=${JSON.stringify(revision.catalog)}; const LESSON_FILES=${JSON.stringify(lessonFiles)}; const OFFLINE_REVISION=null; const ACADEMIC_MEMORIZATION=${JSON.stringify(academicMemorization)}; const ACADEMIC_RESOURCES=${JSON.stringify(academicResources)}; const ACADEMIC_SEMESTER=${JSON.stringify(academicSemester)}; const ACADEMIC_STUDY=${JSON.stringify(academicStudy)};\nconst WALL_QUESTION_IDS=${JSON.stringify(wallIds)}; const KNOWLEDGE_TOPICS=${JSON.stringify(knowledgeTopics)};\nconst SITE_SHARE=${JSON.stringify(await buildSiteShare(root))};\n${vendor.outputFiles[0].text}\nconst REFINED_BANK_RELEASE=${Boolean(release)}; const MINISTERIAL_REVIEW=${JSON.stringify(ministerialQuestions ? {} : null)}; const BOOK_SOLUTIONS=${JSON.stringify(bookSolutions.lessons)}; const HOME_HERO=${JSON.stringify(homeHero)}; const COMPENDIUM_EXAM=${JSON.stringify(compendiumExam)}; const LEARNING_DATA=${JSON.stringify(learning,(key,value)=>['questionImages','answerImages'].includes(key)?undefined:value)}; const FIRST_BTEC_LESSONS=${JSON.stringify(firstBtecLessons)}; const LOCAL_REVIEW=${reviewPreview}; const MEDIA_CONFIG=${JSON.stringify(media)}; const LESSON_SUMMARIES=${JSON.stringify(summaries)}; const LESSON_GUIDES=${JSON.stringify(guides)};\nconst AUTH_CONFIG=${JSON.stringify(authConfig)};\nconst EMBEDDED_LESSONS=${JSON.stringify(lessons)};\nconst EMBEDDED_QUESTIONS=${JSON.stringify(runtimeQuestions)};\n${sources.join('\n')}`;
 new vm.Script(code, { filename: 'app.bundle.js' });
 const css = (await Promise.all(['styles','educational-boards','educational-scenes','learning','qr','knowledge','knowledge-admin','wall','academic-semester'].map(name=>read(`src/${name}.css`)))).join('\n');
 // Inline the canonical brand icon so Pages and the standalone HTML need no asset request.
@@ -117,7 +128,7 @@ if (reviewPreview) {
   const output = path.join(root, '.review-dist');
   await mkdir(output, {recursive:true});
   await cp(path.join(root,'public'),output,{recursive:true});
-  await copyRevisionViewer(output);
+  await rm(path.join(output,'vendor/pdfjs'),{recursive:true,force:true});
   const firstReview = path.join(output, 'first-btec-review');
   const flags = new Map(priority.map(item=>[item.id,item.flags]));
   await mkdir(firstReview, {recursive:true});
@@ -132,8 +143,10 @@ if (reviewPreview) {
 } else {
   await mkdir(path.join(root, 'dist'), { recursive: true });
   await writeFile(path.join(root, 'dist/index.html'), html);
-  await writeFile(path.join(root, 'standalone.html'), html);
-  await writeFile(path.join(root, 'index.html'), html);
+  const standalone=html.replace('const OFFLINE_REVISION=null;',()=> 'const OFFLINE_REVISION='+JSON.stringify(revision.chapters).replace(/</g,'\\u003c')+';')
+   .replace('const MINISTERIAL_REVIEW={};',()=> 'const MINISTERIAL_REVIEW='+JSON.stringify(ministerialQuestions).replace(/</g,'\\u003c')+';');
+  await writeFile(path.join(root,'standalone.html'), standalone);
+  await writeFile(path.join(root,'index.html'), standalone);
   await rm(path.join(root, 'dist/sw.js'), { force: true });
   console.log(`Production + standalone built: ${lessons.length+firstBtecLessons.length} units, ${[...lessons,...firstBtecLessons].flatMap(u=>u.lessons).length} lessons, ${questions.questions.length} bank records, ${Buffer.byteLength(html)} bytes.`);
 
@@ -144,5 +157,5 @@ if (reviewPreview) {
   await import('./build-wall-setup.mjs');
 
   await cp(path.join(root,'public'),path.join(root,'dist'),{recursive:true});
-  await copyRevisionViewer(path.join(root, 'dist'));
+  await rm(path.join(root,'dist/vendor/pdfjs'),{recursive:true,force:true});
 }

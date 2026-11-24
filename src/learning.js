@@ -21,7 +21,7 @@ const Learning=(()=>{
    change(profile);
    await db.put('profile',profile,{scopeToken:token});
    if(token!==db.scopeToken())return;
-   for(const key of ['learning','lastLearningLesson','revisionPage','academicSemesterOne']){
+   for(const key of ['learning','lastLearningLesson','revisionPage','academicSemesterOne','revisionStudy']){
     if(Object.hasOwn(profile,key))S.profile[key]=profile[key];
    }
   });
@@ -34,12 +34,15 @@ const Learning=(()=>{
   });
  }
  const lessonTabs=[['video','الفيديو'],['explanation','الشرح'],['solutions','حلول الكتاب'],['quiz','اختبر فهمك'],['revision','المكثف']];
+ function route(hash){
+  if(location.hash!==hash)history.pushState(null,'',hash);
+ }
  function show(year,unit,page='learning'){
   selected=null;
   selectedYear=year||null;
   selectedUnit=unit||null;
   search='';
-  history.replaceState(null,'',(page==='units'?'#questions':'#learning')+(year?'/'+year.id:'')+(unit?'/'+unit.id:''));
+  route((page==='units'?'#questions':'#learning')+(year?'/'+year.id:'')+(unit?'/'+unit.id:''));
   go(page);
  }
  function catalog(){show();}
@@ -51,6 +54,7 @@ const Learning=(()=>{
  function open(id,initialTab='video'){
   const lesson=catalogLessons.find(l=>l.id===id);
   if(!lesson)return;
+  if(initialTab==='solutions'&&!id.startsWith('s1_')){BookSolutions.open(id);return;}
   if(selected!==id){
    Ministerial.reset();
    reviewLevel='easy';
@@ -62,7 +66,7 @@ const Learning=(()=>{
   selectedUnit=selectedYear.units.find(unit=>unit.lessons.includes(lesson));
   tab=lessonTabs.some(([key])=>key===initialTab)?initialTab:'video';
   const suffix=tab==='video'?'':'/'+tab;
-  history.replaceState(null,'',id.startsWith('s1_')?'#learning/btec1/'+id+suffix:'#learning/'+id+suffix);
+  route(id.startsWith('s1_')?'#learning/btec1/'+id+suffix:'#learning/'+id+suffix);
   go('learning');
   if(S.profile.lastLearningLesson!==id)void updateProfile(next=>{next.lastLearningLesson=id;}).catch(()=>notify('تعذر حفظ آخر درس.'));
  }
@@ -119,7 +123,7 @@ const Learning=(()=>{
     }).join('')}</div>
     ${questions?'':`<div class="study-actions">${last?`<button class="btn btn-gold" data-learning="open" data-id="${last.id}">متابعة آخر درس · ${e(last.name)}</button>`:''}
     <button class="btn btn-outline" data-learning="solutions-catalog">حلول كتاب السنة الثانية</button>
-    <button class="btn btn-outline" data-revision-page="1">المكثف الشامل</button></div>`}`;
+    <button class="btn btn-outline" data-revision-home>المكثف الشامل</button></div>`}`;
   }
   if(!selectedUnit)return `${trail()}${heroTitle(selectedYear.name,'اختر الوحدة')}
    <div class="learning-units">${selectedYear.units.map(unit=>`<section class="surface panel"><h2>${e(unit.name)}</h2>
@@ -141,8 +145,8 @@ const Learning=(()=>{
      <button class="btn btn-gold" ${destination} aria-label="افتح ${e(l.name)}">${questions?'أسئلة الدرس':'افتح الدرس'}</button></article>`;
    }).join('')}</div>${items.length?'':'<p>لم يُعثر على درس مطابق.</p>'}`;
  }
- function revisionPanel(lesson,title='مراجعة الدرس في المكثف'){
-  return `<h2>${title}</h2><p>صفحة ${nf(Revision.pages.get(lesson.id))} من المكثف الشامل.</p>${Revision.button(lesson.id)}`;
+ function revisionPanel(lesson){
+  return Revision.panel(lesson.id)+Revision.button(lesson.id);
  }
  function reviewView(lesson){
   if(!LOCAL_REVIEW)return '<p>أسئلة هذا الدرس بانتظار المراجعة العلمية والاعتماد.</p>';
@@ -192,15 +196,28 @@ const Learning=(()=>{
   let body='';
   if(tab==='video'&&!l.video)body='<p>فيديو هذا الدرس غير متاح حاليًا.</p>';
   if(tab==='video'&&l.video)body=`<video id="lesson-video" data-paused controls playsinline preload="none" src="${e(media(l.video))}" aria-label="شرح ${e(l.name)}"></video><label class="video-speed">سرعة التشغيل<select id="video-speed">${[.5,.75,1,1.25,1.5,2].map(n=>`<option value="${n}" ${n===1?'selected':''}>${n}×</option>`).join('')}</select></label><progress id="watch-progress" max="100" value="${Math.min(100,(progress(l.id).ranges||[]).reduce((s,[a,b])=>s+b-a,0)/(progress(l.id).duration||1)*100)}" aria-label="نسبة المشاهدة الفعلية"></progress><p id="video-status" role="status">${progress(l.id).completed?'اكتملت المشاهدة':'يُحسب التقدم من المقاطع المشاهدة، وليس من القفز إلى النهاية.'}</p>`;
-  if(tab==='explanation'&&selectedYear.id==='btec1')body=revisionPanel(l,'شرح الدرس في المكثف المرفق');
-  if(tab==='explanation'&&selectedYear.id==='btec2')body=`<div class="lesson-overview"><span class="eyebrow">افهم الفكرة ثم طبّقها</span><h2>شرح الدرس</h2><p>${e(LESSON_SUMMARIES[l.id])}</p></div><nav class="guide-topics" aria-label="محاور الشرح">${(LESSON_GUIDES[l.id]||[]).map((g,i)=>`<a href="#guide-${i}" data-guide-scroll="guide-${i}">${e(g.heading)}</a>`).join('')}</nav>${(LESSON_GUIDES[l.id]||[]).map((g,i)=>`<section class="guide-section" id="guide-${i}"><h3>${e(g.heading)}</h3>${g.items.map(x=>`<article><h4>${e(x.question)}</h4><p class="guide-answer">${e(x.answer)}</p><p>${e(x.explanation)}</p><small>مرجع الشرح في بنك المنصة: صفحة ${e(x.pages.join('، '))}</small></article>`).join('')}</section>`).join('')}<details class="guide-source-note"><summary>مصدر الشرح</summary><p>شرح منظم من تفسيرات بنك المنصة المرتبطة بالكتاب. لا يغني عن نص الكتاب وتوجيه المعلم؛ المراجعة العلمية المستقلة لكل فقرة لم تكتمل.</p></details><h3>تثبيت الفهم</h3><p>راجع محاور الشرح، ثم اختبر فهمك بأسئلة الدرس.</p><button class="btn btn-gold" data-learning="tab" data-id="quiz">اختبر فهمك الآن</button>`;
+  if(tab==='explanation'&&selectedYear.id==='btec1'){
+   const id=Revision.meta(l.id).academicId;
+   const guide=AcademicAdmin.guide(id);
+   body=`<h2>شرح الدرس</h2><p>${e(guide.outcome)}</p><p>${e(guide.overview)}</p>${AcademicSemester.lessonResources(Revision.academicLesson(id))}<h3>تطبيق عملي</h3><p>${e(guide.practice)}</p>`;
+  }
+  if(tab==='explanation'&&selectedYear.id==='btec2')body=`<div class="lesson-overview"><span class="eyebrow">افهم الفكرة ثم طبّقها</span><h2>شرح الدرس</h2><p>${e(LESSON_SUMMARIES[l.id])}</p></div><nav class="guide-topics" aria-label="محاور الشرح">${(LESSON_GUIDES[l.id]||[]).map((g,i)=>`<a href="#guide-${i}" data-guide-scroll="guide-${i}">${e(g.heading)}</a>`).join('')}</nav>${(LESSON_GUIDES[l.id]||[]).map((g,i)=>`<section class="guide-section" id="guide-${i}"><h3>${e(g.heading)}</h3>${g.items.map(x=>`<article><h4>${e(x.question)}</h4><p class="guide-answer">${e(x.answer)}</p><p>${e(x.explanation)}</p><small>مرجع الشرح في بنك المنصة: صفحة ${e(x.pages.join('، '))}</small></article>`).join('')}</section>`).join('')}<details class="guide-source-note"><summary>مصدر الشرح</summary><p>شرح منظم من تفسيرات بنك المنصة المرتبطة بالكتاب. لا يغني عن نص الكتاب وتوجيه المعلم؛ المراجعة العلمية المستقلة لكل فقرة لم تكتمل.</p></details><h3>تثبيت الفهم</h3><p>راجع محاور الشرح، ثم اختبر فهمك بأسئلة الدرس.</p><button class="btn btn-gold" data-learning="quiz" data-id="${l.id}">اختبر فهمك الآن</button>`;
   if(tab==='revision')body=revisionPanel(l);
-  if(tab==='solutions')body='<p>الحلول الكاملة الموثقة لهذا الدرس قيد الإعداد.</p>';
-  if(tab==='quiz'&&selectedYear.id==='btec1')body=`<button class="text-link" data-learning="questions-unit" data-id="${selectedUnit.id}">أسئلة الوحدة</button>`+reviewView(l);
+  if(tab==='solutions'&&selectedYear.id==='btec1')body=AcademicSemester.solutions(Revision.academicLesson(Revision.meta(l.id).academicId));
+  if(tab==='solutions'&&selectedYear.id==='btec2')body=BookSolutions.view();
+  if(tab==='quiz'&&selectedYear.id==='btec1')body=`<button class="text-link" data-learning="questions-unit" data-id="${selectedUnit.id}">أسئلة الوحدة</button>`+(LOCAL_REVIEW?reviewView(l):Ministerial.view(l));
   if(tab==='quiz'&&selectedYear.id==='btec2')body=Ministerial.view(l)||`<p>اختبر هذا الدرس باستخدام بنك الأسئلة الحالي.</p><button class="btn btn-gold" data-action="lesson" data-lesson="${l.id}">انتقل إلى اختبار الدرس</button>`;
   return `${trail(l)}${heroTitle(e(l.name),`صفحات الكتاب ${l.startPage}–${l.endPage}`)}<div class="learning-tabs" role="tablist" aria-label="محتوى الدرس">${tabs.map(([id,name])=>`<button role="tab" aria-controls="lesson-panel" id="learning-tab-${id}" aria-selected="${tab===id}" data-learning="tab" data-id="${id}">${name}</button>`).join('')}</div><section class="surface panel learning-panel" id="lesson-panel" role="tabpanel" aria-labelledby="learning-tab-${tab}">${body}</section><div class="learning-toolbar">${i?`<button class="btn" data-learning="open" data-id="${yearLessons[i-1].id}">الدرس السابق</button>`:''}${i<yearLessons.length-1?`<button class="btn" data-learning="open" data-id="${yearLessons[i+1].id}">الدرس التالي</button>`:''}</div>`;
  }
- function bind(){if(S.page==='learning')loadReview();const v=document.getElementById('lesson-video');if(!v||v.dataset.bound)return;v.dataset.bound='true';const id=selected,token=db.scopeToken();let ranges=progress(id).ranges||[],last=null,wall=null,lastSaved=0;
+ function bind(){if(S.page==='learning'){
+   loadReview();
+   if(tab==='explanation'&&selected?.startsWith('s1_')){
+    const id=selected;
+    void AcademicAdmin.refresh().then(updated=>{
+     if(updated&&S.page==='learning'&&selected===id&&tab==='explanation')render();
+    });
+   }
+  }const v=document.getElementById('lesson-video');if(!v||v.dataset.bound)return;v.dataset.bound='true';const id=selected,token=db.scopeToken();let ranges=progress(id).ranges||[],last=null,wall=null,lastSaved=0;
   const commit=()=>{if(token!==db.scopeToken()||!Number.isFinite(v.duration))return;const duration=v.duration,total=mergeRanges(ranges).reduce((n,[a,b])=>n+b-a,0);if(v.isConnected){const bar=document.getElementById('watch-progress');if(bar)bar.value=Math.min(100,total/duration*100);const label=document.getElementById('video-status');if(label)label.textContent=duration>0&&total/duration>=.9?'✓ اكتملت المشاهدة':'المشاهدة الفعلية: '+Math.floor(total/duration*100)+'٪';}void save(id,{position:v.currentTime,ranges:mergeRanges(ranges),duration,completed:duration>0&&total/duration>=.9}).catch(err=>notify('تعذر حفظ تقدم الفيديو: '+err.message));};
   v.addEventListener('loadedmetadata',()=>{v.currentTime=Math.min(progress(id).position||0,v.duration||0);});
   v.addEventListener('play',()=>{delete v.dataset.paused;last=v.currentTime;wall=performance.now();Sound.stop();});
@@ -225,7 +242,7 @@ const Learning=(()=>{
    if(!lessonTabs.some(([key])=>key===id))return;
    tab=id;
    const prefix=selectedYear.id==='btec1'?'#learning/btec1/':'#learning/';
-   history.replaceState(null,'',prefix+selected+(tab==='video'?'':'/'+tab));
+   route(prefix+selected+(tab==='video'?'':'/'+tab));
    render();
    document.getElementById('learning-tab-'+tab)?.focus({preventScroll:true});
    return;

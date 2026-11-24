@@ -4,7 +4,8 @@ const BookSolutions=(()=>{
  function open(id){
   if(id&&!Object.hasOwn(BOOK_SOLUTIONS,id))return;
   lessonId=id||null;
-  history.replaceState(null,'',id?'#learning/'+id+'/solutions':'#learning/solutions');
+  const hash=id?'#learning/'+id+'/solutions':'#learning/solutions';
+  if(location.hash!==hash)history.pushState(null,'',hash);
   go('book-solutions');
  }
  function view(){

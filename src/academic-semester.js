@@ -457,7 +457,7 @@ const AcademicSemester=(()=>{
   const category=document.querySelector('#academic-category').value;
   const query=normalize(document.querySelector('#academic-search').value.trim());
   let count=0;
-  for(const row of document.querySelectorAll('.academic-semester .book-answer')){
+  for(const row of document.querySelectorAll('[data-category].book-answer')){
    row.hidden=Boolean(category&&row.dataset.category!==category)||!normalize(row.textContent).includes(query);
    if(!row.hidden)count++;
   }
@@ -465,6 +465,7 @@ const AcademicSemester=(()=>{
  });
  document.addEventListener('click',async event=>{
   const btn=event.target.closest('[data-academic]');
+  if(btn?.dataset.academic==='print'&&S.page==='learning'){window.print();return;}
   if(!btn||S.page!=='academic-semester')return;
   const {academic:action,value}=btn.dataset;
   const lesson=byId.get(lessonId);
@@ -570,5 +571,5 @@ const AcademicSemester=(()=>{
   }
   render();
  });
- return {open,restore,leave,view,applicationsView};
+ return {open,restore,leave,view,applicationsView,lessonResources,solutions};
 })();

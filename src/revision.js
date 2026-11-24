@@ -1,150 +1,139 @@
-/** Displays the original two-year revision guide without loading PDF assets on other screens. */
+/** The catalog has shared lesson IDs for routing and explicit aliases for academic progress. */
 const Revision=(()=>{
- const filename='content/BTEC_Islamic_Education_Revision.pdf';
- const total=65, firstPage=5, secondPage=35;
- const pages=new Map();
- for(const [units,start] of [[FIRST_BTEC_LESSONS,firstPage],[LEARNING_DATA.units,secondPage]]){
-  units.flatMap(unit=>unit.lessons).forEach((lesson,index)=>pages.set(lesson.id,start+index));
+ const catalog=REVISION_CATALOG;
+ const lessons=new Map(catalog.flatMap(l=>[[l.id,l],...(l.academicId?[[l.academicId,l]]:[])]));
+ const academic=new Map(ACADEMIC_SEMESTER.units.flatMap(u=>u.lessons.map(l=>[l.id,l])));
+ const cache=new Map(), pending=new Map(), failures=new Set();
+ const normalize=s=>s.normalize('NFKC').replace(/[\p{M}ـ]/gu,'').replace(/[أإآٱ]/g,'ا').trim();
+ let archivePage=0;
+ let selected=catalog[0],query='',globalSearch=false,filter='',single=false,index=0,scope,searchVersion=0;
+ const state=()=>S.profile.revisionStudy||{};
+ function loaded(id,kind='rows'){return cache.get(id+kind)||(kind==='rows'&&OFFLINE_REVISION?.[id]?{rows:OFFLINE_REVISION[id]}:null);}
+ async function load(id,kind='rows'){
+  const key=id+kind;
+  if(loaded(id,kind))return loaded(id,kind);
+  if(!pending.has(key)){
+   const task=fetch('lesson-data/'+LESSON_FILES[id][kind]).then(async response=>{
+    if(!response.ok)throw Error('HTTP '+response.status);
+    const chapter=await response.json();
+    if(kind==='rows'&&chapter.rows?.length!==lessons.get(id).count)throw Error('Invalid lesson data');
+    cache.set(key,chapter);
+    if(kind==='levels')MINISTERIAL_REVIEW[id]=chapter.levels;
+    failures.delete(key);
+    return chapter;
+   }).catch(error=>{failures.add(key);throw error;}).finally(()=>pending.delete(key));
+   pending.set(key,task);
+  }
+  return pending.get(key);
  }
- const asset=path=>new URL(path,new URL('./',location.href)).href;
- const pdfUrl=()=>asset(filename);
- let loadDocument, renderTask, sequence=0, searchSequence=0, resizeObserver=null, zoom=1, page=1, scope;
- const safePage=n=>Number.isInteger(n)&&n>=1&&n<=total;
- const searchText=text=>text.normalize('NFKC').replace(/[\p{M}\p{Cf}\u0640]/gu,'').replace(/[أإآٱ]/g,'ا').replace(/ى/g,'ي').replace(/\s+/g,' ').trim().toLowerCase();
- const pageText=new Map();
-
- function getDocument(){
-  if(!loadDocument)loadDocument=(async()=>{
-   const base=asset('vendor/pdfjs/');
-   const pdfjs=await import(base+'pdf.min.mjs');
-   pdfjs.GlobalWorkerOptions.workerSrc=base+'pdf.worker.min.mjs';
-   const pdf=await pdfjs.getDocument({url:pdfUrl(), cMapUrl:base+'cmaps/', cMapPacked:true,
-    standardFontDataUrl:base+'standard_fonts/', wasmUrl:base+'wasm/', isEvalSupported:false}).promise;
-   if(pdf.numPages!==total)throw Error('عدد صفحات المكثف لا يطابق الفهرس.');
-   return pdf;
-  })().catch(error=>{loadDocument=null;throw error;});
-  return loadDocument;
+ function loading(id,kind='rows'){
+  const key=id+kind;
+  if(!failures.has(key)&&!pending.has(key)){
+   void load(id,kind).catch(()=>{}).finally(()=>{
+    if((S.page==='revision'&&selected.id===id)||(S.page==='learning'&&Learning.selectedLesson()===id))render();
+   });
+  }
+  return failures.has(key)?`<p role="alert">تعذر تحميل الدرس. <button class="btn" data-revision-retry="${e(key)}">إعادة المحاولة</button></p>`:'<p role="status">جارٍ تحميل محتوى الدرس…</p>';
  }
- function open(number){
-  const token=db.scopeToken();
-  if(token!==scope){scope=token;zoom=1;}
-  page=safePage(number)?number:S.profile.revisionPage;
-  if(!safePage(page))page=1;
-  history.replaceState(null,'','#revision/'+page);
+ function persist(change){
+  return Learning.updateProfile(profile=>{profile.revisionStudy??={};change(profile.revisionStudy);}).catch(()=>notify('تعذر حفظ تقدم المكثف.'));
+ }
+ function open(id,replace=false,legacyPage=0){
+  if(scope!==db.scopeToken()){scope=db.scopeToken();query='';filter='';single=false;archivePage=0;}
+  if(legacyPage)archivePage=legacyPage;
+  selected=lessons.get(id)||lessons.get(state().lesson)||catalog[0];
+  query='';globalSearch=false;single=Boolean(state().single);
+  index=single&&state().lesson===selected.id?state().index||0:0;searchVersion++;
+  const hash='#revision/'+selected.id;
+  if(location.hash!==hash)history[replace?'replaceState':'pushState'](null,'',hash);
   go('revision');
-  const openedPage=page;
-  void Learning.updateProfile(next=>{next.revisionPage=openedPage;}).catch(()=>notify('تعذر حفظ صفحة المكثف.'));
+  if(state().lesson!==selected.id)void persist(s=>{s.lesson=selected.id;s.index=0;});
  }
  function restore(){
-  const match=location.hash.match(/^#revision(?:\/(\d{1,2}))?$/);
+  const match=location.hash.match(/^#revision(?:\/([\w-]+))?$/);
   if(!match)return false;
-  open(match[1]?Number(match[1]):undefined);
+  // Numeric bookmarks open the archive link; their page numbers belong to the original PDF.
+  const oldPage=Number(match[1]);
+  if(oldPage>0&&Number.isInteger(oldPage)){
+   open(undefined,true,oldPage);notify('يمكن فتح الصفحة القديمة من رابط النسخة السابقة.');
+  }else open(match[1],true);
   return true;
  }
- function button(lessonId,label='راجع هذا الدرس في المكثف'){
-  return `<button class="btn btn-outline" data-revision-page="${pages.get(lessonId)}">${label}</button>`;
+ function button(id,label='راجع هذا الدرس في المكثف'){
+  const l=lessons.get(id);
+  return l?`<a class="btn btn-outline" href="#revision/${l.id}">${e(label)}</a>`:'';
  }
+ function entries(id){
+  return (loaded(id)?.rows||[]).map((row,i)=>({row,number:i+1,lesson:lessons.get(id)}));
+ }
+ function article({row,number,lesson},controls){
+  const flags=state().marks?.[row.id]||{};
+  return `<article class="revision-entry" data-card="${e(row.id)}"><small>${e(row.category)} · ${row.range?'نطاق الدرس':'ص'} ${row.pages.map(nf).join(row.range?'–':'، ')}</small>
+   <h3>${nf(number)}. ${e(row.question)}</h3><p>${e(row.answer)}</p><small>${e(row.source)}${row.status==='draft'?' · مادة مراجعة أولية':row.status==='suggested'?' · إجابة مقترحة':['verify','needs_human_review'].includes(row.status)?' · تحتاج إلى تحقق':''}</small>
+   ${controls?`<div class="study-actions no-print">${[['saved','حفظ للمراجعة'],['difficult','صعب'],['mastered','أتقنت']].map(([key,label])=>`<button class="btn btn-outline" data-mark="${key}" data-lesson-id="${lesson.id}" aria-pressed="${Boolean(flags[key])}">${label}</button>`).join('')}</div>`:''}</article>`;
+ }
+ function panel(id){
+  if(!loaded(id))return loading(id);
+  return `<div class="revision-list">${entries(id).map(item=>article(item,false)).join('')}</div>`;
+ }
+ function results(){
+  const rows=(globalSearch?catalog.flatMap(l=>entries(l.id)):entries(selected.id)).filter(({row,lesson})=>
+   (!filter||state().marks?.[row.id]?.[filter])&&(!query||normalize([lesson.title,row.question,row.answer].join(' ')).includes(normalize(query))));
+  index=Math.max(0,Math.min(index,rows.length-1));
+  return `<p role="status">${nf(rows.length)} سؤالًا</p>${single&&rows.length?`<div class="study-actions no-print"><button class="btn" data-rev-step="-1" ${index?'':'disabled'}>السابق</button><span>${nf(index+1)} / ${nf(rows.length)}</span><button class="btn" data-rev-step="1" ${index===rows.length-1?'disabled':''}>التالي</button></div>`:''}
+   ${(single?rows.slice(index,index+1):rows).map(item=>(globalSearch?`<h2>${button(item.lesson.id,item.lesson.title)}</h2>`:'')+article(item,true)).join('')}`;
+ }
+ function options(items,current){return items.map(([key,label])=>`<option value="${e(key)}" ${key===current?'selected':''}>${e(label)}</option>`).join('');}
  function view(){
-  return `${heroTitle('المكثف الشامل','دليل المراجعة للسنة الأولى BTEC والسنة الثانية BTEC')}
-  <section class="surface panel revision-reader" aria-label="قارئ المكثف">
-   <div class="study-actions"><button class="btn btn-outline" data-revision-page="${firstPage}">السنة الأولى BTEC</button>
-   <button class="btn btn-outline" data-revision-page="${secondPage}">السنة الثانية BTEC</button>
-   <a class="btn btn-outline" href="${e(pdfUrl()+'#page='+page)}" target="_blank" rel="noopener">فتح PDF</a>
-   <a class="btn btn-outline" href="${e(pdfUrl())}" download>تحميل المكثف الأصلي</a>
-   <button class="btn btn-outline" data-revision="share">نسخ رابط الصفحة</button></div>
-   <div class="study-actions revision-controls">
-    <button class="btn btn-outline" data-revision-page="${page-1}" ${page===1?'disabled':''}>السابق</button>
-    <label>صفحة <input type="number" id="revision-page" min="1" max="${total}" value="${page}" required> من ${nf(total)}</label>
-    <button class="btn btn-outline" data-revision-page="${page+1}" ${page===total?'disabled':''}>التالي</button>
-    <button class="btn btn-outline" data-revision="smaller" aria-label="تصغير" ${zoom<=1?'disabled':''}>−</button>
-    <button class="btn btn-outline" data-revision="larger" aria-label="تكبير" ${zoom>=2?'disabled':''}>+</button>
-    <button class="btn btn-outline" data-revision="fullscreen">ملء الشاشة</button>
-   </div>
-   <form class="study-actions" id="revision-search"><label>البحث في النص <input type="search" id="revision-query" required></label>
-    <button class="btn btn-outline" type="submit">ابحث</button></form>
-   <div id="revision-matches" class="study-actions" aria-live="polite"></div>
-   <p id="revision-status" role="status">جارٍ تحميل صفحة المكثف…</p>
-   <div class="revision-sheet" tabindex="0" aria-label="صفحة المكثف"><canvas aria-label="صفحة ${nf(page)} من المكثف"></canvas></div>
-  </section>`;
+  const l=selected,term=catalog.filter(x=>x.semester===l.semester),unit=term.filter(x=>x.unit===l.unit);
+  return `<section class="surface panel revision-reader">${heroTitle('المكثف الشامل',e(l.title))}
+   <div class="study-filters no-print"><label>الفصل<select id="rev-term">${options([[1,'الفصل الأول'],[2,'الفصل الثاني']],l.semester)}</select></label>
+   <label>الوحدة<select id="rev-unit">${options([...new Set(term.map(x=>x.unit))].map(n=>[n,'الوحدة '+nf(n)]),l.unit)}</select></label>
+   <label>الدرس<select id="rev-lesson">${options(unit.map(x=>[x.id,x.title]),l.id)}</select></label></div>
+   <p>مراجعة دراسية من الكتاب المدرسي وحلول الكتاب وتدريبات المنصة. الإجابات المقترحة أمثلة للأنشطة المفتوحة. يشير نطاق الدرس إلى الصفحات التي يشملها الدرس كاملًا.</p>
+   <form id="revision-search" class="study-filters no-print"><label>بحث<input type="search" name="query" value="${e(query)}"></label>
+   <label>النطاق<select name="scope">${options([['lesson','داخل الدرس'],['all','الفصلان']],globalSearch?'all':'lesson')}</select></label>
+   <label>حالة السؤال<select name="filter">${options([['','الكل'],['saved','محفوظ'],['difficult','صعب'],['mastered','متقن']],filter)}</select></label><button class="btn">بحث وتصفية</button></form>
+   <div class="study-actions no-print"><button class="btn" data-rev-mode>${single?'عرض جميع الأسئلة':'مراجعة سؤال واحد'}</button><button class="btn" data-rev-print>طباعة العرض</button>
+   <a href="revision-downloads/semester-${l.semester}.pdf" download>تحميل مكثف الفصل PDF</a><a href="revision-downloads/full.pdf" download>تحميل المكثف كاملًا PDF</a>
+   <a href="content/BTEC_Islamic_Education_Revision.pdf${(archivePage||Number(S.profile.revisionPage))>0?'#page='+(archivePage||Number(S.profile.revisionPage)):''}" data-revision-archive>النسخة السابقة</a></div>
+   <div class="revision-list" id="rev-results">${loaded(l.id)?results():loading(l.id)}</div></section>`;
  }
- async function draw(){
-  const reader=document.querySelector('.revision-reader');
-  if(!reader)return;
-  const status=reader.querySelector('#revision-status'), target=reader.querySelector('canvas'), viewport=target.parentElement;
-  const request=++sequence;
-  renderTask?.cancel();
+ document.addEventListener('change',ev=>{
+  if(ev.target.id==='rev-term')open(catalog.find(l=>l.semester===Number(ev.target.value)).id);
+  if(ev.target.id==='rev-unit')open(catalog.find(l=>l.semester===selected.semester&&l.unit===Number(ev.target.value)).id);
+  if(ev.target.id==='rev-lesson')open(ev.target.value);
+ });
+ document.addEventListener('submit',async ev=>{
+  if(ev.target.id!=='revision-search')return;
+  ev.preventDefault();
+  const version=++searchVersion,data=new FormData(ev.target),all=data.get('scope')==='all',out=document.querySelector('#rev-results');
+  out.textContent='جارٍ البحث…';
   try{
-   const doc=await getDocument();
-   const pdfPage=await doc.getPage(page);
-   if(request!==sequence||!target.isConnected)return;
-   const scale=Math.min(920,viewport.clientWidth)/pdfPage.getViewport({scale:1}).width*zoom;
-   const ratio=Math.min(devicePixelRatio||1,2);
-   const pixels=pdfPage.getViewport({scale:scale*ratio});
-   target.width=Math.ceil(pixels.width);
-   target.height=Math.ceil(pixels.height);
-   target.style.width=Math.ceil(pixels.width/ratio)+'px';
-   renderTask=pdfPage.render({canvas:target,viewport:pixels});
-   await renderTask.promise;
-   if(request===sequence&&target.isConnected)status.textContent='صفحة '+nf(page)+' من '+nf(total);
-  }catch{
-   if(request===sequence&&target.isConnected)status.textContent='تعذر عرض الصفحة هنا. يمكنك فتح ملف PDF أو تحميله.';
-  }
- }
- async function search(form){
-  const results=document.getElementById('revision-matches'), query=searchText(form.querySelector('input').value);
-  const active=++searchSequence;
-  if(!query)return;
-  results.textContent='جارٍ البحث في صفحات المكثف…';
-  try{
-   const doc=await getDocument(), matches=[];
-   for(let i=1;i<=total;i++){
-    if(active!==searchSequence||!results.isConnected)return;
-    if(!pageText.has(i)){
-     const contents=await (await doc.getPage(i)).getTextContent();
-     pageText.set(i,searchText(contents.items.map(x=>x.str||'').join(' ')));
+   if(all){
+    for(let start=0;start<catalog.length;start+=6){
+     if(version!==searchVersion||!out.isConnected)return;
+     await Promise.all(catalog.slice(start,start+6).map(l=>load(l.id)));
     }
-    if(pageText.get(i).includes(query))matches.push(i);
    }
-   if(active!==searchSequence||!results.isConnected)return;
-   results.innerHTML=matches.length?matches.map(i=>`<button class="btn btn-outline" data-revision-page="${i}">صفحة ${nf(i)}</button>`).join(''):'لم يظهر النص في الصفحات القابلة للبحث.';
-  }catch{
-   if(active===searchSequence&&results.isConnected)results.textContent='تعذر البحث في المكثف.';
+   if(version!==searchVersion||!out.isConnected)return;
+   query=data.get('query');filter=data.get('filter');globalSearch=all;index=0;out.innerHTML=results();
+  }catch{if(out.isConnected)out.textContent='تعذر تحميل نتائج البحث كاملة. أعد البحث.';}
+ });
+ document.addEventListener('click',async ev=>{
+  const b=ev.target.closest('button');if(!b)return;
+  if(b.dataset.revisionRetry){failures.delete(b.dataset.revisionRetry);render();return;}
+  if(b.hasAttribute('data-revision-home')){open();return;}
+  if(!b.closest('.revision-reader'))return;
+  if(b.hasAttribute('data-rev-print')){window.print();return;}
+  if(b.hasAttribute('data-rev-mode')){single=!single;index=0;await persist(s=>{s.single=single;s.index=0;});render();return;}
+  if(b.dataset.revStep){index+=Number(b.dataset.revStep);if(!globalSearch&&!query&&!filter)await persist(s=>{s.index=index;});render();return;}
+  if(b.dataset.mark){
+   const id=b.closest('[data-card]').dataset.card,key=b.dataset.mark;
+   if(!['saved','mastered','difficult'].includes(key))return;
+   await persist(s=>{s.marks??={};s.marks[id]??={};s.marks[id][key]=!s.marks[id][key];});
+   if(S.page==='revision')render();
   }
- }
- document.addEventListener('click',async event=>{
-  const nav=event.target.closest('[data-revision-page]');
-  if(nav){const n=Number(nav.dataset.revisionPage);if(safePage(n))open(n);return;}
-  const action=event.target.closest('[data-revision]')?.dataset.revision;
-  if(!action)return;
-  try{
-   if(action==='share'){await navigator.clipboard.writeText(location.href);notify('نُسخ رابط صفحة المكثف.');}
-   if(action==='fullscreen'){
-    if(document.fullscreenElement===document.documentElement)await document.exitFullscreen();
-    else await document.documentElement.requestFullscreen();
-   }
-   if(action==='larger'||action==='smaller'){
-    zoom=Math.max(1,Math.min(2,zoom+(action==='larger'?.25:-.25)));
-    render();
-    document.querySelector(`[data-revision="${action}"]:not(:disabled)`)?.focus();
-   }
-  }catch{notify('هذه العملية غير متاحة في المتصفح الحالي.');}
  });
- document.addEventListener('change',event=>{
-  if(event.target.id!=='revision-page')return;
-  if(event.target.reportValidity())open(event.target.valueAsNumber);
- });
- document.addEventListener('submit',event=>{
-  if(event.target.id!=='revision-search')return;
-  event.preventDefault();
-  void search(event.target);
- });
- function bind(){
-  const reader=document.querySelector('.revision-reader');
-  resizeObserver?.disconnect();
-  if(!reader)return;
-  resizeObserver=new ResizeObserver(()=>void draw());
-  resizeObserver.observe(reader.querySelector('.revision-sheet'));
- }
- function beforeRender(){sequence++;renderTask?.cancel();resizeObserver?.disconnect();}
- return {open,restore,button,view,bind,beforeRender,pages};
+ return {open,restore,view,button,panel,loaded,loading,meta:id=>lessons.get(id),academicLesson:id=>academic.get(id)};
 })();

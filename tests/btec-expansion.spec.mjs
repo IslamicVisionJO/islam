@@ -27,7 +27,7 @@ try {
   assert.equal(await page.locator('.sidebar [data-page=compendium]').count(),0);
   await page.goto(origin+'#compendium');
   await page.getByRole('heading',{name:'المكثف الشامل',exact:true}).waitFor();
-  assert.match(page.url(),/#revision\/\d+$/);
+  assert.match(page.url(),/#revision\/s1_u01_l01$/);
   await page.locator('.sidebar [data-page=units]').click();
   for(const [year, prefix, counts] of [['btec1','s1_',[6,6,6,7]],['btec2','',[6,7,7,6]]]){
     await page.locator(`.learning-units [data-id=${year}]`).click();
@@ -45,7 +45,7 @@ try {
         await page.reload();
         await cards.first().waitFor();
         await cards.first().click();
-        if(year==='btec1')await page.getByText('أسئلة هذا الدرس بانتظار المراجعة العلمية والاعتماد.').waitFor();
+        if(year==='btec1')await page.locator('[data-ministerial=start]').first().waitFor();
         else assert.equal(await page.locator('[data-mode=training][data-action=setup]').count(),3);
         await page.getByRole('button',{name:'أسئلة الوحدة',exact:true}).click();
         assert.equal(await cards.count(),count);
@@ -101,32 +101,27 @@ try {
   await page.locator('[data-learning=open][data-id=s1_u04_l07]').click();
   await page.locator('[data-learning=tab][data-id=quiz]').click();
   await page.reload();
-  await page.getByText('أسئلة هذا الدرس بانتظار المراجعة العلمية والاعتماد.').waitFor();
+  await page.locator('[data-ministerial=start]').first().waitFor();
   await page.locator('[data-learning=tab][data-id=revision]').click();
-  await page.getByRole('button',{name:'راجع هذا الدرس في المكثف'}).click();
-  const drawStatus=page.locator('#revision-status');
-  await page.waitForFunction(()=>document.querySelector('#revision-status')?.textContent.startsWith('صفحة '),null,{timeout:15000});
-  assert.match(await page.locator('canvas').getAttribute('aria-label'),/٢٩/);
-  await page.getByRole('button',{name:'السنة الثانية BTEC',exact:true}).click();
-  await page.waitForFunction(()=>document.querySelector('#revision-status')?.textContent.startsWith('صفحة '),null,{timeout:15000});
-  assert.match(await page.locator('canvas').getAttribute('aria-label'),/٣٥/);
-  await page.locator('[data-revision=larger]').click();
-  await page.waitForFunction(()=>document.querySelector('.revision-sheet').scrollWidth>document.querySelector('.revision-sheet').clientWidth);
-  await page.locator('[data-revision=smaller]').click();
-  await page.locator('[data-revision=fullscreen]').click();
-  await page.waitForFunction(()=>document.fullscreenElement===document.documentElement);
-  await page.locator('.revision-controls [data-revision-page="36"]').click();
-  assert.equal(await page.evaluate(()=>document.fullscreenElement===document.documentElement),true);
-  await page.locator('[data-revision=fullscreen]').click();
-  await page.waitForFunction(()=>!document.fullscreenElement);
-  await page.getByRole('button',{name:'السنة الثانية BTEC',exact:true}).click();
-  await page.locator('#revision-query').fill('الشبهات');
+  await page.getByRole('link',{name:'راجع هذا الدرس في المكثف'}).click();
+  const firstRow=page.locator('#rev-results .revision-entry').first();
+  await firstRow.waitFor();
+  assert.equal(await page.locator('#rev-lesson').inputValue(),'s1_u04_l07');
+  await page.locator('#rev-term').selectOption('2');
+  await firstRow.waitFor();
+  assert.equal(await page.locator('#rev-lesson').inputValue(),'u01_l01');
+  for(const path of ['full','semester-1','semester-2']){
+    const res=await fetch(origin+'revision-downloads/'+path+'.pdf',{headers:{Range:'bytes=0-7'}});
+    assert.equal(res.status,206);assert.match(await res.text(),/^%PDF-/);
+  }
+  await page.locator('[name=scope]').selectOption('all');
+  await page.locator('[name=query]').fill('الشبهات');
   await page.locator('#revision-search button').click();
-  await page.locator('#revision-matches button[data-revision-page="6"]').waitFor({timeout:15000});
+  await page.locator('#rev-results h2 a[href="#revision/s1_u01_l02"]').first().waitFor();
   await page.locator('.sidebar [data-page=stats]').click();
   await page.getByRole('region',{name:'تقدم مشاهدة الدروس'}).getByRole('heading',{name:'السنة الأولى BTEC'}).waitFor();
   await page.locator('.sidebar [data-page=revision]').click();
-  assert.match(page.url(),/#revision\/35$/);
+  assert.match(page.url(),/#revision\/u01_l01$/);
   const studyGroup=page.locator('.sidebar [data-nav-group=study]');
   await studyGroup.locator('summary').click();
   assert.equal(await studyGroup.getAttribute('open'),null);
@@ -136,8 +131,7 @@ try {
   await page.locator('[data-action=sidebar-compact]').click();
   await page.setViewportSize({width:390,height:840});
   await page.reload();
-  await drawStatus.waitFor();
-  await page.waitForFunction(()=>document.querySelector('#revision-status')?.textContent.startsWith('صفحة '));
+  await firstRow.waitFor();
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
   await page.locator('.mobile-bottom [data-page=units]').click();
   await page.locator('.learning-units [data-id=btec2]').click();
@@ -160,7 +154,7 @@ try {
   await page.getByText('الإجابة المرجعية في المسودة').click();
   assert.ok(await page.getByText(/مرجع الكتاب/).isVisible());
   assert.deepEqual(errors,[]);
-  console.log('PASS: single compendium entry, 8 question units split by year, 51 lesson cards, 25 first-year MP4 videos and resume verified, first-year draft isolated, mobile and desktop PDF rendering, PDF search and deep links.');
+  console.log('PASS: single compendium entry, 8 question units split by year, 51 lesson cards, 25 first-year MP4 videos and resume verified, first-year draft isolated, HTML reader, PDF downloads, cross-semester search and deep links.');
 } finally {
   await browser.close();
 }

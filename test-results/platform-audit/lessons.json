@@ -1,0 +1,821 @@
+{
+  "completed": [
+    {
+      "lesson": "s1_u01_l01",
+      "tab": "explanation"
+    },
+    {
+      "lesson": "s1_u01_l01",
+      "tab": "quiz"
+    },
+    {
+      "lesson": "s1_u01_l01",
+      "tab": "revision"
+    },
+    {
+      "lesson": "s1_u01_l01",
+      "tab": "solutions"
+    },
+    {
+      "lesson": "s1_u01_l02",
+      "tab": "explanation"
+    },
+    {
+      "lesson": "s1_u01_l02",
+      "tab": "quiz"
+    },
+    {
+      "lesson": "s1_u01_l02",
+      "tab": "revision"
+    },
+    {
+      "lesson": "s1_u01_l02",
+      "tab": "solutions"
+    },
+    {
+      "lesson": "s1_u01_l03",
+      "tab": "explanation"
+    },
+    {
+      "lesson": "s1_u01_l03",
+      "tab": "quiz"
+    },
+    {
+      "lesson": "s1_u01_l03",
+      "tab": "revision"
+    },
+    {
+      "lesson": "s1_u01_l03",
+      "tab": "solutions"
+    },
+    {
+      "lesson": "s1_u01_l04",
+      "tab": "explanation"
+    },
+    {
+      "lesson": "s1_u01_l04",
+      "tab": "quiz"
+    },
+    {
+      "lesson": "s1_u01_l04",
+      "tab": "revision"
+    },
+    {
+      "lesson": "s1_u01_l04",
+      "tab": "solutions"
+    },
+    {
+      "lesson": "s1_u01_l05",
+      "tab": "explanation"
+    },
+    {
+      "lesson": "s1_u01_l05",
+      "tab": "quiz"
+    },
+    {
+      "lesson": "s1_u01_l05",
+      "tab": "revision"
+    },
+    {
+      "lesson": "s1_u01_l05",
+      "tab": "solutions"
+    },
+    {
+      "lesson": "s1_u01_l06",
+      "tab": "explanation"
+    },
+    {
+      "lesson": "s1_u01_l06",
+      "tab": "quiz"
+    },
+    {
+      "lesson": "s1_u01_l06",
+      "tab": "revision"
+    },
+    {
+      "lesson": "s1_u01_l06",
+      "tab": "solutions"
+    },
+    {
+      "lesson": "s1_u02_l01",
+      "tab": "explanation"
+    },
+    {
+      "lesson": "s1_u02_l01",
+      "tab": "quiz"
+    },
+    {
+      "lesson": "s1_u02_l01",
+      "tab": "revision"
+    },
+    {
+      "lesson": "s1_u02_l01",
+      "tab": "solutions"
+    },
+    {
+      "lesson": "s1_u02_l02",
+      "tab": "explanation"
+    },
+    {
+      "lesson": "s1_u02_l02",
+      "tab": "quiz"
+    },
+    {
+      "lesson": "s1_u02_l02",
+      "tab": "revision"
+    },
+    {
+      "lesson": "s1_u02_l02",
+      "tab": "solutions"
+    },
+    {
+      "lesson": "s1_u02_l03",
+      "tab": "explanation"
+    },
+    {
+      "lesson": "s1_u02_l03",
+      "tab": "quiz"
+    },
+    {
+      "lesson": "s1_u02_l03",
+      "tab": "revision"
+    },
+    {
+      "lesson": "s1_u02_l03",
+      "tab": "solutions"
+    },
+    {
+      "lesson": "s1_u02_l04",
+      "tab": "explanation"
+    },
+    {
+      "lesson": "s1_u02_l04",
+      "tab": "quiz"
+    },
+    {
+      "lesson": "s1_u02_l04",
+      "tab": "revision"
+    },
+    {
+      "lesson": "s1_u02_l04",
+      "tab": "solutions"
+    },
+    {
+      "lesson": "s1_u02_l05",
+      "tab": "explanation"
+    },
+    {
+      "lesson": "s1_u02_l05",
+      "tab": "quiz"
+    },
+    {
+      "lesson": "s1_u02_l05",
+      "tab": "revision"
+    },
+    {
+      "lesson": "s1_u02_l05",
+      "tab": "solutions"
+    },
+    {
+      "lesson": "s1_u02_l06",
+      "tab": "explanation"
+    },
+    {
+      "lesson": "s1_u02_l06",
+      "tab": "quiz"
+    },
+    {
+      "lesson": "s1_u02_l06",
+      "tab": "revision"
+    },
+    {
+      "lesson": "s1_u02_l06",
+      "tab": "solutions"
+    },
+    {
+      "lesson": "s1_u03_l01",
+      "tab": "explanation"
+    },
+    {
+      "lesson": "s1_u03_l01",
+      "tab": "quiz"
+    },
+    {
+      "lesson": "s1_u03_l01",
+      "tab": "revision"
+    },
+    {
+      "lesson": "s1_u03_l01",
+      "tab": "solutions"
+    },
+    {
+      "lesson": "s1_u03_l02",
+      "tab": "explanation"
+    },
+    {
+      "lesson": "s1_u03_l02",
+      "tab": "quiz"
+    },
+    {
+      "lesson": "s1_u03_l02",
+      "tab": "revision"
+    },
+    {
+      "lesson": "s1_u03_l02",
+      "tab": "solutions"
+    },
+    {
+      "lesson": "s1_u03_l03",
+      "tab": "explanation"
+    },
+    {
+      "lesson": "s1_u03_l03",
+      "tab": "quiz"
+    },
+    {
+      "lesson": "s1_u03_l03",
+      "tab": "revision"
+    },
+    {
+      "lesson": "s1_u03_l03",
+      "tab": "solutions"
+    },
+    {
+      "lesson": "s1_u03_l04",
+      "tab": "explanation"
+    },
+    {
+      "lesson": "s1_u03_l04",
+      "tab": "quiz"
+    },
+    {
+      "lesson": "s1_u03_l04",
+      "tab": "revision"
+    },
+    {
+      "lesson": "s1_u03_l04",
+      "tab": "solutions"
+    },
+    {
+      "lesson": "s1_u03_l05",
+      "tab": "explanation"
+    },
+    {
+      "lesson": "s1_u03_l05",
+      "tab": "quiz"
+    },
+    {
+      "lesson": "s1_u03_l05",
+      "tab": "revision"
+    },
+    {
+      "lesson": "s1_u03_l05",
+      "tab": "solutions"
+    },
+    {
+      "lesson": "s1_u03_l06",
+      "tab": "explanation"
+    },
+    {
+      "lesson": "s1_u03_l06",
+      "tab": "quiz"
+    },
+    {
+      "lesson": "s1_u03_l06",
+      "tab": "revision"
+    },
+    {
+      "lesson": "s1_u03_l06",
+      "tab": "solutions"
+    },
+    {
+      "lesson": "s1_u04_l01",
+      "tab": "explanation"
+    },
+    {
+      "lesson": "s1_u04_l01",
+      "tab": "quiz"
+    },
+    {
+      "lesson": "s1_u04_l01",
+      "tab": "revision"
+    },
+    {
+      "lesson": "s1_u04_l01",
+      "tab": "solutions"
+    },
+    {
+      "lesson": "s1_u04_l02",
+      "tab": "explanation"
+    },
+    {
+      "lesson": "s1_u04_l02",
+      "tab": "quiz"
+    },
+    {
+      "lesson": "s1_u04_l02",
+      "tab": "revision"
+    },
+    {
+      "lesson": "s1_u04_l02",
+      "tab": "solutions"
+    },
+    {
+      "lesson": "s1_u04_l03",
+      "tab": "explanation"
+    },
+    {
+      "lesson": "s1_u04_l03",
+      "tab": "quiz"
+    },
+    {
+      "lesson": "s1_u04_l03",
+      "tab": "revision"
+    },
+    {
+      "lesson": "s1_u04_l03",
+      "tab": "solutions"
+    },
+    {
+      "lesson": "s1_u04_l04",
+      "tab": "explanation"
+    },
+    {
+      "lesson": "s1_u04_l04",
+      "tab": "quiz"
+    },
+    {
+      "lesson": "s1_u04_l04",
+      "tab": "revision"
+    },
+    {
+      "lesson": "s1_u04_l04",
+      "tab": "solutions"
+    },
+    {
+      "lesson": "s1_u04_l05",
+      "tab": "explanation"
+    },
+    {
+      "lesson": "s1_u04_l05",
+      "tab": "quiz"
+    },
+    {
+      "lesson": "s1_u04_l05",
+      "tab": "revision"
+    },
+    {
+      "lesson": "s1_u04_l05",
+      "tab": "solutions"
+    },
+    {
+      "lesson": "s1_u04_l06",
+      "tab": "explanation"
+    },
+    {
+      "lesson": "s1_u04_l06",
+      "tab": "quiz"
+    },
+    {
+      "lesson": "s1_u04_l06",
+      "tab": "revision"
+    },
+    {
+      "lesson": "s1_u04_l06",
+      "tab": "solutions"
+    },
+    {
+      "lesson": "s1_u04_l07",
+      "tab": "explanation"
+    },
+    {
+      "lesson": "s1_u04_l07",
+      "tab": "quiz"
+    },
+    {
+      "lesson": "s1_u04_l07",
+      "tab": "revision"
+    },
+    {
+      "lesson": "s1_u04_l07",
+      "tab": "solutions"
+    },
+    {
+      "lesson": "u01_l01",
+      "tab": "explanation"
+    },
+    {
+      "lesson": "u01_l01",
+      "tab": "quiz"
+    },
+    {
+      "lesson": "u01_l01",
+      "tab": "revision"
+    },
+    {
+      "lesson": "u01_l01",
+      "tab": "solutions"
+    },
+    {
+      "lesson": "u01_l02",
+      "tab": "explanation"
+    },
+    {
+      "lesson": "u01_l02",
+      "tab": "quiz"
+    },
+    {
+      "lesson": "u01_l02",
+      "tab": "revision"
+    },
+    {
+      "lesson": "u01_l02",
+      "tab": "solutions"
+    },
+    {
+      "lesson": "u01_l03",
+      "tab": "explanation"
+    },
+    {
+      "lesson": "u01_l03",
+      "tab": "quiz"
+    },
+    {
+      "lesson": "u01_l03",
+      "tab": "revision"
+    },
+    {
+      "lesson": "u01_l03",
+      "tab": "solutions"
+    },
+    {
+      "lesson": "u01_l04",
+      "tab": "explanation"
+    },
+    {
+      "lesson": "u01_l04",
+      "tab": "quiz"
+    },
+    {
+      "lesson": "u01_l04",
+      "tab": "revision"
+    },
+    {
+      "lesson": "u01_l04",
+      "tab": "solutions"
+    },
+    {
+      "lesson": "u01_l05",
+      "tab": "explanation"
+    },
+    {
+      "lesson": "u01_l05",
+      "tab": "quiz"
+    },
+    {
+      "lesson": "u01_l05",
+      "tab": "revision"
+    },
+    {
+      "lesson": "u01_l05",
+      "tab": "solutions"
+    },
+    {
+      "lesson": "u01_l06",
+      "tab": "explanation"
+    },
+    {
+      "lesson": "u01_l06",
+      "tab": "quiz"
+    },
+    {
+      "lesson": "u01_l06",
+      "tab": "revision"
+    },
+    {
+      "lesson": "u01_l06",
+      "tab": "solutions"
+    },
+    {
+      "lesson": "u02_l01",
+      "tab": "explanation"
+    },
+    {
+      "lesson": "u02_l01",
+      "tab": "quiz"
+    },
+    {
+      "lesson": "u02_l01",
+      "tab": "revision"
+    },
+    {
+      "lesson": "u02_l01",
+      "tab": "solutions"
+    },
+    {
+      "lesson": "u02_l02",
+      "tab": "explanation"
+    },
+    {
+      "lesson": "u02_l02",
+      "tab": "quiz"
+    },
+    {
+      "lesson": "u02_l02",
+      "tab": "revision"
+    },
+    {
+      "lesson": "u02_l02",
+      "tab": "solutions"
+    },
+    {
+      "lesson": "u02_l03",
+      "tab": "explanation"
+    },
+    {
+      "lesson": "u02_l03",
+      "tab": "quiz"
+    },
+    {
+      "lesson": "u02_l03",
+      "tab": "revision"
+    },
+    {
+      "lesson": "u02_l03",
+      "tab": "solutions"
+    },
+    {
+      "lesson": "u02_l04",
+      "tab": "explanation"
+    },
+    {
+      "lesson": "u02_l04",
+      "tab": "quiz"
+    },
+    {
+      "lesson": "u02_l04",
+      "tab": "revision"
+    },
+    {
+      "lesson": "u02_l04",
+      "tab": "solutions"
+    },
+    {
+      "lesson": "u02_l05",
+      "tab": "explanation"
+    },
+    {
+      "lesson": "u02_l05",
+      "tab": "quiz"
+    },
+    {
+      "lesson": "u02_l05",
+      "tab": "revision"
+    },
+    {
+      "lesson": "u02_l05",
+      "tab": "solutions"
+    },
+    {
+      "lesson": "u02_l06",
+      "tab": "explanation"
+    },
+    {
+      "lesson": "u02_l06",
+      "tab": "quiz"
+    },
+    {
+      "lesson": "u02_l06",
+      "tab": "revision"
+    },
+    {
+      "lesson": "u02_l06",
+      "tab": "solutions"
+    },
+    {
+      "lesson": "u02_l07",
+      "tab": "explanation"
+    },
+    {
+      "lesson": "u02_l07",
+      "tab": "quiz"
+    },
+    {
+      "lesson": "u02_l07",
+      "tab": "revision"
+    },
+    {
+      "lesson": "u02_l07",
+      "tab": "solutions"
+    },
+    {
+      "lesson": "u03_l01",
+      "tab": "explanation"
+    },
+    {
+      "lesson": "u03_l01",
+      "tab": "quiz"
+    },
+    {
+      "lesson": "u03_l01",
+      "tab": "revision"
+    },
+    {
+      "lesson": "u03_l01",
+      "tab": "solutions"
+    },
+    {
+      "lesson": "u03_l02",
+      "tab": "explanation"
+    },
+    {
+      "lesson": "u03_l02",
+      "tab": "quiz"
+    },
+    {
+      "lesson": "u03_l02",
+      "tab": "revision"
+    },
+    {
+      "lesson": "u03_l02",
+      "tab": "solutions"
+    },
+    {
+      "lesson": "u03_l03",
+      "tab": "explanation"
+    },
+    {
+      "lesson": "u03_l03",
+      "tab": "quiz"
+    },
+    {
+      "lesson": "u03_l03",
+      "tab": "revision"
+    },
+    {
+      "lesson": "u03_l03",
+      "tab": "solutions"
+    },
+    {
+      "lesson": "u03_l04",
+      "tab": "explanation"
+    },
+    {
+      "lesson": "u03_l04",
+      "tab": "quiz"
+    },
+    {
+      "lesson": "u03_l04",
+      "tab": "revision"
+    },
+    {
+      "lesson": "u03_l04",
+      "tab": "solutions"
+    },
+    {
+      "lesson": "u03_l05",
+      "tab": "explanation"
+    },
+    {
+      "lesson": "u03_l05",
+      "tab": "quiz"
+    },
+    {
+      "lesson": "u03_l05",
+      "tab": "revision"
+    },
+    {
+      "lesson": "u03_l05",
+      "tab": "solutions"
+    },
+    {
+      "lesson": "u03_l06",
+      "tab": "explanation"
+    },
+    {
+      "lesson": "u03_l06",
+      "tab": "quiz"
+    },
+    {
+      "lesson": "u03_l06",
+      "tab": "revision"
+    },
+    {
+      "lesson": "u03_l06",
+      "tab": "solutions"
+    },
+    {
+      "lesson": "u03_l07",
+      "tab": "explanation"
+    },
+    {
+      "lesson": "u03_l07",
+      "tab": "quiz"
+    },
+    {
+      "lesson": "u03_l07",
+      "tab": "revision"
+    },
+    {
+      "lesson": "u03_l07",
+      "tab": "solutions"
+    },
+    {
+      "lesson": "u04_l01",
+      "tab": "explanation"
+    },
+    {
+      "lesson": "u04_l01",
+      "tab": "quiz"
+    },
+    {
+      "lesson": "u04_l01",
+      "tab": "revision"
+    },
+    {
+      "lesson": "u04_l01",
+      "tab": "solutions"
+    },
+    {
+      "lesson": "u04_l02",
+      "tab": "explanation"
+    },
+    {
+      "lesson": "u04_l02",
+      "tab": "quiz"
+    },
+    {
+      "lesson": "u04_l02",
+      "tab": "revision"
+    },
+    {
+      "lesson": "u04_l02",
+      "tab": "solutions"
+    },
+    {
+      "lesson": "u04_l03",
+      "tab": "explanation"
+    },
+    {
+      "lesson": "u04_l03",
+      "tab": "quiz"
+    },
+    {
+      "lesson": "u04_l03",
+      "tab": "revision"
+    },
+    {
+      "lesson": "u04_l03",
+      "tab": "solutions"
+    },
+    {
+      "lesson": "u04_l04",
+      "tab": "explanation"
+    },
+    {
+      "lesson": "u04_l04",
+      "tab": "quiz"
+    },
+    {
+      "lesson": "u04_l04",
+      "tab": "revision"
+    },
+    {
+      "lesson": "u04_l04",
+      "tab": "solutions"
+    },
+    {
+      "lesson": "u04_l05",
+      "tab": "explanation"
+    },
+    {
+      "lesson": "u04_l05",
+      "tab": "quiz"
+    },
+    {
+      "lesson": "u04_l05",
+      "tab": "revision"
+    },
+    {
+      "lesson": "u04_l05",
+      "tab": "solutions"
+    },
+    {
+      "lesson": "u04_l06",
+      "tab": "explanation"
+    },
+    {
+      "lesson": "u04_l06",
+      "tab": "quiz"
+    },
+    {
+      "lesson": "u04_l06",
+      "tab": "revision"
+    },
+    {
+      "lesson": "u04_l06",
+      "tab": "solutions"
+    }
+  ],
+  "errors": []
+}

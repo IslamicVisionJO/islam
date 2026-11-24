@@ -1,0 +1,5100 @@
+{
+  "schemaVersion": 1,
+  "title": "مكثف التربية الإسلامية | الفصلان",
+  "sourceBooks": {
+    "1": "كتاب الطالب، الفصل الأول، طبعة 2026، قيد الإعداد والمراجعة",
+    "2": "كتاب الطالب، الفصل الثاني، طبعة 2025"
+  },
+  "reviewStatus": "study_draft_not_teacher_approved",
+  "note": "تضم البيانات بطاقات الحزمة المرفقة وإضافات مطابقة لصفحات الكتاب. يُبيّن sourceVerified المطابقة البصرية للبطاقة، ويعرض الموقع من هذه المجموعة البطاقات المطابقة فقط.",
+  "lessonCounts": {
+    "1": 25,
+    "2": 26
+  },
+  "cardCounts": {
+    "1": 185,
+    "2": 205
+  },
+  "lessons": [
+    {
+      "id": "s1_u01_l01",
+      "semester": 1,
+      "unitId": "s1_u01",
+      "unit": 1,
+      "number": 1,
+      "title": "سورة آل عمران: الآيات 102–105",
+      "bookPages": [
+        6,
+        11
+      ],
+      "reviewStatus": "study_draft_not_teacher_approved",
+      "cards": [
+        {
+          "id": "s1_u01_l01-new-rev-001",
+          "question": "ما موضوعات الآيات الأربع؟",
+          "answer": "تقوى الله (102)، التمسك بالإسلام أساس وحدة الأمة (103)، الدعوة إلى الخير (104)، الاعتبار من الأمم السابقة (105).",
+          "bookPages": [
+            6,
+            11
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u01_l01-new-rev-002",
+          "question": "ما معنى اعتصموا، حبل الله، فألف، شفا، البينات؟",
+          "answer": "تمسكوا؛ دين الله؛ فجمع؛ حافة الشيء وطرفه؛ البراهين والدلائل الواضحة.",
+          "bookPages": [
+            6,
+            11
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u01_l01-new-rev-003",
+          "question": "كيف تتحقق تقوى الله؟",
+          "answer": "بالتزام أوامره واجتناب نواهيه في الأقوال والأفعال والمعاملات، والثبات على ذلك حتى الموت.",
+          "bookPages": [
+            6,
+            11
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u01_l01-new-rev-004",
+          "question": "ما دلالة «واعتصموا» و«جميعا» و«ولا تفرقوا»؟",
+          "answer": "التمسك بالدين حماية للأمة، ومسؤولية التمسك به تشمل جميع أفرادها، ويجب نبذ أسباب الفرقة والخلاف.",
+          "bookPages": [
+            6,
+            11
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u01_l01-new-rev-005",
+          "question": "ما النعمتان اللتان ذكرت بهما الآية 103 المؤمنين؟",
+          "answer": "الأخوة واجتماع القلوب بعد العداوة، والإيمان والنجاة بعد الكفر.",
+          "bookPages": [
+            6,
+            11
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u01_l01-new-rev-006",
+          "question": "ما المعروف والمنكر؟ وما حكم الدعوة إليهما بحسب المقصود في الآية؟",
+          "answer": "المعروف كل أمر خير، والمنكر كل أمر مستقبح؛ والأمر بالمعروف والنهي عن المنكر فرض كفاية، يقوم به من تتوافر فيه شروطه.",
+          "bookPages": [
+            6,
+            11
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u01_l01-new-rev-007",
+          "question": "ما شروط القائم بالدعوة؟",
+          "answer": "العلم، والأسلوب الحكيم الذي يبشر ولا ينفر، والمهارة في إيصال الرسالة.",
+          "bookPages": [
+            6,
+            11
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u01_l01-new-rev-008",
+          "question": "ما سبب النزول الوارد في الإثراء؟",
+          "answer": "إثارة شاس بن قيس الخلاف بين الأوس والخزرج بتذكيرهم بحروب الجاهلية؛ فذكّرهم الرسول ﷺ بنعمة الإسلام والألفة فعادوا إلى الوفاق.",
+          "bookPages": [
+            6,
+            11
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u01_l01-new-rev-009",
+          "question": "ما أعمال الرسول ﷺ في بناء مجتمع المدينة؟",
+          "answer": "بناء المسجد، والمؤاخاة، ووثيقة المدينة لتنظيم المجتمع، وإنشاء سوق قائم على أحكام المعاملات الإسلامية.",
+          "bookPages": [
+            6,
+            11
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u01_l01-printed-7-1",
+          "question": "ما معنى «شفا» في درس التمسك بدين الله تعالى؟",
+          "answer": "حافة الشيء وطرفه.",
+          "bookPages": [
+            7
+          ],
+          "category": "المفردات والتراكيب",
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        },
+        {
+          "id": "s1_u01_l01-printed-7-2",
+          "question": "أي موضوع تربطه خريطة الدرس بالآية 104 من سورة آل عمران؟",
+          "answer": "الدعوة إلى الخير.",
+          "bookPages": [
+            7
+          ],
+          "category": "الخريطة التنظيمية",
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        },
+        {
+          "id": "s1_u01_l01-printed-9-1",
+          "question": "كيف يختلف فرض العين عن فرض الكفاية؟",
+          "answer": "فرض العين واجب على كل مسلم مكلف، مثل الصلوات الخمس. وفرض الكفاية إذا قامت به جماعة كافية سقط عن الباقين، مثل صلاة الجنازة.",
+          "bookPages": [
+            9
+          ],
+          "category": "أتوقف",
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        },
+        {
+          "id": "s1_u01_l01-printed-9-2",
+          "question": "ما المهارات التي يذكرها الدرس لمن يدعو إلى الخير؟",
+          "answer": "العلم، واختيار الأسلوب الحكيم الذي يبشّر الناس، وإيصال الرسالة بما يعكس صورة الإسلام المشرقة.",
+          "bookPages": [
+            9
+          ],
+          "category": "الدعوة إلى الخير",
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        }
+      ],
+      "academicLessonId": "academic-s1-u1-l01"
+    },
+    {
+      "id": "s1_u01_l02",
+      "semester": 1,
+      "unitId": "s1_u01",
+      "unit": 1,
+      "number": 2,
+      "title": "الحديث الشريف: اتقاء الشبهات",
+      "bookPages": [
+        12,
+        19
+      ],
+      "reviewStatus": "study_draft_not_teacher_approved",
+      "cards": [
+        {
+          "id": "s1_u01_l02-new-rev-001",
+          "question": "من راوي الحديث؟",
+          "answer": "النعمان بن بشير الأنصاري رضي الله عنهما، ولد في السنة الثانية للهجرة.",
+          "bookPages": [
+            12,
+            19
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u01_l02-new-rev-002",
+          "question": "ما معنى «بيّن» في الحديث الشريف؟",
+          "answer": "ظاهر معلوم.",
+          "bookPages": [
+            13
+          ],
+          "category": "المفردات والتراكيب",
+          "reviewStatus": "checked_against_printed_page",
+          "sourceVerified": true
+        },
+        {
+          "id": "s1_u01_l02-new-rev-002-2",
+          "question": "ما معنى «اتقى» في الحديث الشريف؟",
+          "answer": "تجنّب.",
+          "bookPages": [
+            13
+          ],
+          "category": "المفردات والتراكيب",
+          "reviewStatus": "checked_against_printed_page",
+          "sourceVerified": true
+        },
+        {
+          "id": "s1_u01_l02-new-rev-002-3",
+          "question": "ما معنى «استبرأ» في الحديث الشريف؟",
+          "answer": "طلب السلامة.",
+          "bookPages": [
+            13
+          ],
+          "category": "المفردات والتراكيب",
+          "reviewStatus": "checked_against_printed_page",
+          "sourceVerified": true
+        },
+        {
+          "id": "s1_u01_l02-new-rev-002-4",
+          "question": "ما معنى «الحمى» في الحديث الشريف؟",
+          "answer": "أرض محمية يُمنع الناس من دخولها إلا بإذن.",
+          "bookPages": [
+            13
+          ],
+          "category": "المفردات والتراكيب",
+          "reviewStatus": "checked_against_printed_page",
+          "sourceVerified": true
+        },
+        {
+          "id": "s1_u01_l02-new-rev-002-5",
+          "question": "ما معنى «يوشك» في الحديث الشريف؟",
+          "answer": "يكاد.",
+          "bookPages": [
+            13
+          ],
+          "category": "المفردات والتراكيب",
+          "reviewStatus": "checked_against_printed_page",
+          "sourceVerified": true
+        },
+        {
+          "id": "s1_u01_l02-new-rev-002-6",
+          "question": "ما معنى «يرتع» في الحديث الشريف؟",
+          "answer": "يجعل ماشيته ترعى.",
+          "bookPages": [
+            13
+          ],
+          "category": "المفردات والتراكيب",
+          "reviewStatus": "checked_against_printed_page",
+          "sourceVerified": true
+        },
+        {
+          "id": "s1_u01_l02-new-rev-002-7",
+          "question": "ما معنى «محارمه» في الحديث الشريف؟",
+          "answer": "المعاصي التي حرّمها الله تعالى.",
+          "bookPages": [
+            13
+          ],
+          "category": "المفردات والتراكيب",
+          "reviewStatus": "checked_against_printed_page",
+          "sourceVerified": true
+        },
+        {
+          "id": "s1_u01_l02-new-rev-002-8",
+          "question": "ما معنى «مضغة» في الحديث الشريف؟",
+          "answer": "قطعة من اللحم بمقدار ما يُمضغ في الفم.",
+          "bookPages": [
+            13
+          ],
+          "category": "المفردات والتراكيب",
+          "reviewStatus": "checked_against_printed_page",
+          "sourceVerified": true
+        },
+        {
+          "id": "s1_u01_l02-new-rev-002-9",
+          "question": "ما تعريف الورع في صندوق «أتوقف»؟",
+          "answer": "اجتناب الشبهات خوفًا من الوقوع في المحرمات.",
+          "bookPages": [
+            13
+          ],
+          "category": "الفهم والتحليل",
+          "reviewStatus": "checked_against_printed_page",
+          "sourceVerified": true
+        },
+        {
+          "id": "s1_u01_l02-new-rev-002-10",
+          "question": "ما الأعمال التي تولاها النعمان بن بشير رضي الله عنهما؟",
+          "answer": "عمل قاضيًا لدمشق، وتولى حكم الكوفة وحمص زمن الدولة الأموية.",
+          "bookPages": [
+            13
+          ],
+          "category": "الفهم والتحليل",
+          "reviewStatus": "checked_against_printed_page",
+          "sourceVerified": true
+        },
+        {
+          "id": "s1_u01_l02-new-rev-002-11",
+          "question": "متى توفي النعمان بن بشير رضي الله عنهما؟",
+          "answer": "سنة خمس وستين للهجرة.",
+          "bookPages": [
+            13
+          ],
+          "category": "الفهم والتحليل",
+          "reviewStatus": "checked_against_printed_page",
+          "sourceVerified": true
+        },
+        {
+          "id": "s1_u01_l02-new-rev-003",
+          "question": "كيف تصنف الأعمال من حيث وضوح حكمها؟",
+          "answer": "حلال واضح، وحرام واضح، ومشتبهات يخفى حكمها على كثير من الناس.",
+          "bookPages": [
+            12,
+            19
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u01_l02-new-rev-004",
+          "question": "ما موقف المسلم من المشتبهات؟",
+          "answer": "يتجنبها طلبا لسلامة دينه وعرضه، ويسأل أهل العلم عند الجهل بالحكم، ولا يكثر من الوقوع فيها خشية الوقوع في الحرام.",
+          "bookPages": [
+            12,
+            19
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u01_l02-new-rev-005",
+          "question": "ما دلالة تشبيه من يقع في الشبهات بالراعي حول الحمى؟",
+          "answer": "القرب من المحرمات يجعل الوقوع فيها محتملا، والابتعاد عن الشبهات يحمي المسلم.",
+          "bookPages": [
+            12,
+            19
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u01_l02-new-rev-006",
+          "question": "ما أثر صلاح القلب وفساده؟",
+          "answer": "صلاحه سبب استقامة الجوارح ومعرفة الحق وحسن السلوك، وفساده يؤدي إلى فساد الأعمال.",
+          "bookPages": [
+            12,
+            19
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u01_l02-new-rev-007",
+          "question": "ما وسائل إصلاح القلب؟",
+          "answer": "المحافظة على العبادات، وقراءة القرآن وتدبره، ومجالسة الصالحين، والدعاء، والذكر، واختيار الحلال الطيب.",
+          "bookPages": [
+            12,
+            19
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u01_l02-printed-15-1",
+          "question": "إلى أي مؤسسة أردنية يمكن الرجوع للتعرف إلى الأحكام الشرعية في الأمور المشتبهة؟",
+          "answer": "دائرة الإفتاء العام.",
+          "bookPages": [
+            15
+          ],
+          "category": "أتوقف",
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        },
+        {
+          "id": "s1_u01_l02-printed-15-2",
+          "question": "لماذا ترك النبي ﷺ التمرة الساقطة في المثال الوارد في الدرس؟",
+          "answer": "خشي أن تكون من مال الصدقة التي حرّمها الله عليه.",
+          "bookPages": [
+            15
+          ],
+          "category": "تطبيق",
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        }
+      ],
+      "academicLessonId": "academic-s1-u1-l02"
+    },
+    {
+      "id": "s1_u01_l03",
+      "semester": 1,
+      "unitId": "s1_u01",
+      "unit": 1,
+      "number": 3,
+      "title": "من صور الضلال",
+      "bookPages": [
+        20,
+        25
+      ],
+      "reviewStatus": "study_draft_not_teacher_approved",
+      "cards": [
+        {
+          "id": "s1_u01_l03-new-rev-001",
+          "question": "ما صور الضلال الواردة في الدرس؟",
+          "answer": "الكفر والشرك والنفاق والبدعة السيئة.",
+          "bookPages": [
+            20,
+            25
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u01_l03-new-rev-002",
+          "question": "ما الفرق بين الكفر الاعتقادي والعملي؟",
+          "answer": "الاعتقادي إنكار ما يجب الإيمان به، كإنكار ركن من أركان الإيمان أو الإسلام أو حكم قطعي معلوم من الدين بالضرورة؛ والعملي أعمال وصفها الشرع بالكفر دون أن تكون بالضرورة إنكارا للدين.",
+          "bookPages": [
+            20,
+            25
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u01_l03-new-rev-003",
+          "question": "ما الفرق بين الشرك الأكبر والأصغر؟",
+          "answer": "الأكبر صرف العبادة لغير الله أو اتخاذ شريك له، والأصغر أقوال أو أفعال وصفها الشرع بالشرك دون أن تبلغ الشرك الأكبر، مثل الرياء.",
+          "bookPages": [
+            20,
+            25
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u01_l03-new-rev-004",
+          "question": "ما الرياء؟",
+          "answer": "أن يقصد الإنسان بعمل العبادة أن يراه الناس ويمدحوه بدلا من الإخلاص لله.",
+          "bookPages": [
+            20,
+            25
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u01_l03-new-rev-005",
+          "question": "ما الفرق بين النفاق الاعتقادي والعملي؟",
+          "answer": "الاعتقادي إظهار الإيمان وإبطان الكفر؛ والعملي الاتصاف بخصال المنافقين مثل الكذب وإخلاف الوعد وخيانة الأمانة.",
+          "bookPages": [
+            20,
+            25
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u01_l03-new-rev-006",
+          "question": "ما البدعة السيئة؟",
+          "answer": "استحداث أمر في الدين لا أصل له ويخالف الشريعة، مثل اختراع صلاة تعبدية جديدة.",
+          "bookPages": [
+            20,
+            25
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u01_l03-new-rev-007",
+          "question": "لماذا لا تعد وسائل خدمة القرآن بدعة سيئة؟",
+          "answer": "لأن جمع المصحف وتنقيطه وضبطه وسائل لحفظ الدين، لا استحداث عبادة تخالفه.",
+          "bookPages": [
+            20,
+            25
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u01_l03-printed-21-1",
+          "question": "ما قسما الكفر اللذان تعرضهما خريطة الدرس؟",
+          "answer": "الكفر الاعتقادي والكفر العملي.",
+          "bookPages": [
+            21
+          ],
+          "category": "الخريطة التنظيمية",
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        },
+        {
+          "id": "s1_u01_l03-printed-23-1",
+          "question": "ما الفرق بين تعريف النفاق الاعتقادي وتعريف النفاق العملي في الدرس؟",
+          "answer": "الاعتقادي هو إظهار الإيمان وإخفاء الكفر. والعملي هو اتصاف الإنسان بصفة من صفات المنافقين.",
+          "bookPages": [
+            23
+          ],
+          "category": "مقارنة",
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        },
+        {
+          "id": "s1_u01_l03-printed-23-2",
+          "question": "ما مثال وسيلة مستحدثة تعين على أمر الدين ويذكرها الدرس؟",
+          "answer": "تنقيط المصحف ووضع علامات الإعراب عليه.",
+          "bookPages": [
+            23
+          ],
+          "category": "أمثلة",
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        }
+      ],
+      "academicLessonId": "academic-s1-u1-l03"
+    },
+    {
+      "id": "s1_u01_l04",
+      "semester": 1,
+      "unitId": "s1_u01",
+      "unit": 1,
+      "number": 4,
+      "title": "كرامة الإنسان في الشريعة الإسلامية",
+      "bookPages": [
+        26,
+        30
+      ],
+      "reviewStatus": "study_draft_not_teacher_approved",
+      "cards": [
+        {
+          "id": "s1_u01_l04-new-rev-001",
+          "question": "ما المقصود بالكرامة الإنسانية؟",
+          "answer": "ما للإنسان من قيمة ومكانة تستوجب احترامه وصيانة حقوقه.",
+          "bookPages": [
+            26,
+            30
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u01_l04-new-rev-002",
+          "question": "ما مظاهر تكريم الله الإنسان؟",
+          "answer": "أمر الملائكة بالسجود لآدم، وخلقه في أحسن تقويم، وتفضيله، وتسخير الكون له، وتكليفه بحمل الرسالة، وتشريع أحكام تحفظ كرامته.",
+          "bookPages": [
+            26,
+            30
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u01_l04-new-rev-003",
+          "question": "ما مبادئ تحقيق الكرامة الإنسانية؟",
+          "answer": "الحرية والمساواة والأمن، وما يتصل بها من صيانة الحقوق ومنع الاعتداء.",
+          "bookPages": [
+            26,
+            30
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u01_l04-new-rev-004",
+          "question": "كيف تتجلى الحرية؟",
+          "answer": "في حماية حرية الإنسان المشروعة وعدم إكراهه على الاعتقاد، مع التزام حقوق الآخرين وأحكام الشرع.",
+          "bookPages": [
+            26,
+            30
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u01_l04-new-rev-005",
+          "question": "على أي أساس يتساوى الناس؟",
+          "answer": "أصلهم الإنساني واحد، ولا يبرر اختلاف اللون أو الجنس أو الأصل انتقاص الكرامة، والتفاضل عند الله بالتقوى.",
+          "bookPages": [
+            26,
+            30
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u01_l04-new-rev-006",
+          "question": "كيف يحفظ الأمن كرامة الإنسان؟",
+          "answer": "بحماية حياته وماله وعرضه من الاعتداء وتمكينه من العيش مطمئنا.",
+          "bookPages": [
+            26,
+            30
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u01_l04-printed-26-1",
+          "question": "لماذا حرّمت الشريعة إهانة الإنسان والتعرّض لماله وعرضه بالأذى؟",
+          "answer": "حفظًا لإنسانيته وكرامته، وتحقيقًا للسعادة والأمن والاستقرار في مجتمعه.",
+          "bookPages": [
+            26
+          ],
+          "category": "التعلم القبلي",
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        },
+        {
+          "id": "s1_u01_l04-printed-27-1",
+          "question": "ما المبادئ الثلاثة التي تذكرها الخريطة لتحقيق الكرامة الإنسانية؟",
+          "answer": "الحرية، والمساواة، والأمن.",
+          "bookPages": [
+            27
+          ],
+          "category": "الخريطة التنظيمية",
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        }
+      ],
+      "academicLessonId": "academic-s1-u1-l04"
+    },
+    {
+      "id": "s1_u01_l05",
+      "semester": 1,
+      "unitId": "s1_u01",
+      "unit": 1,
+      "number": 5,
+      "title": "الزواج: مشروعيته ومقدماته",
+      "bookPages": [
+        31,
+        36
+      ],
+      "reviewStatus": "study_draft_not_teacher_approved",
+      "cards": [
+        {
+          "id": "s1_u01_l05-new-rev-001",
+          "question": "ما المقصود بالزواج؟",
+          "answer": "عقد شرعي يحل به استمتاع كل من الزوجين بالآخر ويترتب عليه حقوق وواجبات.",
+          "bookPages": [
+            31,
+            36
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u01_l05-new-rev-002",
+          "question": "ما حكم الزواج للقادر عليه في الأصل؟",
+          "answer": "مندوب، وقد يتغير الحكم بحسب حال الشخص وقدرته وخشية وقوعه في الحرام.",
+          "bookPages": [
+            31,
+            36
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u01_l05-new-rev-003",
+          "question": "ما حكم مشروعية الزواج؟",
+          "answer": "إعمار الأرض وبقاء النوع الإنساني، والسكينة والمودة، والعفة، وتوثيق الصلات بين الناس.",
+          "bookPages": [
+            31,
+            36
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u01_l05-new-rev-004",
+          "question": "ما أسس اختيار الزوجين؟",
+          "answer": "الدين والخلق، والتوافق المناسب الذي يعين على دوام الأسرة؛ ولا يقتصر الاختيار على المظهر أو المال.",
+          "bookPages": [
+            31,
+            36
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u01_l05-new-rev-005",
+          "question": "ما الخطبة وما حكمها؟",
+          "answer": "طلب الزواج والوعد به، وهي مشروعة ليتعرف الخاطبان ويتفقا على أساسيات الحياة الزوجية، وليست عقد زواج.",
+          "bookPages": [
+            31,
+            36
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u01_l05-new-rev-006",
+          "question": "ما الأحكام المتعلقة بالخطبة؟",
+          "answer": "يبقى الخاطبان أجنبيين قبل العقد، ويجوز النظر في الحدود الشرعية، ولا يجوز الخلوة، ويجوز العدول عنها دون أن يعد طلاقا.",
+          "bookPages": [
+            31,
+            36
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u01_l05-new-rev-007",
+          "question": "ما فائدة الفحص الطبي قبل الزواج؟",
+          "answer": "الكشف عن بعض الأمراض الوراثية والمعدية، وتقليل المخاطر على الزوجين والأبناء، واتخاذ قرار واع.",
+          "bookPages": [
+            31,
+            36
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        }
+      ],
+      "academicLessonId": "academic-s1-u1-l05"
+    },
+    {
+      "id": "s1_u01_l06",
+      "semester": 1,
+      "unitId": "s1_u01",
+      "unit": 1,
+      "number": 6,
+      "title": "الجهاد في الإسلام",
+      "bookPages": [
+        37,
+        42
+      ],
+      "reviewStatus": "study_draft_not_teacher_approved",
+      "cards": [
+        {
+          "id": "s1_u01_l06-new-rev-001",
+          "question": "ما معنى الجهاد العام؟",
+          "answer": "بذل الجهد في طاعة الله وتحقيق الخير ودفع الشر، ويشمل مجاهدة النفس ومختلف الأعمال المشروعة.",
+          "bookPages": [
+            37,
+            42
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u01_l06-new-rev-002",
+          "question": "ما مراتب الجهاد بالمعنى الخاص الواردة في الكتاب؟",
+          "answer": "بالنفس والمال والكلمة، وفق الضوابط الشرعية.",
+          "bookPages": [
+            37,
+            42
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u01_l06-new-rev-003",
+          "question": "ما الأصل في حكم الجهاد بالمعنى الخاص كما في الدرس؟",
+          "answer": "فرض كفاية، وتبين الشريعة أحوال تعينه وضوابطه، ولا يتخذ الأفراد قرارات القتال من تلقاء أنفسهم.",
+          "bookPages": [
+            37,
+            42
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u01_l06-new-rev-004",
+          "question": "ما أبرز أخلاقياته؟",
+          "answer": "عدم الاعتداء بغير حق، وحماية غير المحاربين، وعدم الإضرار بالبيئة دون مسوغ، والوفاء بالعهود والمواثيق.",
+          "bookPages": [
+            37,
+            42
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u01_l06-new-rev-005",
+          "question": "ما فضل الجهاد في سياق الدرس؟",
+          "answer": "بذل الجهد لنصرة الحق والدفاع عن المجتمع وفق الشرع، وقد وردت النصوص في عظم أجره.",
+          "bookPages": [
+            37,
+            42
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u01_l06-new-rev-006",
+          "question": "ما المقصد من الأخلاقيات المتعلقة بالحرب؟",
+          "answer": "الحد من الضرر وحماية الأبرياء واحترام العهود وعدم تحويل الدفاع إلى عدوان.",
+          "bookPages": [
+            37,
+            42
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u01_l06-printed-39-1",
+          "question": "من الشاعر الذي ذكره الدرس مثالًا للكلمة في الذبّ عن الإسلام؟",
+          "answer": "حسّان بن ثابت رضي الله عنه.",
+          "bookPages": [
+            39
+          ],
+          "category": "شخصيات",
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        }
+      ],
+      "academicLessonId": "academic-s1-u1-l06"
+    },
+    {
+      "id": "s1_u02_l01",
+      "semester": 1,
+      "unitId": "s1_u02",
+      "unit": 2,
+      "number": 1,
+      "title": "جهود علماء المسلمين في خدمة القرآن الكريم",
+      "bookPages": [
+        44,
+        49
+      ],
+      "reviewStatus": "study_draft_not_teacher_approved",
+      "cards": [
+        {
+          "id": "s1_u02_l01-new-rev-001",
+          "question": "لماذا جمع القرآن في عهد أبي بكر؟",
+          "answer": "خشية ضياعه باستشهاد عدد من حفظته في اليمامة، فأشار عمر بالجمع وكلف أبو بكر زيد بن ثابت به.",
+          "bookPages": [
+            44,
+            49
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u02_l01-new-rev-002",
+          "question": "لماذا نسخت المصاحف في عهد عثمان؟",
+          "answer": "خشية اختلاف الناس في القراءة، بعد تنبيه حذيفة بن اليمان، فنسخت مصاحف موحدة بالرسم العثماني وأرسلت إلى الأمصار.",
+          "bookPages": [
+            44,
+            49
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u02_l01-new-rev-003",
+          "question": "ما الفرق بين الجمع والنسخ؟",
+          "answer": "الجمع حفظ القرآن في صحف جامعة، والنسخ توحيد المصاحف المعتمدة وتوزيعها.",
+          "bookPages": [
+            44,
+            49
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u02_l01-new-rev-004",
+          "question": "من ساهم في ضبط المصحف؟",
+          "answer": "أبو الأسود الدؤلي في ضبط الإعراب، ويحيى بن يعمر ونصر بن عاصم في تمييز الحروف بالنقط في عهد عبد الملك بن مروان.",
+          "bookPages": [
+            44,
+            49
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u02_l01-new-rev-005",
+          "question": "ما أنواع المؤلفات في خدمة القرآن؟",
+          "answer": "التفسير الفقهي مثل القرطبي، والبلاغي مثل البيضاوي، والمأثور مثل ابن كثير، وعلوم القرآن مثل البرهان للزركشي.",
+          "bookPages": [
+            44,
+            49
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u02_l01-new-rev-006",
+          "question": "ما مظاهر الخدمة الحديثة؟",
+          "answer": "طباعة المصحف ومراجعته، وتعليم التلاوة والحفظ، وتسجيل التلاوات، وإتاحة التطبيقات والمواقع الموثوقة.",
+          "bookPages": [
+            44,
+            49
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u02_l01-printed-45-1",
+          "question": "ما المقصود بالرسم العثماني؟",
+          "answer": "الطريقة التي كُتبت بها كلمات القرآن الكريم وحروفه في المصحف زمن سيدنا عثمان بن عفان رضي الله عنه.",
+          "bookPages": [
+            45
+          ],
+          "category": "أتوقف",
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        },
+        {
+          "id": "s1_u02_l01-printed-45-2",
+          "question": "أين حُفظ المصحف الذي جمعه زيد بن ثابت بعد وفاة عمر بن الخطاب رضي الله عنه؟",
+          "answer": "عند أم المؤمنين حفصة بنت عمر رضي الله عنها.",
+          "bookPages": [
+            45
+          ],
+          "category": "تسلسل تاريخي",
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        }
+      ],
+      "academicLessonId": "academic-s1-u2-l01"
+    },
+    {
+      "id": "s1_u02_l02",
+      "semester": 1,
+      "unitId": "s1_u02",
+      "unit": 2,
+      "number": 2,
+      "title": "العزيمة والرخصة",
+      "bookPages": [
+        50,
+        54
+      ],
+      "reviewStatus": "study_draft_not_teacher_approved",
+      "cards": [
+        {
+          "id": "s1_u02_l02-new-rev-001",
+          "question": "ما العزيمة؟",
+          "answer": "الحكم الشرعي الأصلي الذي شرع ابتداء لعامة المكلفين في الأحوال المعتادة.",
+          "bookPages": [
+            50,
+            54
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u02_l02-new-rev-002",
+          "question": "ما الرخصة؟",
+          "answer": "الحكم الذي شرع تخفيفا عن المكلف عند وجود عذر معتبر مع قيام سبب الحكم الأصلي.",
+          "bookPages": [
+            50,
+            54
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u02_l02-new-rev-003",
+          "question": "ما حكم العمل بالعزيمة والرخصة؟",
+          "answer": "يلتزم المكلف الحكم الأصلي في الأحوال المعتادة، ويأخذ بالرخصة عند تحقق سببها وفق الحكم الشرعي الخاص بها.",
+          "bookPages": [
+            50,
+            54
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u02_l02-new-rev-004",
+          "question": "ما أمثلة الرخص؟",
+          "answer": "الفطر للمريض والمسافر، وقصر الصلاة للمسافر، والتيمم عند فقد الماء أو تعذر استعماله، وإباحة المحظور للضرورة بقدرها.",
+          "bookPages": [
+            50,
+            54
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u02_l02-new-rev-005",
+          "question": "ما المقصود بالمشقة تجلب التيسير؟",
+          "answer": "المشقة غير المعتادة التي تلحق ضررا بالمكلف سبب للتخفيف؛ أما المشقة المعتادة فلا تبرر ترك التكليف.",
+          "bookPages": [
+            50,
+            54
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u02_l02-new-rev-006",
+          "question": "متى ينتهي العمل بالرخصة؟",
+          "answer": "عند زوال سببها، فيعود المكلف إلى الحكم الأصلي.",
+          "bookPages": [
+            50,
+            54
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        }
+      ],
+      "academicLessonId": "academic-s1-u2-l02"
+    },
+    {
+      "id": "s1_u02_l03",
+      "semester": 1,
+      "unitId": "s1_u02",
+      "unit": 2,
+      "number": 3,
+      "title": "معركة مؤتة (8 هـ)",
+      "bookPages": [
+        55,
+        59
+      ],
+      "reviewStatus": "study_draft_not_teacher_approved",
+      "cards": [
+        {
+          "id": "s1_u02_l03-new-rev-001",
+          "question": "ما سبب معركة مؤتة؟",
+          "answer": "قتل الحارث بن عمير الأزدي مبعوث الرسول ﷺ، فكان ذلك اعتداء على المبعوث وتهديدا لهيبة الدولة.",
+          "bookPages": [
+            55,
+            59
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u02_l03-new-rev-002",
+          "question": "في أي سنة وقعت المعركة وأين؟",
+          "answer": "في السنة الثامنة للهجرة في مؤتة من أرض الأردن.",
+          "bookPages": [
+            55,
+            59
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u02_l03-new-rev-003",
+          "question": "من القادة الثلاثة الذين سماهم الرسول ﷺ؟",
+          "answer": "زيد بن حارثة، ثم جعفر بن أبي طالب، ثم عبد الله بن رواحة رضي الله عنهم.",
+          "bookPages": [
+            55,
+            59
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u02_l03-new-rev-004",
+          "question": "ما المبادئ التي تضمنتها وصيته للجيش؟",
+          "answer": "الالتزام بالتقوى وعدم الغدر والاعتداء على غير المحاربين أو الإضرار بما لا ضرورة له.",
+          "bookPages": [
+            55,
+            59
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u02_l03-new-rev-005",
+          "question": "من تولى القيادة بعد القادة الثلاثة؟",
+          "answer": "خالد بن الوليد رضي الله عنه.",
+          "bookPages": [
+            55,
+            59
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u02_l03-new-rev-006",
+          "question": "ما أبرز الدروس المستفادة؟",
+          "answer": "الوفاء بالعهود، والشجاعة وتحمل المسؤولية، وحسن القيادة والمحافظة على الأرواح.",
+          "bookPages": [
+            55,
+            59
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u02_l03-printed-55-1",
+          "question": "في أي سنة هجرية وقعت معركة مؤتة؟",
+          "answer": "السنة الثامنة للهجرة.",
+          "bookPages": [
+            55
+          ],
+          "category": "أحداث تاريخية",
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        }
+      ],
+      "academicLessonId": "academic-s1-u2-l03"
+    },
+    {
+      "id": "s1_u02_l04",
+      "semester": 1,
+      "unitId": "s1_u02",
+      "unit": 2,
+      "number": 4,
+      "title": "المحرمات من النساء",
+      "bookPages": [
+        60,
+        65
+      ],
+      "reviewStatus": "study_draft_not_teacher_approved",
+      "cards": [
+        {
+          "id": "s1_u02_l04-new-rev-001",
+          "question": "كيف تنقسم المحرمات؟",
+          "answer": "محرمات مؤبدا ومحرمات مؤقتا؛ فالأولى لا يزول تحريمها، والثانية تزول بزوال سبب التحريم.",
+          "bookPages": [
+            60,
+            65
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u02_l04-new-rev-002",
+          "question": "من المحرمات بسبب القرابة؟",
+          "answer": "الأمهات والجدات، والبنات وبنات الأولاد، والأخوات، والعمات، والخالات، وبنات الأخ وبنات الأخت.",
+          "bookPages": [
+            60,
+            65
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u02_l04-new-rev-003",
+          "question": "من المحرمات بسبب المصاهرة؟",
+          "answer": "أم الزوجة وجداتها، وزوجات الآباء، وزوجات الأبناء، والربيبة إذا دخل الزوج بأمها.",
+          "bookPages": [
+            60,
+            65
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u02_l04-new-rev-004",
+          "question": "ما ضابط التحريم بالرضاع في الكتاب؟",
+          "answer": "خمس رضعات متفرقات خلال العامين الأولين من عمر الطفل، ويحرم من الرضاع ما يحرم من النسب.",
+          "bookPages": [
+            60,
+            65
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u02_l04-new-rev-005",
+          "question": "ما أمثلة التحريم المؤقت؟",
+          "answer": "الجمع بين الأختين، والجمع بين المرأة وعمتها أو خالتها، وزوجة الغير ومعتدته، والزواج بخامسة حال وجود أربع زوجات، والمطلقة ثلاثا إلى تحقق الشرط الشرعي.",
+          "bookPages": [
+            60,
+            65
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u02_l04-new-rev-006",
+          "question": "لماذا شرعت أحكام المحرمات؟",
+          "answer": "لحفظ الأنساب والأسرة وصلة الرحم والحقوق، ومنع أسباب النزاع والضرر.",
+          "bookPages": [
+            60,
+            65
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u02_l04-printed-62-1",
+          "question": "ما المقصود بالمصاهرة؟",
+          "answer": "علاقة ناشئة من الزواج.",
+          "bookPages": [
+            62
+          ],
+          "category": "أتوقف",
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        }
+      ],
+      "academicLessonId": "academic-s1-u2-l04"
+    },
+    {
+      "id": "s1_u02_l05",
+      "semester": 1,
+      "unitId": "s1_u02",
+      "unit": 2,
+      "number": 5,
+      "title": "التعايش الإنساني",
+      "bookPages": [
+        66,
+        71
+      ],
+      "reviewStatus": "study_draft_not_teacher_approved",
+      "cards": [
+        {
+          "id": "s1_u02_l05-new-rev-001",
+          "question": "ما مفهوم التعايش الإنساني؟",
+          "answer": "عيش الناس معا باحترام وتعاون وسلام، مع اختلافهم في الأديان والثقافات وغيرها.",
+          "bookPages": [
+            66,
+            71
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u02_l05-new-rev-002",
+          "question": "ما مبادئ التعايش في الإسلام؟",
+          "answer": "وحدة الأصل البشري، والكرامة الإنسانية، والعدالة، والحوار بالحسنى، والبر والإحسان.",
+          "bookPages": [
+            66,
+            71
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u02_l05-new-rev-003",
+          "question": "ما التعايش الديني؟",
+          "answer": "احترام حق الآخرين في معتقداتهم والتعامل معهم بالعدل دون إكراه أو اعتداء.",
+          "bookPages": [
+            66,
+            71
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u02_l05-new-rev-004",
+          "question": "ما التعايش الاجتماعي؟",
+          "answer": "التعاون وحسن الجوار والتكافل والتواصل بما يحفظ حقوق أفراد المجتمع.",
+          "bookPages": [
+            66,
+            71
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u02_l05-new-rev-005",
+          "question": "ما التعايش الاقتصادي والسياسي والدولي؟",
+          "answer": "التعاون في المعاملات المشروعة والمصلحة العامة، والمشاركة في بناء المجتمع، وإقامة علاقات دولية قائمة على العدل والوفاء بالعهود.",
+          "bookPages": [
+            66,
+            71
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u02_l05-new-rev-006",
+          "question": "ما ثمرات التعايش؟",
+          "answer": "الأمن والاستقرار وتقليل النزاعات والتعاون على التنمية وحفظ الكرامة.",
+          "bookPages": [
+            66,
+            71
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u02_l05-printed-67-1",
+          "question": "ما مجالات التعايش الإنساني الخمسة التي تعرضها الخريطة؟",
+          "answer": "الديني والاجتماعي والاقتصادي والسياسي والدولي.",
+          "bookPages": [
+            67
+          ],
+          "category": "الخريطة التنظيمية",
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        },
+        {
+          "id": "s1_u02_l05-printed-69-1",
+          "question": "أي واقعة من السيرة يذكرها الدرس مثالًا على المشاركة الاقتصادية؟",
+          "answer": "توفي النبي ﷺ ودرعه مرهونة عند يهودي بثلاثين صاعًا من شعير.",
+          "bookPages": [
+            69
+          ],
+          "category": "أمثلة",
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        }
+      ],
+      "academicLessonId": "academic-s1-u2-l05"
+    },
+    {
+      "id": "s1_u02_l06",
+      "semester": 1,
+      "unitId": "s1_u02",
+      "unit": 2,
+      "number": 6,
+      "title": "الحقوق المالية للمرأة في الإسلام",
+      "bookPages": [
+        72,
+        75
+      ],
+      "reviewStatus": "study_draft_not_teacher_approved",
+      "cards": [
+        {
+          "id": "s1_u02_l06-new-rev-001",
+          "question": "ما الحقوق المالية التي تناولها الدرس؟",
+          "answer": "التملك والتصرف، والمهر، والنفقة، والميراث، والعمل والكسب المشروع.",
+          "bookPages": [
+            72,
+            75
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u02_l06-new-rev-002",
+          "question": "كيف يحفظ الإسلام ذمتها المالية؟",
+          "answer": "يجعل لها حق تملك المال والتصرف فيه بالوجه المشروع، ولا ينتقل مالها للزوج لمجرد الزواج.",
+          "bookPages": [
+            72,
+            75
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u02_l06-new-rev-003",
+          "question": "ما المهر؟",
+          "answer": "حق مالي للزوجة بسبب عقد الزواج، وهو ملك لها.",
+          "bookPages": [
+            72,
+            75
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u02_l06-new-rev-004",
+          "question": "ما النفقة؟",
+          "answer": "ما يلزم لمن تجب عليه النفقة من طعام وكسوة ومسكن ونحوها وفق الأحكام الشرعية.",
+          "bookPages": [
+            72,
+            75
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u02_l06-new-rev-005",
+          "question": "ما حق المرأة في الميراث؟",
+          "answer": "ترث وفق الأنصبة الشرعية وتستقل بنصيبها؛ وليس صحيحا أنها ترث دائما نصف الرجل.",
+          "bookPages": [
+            72,
+            75
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u02_l06-new-rev-006",
+          "question": "ما ضوابط العمل في الدرس؟",
+          "answer": "أن يكون مشروعا، مع مراعاة الآداب الشرعية والخصوصية وعدم الإخلال بالواجبات الأسرية.",
+          "bookPages": [
+            72,
+            75
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        }
+      ],
+      "academicLessonId": "academic-s1-u2-l06"
+    },
+    {
+      "id": "s1_u03_l01",
+      "semester": 1,
+      "unitId": "s1_u03",
+      "unit": 3,
+      "number": 1,
+      "title": "سورة آل عمران: الآيات 169–174",
+      "bookPages": [
+        77,
+        82
+      ],
+      "reviewStatus": "study_draft_not_teacher_approved",
+      "cards": [
+        {
+          "id": "s1_u03_l01-new-rev-001",
+          "question": "ما سياق الآيات؟",
+          "answer": "بيان فضائل الشهداء والثبات على طاعة الله ورسوله والثقة بنصر الله بعد أحداث أحد.",
+          "bookPages": [
+            77,
+            82
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u03_l01-new-rev-002",
+          "question": "كيف وصفت الآيات الشهداء؟",
+          "answer": "أحياء عند ربهم يرزقون، فرحين بما آتاهم الله من فضله، ويستبشرون بمن لم يلحق بهم.",
+          "bookPages": [
+            77,
+            82
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u03_l01-new-rev-003",
+          "question": "ما فضل الذين استجابوا لله والرسول بعد القرح؟",
+          "answer": "للمحسنين المتقين منهم أجر عظيم، وقد عادوا بنعمة من الله وفضل لم يمسسهم سوء.",
+          "bookPages": [
+            77,
+            82
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u03_l01-new-rev-004",
+          "question": "ما دلالة قول المؤمنين «حسبنا الله ونعم الوكيل»؟",
+          "answer": "الثقة بالله والتوكل عليه وعدم الاستسلام للتخويف.",
+          "bookPages": [
+            77,
+            82
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u03_l01-new-rev-005",
+          "question": "ما الفرق بين التوكل والتواكل؟",
+          "answer": "التوكل اعتماد القلب على الله مع الأخذ بالأسباب المشروعة؛ والتواكل ترك الأسباب بحجة الاعتماد عليه.",
+          "bookPages": [
+            77,
+            82
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u03_l01-printed-78-1",
+          "question": "ما معنى «القرح» في الآيات المقررة من سورة آل عمران؟",
+          "answer": "الجراح.",
+          "bookPages": [
+            78
+          ],
+          "category": "المفردات والتراكيب",
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        }
+      ],
+      "academicLessonId": "academic-s1-u3-l01"
+    },
+    {
+      "id": "s1_u03_l02",
+      "semester": 1,
+      "unitId": "s1_u03",
+      "unit": 3,
+      "number": 2,
+      "title": "الحديث الشريف: رضا الله تعالى",
+      "bookPages": [
+        83,
+        88
+      ],
+      "reviewStatus": "study_draft_not_teacher_approved",
+      "cards": [
+        {
+          "id": "s1_u03_l02-new-rev-001",
+          "question": "من راوي الحديث؟",
+          "answer": "أبو هريرة، عبد الرحمن بن صخر الدوسي رضي الله عنه، من أهل اليمن.",
+          "bookPages": [
+            83,
+            88
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u03_l02-new-rev-002",
+          "question": "ما الأعمال التي يرضاها الله في الحديث؟",
+          "answer": "عبادته وحده وعدم الإشراك به، والاعتصام بحبله وعدم التفرق، ومناصحة ولي الأمر في الرواية الواردة بالدرس.",
+          "bookPages": [
+            83,
+            88
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u03_l02-new-rev-003",
+          "question": "ما الأعمال التي يبغضها الله؟",
+          "answer": "قيل وقال، وإضاعة المال، وكثرة السؤال غير النافع.",
+          "bookPages": [
+            83,
+            88
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u03_l02-new-rev-004",
+          "question": "كيف تصنف الأقوال؟",
+          "answer": "كلام خير مأمور به، وكلام شر منهي عنه، وكلام غير نافع (لغو).",
+          "bookPages": [
+            83,
+            88
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u03_l02-new-rev-005",
+          "question": "ما صور إضاعة المال؟",
+          "answer": "التبذير في غير وجه مشروع، والإسراف بتجاوز الحد، وكنز المال وتعطيل استثماره النافع كما يشرح الدرس.",
+          "bookPages": [
+            83,
+            88
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u03_l02-new-rev-006",
+          "question": "كيف تكون النصيحة؟",
+          "answer": "بالإخلاص والحكمة والرفق والقصد إلى الإصلاح والمصلحة العامة.",
+          "bookPages": [
+            83,
+            88
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u03_l02-printed-84-1",
+          "question": "ما اسم أبي هريرة رضي الله عنه كما ورد في تعريف راوي الحديث؟",
+          "answer": "عبد الرحمن بن صخر الدوسي.",
+          "bookPages": [
+            84
+          ],
+          "category": "راوي الحديث",
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        },
+        {
+          "id": "s1_u03_l02-printed-86-1",
+          "question": "بم يختلف التبذير عن الإسراف في صور إضاعة المال؟",
+          "answer": "التبذير هو إنفاق المال في المحرّمات بصرف النظر عن مقداره. والإسراف هو إنفاقه في أمر مشروع بما يزيد على الحاجة.",
+          "bookPages": [
+            86
+          ],
+          "category": "مقارنة",
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        }
+      ],
+      "academicLessonId": "academic-s1-u3-l02"
+    },
+    {
+      "id": "s1_u03_l03",
+      "semester": 1,
+      "unitId": "s1_u03",
+      "unit": 3,
+      "number": 3,
+      "title": "فتح مكة (8 هـ)",
+      "bookPages": [
+        89,
+        94
+      ],
+      "reviewStatus": "study_draft_not_teacher_approved",
+      "cards": [
+        {
+          "id": "s1_u03_l03-new-rev-001",
+          "question": "ما سبب فتح مكة؟",
+          "answer": "نقض قريش صلح الحديبية بمساندة بني بكر في اعتدائهم على خزاعة حليفة المسلمين.",
+          "bookPages": [
+            89,
+            94
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u03_l03-new-rev-002",
+          "question": "متى كان فتح مكة؟",
+          "answer": "في رمضان من السنة الثامنة للهجرة.",
+          "bookPages": [
+            89,
+            94
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u03_l03-new-rev-003",
+          "question": "ما المقصد الذي يظهر في منهج الرسول ﷺ في الفتح؟",
+          "answer": "حقن الدماء، وحماية الناس، وإزالة أسباب العدوان، وفتح المجال للهداية دون انتقام.",
+          "bookPages": [
+            89,
+            94
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u03_l03-new-rev-004",
+          "question": "ما أبرز نتائج الفتح؟",
+          "answer": "دخول أهل مكة وزعمائها في الإسلام، وإقبال القبائل العربية على الإسلام، وتعزز مكانة المسلمين في الجزيرة العربية وخارجها.",
+          "bookPages": [
+            89,
+            94
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u03_l03-new-rev-005",
+          "question": "ما الدروس الأخلاقية المستفادة؟",
+          "answer": "العفو عند المقدرة، والتواضع، والوفاء بالعهود، والمحافظة على أرواح الناس ومكانتهم.",
+          "bookPages": [
+            89,
+            94
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u03_l03-printed-91-1",
+          "question": "أيّ رخصة أخذ بها النبي ﷺ وأصحابه في طريقهم إلى مكة كما ورد في الدرس؟",
+          "answer": "رخصة الفطر في السفر.",
+          "bookPages": [
+            91
+          ],
+          "category": "أربط مع الفقه",
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        }
+      ],
+      "academicLessonId": "academic-s1-u3-l03"
+    },
+    {
+      "id": "s1_u03_l04",
+      "semester": 1,
+      "unitId": "s1_u03",
+      "unit": 3,
+      "number": 4,
+      "title": "من خصائص الشريعة الإسلامية: الإيجابية",
+      "bookPages": [
+        95,
+        99
+      ],
+      "reviewStatus": "study_draft_not_teacher_approved",
+      "cards": [
+        {
+          "id": "s1_u03_l04-new-rev-001",
+          "question": "ما المقصود بالإيجابية في الدرس؟",
+          "answer": "النظرة المتفائلة والبناءة إلى الحياة والنفس والمستقبل والناس، والعمل لتحقيق الخير.",
+          "bookPages": [
+            95,
+            99
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u03_l04-new-rev-002",
+          "question": "كيف ينظر المسلم إلى الحياة الدنيا؟",
+          "answer": "يعمل ويعمر الأرض وينتفع بالمباحات ويجعل الدنيا طريقا للعمل الصالح للآخرة.",
+          "bookPages": [
+            95,
+            99
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u03_l04-new-rev-003",
+          "question": "كيف ينظر إلى نفسه؟",
+          "answer": "يدرك قيمته وقدراته، ويطورها، ولا ييأس من إصلاح أخطائه أو من رحمة الله.",
+          "bookPages": [
+            95,
+            99
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u03_l04-new-rev-004",
+          "question": "كيف ينظر إلى المستقبل؟",
+          "answer": "بالتفاؤل والأمل والعمل والأخذ بالأسباب.",
+          "bookPages": [
+            95,
+            99
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u03_l04-new-rev-005",
+          "question": "ما مظاهر الإيجابية تجاه الناس؟",
+          "answer": "التواد والتراحم، والتعاون على البر، وإدخال السرور، والتناصح، ودفع الأذى.",
+          "bookPages": [
+            95,
+            99
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        }
+      ],
+      "academicLessonId": "academic-s1-u3-l04"
+    },
+    {
+      "id": "s1_u03_l05",
+      "semester": 1,
+      "unitId": "s1_u03",
+      "unit": 3,
+      "number": 5,
+      "title": "شروط صحة عقد الزواج",
+      "bookPages": [
+        100,
+        104
+      ],
+      "reviewStatus": "study_draft_not_teacher_approved",
+      "cards": [
+        {
+          "id": "s1_u03_l05-new-rev-001",
+          "question": "ما شروط صحة العقد الواردة في الدرس؟",
+          "answer": "حل كل من الزوجين للآخر، وأهليتهما، ورضاهما، والإشهاد على العقد، وموافقة ولي المرأة وفق ما يبينه الكتاب.",
+          "bookPages": [
+            100,
+            104
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u03_l05-new-rev-002",
+          "question": "ما المراد بحل الزوجين لبعضهما؟",
+          "answer": "ألا تكون بينهما حرمة زواج مؤبدة أو مؤقتة.",
+          "bookPages": [
+            100,
+            104
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u03_l05-new-rev-003",
+          "question": "ما المقصود بالرضا؟",
+          "answer": "قبول الزوجين الزواج دون إكراه، وإظهار الموافقة بالطريقة المعتبرة شرعا.",
+          "bookPages": [
+            100,
+            104
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u03_l05-new-rev-004",
+          "question": "لماذا شرع الإشهاد؟",
+          "answer": "إعلان العقد وصيانة الحقوق والأنساب ومنع الإنكار والنزاع.",
+          "bookPages": [
+            100,
+            104
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u03_l05-new-rev-005",
+          "question": "ما شروط الولي المذكورة؟",
+          "answer": "أن يكون ذكرا مسلما بالغا عاقلا بالنسبة لولاية المسلمة؛ ومقصود الولاية رعاية مصلحتها لا إكراهها.",
+          "bookPages": [
+            100,
+            104
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        }
+      ],
+      "academicLessonId": "academic-s1-u3-l05"
+    },
+    {
+      "id": "s1_u03_l06",
+      "semester": 1,
+      "unitId": "s1_u03",
+      "unit": 3,
+      "number": 6,
+      "title": "الحقوق الاجتماعية للمرأة في الإسلام",
+      "bookPages": [
+        105,
+        110
+      ],
+      "reviewStatus": "study_draft_not_teacher_approved",
+      "cards": [
+        {
+          "id": "s1_u03_l06-new-rev-001",
+          "question": "ما الحقوق الاجتماعية التي تناولها الكتاب؟",
+          "answer": "التكريم والرعاية، والتعلم، واختيار الزوج، والمشاركة في بناء الأسرة، وحضانة الأطفال، وحفظ العرض والسمعة، وأداء العبادات الجماعية.",
+          "bookPages": [
+            105,
+            110
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u03_l06-new-rev-002",
+          "question": "كيف كرم الإسلام المرأة داخل الأسرة؟",
+          "answer": "حث على بر الأم، والإحسان إلى البنات، وحسن معاملة الزوجة، ورعاية حقوقها في مختلف مراحل الحياة.",
+          "bookPages": [
+            105,
+            110
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u03_l06-new-rev-003",
+          "question": "ما حقها في التعلم واختيار الزوج؟",
+          "answer": "لها حق اكتساب العلم النافع وحق الموافقة على من تتزوجه دون إكراه.",
+          "bookPages": [
+            105,
+            110
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u03_l06-new-rev-004",
+          "question": "ما دورها في الأسرة؟",
+          "answer": "المشاركة في بنائها وتربية الأبناء ورعايتهم، وفق الحقوق والواجبات المشتركة.",
+          "bookPages": [
+            105,
+            110
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u03_l06-new-rev-005",
+          "question": "كيف يحمي الإسلام عرض المرأة وسمعتها؟",
+          "answer": "بتشريع الآداب التي تحفظ الكرامة، وتحريم القذف والاعتداء على الأعراض.",
+          "bookPages": [
+            105,
+            110
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u03_l06-printed-105-1",
+          "question": "ما الحقوق المالية الثلاثة التي يشير إليها جدول «أستذكر»؟",
+          "answer": "حق المرأة في الميراث، وحقها في ما اكتسبت، وحقها في النفقة.",
+          "bookPages": [
+            105
+          ],
+          "category": "التعلم القبلي",
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        },
+        {
+          "id": "s1_u03_l06-printed-106-1",
+          "question": "ما الحقوق الاجتماعية للمرأة التي تسردها خريطة الدرس؟",
+          "answer": "التكريم والتقدير والرعاية، والتعلم، واختيار الزوج، والمشاركة في بناء الأسرة وتربية الأبناء، وحضانة الأطفال، والمحافظة على عرضها وسمعتها، وأداء العبادات الجماعية.",
+          "bookPages": [
+            106
+          ],
+          "category": "الخريطة التنظيمية",
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        },
+        {
+          "id": "s1_u03_l06-printed-108-1",
+          "question": "بم يعلّل الدرس أولوية الأم في الحضانة؟",
+          "answer": "بما تلبيه الحضانة من حاجة نفسية ملحّة للأم وطفلها، وبما للأم من عطف عليه وشفقة به.",
+          "bookPages": [
+            108
+          ],
+          "category": "تعليل",
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        }
+      ],
+      "academicLessonId": "academic-s1-u3-l06"
+    },
+    {
+      "id": "s1_u04_l01",
+      "semester": 1,
+      "unitId": "s1_u04",
+      "unit": 4,
+      "number": 1,
+      "title": "سورة الروم: الآيات 21–24",
+      "bookPages": [
+        112,
+        116
+      ],
+      "reviewStatus": "study_draft_not_teacher_approved",
+      "cards": [
+        {
+          "id": "s1_u04_l01-new-rev-001",
+          "question": "ما موضوعات الآيات؟",
+          "answer": "الزواج سكينة ومودة ورحمة (21)، خلق السماوات والأرض واختلاف الألسنة والألوان (22)، النوم والسعي (23)، والبرق والغيث وإحياء الأرض (24).",
+          "bookPages": [
+            112,
+            116
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u04_l01-new-rev-002",
+          "question": "ما أثر السكن والمودة والرحمة في الزواج؟",
+          "answer": "الطمأنينة والألفة وحسن المعاملة والتعاون على بناء الأسرة واستقرارها.",
+          "bookPages": [
+            112,
+            116
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u04_l01-new-rev-003",
+          "question": "ما دلالة اختلاف الألسنة والألوان؟",
+          "answer": "من دلائل قدرة الله وإبداعه في الخلق، ويقتضي احترام التنوع البشري.",
+          "bookPages": [
+            112,
+            116
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u04_l01-new-rev-004",
+          "question": "ما وجه النعمة في النوم والسعي؟",
+          "answer": "النوم راحة وتجديد للنشاط، والسعي ابتغاء فضل الله وتحصيل المعاش.",
+          "bookPages": [
+            112,
+            116
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u04_l01-new-rev-005",
+          "question": "ما دلالة إحياء الأرض بعد موتها؟",
+          "answer": "دليل على قدرة الله على الإحياء، ونعمة الغيث التي ينتفع بها الخلق.",
+          "bookPages": [
+            112,
+            116
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        }
+      ],
+      "academicLessonId": "academic-s1-u4-l01"
+    },
+    {
+      "id": "s1_u04_l02",
+      "semester": 1,
+      "unitId": "s1_u04",
+      "unit": 4,
+      "number": 2,
+      "title": "مكانة السنة النبوية الشريفة في التشريع الإسلامي",
+      "bookPages": [
+        117,
+        123
+      ],
+      "reviewStatus": "study_draft_not_teacher_approved",
+      "cards": [
+        {
+          "id": "s1_u04_l02-new-rev-001",
+          "question": "ما حجية السنة؟",
+          "answer": "أن السنة النبوية الصحيحة مصدر تشريعي يجب الرجوع إليه والعمل بما ثبت منها.",
+          "bookPages": [
+            117,
+            123
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u04_l02-new-rev-002",
+          "question": "ما أدلة حجيتها؟",
+          "answer": "كونها وحيا من الله في التشريع، والأمر بطاعة الرسول والاستجابة له، وربط طاعته بطاعة الله، والتحذير من مخالفته.",
+          "bookPages": [
+            117,
+            123
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u04_l02-new-rev-003",
+          "question": "ما أوجه علاقة السنة بالقرآن؟",
+          "answer": "تأكيد أحكامه، وتفسيرها وبيانها، وإضافة أحكام لم يرد تفصيلها في القرآن.",
+          "bookPages": [
+            117,
+            123
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u04_l02-new-rev-004",
+          "question": "ما أمثلة البيان؟",
+          "answer": "تفصيل الصلاة والزكاة والحج، وبيان المجمل وتخصيص العام وتقييد المطلق.",
+          "bookPages": [
+            117,
+            123
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u04_l02-new-rev-005",
+          "question": "ما واجبنا تجاه السنة؟",
+          "answer": "التمسك بها وتعلمها وتعليمها وحفظها ونشر الصحيح منها ورد الشبهات بعلم.",
+          "bookPages": [
+            117,
+            123
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u04_l02-printed-118-1",
+          "question": "ما المقصود بحجية السنة النبوية الشريفة؟",
+          "answer": "أنها دليل شرعي على الأحكام الشرعية التي يجب العمل بها.",
+          "bookPages": [
+            118
+          ],
+          "category": "أتوقف",
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        }
+      ],
+      "academicLessonId": "academic-s1-u4-l02"
+    },
+    {
+      "id": "s1_u04_l03",
+      "semester": 1,
+      "unitId": "s1_u04",
+      "unit": 4,
+      "number": 3,
+      "title": "مراعاة الأعراف في الشريعة الإسلامية",
+      "bookPages": [
+        124,
+        129
+      ],
+      "reviewStatus": "study_draft_not_teacher_approved",
+      "cards": [
+        {
+          "id": "s1_u04_l03-new-rev-001",
+          "question": "ما العرف؟",
+          "answer": "ما اعتاده الناس من أقوال وأفعال وتعارفوا عليه، ويستعمل الفقهاء العادة والعرف بمعنى متقارب.",
+          "bookPages": [
+            124,
+            129
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u04_l03-new-rev-002",
+          "question": "ما أهمية مراعاته؟",
+          "answer": "تسهيل حياة الناس ورفع الحرج وتحقيق مصالحهم في المعاملات والعلاقات.",
+          "bookPages": [
+            124,
+            129
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u04_l03-new-rev-003",
+          "question": "ما ضوابطه؟",
+          "answer": "أن يكون غالبا شائعا، وألا يخالف نصا شرعيا، وأن يكون قائما عند التصرف وألا يعارض شرطا صريحا معتبرا.",
+          "bookPages": [
+            124,
+            129
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u04_l03-new-rev-004",
+          "question": "ما معنى العادة محكمة؟",
+          "answer": "يجوز اعتبار العادة الصحيحة في تحديد الحكم في المسائل التي يرجع فيها إلى العرف.",
+          "bookPages": [
+            124,
+            129
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u04_l03-new-rev-005",
+          "question": "ما معنى المعروف عرفا كالمشروط شرطا؟",
+          "answer": "ما جرى عليه العرف الصحيح في المعاملة يعتبر كأنه شرط ضمني إذا لم يوجد ما يخالفه.",
+          "bookPages": [
+            124,
+            129
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u04_l03-new-rev-006",
+          "question": "ما مثال عرف معتبر وآخر غير معتبر؟",
+          "answer": "تقسيم المهر إلى معجل ومؤجل عرف معتبر، والثأر بقتل غير الجاني عرف باطل لمخالفته الشرع.",
+          "bookPages": [
+            124,
+            129
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u04_l03-printed-125-1",
+          "question": "بأي معنى يستعمل الفقهاء لفظي العادة والعرف كما جاء في الكتاب؟",
+          "answer": "يستعملونهما بمعنى واحد، والعادة ما تكرر من أفعال الناس وأقوالهم.",
+          "category": "أتوقف",
+          "bookPages": [
+            125
+          ],
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        }
+      ],
+      "academicLessonId": "academic-s1-u4-l03"
+    },
+    {
+      "id": "s1_u04_l04",
+      "semester": 1,
+      "unitId": "s1_u04",
+      "unit": 4,
+      "number": 4,
+      "title": "حقوق الزوجين في الإسلام",
+      "bookPages": [
+        130,
+        135
+      ],
+      "reviewStatus": "study_draft_not_teacher_approved",
+      "cards": [
+        {
+          "id": "s1_u04_l04-new-rev-001",
+          "question": "ما الحقوق المشتركة؟",
+          "answer": "المعاشرة بالمعروف، وحسن التعاون وحفظ الحياة الزوجية، والحقوق التي يبينها العقد الشرعي.",
+          "bookPages": [
+            130,
+            135
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u04_l04-new-rev-002",
+          "question": "ما حقوق الزوجة الخاصة؟",
+          "answer": "المهر والنفقة، مع ثبوت حقها في الإرث وفق الأحكام الشرعية.",
+          "bookPages": [
+            130,
+            135
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u04_l04-new-rev-003",
+          "question": "ما حقوق الزوج الخاصة؟",
+          "answer": "الطاعة بالمعروف والمحافظة على العرض والمال، دون طاعة في معصية.",
+          "bookPages": [
+            130,
+            135
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u04_l04-new-rev-004",
+          "question": "ما صور المعاشرة بالمعروف؟",
+          "answer": "اللطف والاحترام، والصبر، وتبادل المودة، وحفظ الأسرار والتشاور، واجتناب الأذى.",
+          "bookPages": [
+            130,
+            135
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u04_l04-new-rev-005",
+          "question": "ما ثمرات أداء الحقوق؟",
+          "answer": "استقرار الحياة الزوجية وحماية الأسرة من التفكك وتعزيز تماسك المجتمع.",
+          "bookPages": [
+            130,
+            135
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u04_l04-printed-131-1",
+          "question": "كيف تتحقق الصحبة الطيبة بين الزوجين في الحديث اليومي؟",
+          "answer": "باحترام كل منهما الآخر، وانتقاء الألفاظ، وإيجاد جو من الحوار البنّاء، والبعد عن التعنيف.",
+          "bookPages": [
+            131
+          ],
+          "category": "أمثلة",
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        }
+      ],
+      "academicLessonId": "academic-s1-u4-l04"
+    },
+    {
+      "id": "s1_u04_l05",
+      "semester": 1,
+      "unitId": "s1_u04",
+      "unit": 4,
+      "number": 5,
+      "title": "تنظيم النسل وتحديده",
+      "bookPages": [
+        136,
+        140
+      ],
+      "reviewStatus": "study_draft_not_teacher_approved",
+      "cards": [
+        {
+          "id": "s1_u04_l05-new-rev-001",
+          "question": "ما الفرق بين تنظيم النسل وتحديده؟",
+          "answer": "التنظيم المباعدة بين الولادات مؤقتا لمصلحة معتبرة، والتحديد إيقاف الإنجاب أو حصره على وجه دائم.",
+          "bookPages": [
+            136,
+            140
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u04_l05-new-rev-002",
+          "question": "ما حكم تنظيم النسل؟",
+          "answer": "يجوز بضوابطه الشرعية عند الحاجة والتوافق وعدم الضرر.",
+          "bookPages": [
+            136,
+            140
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u04_l05-new-rev-003",
+          "question": "ما الأصل في حكم تحديد النسل؟",
+          "answer": "المنع إذا لم توجد ضرورة معتبرة؛ لأنه يعارض مقصود بقاء النسل، وتقدر الضرورة بقدرها.",
+          "bookPages": [
+            136,
+            140
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u04_l05-new-rev-004",
+          "question": "ما معنى الضرورات تبيح المحظورات؟",
+          "answer": "يجوز عند الضرورة المعتبرة ما يدفع الضرر في حدودها، ويزول الترخيص بزوالها.",
+          "bookPages": [
+            136,
+            140
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u04_l05-new-rev-005",
+          "question": "كيف يتعامل الدرس مع الإجهاض؟",
+          "answer": "يبين أنه ليس وسيلة عادية للتنظيم، وأنه يرتبط بضوابط شرعية وطبية دقيقة، ويرجع في الحالات الخاصة لأهل الاختصاص.",
+          "bookPages": [
+            136,
+            140
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        }
+      ],
+      "academicLessonId": "academic-s1-u4-l05"
+    },
+    {
+      "id": "s1_u04_l06",
+      "semester": 1,
+      "unitId": "s1_u04",
+      "unit": 4,
+      "number": 6,
+      "title": "الأمن الغذائي في الإسلام",
+      "bookPages": [
+        141,
+        145
+      ],
+      "reviewStatus": "study_draft_not_teacher_approved",
+      "cards": [
+        {
+          "id": "s1_u04_l06-new-rev-001",
+          "question": "ما الأمن الغذائي؟",
+          "answer": "توافر الغذاء الكافي والآمن وإمكان الحصول عليه بما يلبي حاجات الناس.",
+          "bookPages": [
+            141,
+            145
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u04_l06-new-rev-002",
+          "question": "ما أهميته؟",
+          "answer": "حفظ النفس والصحة واستقرار المجتمع وتعزيز قدرته على التنمية.",
+          "bookPages": [
+            141,
+            145
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u04_l06-new-rev-003",
+          "question": "ما وسائل تحقيقه التي يذكرها الكتاب؟",
+          "answer": "التقوى والشكر وصلة الأرحام، والعناية بالزراعة والثروة الحيوانية، والاعتدال في الطعام والشراب، وتحريم الغش والاحتكار.",
+          "bookPages": [
+            141,
+            145
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u04_l06-new-rev-004",
+          "question": "ما أثر العناية بالزراعة والثروة الحيوانية؟",
+          "answer": "زيادة الإنتاج وتوفير الغذاء وتقوية الاقتصاد وتحقيق الاكتفاء قدر الإمكان.",
+          "bookPages": [
+            141,
+            145
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u04_l06-new-rev-005",
+          "question": "ما الفرق بين الغش والاحتكار؟",
+          "answer": "الغش إخفاء الحقيقة أو الخداع في المعاملة، والاحتكار حبس ما يحتاجه الناس للإضرار بهم ورفع السعر.",
+          "bookPages": [
+            141,
+            145
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u04_l06-new-rev-006",
+          "question": "ما دور الفرد؟",
+          "answer": "عدم إهدار الغذاء، والاستهلاك المعتدل، ودعم الإنتاج المشروع، ومساعدة المحتاجين.",
+          "bookPages": [
+            141,
+            145
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u04_l06-printed-143-1",
+          "question": "كيف تخدم العناية بالثروة الحيوانية الأمن الغذائي في أمثلة الدرس؟",
+          "answer": "بتربية الأنعام وتوفير الطعام والماء لها، وتجنب إيذائها والصيد الجائر.",
+          "bookPages": [
+            143
+          ],
+          "category": "تطبيق",
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        }
+      ],
+      "academicLessonId": "academic-s1-u4-l06"
+    },
+    {
+      "id": "s1_u04_l07",
+      "semester": 1,
+      "unitId": "s1_u04",
+      "unit": 4,
+      "number": 7,
+      "title": "الإسلام والوحدة الوطنية",
+      "bookPages": [
+        146,
+        151
+      ],
+      "reviewStatus": "study_draft_not_teacher_approved",
+      "cards": [
+        {
+          "id": "s1_u04_l07-new-rev-001",
+          "question": "ما الوحدة الوطنية؟",
+          "answer": "اجتماع أبناء الوطن وتعاونهم على المصالح المشتركة مع احترام التنوع والانتماء للوطن.",
+          "bookPages": [
+            146,
+            151
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u04_l07-new-rev-002",
+          "question": "لماذا تعد مهمة؟",
+          "answer": "تحقق الاستقرار والنماء، وتحمي من الفتن، وتقوي المجتمع وقدرته على مواجهة الأخطار.",
+          "bookPages": [
+            146,
+            151
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u04_l07-new-rev-003",
+          "question": "ما توجيهات الإسلام لتحقيقها؟",
+          "answer": "الأخوة الإنسانية، والتعايش، ومحاربة التعصب والعنصرية، والمساواة في الحقوق والواجبات، والتكافل، والدعوة للوحدة ونبذ الفرقة.",
+          "bookPages": [
+            146,
+            151
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u04_l07-new-rev-004",
+          "question": "ما دعائم الوحدة الوطنية في الأردن؟",
+          "answer": "القيادة الهاشمية، والقوات المسلحة والأجهزة الأمنية، ووعي المواطنين وإرثهم المشترك.",
+          "bookPages": [
+            146,
+            151
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u04_l07-new-rev-005",
+          "question": "كيف تتحقق وحدة الأمة الإسلامية؟",
+          "answer": "بتأكيد الأخوة الإيمانية ومحاربة أسباب الفرقة والتعاون والتكامل بين أبنائها.",
+          "bookPages": [
+            146,
+            151
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        }
+      ],
+      "academicLessonId": "academic-s1-u4-l07"
+    },
+    {
+      "id": "u01_l01",
+      "semester": 2,
+      "unitId": "u01",
+      "unit": 1,
+      "number": 1,
+      "title": "سورة البقرة: الآيات 284–286",
+      "bookPages": [
+        6,
+        13
+      ],
+      "reviewStatus": "study_draft_not_teacher_approved",
+      "cards": [
+        {
+          "id": "u01_l01-new-rev-001",
+          "question": "ما موضوعات الآيات؟",
+          "answer": "عظمة الله (284)، حقائق الإيمان (285)، مبادئ الشريعة (286).",
+          "bookPages": [
+            6,
+            13
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u01_l01-new-rev-002",
+          "question": "ما معنى «المصير» في خواتيم سورة البقرة؟",
+          "answer": "الرجوع.",
+          "bookPages": [
+            7
+          ],
+          "category": "المفردات والتراكيب",
+          "reviewStatus": "checked_against_printed_page",
+          "sourceVerified": true
+        },
+        {
+          "id": "u01_l01-new-rev-002-2",
+          "question": "ما معنى «وسعها» في خواتيم سورة البقرة؟",
+          "answer": "ما تقدر على فعله.",
+          "bookPages": [
+            7
+          ],
+          "category": "المفردات والتراكيب",
+          "reviewStatus": "checked_against_printed_page",
+          "sourceVerified": true
+        },
+        {
+          "id": "u01_l01-new-rev-002-3",
+          "question": "ما معنى «لا تؤاخذنا» في خواتيم سورة البقرة؟",
+          "answer": "لا تعاقبنا.",
+          "bookPages": [
+            7
+          ],
+          "category": "المفردات والتراكيب",
+          "reviewStatus": "checked_against_printed_page",
+          "sourceVerified": true
+        },
+        {
+          "id": "u01_l01-new-rev-002-4",
+          "question": "ما معنى «إصرًا» في خواتيم سورة البقرة؟",
+          "answer": "الأمر الثقيل الذي فيه مشقة.",
+          "bookPages": [
+            7
+          ],
+          "category": "المفردات والتراكيب",
+          "reviewStatus": "checked_against_printed_page",
+          "sourceVerified": true
+        },
+        {
+          "id": "u01_l01-new-rev-002-5",
+          "question": "ما معنى «مولانا» في خواتيم سورة البقرة؟",
+          "answer": "ناصرنا ومعيننا.",
+          "bookPages": [
+            7
+          ],
+          "category": "المفردات والتراكيب",
+          "reviewStatus": "checked_against_printed_page",
+          "sourceVerified": true
+        },
+        {
+          "id": "u01_l01-new-rev-002-6",
+          "question": "ما المقصود بقول النبي ﷺ «كفتاه» في فضل خواتيم سورة البقرة، كما شرح الكتاب؟",
+          "answer": "حفظتاه من المكروه.",
+          "bookPages": [
+            7
+          ],
+          "category": "الفهم والتحليل",
+          "reviewStatus": "checked_against_printed_page",
+          "sourceVerified": true
+        },
+        {
+          "id": "u01_l01-new-rev-003",
+          "question": "ما مظاهر عظمة الله؟",
+          "answer": "سعة الملك والعلم، والرحمة والعدل، وكمال القدرة.",
+          "bookPages": [
+            6,
+            13
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u01_l01-new-rev-004",
+          "question": "هل يؤاخذ الإنسان على مجرد الخواطر؟",
+          "answer": "لا يؤاخذ على ما حدثت به نفسه ما لم يعمل أو يتكلم، كما يبين الحديث الوارد في الدرس.",
+          "bookPages": [
+            6,
+            13
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u01_l01-new-rev-005",
+          "question": "ما حقائق الإيمان المذكورة؟",
+          "answer": "التصديق بأركان الإيمان، وعدم التفريق بين الرسل في الإيمان بهم، والاستسلام لله، والإيمان باليوم الآخر.",
+          "bookPages": [
+            6,
+            13
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u01_l01-new-rev-006",
+          "question": "ما مبدآ الشريعة في الآية 286؟",
+          "answer": "يسر الشريعة وسهولة أحكامها، ومسؤولية الإنسان عن عمله.",
+          "bookPages": [
+            6,
+            13
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u01_l01-new-rev-007",
+          "question": "ما مطالب دعاء المؤمنين؟",
+          "answer": "التجاوز عن النسيان والخطأ، ورفع المشقة، والعفو والمغفرة والرحمة والنصر.",
+          "bookPages": [
+            6,
+            13
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u01_l01-new-rev-008",
+          "question": "ما الفرق بين العفو والمغفرة والرحمة؟",
+          "answer": "العفو ترك العقوبة، والمغفرة إسقاط الذنب والمسامحة، والرحمة تجمعهما مع الإحسان والتفضل.",
+          "bookPages": [
+            6,
+            13
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u01_l01-new-rev-009",
+          "question": "ما سبب نزول آية اليسر؟",
+          "answer": "شق على الصحابة فهم المحاسبة على ما في النفس، فأرشدهم الرسول ﷺ إلى التسليم، ونزلت آية اليسر ورفع الحرج.",
+          "bookPages": [
+            6,
+            13
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u01_l01-printed-10-1",
+          "question": "ما المثال الذي يورده الكتاب على الرخصة الشرعية عند زيادة المشقة؟",
+          "answer": "جواز الفطر في رمضان للمريض والمسافر.",
+          "category": "تطبيق",
+          "bookPages": [
+            10
+          ],
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        },
+        {
+          "id": "u01_l01-printed-11-1",
+          "question": "ما معنى طلب العفو في شرح خواتيم سورة البقرة؟",
+          "answer": "طلب ترك المعاقبة على الذنب.",
+          "category": "تمييز المصطلحات",
+          "bookPages": [
+            11
+          ],
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        }
+      ]
+    },
+    {
+      "id": "u01_l02",
+      "semester": 2,
+      "unitId": "u01",
+      "unit": 1,
+      "number": 2,
+      "title": "دلائل وجود الله تعالى",
+      "bookPages": [
+        14,
+        20
+      ],
+      "reviewStatus": "study_draft_not_teacher_approved",
+      "cards": [
+        {
+          "id": "u01_l02-new-rev-001",
+          "question": "ما أقسام الدلائل في الكتاب؟",
+          "answer": "دليل الفطرة، والدلائل العقلية، والدلائل النقلية.",
+          "bookPages": [
+            14,
+            20
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u01_l02-new-rev-002",
+          "question": "ما الفطرة؟",
+          "answer": "الطبيعة السليمة التي خلق الله الناس عليها، ومن دلائلها لجوء الإنسان إلى الخالق عند الشدة.",
+          "bookPages": [
+            14,
+            20
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u01_l02-new-rev-003",
+          "question": "ما الدلائل العقلية؟",
+          "answer": "البراهين التي يتوصل بها العقل إلى إثبات حقيقة؛ ومنها السببية والإتقان والهداية.",
+          "bookPages": [
+            14,
+            20
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u01_l02-new-rev-004",
+          "question": "ما دليل السببية؟",
+          "answer": "كل حادث له سبب، ولا بد للمخلوقات من خالق أوجدها.",
+          "bookPages": [
+            14,
+            20
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u01_l02-new-rev-005",
+          "question": "ما دليل الإتقان؟",
+          "answer": "دقة الخلق والنظام تدل على الخالق المبدع؛ ومن أمثلته تكوين الإنسان وتنظيم الكون وتنوع النبات والحيوان.",
+          "bookPages": [
+            14,
+            20
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u01_l02-new-rev-006",
+          "question": "ما دليل الهداية؟",
+          "answer": "هداية المخلوقات إلى ما يصلح حياتها؛ مثل رضاعة المولود، وهداية الحيوانات إلى طرق معاشها.",
+          "bookPages": [
+            14,
+            20
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u01_l02-new-rev-007",
+          "question": "ما الدلائل النقلية؟",
+          "answer": "ما ثبت في الوحي من نصوص تدل على وجود الله ووحدانيته.",
+          "bookPages": [
+            14,
+            20
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        }
+      ]
+    },
+    {
+      "id": "u01_l03",
+      "semester": 2,
+      "unitId": "u01",
+      "unit": 1,
+      "number": 3,
+      "title": "إعجاز القرآن الكريم",
+      "bookPages": [
+        21,
+        27
+      ],
+      "reviewStatus": "study_draft_not_teacher_approved",
+      "cards": [
+        {
+          "id": "u01_l03-new-rev-001",
+          "question": "ما الإعجاز القرآني؟",
+          "answer": "عجز البشر عن الإتيان بمثل القرآن، وهو دليل على أنه من عند الله.",
+          "bookPages": [
+            21,
+            27
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u01_l03-new-rev-002",
+          "question": "ما مراحل التحدي بالقرآن؟",
+          "answer": "الإتيان بمثله، ثم بعشر سور، ثم بسورة واحدة من مثله.",
+          "bookPages": [
+            21,
+            27
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u01_l03-new-rev-003",
+          "question": "ما أوجه الإعجاز؟",
+          "answer": "البياني والغيبي والتشريعي والعلمي، وأعظمها الإعجاز البياني.",
+          "bookPages": [
+            21,
+            27
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u01_l03-new-rev-004",
+          "question": "ما الإعجاز البياني؟",
+          "answer": "دقة نظم القرآن وألفاظه وبلاغته، مثل اتساع معنى الاستئناس، ودلالة التقديم والتأخير.",
+          "bookPages": [
+            21,
+            27
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u01_l03-new-rev-005",
+          "question": "ما الإعجاز الغيبي؟",
+          "answer": "إخبار القرآن بأمور غيبية لم يكن البشر يعلمونها، مثل خبر انتصار الروم بعد هزيمتهم.",
+          "bookPages": [
+            21,
+            27
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u01_l03-new-rev-006",
+          "question": "ما الإعجاز التشريعي؟",
+          "answer": "ما اشتمل عليه من أحكام تحقق مصالح الناس، مثل تشريع القصاص.",
+          "bookPages": [
+            21,
+            27
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u01_l03-new-rev-007",
+          "question": "ما ضابط الإعجاز العلمي؟",
+          "answer": "ربط النص بالحقائق العلمية الثابتة دون تكلف أو فرضيات غير مستقرة؛ فالقرآن في الأصل كتاب هداية وإرشاد.",
+          "bookPages": [
+            21,
+            27
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u01_l03-new-rev-008",
+          "question": "ما أمثلة مؤلفات الإعجاز؟",
+          "answer": "إعجاز القرآن لأبي بكر الباقلاني، والإعجاز البياني للقرآن لعائشة عبد الرحمن (بنت الشاطئ).",
+          "bookPages": [
+            21,
+            27
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u01_l03-printed-22-1",
+          "question": "بأي ترتيب يعرض الدرس مراحل التحدي بالقرآن الكريم؟",
+          "answer": "الإتيان بمثل القرآن الكريم، ثم بعشر سور من مثله، ثم بسورة واحدة من مثله.",
+          "category": "الخريطة التنظيمية",
+          "bookPages": [
+            22
+          ],
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        },
+        {
+          "id": "u01_l03-printed-23-1",
+          "question": "بم يعلّل الكتاب اختيار لفظ «تستأنسوا» عند دخول البيوت؟",
+          "answer": "لأنه يتسع للاستئذان والأُنس وإعطاء أهل البيت الأمان والفرصة للاستعداد لاستقبال القادمين.",
+          "category": "الإعجاز البياني",
+          "bookPages": [
+            23
+          ],
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        },
+        {
+          "id": "u01_l03-printed-24-1",
+          "question": "ما المقصد الرئيس للقرآن الكريم في صندوق «أتوقف»؟",
+          "answer": "بناء الإنسان وتوجيهه نحو العقيدة الصحيحة والخُلُق القويم والسلوك السليم.",
+          "category": "أتوقف",
+          "bookPages": [
+            24
+          ],
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        }
+      ]
+    },
+    {
+      "id": "u01_l04",
+      "semester": 2,
+      "unitId": "u01",
+      "unit": 1,
+      "number": 4,
+      "title": "الأمر بالمعروف والنهي عن المنكر",
+      "bookPages": [
+        28,
+        33
+      ],
+      "reviewStatus": "study_draft_not_teacher_approved",
+      "cards": [
+        {
+          "id": "u01_l04-new-rev-001",
+          "question": "ما مفهومه وحكمه؟",
+          "answer": "الدعوة إلى الخير وإرشاد الناس إلى المعروف وترك المنكر، والأصل أنه فرض كفاية.",
+          "bookPages": [
+            28,
+            33
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u01_l04-new-rev-002",
+          "question": "ما أهميته؟",
+          "answer": "الفلاح في الدنيا والآخرة، وتحقيق خيرية الأمة، واستقرار المجتمع وأمن الوطن.",
+          "bookPages": [
+            28,
+            33
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u01_l04-new-rev-003",
+          "question": "ما آدابه؟",
+          "answer": "العلم، والحكمة والموعظة الحسنة، والعمل بما يدعو إليه، والصبر والرفق، وعدم التجسس وتتبع الخصوصيات.",
+          "bookPages": [
+            28,
+            33
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u01_l04-new-rev-004",
+          "question": "ما خطر تركه؟",
+          "answer": "انتشار الفساد وسوء الأخلاق، وضعف المجتمع، واستحقاق العقوبة بحسب ما تبينه النصوص.",
+          "bookPages": [
+            28,
+            33
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u01_l04-new-rev-005",
+          "question": "ما مراتب تغيير المنكر؟",
+          "answer": "باليد لمن له السلطة والصلاحية دون تعد، وباللسان بالنصح المشروع، وبالقلب بالإنكار عند العجز.",
+          "bookPages": [
+            28,
+            33
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u01_l04-new-rev-006",
+          "question": "ما دلالة مثل السفينة؟",
+          "answer": "أن إهمال الضرر العام يهدد الجميع، والتعاون على الإصلاح يحفظ المجتمع.",
+          "bookPages": [
+            28,
+            33
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u01_l04-printed-31-1",
+          "question": "كيف تراعي النصيحة خصوصية من تُوجَّه إليه؟",
+          "answer": "بتجنّب التجسس وتتبع الخصوصيات، والرفق في النصح.",
+          "category": "آداب",
+          "bookPages": [
+            31
+          ],
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        }
+      ]
+    },
+    {
+      "id": "u01_l05",
+      "semester": 2,
+      "unitId": "u01",
+      "unit": 1,
+      "number": 5,
+      "title": "اليوم الآخر: أحداثه وآثار الإيمان به",
+      "bookPages": [
+        34,
+        40
+      ],
+      "reviewStatus": "study_draft_not_teacher_approved",
+      "cards": [
+        {
+          "id": "u01_l05-new-rev-001",
+          "question": "ما مكانة الإيمان باليوم الآخر؟",
+          "answer": "ركن من أركان الإيمان، وقد تكرر ذكره في القرآن والسنة وربط بالإيمان بالله.",
+          "bookPages": [
+            34,
+            40
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u01_l05-new-rev-002",
+          "question": "ما أسماء اليوم الآخر؟",
+          "answer": "يوم القيامة، ويوم الدين، ويوم الحساب، والساعة، والقارعة، ويوم الفصل وغيرها.",
+          "bookPages": [
+            34,
+            40
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u01_l05-new-rev-003",
+          "question": "ما النفختان؟",
+          "answer": "الأولى نفخة الموت، والثانية نفخة البعث التي يقوم الناس بعدها للحساب.",
+          "bookPages": [
+            34,
+            40
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u01_l05-new-rev-004",
+          "question": "ما الحشر والعرض والحساب؟",
+          "answer": "الحشر جمع الخلق، والعرض عرضهم وأعمالهم على الله، والحساب محاسبتهم على أعمالهم.",
+          "bookPages": [
+            34,
+            40
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u01_l05-new-rev-005",
+          "question": "ما الشفاعة الكبرى والصغرى؟",
+          "answer": "الكبرى شفاعة النبي ﷺ لبدء الحساب، والصغرى أنواع الشفاعة التي يأذن الله بها بعد ذلك بحسب النصوص.",
+          "bookPages": [
+            34,
+            40
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u01_l05-new-rev-006",
+          "question": "ما مآل الخلق؟",
+          "answer": "الجنة دار النعيم، والنار دار العقاب، والله يحكم بينهم بالعدل والرحمة.",
+          "bookPages": [
+            34,
+            40
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u01_l05-new-rev-007",
+          "question": "ما آثار الإيمان باليوم الآخر؟",
+          "answer": "المداومة على الطاعات، والبعد عن المعاصي والكسب المحرم، والطمأنينة والرضا والصبر على الابتلاء.",
+          "bookPages": [
+            34,
+            40
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u01_l05-printed-35-1",
+          "question": "اذكر أربعة من أسماء اليوم الآخر التي يسوقها الدرس.",
+          "answer": "يوم الدين، ويوم الحساب، ويوم القيامة، والقارعة. ومن الأسماء المذكورة أيضًا الساعة.",
+          "category": "مصطلحات",
+          "bookPages": [
+            35
+          ],
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        },
+        {
+          "id": "u01_l05-printed-38-1",
+          "question": "كيف يربط الدرس بين الإيمان باليوم الآخر ومصدر الرزق؟",
+          "answer": "يدفع المؤمن إلى تجنب طلب ملذات الدنيا بطرق غير مشروعة، وإيثار العمل الصالح.",
+          "category": "آثار الإيمان",
+          "bookPages": [
+            38
+          ],
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        }
+      ]
+    },
+    {
+      "id": "u01_l06",
+      "semester": 2,
+      "unitId": "u01",
+      "unit": 1,
+      "number": 6,
+      "title": "الاجتهاد في الإسلام",
+      "bookPages": [
+        41,
+        46
+      ],
+      "reviewStatus": "study_draft_not_teacher_approved",
+      "cards": [
+        {
+          "id": "u01_l06-new-rev-001",
+          "question": "ما الاجتهاد؟",
+          "answer": "بذل الفقيه المؤهل وسعه لاستنباط حكم شرعي عملي من أدلته التفصيلية في المسائل التي تقبل الاجتهاد.",
+          "bookPages": [
+            41,
+            46
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u01_l06-new-rev-002",
+          "question": "في أي مسائل لا يجوز الاجتهاد؟",
+          "answer": "في الأحكام القطعية الثابتة التي لا تحتمل اختلافا في دلالتها على الحكم.",
+          "bookPages": [
+            41,
+            46
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u01_l06-new-rev-003",
+          "question": "ما حكمه وأهميته؟",
+          "answer": "واجب على العلماء المؤهلين بحسب الحاجة، وبه تعالج المستجدات وتظهر صلاحية الشريعة لكل زمان ومكان.",
+          "bookPages": [
+            41,
+            46
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u01_l06-new-rev-004",
+          "question": "ما شروط المجتهد؟",
+          "answer": "الإسلام والعقل والبلوغ والعدالة والتقوى، والعلم بالأصول والنصوص والعربية والفقه والمقاصد والإجماع، والبحث والتحليل وفهم الواقع والمسألة.",
+          "bookPages": [
+            41,
+            46
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u01_l06-new-rev-005",
+          "question": "ما الاجتهاد الجماعي؟",
+          "answer": "اشتراك علماء مؤهلين وأصحاب اختصاص في دراسة المستجدات، مما يقرب الرأي من الصواب.",
+          "bookPages": [
+            41,
+            46
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u01_l06-new-rev-006",
+          "question": "ما أمثلة المجامع الفقهية؟",
+          "answer": "مجمع البحوث الإسلامية بالأزهر، ومجمع الفقه الإسلامي الدولي بجدة.",
+          "bookPages": [
+            41,
+            46
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u01_l06-new-rev-007",
+          "question": "ما مهام المؤسسات الإفتائية؟",
+          "answer": "إصدار الفتاوى وإعداد البحوث والدراسات ونشر المعرفة العلمية الموثوقة.",
+          "bookPages": [
+            41,
+            46
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u01_l06-printed-42-1",
+          "question": "ما المهارات البحثية التي تذكرها خريطة الدرس ضمن شروط المجتهد؟",
+          "answer": "امتلاك مهارات البحث والتفكير الناقد والاطلاع على مستجدات العصر.",
+          "category": "الخريطة التنظيمية",
+          "bookPages": [
+            42
+          ],
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        }
+      ]
+    },
+    {
+      "id": "u02_l01",
+      "semester": 2,
+      "unitId": "u02",
+      "unit": 2,
+      "number": 1,
+      "title": "سورة الأعراف: الآيات 31–34",
+      "bookPages": [
+        48,
+        54
+      ],
+      "reviewStatus": "study_draft_not_teacher_approved",
+      "cards": [
+        {
+          "id": "u02_l01-new-rev-001",
+          "question": "ما أبرز موضوعات الآيات؟",
+          "answer": "أخذ الزينة والاعتدال في الطعام والشراب، والتمتع بالطيبات، واجتناب المحرمات، وكون الآجال بيد الله.",
+          "bookPages": [
+            48,
+            54
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u02_l01-new-rev-002",
+          "question": "ما الأصل في الأشياء؟",
+          "answer": "الإباحة إلا ما حرمه الشرع؛ والتحليل والتحريم حق لله.",
+          "bookPages": [
+            48,
+            54
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u02_l01-new-rev-003",
+          "question": "ما دلالة النهي عن الإسراف؟",
+          "answer": "وجوب الاعتدال وعدم تجاوز الحد في الاستهلاك ولو كان الشيء مباحا.",
+          "bookPages": [
+            48,
+            54
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u02_l01-new-rev-004",
+          "question": "ما المحرمات المذكورة في الآية 33؟",
+          "answer": "الفواحش الظاهرة والباطنة، والإثم، والبغي بغير الحق، والشرك بالله، والقول على الله بلا علم.",
+          "bookPages": [
+            48,
+            54
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u02_l01-new-rev-005",
+          "question": "ما دلالة الاستفهام في «قل من حرم زينة الله»؟",
+          "answer": "إنكار تحريم ما أحله الله من الزينة والطيبات بغير دليل.",
+          "bookPages": [
+            48,
+            54
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u02_l01-new-rev-006",
+          "question": "ما دلالة الآية 34؟",
+          "answer": "لكل أمة أجل مقدر لا يتقدم ولا يتأخر إذا جاء.",
+          "bookPages": [
+            48,
+            54
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u02_l01-printed-49-1",
+          "question": "ما معنى «ساعة» في سياق الأجل في الآية 34 من سورة الأعراف؟",
+          "answer": "مدة يسيرة من الوقت.",
+          "category": "المفردات والتراكيب",
+          "bookPages": [
+            49
+          ],
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        },
+        {
+          "id": "u02_l01-printed-52-1",
+          "question": "ما غرض الاستفهام في قوله تعالى «أتقولون على الله ما لا تعلمون»؟",
+          "answer": "الإنكار على الذين يخترعون على الله أوامر بغير دليل.",
+          "category": "أربط مع اللغة",
+          "bookPages": [
+            52
+          ],
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        }
+      ]
+    },
+    {
+      "id": "u02_l02",
+      "semester": 2,
+      "unitId": "u02",
+      "unit": 2,
+      "number": 2,
+      "title": "مراعاة المصالح في الشريعة الإسلامية",
+      "bookPages": [
+        55,
+        60
+      ],
+      "reviewStatus": "study_draft_not_teacher_approved",
+      "cards": [
+        {
+          "id": "u02_l02-new-rev-001",
+          "question": "ما المصلحة؟",
+          "answer": "ما يحقق نفعا للناس أو يدفع ضررا عنهم وفق مقاصد الشريعة.",
+          "bookPages": [
+            55,
+            60
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u02_l02-new-rev-002",
+          "question": "ما أنواعها؟",
+          "answer": "معتبرة شهد الشرع باعتبارها، وملغاة خالفت الشرع، ومرسلة لم يرد دليل خاص باعتبارها أو إلغائها.",
+          "bookPages": [
+            55,
+            60
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u02_l02-new-rev-003",
+          "question": "ما مثال كل نوع؟",
+          "answer": "المعتبرة حفظ النفس، والملغاة منفعة تجارة الخمور، والمرسلة إنشاء المحاكم وتنظيم الدواوين.",
+          "bookPages": [
+            55,
+            60
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u02_l02-new-rev-004",
+          "question": "ما حجة المصلحة المرسلة؟",
+          "answer": "تحقيق مقاصد الشريعة وممارسة الصحابة لها، مثل جمع القرآن وإنشاء الدواوين والقضاء.",
+          "bookPages": [
+            55,
+            60
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u02_l02-new-rev-005",
+          "question": "ما ضوابطها؟",
+          "answer": "ألا تعارض نصا أو إجماعا، وأن تكون عامة وحقيقية لا وهمية.",
+          "bookPages": [
+            55,
+            60
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u02_l02-new-rev-006",
+          "question": "ما أمثلة تطبيقها المعاصر؟",
+          "answer": "تسعير السلع عند الحاجة بضوابطه، واستخدام وسائل الإنجاب المشروعة، وتشريح الجثة لمعرفة سبب الوفاة وفق الضوابط.",
+          "bookPages": [
+            55,
+            60
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        }
+      ]
+    },
+    {
+      "id": "u02_l03",
+      "semester": 2,
+      "unitId": "u02",
+      "unit": 2,
+      "number": 3,
+      "title": "جهود علماء المسلمين في الحفاظ على السنة النبوية الشريفة",
+      "bookPages": [
+        61,
+        66
+      ],
+      "reviewStatus": "study_draft_not_teacher_approved",
+      "cards": [
+        {
+          "id": "u02_l03-new-rev-001",
+          "question": "ما مراحل خدمة السنة؟",
+          "answer": "الحفظ والرواية والجمع والتدوين، ثم التصنيف والنقد والشرح، واستمرار العناية بها في العصر الحديث.",
+          "bookPages": [
+            61,
+            66
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u02_l03-new-rev-002",
+          "question": "ما علم الجرح والتعديل؟",
+          "answer": "علم يبحث في أحوال الرواة من حيث قبول روايتهم أو ردها.",
+          "bookPages": [
+            61,
+            66
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u02_l03-new-rev-003",
+          "question": "ما الصحاح والسنن؟",
+          "answer": "الصحاح مصنفات قصد مؤلفوها جمع الصحيح مثل البخاري ومسلم؛ والسنن مرتبة على الأبواب الفقهية مثل أبي داود والترمذي والنسائي وابن ماجه.",
+          "bookPages": [
+            61,
+            66
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u02_l03-new-rev-004",
+          "question": "ما المسانيد؟",
+          "answer": "كتب ترتب الأحاديث بحسب أسماء الصحابة الرواة؛ مثل مسند الإمام أحمد.",
+          "bookPages": [
+            61,
+            66
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u02_l03-new-rev-005",
+          "question": "ما أمثلة شروح السنة؟",
+          "answer": "فتح الباري شرح صحيح البخاري لابن حجر، والمنهاج شرح صحيح مسلم للنووي.",
+          "bookPages": [
+            61,
+            66
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u02_l03-new-rev-006",
+          "question": "ما أهداف الرحلة في طلب الحديث؟",
+          "answer": "جمعه وحفظه، والتحقق من ضبطه وصحته، ونشره ولقاء العلماء.",
+          "bookPages": [
+            61,
+            66
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u02_l03-new-rev-007",
+          "question": "ما مظاهر العناية الحديثة؟",
+          "answer": "الكتب والمواقع التي تتيح البحث في الأحاديث ودرجاتها وشروحها، والفضائيات والجمعيات العلمية.",
+          "bookPages": [
+            61,
+            66
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u02_l03-printed-62-1",
+          "question": "ما موضوع علم الجرح والتعديل؟",
+          "answer": "معرفة أحوال الرواة من حيث القبول والرد.",
+          "category": "مصطلحات",
+          "bookPages": [
+            62
+          ],
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        },
+        {
+          "id": "u02_l03-printed-63-1",
+          "question": "كيف يختلف ترتيب الأحاديث في المسانيد عن ترتيبها بحسب الأبواب الفقهية؟",
+          "answer": "تجمع المسانيد الأحاديث بحسب رواتها من الصحابة. أما الأبواب الفقهية فتجمع الأحاديث بحسب موضوعاتها كالطهارة والصلاة والزكاة.",
+          "category": "مقارنة",
+          "bookPages": [
+            63
+          ],
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        },
+        {
+          "id": "u02_l03-printed-64-1",
+          "question": "ما خدمتان تقدمهما المواقع الإلكترونية المعنية بالسنة النبوية كما يذكر الدرس؟",
+          "answer": "عرض الأحاديث وبيان شروحها، والبحث في درجة صحتها.",
+          "category": "التقنية",
+          "bookPages": [
+            64
+          ],
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        }
+      ]
+    },
+    {
+      "id": "u02_l04",
+      "semester": 2,
+      "unitId": "u02",
+      "unit": 2,
+      "number": 4,
+      "title": "الحديث الشريف: منهج الإسلام في الحياة",
+      "bookPages": [
+        67,
+        72
+      ],
+      "reviewStatus": "study_draft_not_teacher_approved",
+      "cards": [
+        {
+          "id": "u02_l04-new-rev-001",
+          "question": "ما منهج الرسول ﷺ في العبادة؟",
+          "answer": "الاعتدال والمداومة على العبادة مع مراعاة حاجات النفس والأسرة وحقوق الآخرين.",
+          "bookPages": [
+            67,
+            72
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u02_l04-new-rev-002",
+          "question": "ما التوجيه المستفاد من قصة الثلاثة؟",
+          "answer": "لا يحمل الإنسان نفسه ما لا تطيق، ولا يحرمها من المباح، بل يتبع سنة النبي ﷺ.",
+          "bookPages": [
+            67,
+            72
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u02_l04-new-rev-003",
+          "question": "ما أثر التشدد في التعبد؟",
+          "answer": "الحرج والفتور والملل وربما ترك الواجبات، والإخلال بحقوق النفس والأسرة والمجتمع.",
+          "bookPages": [
+            67,
+            72
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u02_l04-new-rev-004",
+          "question": "ما معنى «فمن رغب عن سنتي فليس مني»؟",
+          "answer": "التحذير من الإعراض عن منهجه المتوازن، لا مجرد ترك نافلة بعينها.",
+          "bookPages": [
+            67,
+            72
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u02_l04-new-rev-005",
+          "question": "ما أمثلة خصوصيات النبي ﷺ المذكورة؟",
+          "answer": "إباحة الوصال له، وحرمة الصدقة عليه، ووجوب قيام الليل عليه كما يقرر الدرس.",
+          "bookPages": [
+            67,
+            72
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u02_l04-printed-68-1",
+          "question": "ما معنى «رهط» في حديث منهج الإسلام في الحياة؟",
+          "answer": "الرهط من ثلاثة إلى عشرة.",
+          "category": "المفردات والتراكيب",
+          "bookPages": [
+            68
+          ],
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        }
+      ]
+    },
+    {
+      "id": "u02_l05",
+      "semester": 2,
+      "unitId": "u02",
+      "unit": 2,
+      "number": 5,
+      "title": "رسائل النبي ﷺ إلى الملوك والزعماء في عصره",
+      "bookPages": [
+        73,
+        78
+      ],
+      "reviewStatus": "study_draft_not_teacher_approved",
+      "cards": [
+        {
+          "id": "u02_l05-new-rev-001",
+          "question": "ما المقصد من الرسائل؟",
+          "answer": "دعوة الملوك والزعماء إلى الإسلام بالحكمة وبيان عالمية الرسالة.",
+          "bookPages": [
+            73,
+            78
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u02_l05-new-rev-002",
+          "question": "من رسل النبي ﷺ داخل الجزيرة المذكورون؟",
+          "answer": "العلاء بن الحضرمي إلى ملك البحرين، وعمرو بن العاص إلى ملكي عمان.",
+          "bookPages": [
+            73,
+            78
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u02_l05-new-rev-003",
+          "question": "من الرسل إلى خارج الجزيرة؟",
+          "answer": "عمرو بن أمية الضمري إلى النجاشي، وعبد الله بن حذافة السهمي إلى كسرى، ودحية الكلبي إلى هرقل، وحاطب بن أبي بلتعة إلى المقوقس.",
+          "bookPages": [
+            73,
+            78
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u02_l05-new-rev-004",
+          "question": "ما السمات المشتركة للرسائل؟",
+          "answer": "وضوح الدعوة، وتعظيم الله، والتواضع، ومراعاة حال المخاطب، واختيار السفراء المناسبين.",
+          "bookPages": [
+            73,
+            78
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u02_l05-new-rev-005",
+          "question": "لماذا اختلفت بعض صيغ الرسائل؟",
+          "answer": "لاختلاف معتقدات المخاطبين وأحوالهم؛ فالنجاشي وهرقل والمقوقس من أهل الكتاب، بخلاف كسرى.",
+          "bookPages": [
+            73,
+            78
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u02_l05-printed-74-1",
+          "question": "من حمل رسالة النبي ﷺ إلى ملك البحرين؟",
+          "answer": "العلاء بن الحضرمي رضي الله عنه.",
+          "category": "شخصيات",
+          "bookPages": [
+            74
+          ],
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        },
+        {
+          "id": "u02_l05-printed-75-1",
+          "question": "من حمل رسالة النبي ﷺ إلى هرقل؟",
+          "answer": "دِحية الكلبي رضي الله عنه.",
+          "category": "شخصيات",
+          "bookPages": [
+            75
+          ],
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        },
+        {
+          "id": "u02_l05-printed-76-1",
+          "question": "على أي حاكم يطلق لقب النجاشي في مفردات الدرس؟",
+          "answer": "ملك الحبشة.",
+          "category": "أتوقف",
+          "bookPages": [
+            76
+          ],
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        },
+        {
+          "id": "u02_l05-printed-77-1",
+          "question": "أين يقع مقام الصحابي الحارث بن عمير الأزدي رضي الله عنه كما يذكر الكتاب؟",
+          "answer": "في بلدة بصيرا بمحافظة الطفيلة.",
+          "category": "أماكن",
+          "bookPages": [
+            77
+          ],
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        }
+      ]
+    },
+    {
+      "id": "u02_l06",
+      "semester": 2,
+      "unitId": "u02",
+      "unit": 2,
+      "number": 6,
+      "title": "يوم تبوك (9 هـ)",
+      "bookPages": [
+        79,
+        84
+      ],
+      "reviewStatus": "study_draft_not_teacher_approved",
+      "cards": [
+        {
+          "id": "u02_l06-new-rev-001",
+          "question": "ما سبب يوم تبوك؟",
+          "answer": "ورود أنباء عن حشود للروم وحلفائهم تهدد المسلمين شمال الجزيرة، فكان الهدف رد العدوان.",
+          "bookPages": [
+            79,
+            84
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u02_l06-new-rev-002",
+          "question": "ما موقع تبوك في السيرة؟",
+          "answer": "في السنة التاسعة للهجرة، وهي آخر غزوة غزاها النبي ﷺ.",
+          "bookPages": [
+            79,
+            84
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u02_l06-new-rev-003",
+          "question": "لماذا سمي جيش العسرة؟",
+          "answer": "لصعوبة الظروف وقلة الموارد وشدة المشقة التي واجهها المسلمون.",
+          "bookPages": [
+            79,
+            84
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u02_l06-new-rev-004",
+          "question": "من الصحابة الثلاثة الذين تخلفوا دون عذر ثم تاب الله عليهم؟",
+          "answer": "كعب بن مالك، ومرارة بن الربيع، وهلال بن أمية رضي الله عنهم.",
+          "bookPages": [
+            79,
+            84
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u02_l06-new-rev-005",
+          "question": "ما نتائج يوم تبوك؟",
+          "answer": "إظهار قوة المسلمين في رد العدوان، وإقبال قبائل على الإسلام، وكشف المنافقين، وعقد معاهدات واتفاقيات.",
+          "bookPages": [
+            79,
+            84
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u02_l06-printed-82-1",
+          "question": "كيف تعامل الصحابة الثلاثة الذين تخلّفوا عن تبوك مع سؤال النبي ﷺ عن تخلّفهم؟",
+          "answer": "صدقوا واعترفوا بالتقصير وندموا، ثم نزل قبول توبتهم.",
+          "category": "قيم",
+          "bookPages": [
+            82
+          ],
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        }
+      ]
+    },
+    {
+      "id": "u02_l07",
+      "semester": 2,
+      "unitId": "u02",
+      "unit": 2,
+      "number": 7,
+      "title": "الحقوق السياسية للمرأة في الإسلام",
+      "bookPages": [
+        85,
+        90
+      ],
+      "reviewStatus": "study_draft_not_teacher_approved",
+      "cards": [
+        {
+          "id": "u02_l07-new-rev-001",
+          "question": "ما مفهوم الحقوق السياسية؟",
+          "answer": "حقوق المشاركة في شؤون المجتمع والدولة وصنع القرار والمصلحة العامة.",
+          "bookPages": [
+            85,
+            90
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u02_l07-new-rev-002",
+          "question": "ما مظاهر المشاركة في صدر الإسلام؟",
+          "answer": "المشاورة وإبداء الرأي والنصيحة، والمشاركة في الهجرة، وإعطاء الأمان، والإسهام في خدمة المجتمع.",
+          "bookPages": [
+            85,
+            90
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u02_l07-new-rev-003",
+          "question": "ما مثال المشاورة؟",
+          "answer": "مشورة أم سلمة رضي الله عنها للنبي ﷺ يوم الحديبية.",
+          "bookPages": [
+            85,
+            90
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u02_l07-new-rev-004",
+          "question": "ما المقصود بحق إعطاء الأمان؟",
+          "answer": "حماية من أعطي الأمان وفق الضوابط الشرعية؛ ومن أمثلته إقرار النبي ﷺ أمان أم هانئ.",
+          "bookPages": [
+            85,
+            90
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u02_l07-new-rev-005",
+          "question": "ما صور المشاركة المعاصرة التي يتناولها الدرس؟",
+          "answer": "الانتخاب والترشح وتمثيل الشعب وتقلد الوظائف العامة وفق الضوابط والقدرة.",
+          "bookPages": [
+            85,
+            90
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u02_l07-printed-86-1",
+          "question": "من الصحابيتان اللتان بايعتا في بيعة العقبة الثانية كما في صندوق «أتوقف»؟",
+          "answer": "أم عمارة نسيبة بنت كعب الأنصارية وأم منيع أسماء بنت عمرو رضي الله عنهما.",
+          "category": "أتوقف",
+          "bookPages": [
+            86
+          ],
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        },
+        {
+          "id": "u02_l07-printed-87-1",
+          "question": "ما مثال مشورة خديجة رضي الله عنها للنبي ﷺ عند نزول الوحي؟",
+          "answer": "أشارت عليه أن يذهبا إلى ورقة بن نوفل ليسألاه عما حدث معه.",
+          "category": "تطبيق",
+          "bookPages": [
+            87
+          ],
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        }
+      ]
+    },
+    {
+      "id": "u03_l01",
+      "semester": 2,
+      "unitId": "u03",
+      "unit": 3,
+      "number": 1,
+      "title": "سورة الفرقان: الآيات 63–77",
+      "bookPages": [
+        92,
+        99
+      ],
+      "reviewStatus": "study_draft_not_teacher_approved",
+      "cards": [
+        {
+          "id": "u03_l01-new-rev-001",
+          "question": "ما أبرز صفات عباد الرحمن؟",
+          "answer": "الوقار والتواضع، والإعراض عن الجاهلين، والعبادة، والخوف من النار، والاعتدال، واجتناب الكبائر واللغو والزور، وتعظيم الوحي وصلاح الأسرة.",
+          "bookPages": [
+            92,
+            99
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u03_l01-new-rev-002",
+          "question": "ما معنى «هونا»؟",
+          "answer": "بسكون ووقار وتواضع، لا بتكبر ولا ضعف مذموم.",
+          "bookPages": [
+            92,
+            99
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u03_l01-new-rev-003",
+          "question": "ما دلالة اعتدالهم في الإنفاق؟",
+          "answer": "لا يسرفون ولا يقترون، بل ينفقون بما يحقق التوازن بين الحقوق والحاجات.",
+          "bookPages": [
+            92,
+            99
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u03_l01-new-rev-004",
+          "question": "ما الكبائر المذكورة؟",
+          "answer": "الشرك بالله، وقتل النفس المحرمة، والزنا، وشهادة الزور.",
+          "bookPages": [
+            92,
+            99
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u03_l01-new-rev-005",
+          "question": "ما شروط التوبة الصحيحة؟",
+          "answer": "الإقلاع عن الذنب والندم والعزم على عدم العودة، ورد الحقوق إن تعلق الذنب بالآخرين.",
+          "bookPages": [
+            92,
+            99
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u03_l01-new-rev-006",
+          "question": "ما معنى اللغو والزور؟",
+          "answer": "اللغو الكلام أو العمل الذي لا فائدة فيه؛ والزور الباطل والكذب ومنه شهادة الزور.",
+          "bookPages": [
+            92,
+            99
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u03_l01-new-rev-007",
+          "question": "ما جزاء عباد الرحمن؟",
+          "answer": "الدرجات العالية في الجنة، والتكريم والتحية والسلام، والخلود فيها.",
+          "bookPages": [
+            92,
+            99
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u03_l01-printed-96-1",
+          "question": "ما شروط التوبة الصحيحة التي يسردها الكتاب؟",
+          "answer": "ترك المعصية، والندم على فعلها، والعزم على عدم العودة إليها، وإرجاع الحقوق إلى أصحابها.",
+          "category": "أتوقف",
+          "bookPages": [
+            96
+          ],
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        },
+        {
+          "id": "u03_l01-printed-97-1",
+          "question": "ما أوجه الجزاء الثلاثة لعباد الرحمن في خاتمة الدرس؟",
+          "answer": "الدرجات العالية في الجنة والتنعم فيها، والتكريم والترحيب من الملائكة، والإقامة الدائمة في الجنة.",
+          "category": "الخريطة التنظيمية",
+          "bookPages": [
+            97
+          ],
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        }
+      ]
+    },
+    {
+      "id": "u03_l02",
+      "semester": 2,
+      "unitId": "u03",
+      "unit": 3,
+      "number": 2,
+      "title": "الطلاق",
+      "bookPages": [
+        100,
+        106
+      ],
+      "reviewStatus": "study_draft_not_teacher_approved",
+      "cards": [
+        {
+          "id": "u03_l02-new-rev-001",
+          "question": "ما الطلاق؟",
+          "answer": "حل رابطة الزواج بالصيغة المعتبرة شرعا.",
+          "bookPages": [
+            100,
+            106
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u03_l02-new-rev-002",
+          "question": "ما الطلاق التعسفي؟",
+          "answer": "طلاق الزوج زوجته دون مسوغ معتبر بما يلحق بها ضررا، ويقرر الكتاب حق التعويض وفق الضوابط.",
+          "bookPages": [
+            100,
+            106
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u03_l02-new-rev-003",
+          "question": "ما الطلاق الرجعي؟",
+          "answer": "الطلقة الأولى أو الثانية بعد الدخول إذا بقيت العدة ولم يوجد سبب يجعلها بائنة؛ ويمكن الرجوع أثناء العدة.",
+          "bookPages": [
+            100,
+            106
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u03_l02-new-rev-004",
+          "question": "ما البائن بينونة صغرى؟",
+          "answer": "طلاق لا تعود به الزوجة إلا بعقد ومهر جديدين وبرضاها؛ مثل الطلاق قبل الدخول أو انتهاء عدة الرجعي.",
+          "bookPages": [
+            100,
+            106
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u03_l02-new-rev-005",
+          "question": "ما البائن بينونة كبرى؟",
+          "answer": "الطلقة الثالثة، ولا تحل للأول حتى تتزوج زوجا آخر زواجا صحيحا ويدخل بها ثم تفارقه دون اتفاق تحايل، وتنقضي عدتها.",
+          "bookPages": [
+            100,
+            106
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u03_l02-new-rev-006",
+          "question": "ما حكمة مشروعية الطلاق؟",
+          "answer": "علاج تعذر استمرار الحياة الزوجية ورفع الضرر، مع السعي للإصلاح قبل الفراق.",
+          "bookPages": [
+            100,
+            106
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u03_l02-printed-101-1",
+          "question": "ما الآداب التي تعرضها خريطة الدرس لما بعد الطلاق؟",
+          "answer": "الستر وعدم إفشاء الأسرار، ورعاية الأطفال، وحسن المعاملة ودفع النفقة وأداء الحقوق.",
+          "category": "الخريطة التنظيمية",
+          "bookPages": [
+            101
+          ],
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        }
+      ]
+    },
+    {
+      "id": "u03_l03",
+      "semester": 2,
+      "unitId": "u03",
+      "unit": 3,
+      "number": 3,
+      "title": "العدة",
+      "bookPages": [
+        107,
+        113
+      ],
+      "reviewStatus": "study_draft_not_teacher_approved",
+      "cards": [
+        {
+          "id": "u03_l03-new-rev-001",
+          "question": "ما العدة؟",
+          "answer": "مدة تتربص فيها المرأة بعد انتهاء الزواج بسبب الطلاق أو وفاة الزوج، وفق الأحكام الشرعية.",
+          "bookPages": [
+            107,
+            113
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u03_l03-new-rev-002",
+          "question": "ما حكمها وحكمتها؟",
+          "answer": "واجبة في مواضعها؛ لحفظ الأنساب، وتعظيم رابطة الزواج، وإتاحة فرصة الرجعة في الطلاق الرجعي.",
+          "bookPages": [
+            107,
+            113
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u03_l03-new-rev-003",
+          "question": "ما عدة المطلقة الحامل؟",
+          "answer": "حتى تضع حملها.",
+          "bookPages": [
+            107,
+            113
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u03_l03-new-rev-004",
+          "question": "ما عدة المطلقة التي تحيض أو لا تحيض؟",
+          "answer": "التي تحيض ثلاث قروء وفق تفصيل الدرس، والتي لا تحيض ثلاثة أشهر.",
+          "bookPages": [
+            107,
+            113
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u03_l03-new-rev-005",
+          "question": "ما عدة المتوفى عنها زوجها؟",
+          "answer": "أربعة أشهر وعشرة أيام إن لم تكن حاملا، والحامل حتى تضع حملها.",
+          "bookPages": [
+            107,
+            113
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u03_l03-new-rev-006",
+          "question": "ما حكم المطلقة قبل الدخول؟",
+          "answer": "لا عدة عليها في الطلاق قبل الدخول وفق التفصيل الشرعي، بخلاف الوفاة.",
+          "bookPages": [
+            107,
+            113
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u03_l03-printed-109-1",
+          "question": "ما عدة الزوجة المتوفى عنها زوجها إذا كانت حاملًا بحسب الجدول؟",
+          "answer": "تنتهي عدتها بوضع الحمل، طالت مدة الحمل أم قصرت.",
+          "category": "جدول",
+          "bookPages": [
+            109
+          ],
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        },
+        {
+          "id": "u03_l03-printed-110-1",
+          "question": "ما المقصود بالتعريض في كلام الخِطبة كما يشرحه الكتاب؟",
+          "answer": "كلام يفيد ما يريده المتكلم من غير تصريح.",
+          "category": "مصطلحات",
+          "bookPages": [
+            110
+          ],
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        }
+      ]
+    },
+    {
+      "id": "u03_l04",
+      "semester": 2,
+      "unitId": "u03",
+      "unit": 3,
+      "number": 4,
+      "title": "الوصية في الشريعة الإسلامية",
+      "bookPages": [
+        114,
+        118
+      ],
+      "reviewStatus": "study_draft_not_teacher_approved",
+      "cards": [
+        {
+          "id": "u03_l04-new-rev-001",
+          "question": "ما الوصية؟",
+          "answer": "تصرف مضاف إلى ما بعد الموت، يتضمن تمليك مال أو الإيصاء بخير ونحوه.",
+          "bookPages": [
+            114,
+            118
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u03_l04-new-rev-002",
+          "question": "ما حكمة مشروعيتها؟",
+          "answer": "إتاحة عمل الخير بعد الموت، والإحسان لغير الوارثين، وتنظيم الحقوق وحفظها.",
+          "bookPages": [
+            114,
+            118
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u03_l04-new-rev-003",
+          "question": "ما الحد المالي للوصية؟",
+          "answer": "الثلث فأقل، وما زاد يحتاج إلى إجازة الورثة وفق الضوابط.",
+          "bookPages": [
+            114,
+            118
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u03_l04-new-rev-004",
+          "question": "ما حكم الوصية لوارث؟",
+          "answer": "لا تنفذ إلا إذا أجازها بقية الورثة وفق الشروط المعتبرة.",
+          "bookPages": [
+            114,
+            118
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u03_l04-new-rev-005",
+          "question": "هل يجوز الرجوع عنها؟",
+          "answer": "يجوز للموصي تعديلها أو الرجوع عنها قبل وفاته.",
+          "bookPages": [
+            114,
+            118
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u03_l04-new-rev-006",
+          "question": "متى تبطل؟",
+          "answer": "من صور البطلان موت الموصى له قبل الموصي أو قتله الموصي على الوجه المانع، بحسب تفصيل الدرس.",
+          "bookPages": [
+            114,
+            118
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u03_l04-new-rev-007",
+          "question": "لماذا توثق؟",
+          "answer": "لحفظ الحقوق ومنع النزاع، ولذلك يندب كتابتها والإشهاد عليها.",
+          "bookPages": [
+            114,
+            118
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        }
+      ]
+    },
+    {
+      "id": "u03_l05",
+      "semester": 2,
+      "unitId": "u03",
+      "unit": 3,
+      "number": 5,
+      "title": "الميراث في الشريعة الإسلامية",
+      "bookPages": [
+        119,
+        124
+      ],
+      "reviewStatus": "study_draft_not_teacher_approved",
+      "cards": [
+        {
+          "id": "u03_l05-new-rev-001",
+          "question": "ما الميراث؟",
+          "answer": "انتقال ما تركه المتوفى إلى ورثته المستحقين وفق الأحكام الشرعية.",
+          "bookPages": [
+            119,
+            124
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u03_l05-new-rev-002",
+          "question": "ما سببا الميراث في الدرس؟",
+          "answer": "القرابة والزوجية.",
+          "bookPages": [
+            119,
+            124
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u03_l05-new-rev-003",
+          "question": "ما ترتيب الحقوق المتعلقة بالتركة؟",
+          "answer": "نفقات التجهيز والدفن، ثم الديون، ثم الوصية النافذة، ثم توزيع الباقي على الورثة.",
+          "bookPages": [
+            119,
+            124
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u03_l05-new-rev-004",
+          "question": "ما أثر تعمد الوارث قتل مورثه؟",
+          "answer": "يحرم من الميراث وفق الحكم الذي يبينه الكتاب.",
+          "bookPages": [
+            119,
+            124
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u03_l05-new-rev-005",
+          "question": "ما أساس توزيع الميراث؟",
+          "answer": "درجة القرابة، والمسؤوليات والالتزامات المالية، وأحكام الأنصبة الشرعية.",
+          "bookPages": [
+            119,
+            124
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u03_l05-new-rev-006",
+          "question": "ما نصيب الزوجين عند وجود فرع وارث وعدمه؟",
+          "answer": "الزوج: الربع مع وجود الفرع الوارث والنصف عند عدمه؛ الزوجة: الثمن مع وجوده والربع عند عدمه.",
+          "bookPages": [
+            119,
+            124
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u03_l05-new-rev-007",
+          "question": "هل ترث المرأة دائما نصف الرجل؟",
+          "answer": "لا؛ تختلف الأنصبة بحسب القرابة والحالة، وقد تساويه أو ترث أكثر منه أو ترث حيث لا يرث نظيرها.",
+          "bookPages": [
+            119,
+            124
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        }
+      ]
+    },
+    {
+      "id": "u03_l06",
+      "semester": 2,
+      "unitId": "u03",
+      "unit": 3,
+      "number": 6,
+      "title": "من خصائص الشريعة الإسلامية: الوسطية",
+      "bookPages": [
+        125,
+        132
+      ],
+      "reviewStatus": "study_draft_not_teacher_approved",
+      "cards": [
+        {
+          "id": "u03_l06-new-rev-001",
+          "question": "ما الوسطية؟",
+          "answer": "الاعتدال والتوازن والبعد عن الإفراط والتفريط، وفق أحكام الشرع.",
+          "bookPages": [
+            125,
+            132
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u03_l06-new-rev-002",
+          "question": "ما الإفراط والتفريط؟",
+          "answer": "الإفراط تجاوز الحد، والتفريط التقصير عن الحد المطلوب.",
+          "bookPages": [
+            125,
+            132
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u03_l06-new-rev-003",
+          "question": "كيف تظهر في الاعتقاد؟",
+          "answer": "توحيد الله، وعدم الغلو في الأنبياء أو جفائهم، والتوازن بين الدنيا والآخرة، والجمع بين الأسباب والتوكل.",
+          "bookPages": [
+            125,
+            132
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u03_l06-new-rev-004",
+          "question": "كيف تظهر في التشريع؟",
+          "answer": "الاعتدال في العبادات والمعاملات والأحوال الشخصية، ومراعاة الاستطاعة ورفع الحرج.",
+          "bookPages": [
+            125,
+            132
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u03_l06-new-rev-005",
+          "question": "كيف تظهر في الأخلاق؟",
+          "answer": "التوازن في السلوك والإنفاق والتعامل مع الآخرين، دون إفراط أو تقصير.",
+          "bookPages": [
+            125,
+            132
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u03_l06-new-rev-006",
+          "question": "ما آثارها؟",
+          "answer": "سهولة الالتزام، وإقبال الناس على الإسلام، وبناء مجتمع يقوم على الفضائل.",
+          "bookPages": [
+            125,
+            132
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u03_l06-new-rev-007",
+          "question": "ما وسائل مواجهة التطرف الفكري؟",
+          "answer": "التوعية الفكرية، والتنشئة السليمة، وتوفير فرص العمل، والرجوع إلى أهل العلم.",
+          "bookPages": [
+            125,
+            132
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        }
+      ]
+    },
+    {
+      "id": "u03_l07",
+      "semester": 2,
+      "unitId": "u03",
+      "unit": 3,
+      "number": 7,
+      "title": "مجالات الوقف ودورها في التنمية",
+      "bookPages": [
+        133,
+        138
+      ],
+      "reviewStatus": "study_draft_not_teacher_approved",
+      "cards": [
+        {
+          "id": "u03_l07-new-rev-001",
+          "question": "ما المقصود بالوقف؟",
+          "answer": "حبس الأصل وتسبيل منفعته في وجه مشروع من وجوه الخير.",
+          "bookPages": [
+            133,
+            138
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u03_l07-new-rev-002",
+          "question": "ما مجالات الوقف في الدرس؟",
+          "answer": "العلمي والصحي والاجتماعي والعسكري، ومن الصور الحديثة الوقف الإلكتروني.",
+          "bookPages": [
+            133,
+            138
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u03_l07-new-rev-003",
+          "question": "ما أمثلة الوقف العلمي التاريخية؟",
+          "answer": "المدرسة النورية لنور الدين زنكي، والصالحية لصلاح الدين، والنظامية لنظام الملك.",
+          "bookPages": [
+            133,
+            138
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u03_l07-new-rev-004",
+          "question": "ما أمثلة الوقف الصحي؟",
+          "answer": "المستشفى المنصوري والصالحي تاريخيا، ووقفية مستشفى المقاصد الخيرية في الأردن حديثا.",
+          "bookPages": [
+            133,
+            138
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u03_l07-new-rev-005",
+          "question": "ما أمثلة الوقف الاجتماعي في الأردن؟",
+          "answer": "وقف ثريد ووقفية خير الأردن، كما يذكر الكتاب.",
+          "bookPages": [
+            133,
+            138
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u03_l07-new-rev-006",
+          "question": "ما الوقف الإلكتروني؟",
+          "answer": "تخصيص أصول أو خدمات رقمية نافعة، مثل مواقع الكتب وقنوات تعليم القرآن والعلم، وفق ضوابط الوقف.",
+          "bookPages": [
+            133,
+            138
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u03_l07-new-rev-007",
+          "question": "ما أثر الوقف؟",
+          "answer": "تمويل الخدمات المستدامة ونشر العلم والرعاية والتكافل ودعم التنمية.",
+          "bookPages": [
+            133,
+            138
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u03_l07-printed-134-1",
+          "question": "ما المدرسة التي أنشأها صلاح الدين الأيوبي في القدس وذكرها الكتاب مثالًا للوقف العلمي؟",
+          "answer": "المدرسة الصلاحية.",
+          "category": "أمثلة تاريخية",
+          "bookPages": [
+            134
+          ],
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        },
+        {
+          "id": "u03_l07-printed-135-1",
+          "question": "كيف يساعد صندوق المريض الفقير في مستشفى المقاصد الخيرية في عمّان؟",
+          "answer": "يستفيد من وقف صحي خُصّص للمريض الفقير، فتُنفق منافعه على المحتاجين إلى العلاج.",
+          "category": "تطبيق",
+          "bookPages": [
+            135
+          ],
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        },
+        {
+          "id": "u03_l07-printed-136-1",
+          "question": "كيف يسهم وقف ثريد في مكافحة الجوع ونقص التغذية؟",
+          "answer": "بتوفير وجبات غذائية متوازنة وصحية يوميًا.",
+          "category": "أتوقف",
+          "bookPages": [
+            136
+          ],
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        }
+      ]
+    },
+    {
+      "id": "u04_l01",
+      "semester": 2,
+      "unitId": "u04",
+      "unit": 4,
+      "number": 1,
+      "title": "الحديث الشريف: مفهوم الإفلاس بين الدنيا والآخرة",
+      "bookPages": [
+        140,
+        144
+      ],
+      "reviewStatus": "study_draft_not_teacher_approved",
+      "cards": [
+        {
+          "id": "u04_l01-new-rev-001",
+          "question": "ما الفرق بين الإفلاس في الدنيا والآخرة؟",
+          "answer": "المفلس في الدنيا من لا مال له؛ ومفلس الآخرة من يأتي بعبادات وحسنات لكنه اعتدى على حقوق الآخرين فتؤخذ حسناته لهم.",
+          "bookPages": [
+            140,
+            144
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u04_l01-new-rev-002",
+          "question": "ما أسلوب الرسول ﷺ في التوجيه؟",
+          "answer": "طرح سؤال يستثير التفكير ثم بيان المعنى الصحيح بمثال واضح.",
+          "bookPages": [
+            140,
+            144
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u04_l01-new-rev-003",
+          "question": "ما الأعمال المؤدية إلى الإفلاس؟",
+          "answer": "الشتم والقذف وأكل المال بالباطل وسفك الدماء والإيذاء.",
+          "bookPages": [
+            140,
+            144
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u04_l01-new-rev-004",
+          "question": "ما مصير حسنات المعتدي؟",
+          "answer": "يعطى المظلومون من حسناته، فإن فنيت قبل قضاء الحقوق أخذ من خطاياهم فطرحت عليه كما في الحديث.",
+          "bookPages": [
+            140,
+            144
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u04_l01-new-rev-005",
+          "question": "ما الدرس العملي؟",
+          "answer": "أداء العبادات مع حفظ حقوق الناس، ورد المظالم والتوبة وطلب المسامحة.",
+          "bookPages": [
+            140,
+            144
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        }
+      ]
+    },
+    {
+      "id": "u04_l02",
+      "semester": 2,
+      "unitId": "u04",
+      "unit": 4,
+      "number": 2,
+      "title": "مقاصد الشريعة الإسلامية",
+      "bookPages": [
+        145,
+        151
+      ],
+      "reviewStatus": "study_draft_not_teacher_approved",
+      "cards": [
+        {
+          "id": "u04_l02-new-rev-001",
+          "question": "ما مقاصد الشريعة؟",
+          "answer": "الغايات والحكم التي قصد الشارع تحقيقها من الأحكام لجلب مصالح الناس ودفع المفاسد عنهم.",
+          "bookPages": [
+            145,
+            151
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u04_l02-new-rev-002",
+          "question": "ما المقاصد الكلية الخمسة؟",
+          "answer": "حفظ الدين والنفس والعقل والنسل والمال.",
+          "bookPages": [
+            145,
+            151
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u04_l02-new-rev-003",
+          "question": "كيف يحفظ الدين؟",
+          "answer": "بالإيمان والعبادات والدعوة بالحكمة وحفظ حرية التدين وفق الشريعة.",
+          "bookPages": [
+            145,
+            151
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u04_l02-new-rev-004",
+          "question": "كيف تحفظ النفس؟",
+          "answer": "بحماية الحياة، وإباحة ما يدفع الهلاك عند الضرورة، وتشريع ما يمنع الاعتداء.",
+          "bookPages": [
+            145,
+            151
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u04_l02-new-rev-005",
+          "question": "كيف يحفظ العقل؟",
+          "answer": "بالعلم والتفكر وتجنب المسكرات والخرافات والتقليد الأعمى.",
+          "bookPages": [
+            145,
+            151
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u04_l02-new-rev-006",
+          "question": "كيف يحفظ النسل والمال؟",
+          "answer": "النسل بالزواج وحماية الأسرة والأنساب، والمال بالعمل والكسب المشروع وتحريم السرقة والربا والغش والاعتداء.",
+          "bookPages": [
+            145,
+            151
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u04_l02-new-rev-007",
+          "question": "ما مراتب المقاصد؟",
+          "answer": "الضروريات التي تقوم الحياة عليها، والحاجيات التي ترفع المشقة، والتحسينيات التي تكمل مكارم الأخلاق وجمال الحياة.",
+          "bookPages": [
+            145,
+            151
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u04_l02-new-rev-008",
+          "question": "ما مثال على كل مرتبة؟",
+          "answer": "تحريم الخمر ضرورة لحفظ العقل، والفطر للمسافر حاجة، وآداب الطعام والشراب تحسين.",
+          "bookPages": [
+            145,
+            151
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        }
+      ]
+    },
+    {
+      "id": "u04_l03",
+      "semester": 2,
+      "unitId": "u04",
+      "unit": 4,
+      "number": 3,
+      "title": "منهج الإسلام في مكافحة الجريمة",
+      "bookPages": [
+        152,
+        158
+      ],
+      "reviewStatus": "study_draft_not_teacher_approved",
+      "cards": [
+        {
+          "id": "u04_l03-new-rev-001",
+          "question": "ما الجريمة في الفقه؟",
+          "answer": "مخالفة حكم شرعي بارتكاب ممنوع أو ترك واجب مما يترتب عليه عقوبة معتبرة.",
+          "bookPages": [
+            152,
+            158
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u04_l03-new-rev-002",
+          "question": "ما مخاطرها؟",
+          "answer": "استحقاق العقوبة، والإخلال بالأمن، وإثارة العداوة، والإضرار بالصحة والاقتصاد.",
+          "bookPages": [
+            152,
+            158
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u04_l03-new-rev-003",
+          "question": "ما أقسام الجرائم في الدرس؟",
+          "answer": "الحدود والقصاص والتعزير.",
+          "bookPages": [
+            152,
+            158
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u04_l03-new-rev-004",
+          "question": "ما الفرق بينها؟",
+          "answer": "الحدود عقوبات مقدرة شرعا، والقصاص يتعلق بالجنايات على النفس وما دونها وفق شروطه، والتعزير عقوبة يقدرها القضاء المختص فيما لا حد ولا قصاص فيه.",
+          "bookPages": [
+            152,
+            158
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u04_l03-new-rev-005",
+          "question": "ما التدابير الوقائية؟",
+          "answer": "تعميق الإيمان والأخلاق والانتماء، ومعالجة الأسباب الاجتماعية والاقتصادية التي قد تؤدي إلى الجريمة.",
+          "bookPages": [
+            152,
+            158
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u04_l03-new-rev-006",
+          "question": "ما التدابير العلاجية؟",
+          "answer": "تطبيق القضاء المختص للأحكام والعقوبات العادلة بضماناتها، والعمل على إصلاح الجاني وحفظ حقوق المتضررين.",
+          "bookPages": [
+            152,
+            158
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        }
+      ]
+    },
+    {
+      "id": "u04_l04",
+      "semester": 2,
+      "unitId": "u04",
+      "unit": 4,
+      "number": 4,
+      "title": "من وصايا النبي ﷺ في حجة الوداع",
+      "bookPages": [
+        159,
+        165
+      ],
+      "reviewStatus": "study_draft_not_teacher_approved",
+      "cards": [
+        {
+          "id": "u04_l04-new-rev-001",
+          "question": "ما أبرز موضوعات الوصايا؟",
+          "answer": "المساواة، وحرمة الاعتداء على النفس والمال والعرض، ونبذ الفرقة، وتكريم المرأة، والتمسك بكتاب الله.",
+          "bookPages": [
+            159,
+            165
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u04_l04-new-rev-002",
+          "question": "ما أساس التفاضل بين الناس؟",
+          "answer": "التقوى، لا العرق أو اللون أو النسب.",
+          "bookPages": [
+            159,
+            165
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u04_l04-new-rev-003",
+          "question": "لماذا حرم الثأر والربا؟",
+          "answer": "الثأر يوقع العدوان والفتن، والربا يظلم الناس ويؤدي إلى استغلالهم وأكل أموالهم بغير حق.",
+          "bookPages": [
+            159,
+            165
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u04_l04-new-rev-004",
+          "question": "ما وصيته بالمرأة؟",
+          "answer": "الإحسان إليها، ومعاشرتها بالمعروف، وأداء حقوقها.",
+          "bookPages": [
+            159,
+            165
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u04_l04-new-rev-005",
+          "question": "ما دلالة التمسك بالقرآن؟",
+          "answer": "الاهتداء بالوحي والعمل بأحكامه، ويشمل الرجوع إلى السنة التي أمر القرآن باتباعها.",
+          "bookPages": [
+            159,
+            165
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u04_l04-new-rev-006",
+          "question": "ما أساليب التوجيه في الخطبة؟",
+          "answer": "النداء، والحوار والتشويق، والتشبيه، والإيجاز والاختصار.",
+          "bookPages": [
+            159,
+            165
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u04_l04-printed-160-1",
+          "question": "ما اليوم المقصود بلفظ «يوم النحر» في الحديث الوارد في الدرس؟",
+          "answer": "يوم عيد الأضحى المبارك.",
+          "category": "المفردات والتراكيب",
+          "bookPages": [
+            160
+          ],
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        }
+      ]
+    },
+    {
+      "id": "u04_l05",
+      "semester": 2,
+      "unitId": "u04",
+      "unit": 4,
+      "number": 5,
+      "title": "المسؤولية المجتمعية في الإسلام",
+      "bookPages": [
+        166,
+        171
+      ],
+      "reviewStatus": "study_draft_not_teacher_approved",
+      "cards": [
+        {
+          "id": "u04_l05-new-rev-001",
+          "question": "ما المسؤولية المجتمعية؟",
+          "answer": "قيام الفرد أو المؤسسة بواجبات ومبادرات تحقق مصلحة المجتمع وتسهم في تنميته.",
+          "bookPages": [
+            166,
+            171
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u04_l05-new-rev-002",
+          "question": "ما دوافعها؟",
+          "answer": "ابتغاء الأجر والثواب، والشعور بالرضا وتقدير الذات، وحب الوطن.",
+          "bookPages": [
+            166,
+            171
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u04_l05-new-rev-003",
+          "question": "ما أبرز صورها؟",
+          "answer": "نشر الأخلاق، ومساعدة المحتاجين، وتمكين ذوي الإعاقة، والتطوع، والإصلاح بين الناس، ودعم المواهب، والمحافظة على الأمن.",
+          "bookPages": [
+            166,
+            171
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u04_l05-new-rev-004",
+          "question": "ما آثارها؟",
+          "answer": "ترابط المجتمع وتماسكه، وتنمية الوطن وتطوره وازدهاره.",
+          "bookPages": [
+            166,
+            171
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u04_l05-new-rev-005",
+          "question": "ما تطبيقها في المدرسة؟",
+          "answer": "مساعدة الزملاء، والمحافظة على الممتلكات، والمبادرة إلى الأنشطة التطوعية والإصلاح بالحكمة.",
+          "bookPages": [
+            166,
+            171
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        }
+      ]
+    },
+    {
+      "id": "u04_l06",
+      "semester": 2,
+      "unitId": "u04",
+      "unit": 4,
+      "number": 6,
+      "title": "حقوق الإنسان بين الإسلام والإعلان العالمي لحقوق الإنسان",
+      "bookPages": [
+        172,
+        178
+      ],
+      "reviewStatus": "study_draft_not_teacher_approved",
+      "cards": [
+        {
+          "id": "u04_l06-new-rev-001",
+          "question": "ما مفهوم حقوق الإنسان في الإسلام؟",
+          "answer": "الحقوق التي كفلتها الشريعة للإنسان لحفظ كرامته ومصالحه، وترتبط بمقاصدها الكلية.",
+          "bookPages": [
+            172,
+            178
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u04_l06-new-rev-002",
+          "question": "ما المجالات الأساسية للحقوق؟",
+          "answer": "الحقوق الأساسية والاقتصادية والاجتماعية والسياسية.",
+          "bookPages": [
+            172,
+            178
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u04_l06-new-rev-003",
+          "question": "ما أمثلة الحقوق الأساسية؟",
+          "answer": "الحياة والكرامة والمساواة والعدل والحرية، ومنها حرية الاعتقاد والتفكر والتعبير بضوابطها.",
+          "bookPages": [
+            172,
+            178
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u04_l06-new-rev-004",
+          "question": "ما أمثلة الحقوق الاقتصادية؟",
+          "answer": "التملك والعمل والكسب المشروع وحماية الأموال.",
+          "bookPages": [
+            172,
+            178
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u04_l06-new-rev-005",
+          "question": "ما أمثلة الحقوق الاجتماعية والسياسية؟",
+          "answer": "التعليم والزواج وتكوين الأسرة، والمشاركة العامة وإبداء الرأي وفق أحكام الشريعة.",
+          "bookPages": [
+            172,
+            178
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u04_l06-new-rev-006",
+          "question": "ما علاقة الإعلان العالمي بأحكام الإسلام بحسب الكتاب؟",
+          "answer": "يتفق معه في كثير من الحقوق، وتوجد مواد يختلف تنظيمها عن أحكام الشريعة، منها ضوابط الزواج وتكوين الأسرة.",
+          "bookPages": [
+            172,
+            178
+          ],
+          "category": "مراجعة مفاهيم الدرس",
+          "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u04_l06-printed-174-1",
+          "question": "ما أثر تصوير أشخاص ونشر صورهم بغير علمهم في حقهم في الكرامة؟",
+          "answer": "ينتهك خصوصيتهم ويتدخل في حياتهم الخاصة، وقد يعرّضهم للإساءة.",
+          "category": "تطبيق",
+          "bookPages": [
+            174
+          ],
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        },
+        {
+          "id": "u04_l06-printed-175-1",
+          "question": "ما الضابط الذي يذكره الدرس عند إبداء الرأي في أمر يخص المجتمع؟",
+          "answer": "مراعاة الآداب العامة وحقوق الآخرين، وتجنّب القذف والسخرية والتشهير.",
+          "category": "تطبيق",
+          "bookPages": [
+            175
+          ],
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        },
+        {
+          "id": "u04_l06-printed-176-1",
+          "question": "كيف خصص النبي ﷺ للنساء وقتًا للتعلم كما ورد في الدرس؟",
+          "answer": "خصص أوقاتًا لتعليم النساء وأرسل القُرّاء إلى القبائل لتعليم أبنائها القرآن الكريم وأحكام الدين.",
+          "category": "أمثلة",
+          "bookPages": [
+            176
+          ],
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
+        }
+      ]
+    }
+  ]
+}
