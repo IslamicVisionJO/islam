@@ -1316,7 +1316,7 @@ const Wall=(()=>{
  function question(){
   if(!round)return null;
   if(ranked)return round.question;
-  const q=round.questions[round.index];return q&&{id:q.id,prompt:q.prompt,options:q.payload.options};
+  const q=round.questions[round.index];return q&&{id:q.id,lesson_id:q.lesson_id,prompt:q.prompt,options:q.payload.options};
  }
  function result(){
   const r=round,answered=r.receipts?.length||0,wrong=answered-r.correct;
@@ -1330,6 +1330,9 @@ const Wall=(()=>{
  }
  function play(){
   const r=round,q=question(),countdown=r.phase==='playing'&&r.delay>elapsed();
+  // Numbered verses need their surah shown even in an all-lessons round.
+  const context=q&&/الآي(?:ة|ات)\s*\(?[0-9٠-٩]/u.test(q.prompt)?
+   {u01_l01:'سورة البقرة',u02_l01:'سورة الأعراف',u03_l01:'سورة الفرقان'}[q.lesson_id]:'';
   let body;
   if(r.phase==='paused')body=`<div class="wall-feedback"><h3>اللعبة متوقفة</h3>${btn('resume','استئناف',pending)}</div>`;
   else if(r.phase==='feedback'){
@@ -1338,9 +1341,9 @@ const Wall=(()=>{
    ${r.streak===3?'<p>سلسلة 3 • +50 نقطة</p>':r.streak===5?'<p>سلسلة 5 • +100 نقطة وتراجع إضافي للجدار</p>':r.streak===10?'<p>سلسلة 10 • تجميد الجدار 3 ثوانٍ بعد المتابعة</p>':''}
    <div>${btn('next','متابعة',pending)}</div></div>`;
   }else if(countdown)body='<p class="wall-countdown" aria-live="polite" id="wall-countdown"></p>';
-  else body=q?`<div class="wall-question"><p>ضع دائرة حول رمز الإجابة الصحيحة</p><h3>${e(q.prompt)}</h3><div class="wall-answers">${q.options.map((o,i)=>`<button type="button" class="wall-choice" data-wall="answer" data-value="${e(o.id)}" ${pending?'disabled':''}><b>${letters[i]}</b><span>${e(o.text)}</span></button>`).join('')}</div></div>`:'';
+  else body=q?`<div class="wall-question"><p>ضع دائرة حول رمز الإجابة الصحيحة${context?' · '+e(context):''}</p><h3>${e(q.prompt)}</h3><div class="wall-answers">${q.options.map((o,i)=>`<button type="button" class="wall-choice" data-wall="answer" data-value="${e(o.id)}" ${pending?'disabled':''}><b>${letters[i]}</b><span>${e(o.text)}</span></button>`).join('')}</div></div>`:'';
   return `<section class="wall-play">
-   <div class="wall-hud"><span>النقاط <b>${nf(r.score)}</b></span><span>السلسلة <b>${nf(r.streak)}</b></span><span>السرعة <b>${nf(Math.round(r.speed*100))}٪/ث</b></span><span>السؤال <b>${nf(r.index+1)} / ${nf(r.total)}</b></span></div>
+   <div class="wall-hud"><span>النقاط <b>${nf(r.score)}</b></span><span>السلسلة <b>${nf(r.streak)}</b></span><span>السرعة <b>${nf(Math.round(r.speed*100))}٪/ث</b></span><span>السؤال <b>${nf(r.index+1)} من ${nf(r.total)}</b></span></div>
    <div class="wall-arena" data-danger="green" aria-hidden="true"><div class="wall-stones"></div><div class="wall-danger-line"></div></div>
    <div class="wall-danger-status"><span id="wall-danger-label" role="status">الخطورة منخفضة</span><span id="wall-time">${fmt(r.elapsed)}</span></div>
    <div class="wall-controls">${btn('sound',S.settings.sounds?'كتم الصوت':'تشغيل الصوت')}${r.phase==='playing'?btn('pause','إيقاف مؤقت',pending):''}${btn('exit','إنهاء الجولة',pending)}</div>${body}</section>`;
