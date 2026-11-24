@@ -13,7 +13,7 @@ try {
   await page.locator('[data-action=guest-name]').click();
   await page.waitForFunction(()=>S.ready && Auth.current().mode==='guest');
   const bank = await page.evaluate(()=>({count:S.valid.length,released:REFINED_BANK_RELEASE,configured:Auth.current().configured}));
-  assert.equal(bank.count,2795);
+  assert.equal(bank.count,1283);
   assert.equal(bank.released,release);
   if (!release) assert.equal(bank.configured,false);
   const history = await page.evaluate(()=>{

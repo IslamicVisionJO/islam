@@ -47,8 +47,8 @@ const sources = await Promise.all(['core', 'storage', 'auth', 'sound', 'home-her
 const runtimeRecord = q => ({
   id:q.id,unit_id:q.unit_id,lesson_id:q.lesson_id,difficulty:q.difficulty,type:q.type,topic:q.topic,
   prompt:q.prompt,payload:q.payload,answer:q.answer,explanation:q.explanation,
-  source:{printed_pages:q.source?.printed_pages,pdf_pages:q.source?.pdf_pages},
-  review:{source_checked:q.review?.source_checked,excluded:q.review?.excluded,verification_status:q.review?.verification_status}
+  source:{document_id:q.source?.document_id,printed_pages:q.source?.printed_pages,pdf_pages:q.source?.pdf_pages},
+  review:{answer_checked:q.review?.answer_checked,source_checked:q.review?.source_checked,excluded:q.review?.excluded,verification_status:q.review?.verification_status}
 });
 const runtimeQuestions = { ...questions, questions: questions.questions.map(runtimeRecord) };
 if (bank) runtimeQuestions.archivedQuestions = legacyBank.questions.map(runtimeRecord);

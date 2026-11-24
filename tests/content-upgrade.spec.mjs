@@ -66,9 +66,27 @@ try{
  await admin.getByText('سيتم إضافة الإنجازات قريبًا.').waitFor();
  await visitor.reload();
  await visitor.getByText('سيتم إضافة الإنجازات قريبًا.').waitFor();
- await visitor.getByRole('link',{name:'العودة إلى تسجيل الدخول'}).click();
- await visitor.getByRole('link',{name:'التربية الإسلامية في حياتنا'}).click();
- assert.equal(await visitor.locator('.enrichment-grid article').count(),16);
+ assert.equal(await visitor.locator('.knowledge-section .enrichment-grid article').count(),16);
+ await visitor.evaluate(()=>location.hash='#life');
+ await visitor.waitForFunction(()=>S.page==='knowledge'&&location.hash==='#steam');
+ assert.equal(await visitor.getByRole('heading',{name:'التربية الإسلامية في حياتنا',exact:true}).count(),1);
+ assert.equal(await admin.locator('.sidebar [data-page=life]').count(),0);
+ await admin.evaluate(()=>Learning.catalog());
+ await admin.locator('[data-learning=solutions-catalog]').click();
+ assert.equal(await admin.locator('#book-lesson optgroup').count(),4);
+ assert.equal(await admin.locator('#book-lesson option[value^=u]').count(),26);
+ assert.equal(await admin.locator('.book-answer').count(),0);
+ await admin.selectOption('#book-lesson','u04_l06');
+ assert.equal(await admin.locator('.book-answer').count(),await admin.evaluate(()=>BOOK_SOLUTIONS.u04_l06.length));
+ await admin.selectOption('#book-lesson','u01_l01');
+ assert.equal(await admin.locator('.book-answer').count(),await admin.evaluate(()=>BOOK_SOLUTIONS.u01_l01.length));
+ assert.ok(admin.url().endsWith('#learning/u01_l01/solutions'));
+ const source=await admin.evaluate(()=>({checked:S.valid.length, preserved:S.byId.size,
+  allTextbook:S.valid.every(q=>q.source.document_id==='islamic_education_g11_s2_2025'&&q.review.source_checked&&q.review.answer_checked),
+  games:EducationalContent.names.map((_,i)=>EducationalContent.eligible(S.valid,i).length)}));
+ assert.equal(source.checked,1283);
+ assert.ok(source.preserved>2795);
+ assert.ok(source.allTextbook && source.games.every(count=>count>0));
  const coverage=await admin.evaluate(()=>[...new Set(questionPool('exam',null,'mixed','all').map(q=>q.lesson_id))].length);
  assert.equal(coverage,26);
  await admin.evaluate(()=>createSession('exam','u01_l01','mixed','all',40));

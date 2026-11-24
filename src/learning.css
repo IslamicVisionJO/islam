@@ -22,3 +22,4 @@
 .enrichment-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,245px),1fr));gap:16px;margin:18px 0}
 .enrichment-grid h2{font-size:1.2rem}.steam-achievements{margin-block:30px}.steam-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,120px),1fr));gap:8px}
 .steam-gallery img{width:100%;height:auto;border-radius:10px}#steam-editor{margin-block:16px}#steam-editor textarea{width:100%;min-height:8rem}#steam-editor input[type=checkbox]{width:auto}
+.book-lesson-picker{display:block;max-width:600px;margin:0 0 16px}

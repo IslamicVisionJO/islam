@@ -26,9 +26,8 @@ const Enrichment=(()=>{
  ];
  let rows=[], manage=false, edit=null, loading=false, message='', generation=0;
  const admin=()=>authState().isAdmin;
- function life(){
-  return heroTitle('التربية الإسلامية في حياتنا','أمثلة وتمارين تربط القيم بالمواقف اليومية')+
-   '<div class="enrichment-grid">'+topics.map(([title,value,example,practice,reference])=>
+ function lifeTopics(){
+  return '<div class="enrichment-grid">'+topics.map(([title,value,example,practice,reference])=>
     `<article class="surface panel"><h2>${e(title)}</h2><p>${e(value)}</p><p><strong>موقف يومي</strong> · ${e(example)}</p>
     <p><strong>كيف أطبّقها؟</strong> ${e(practice)}</p><small>للمراجعة من القرآن الكريم · ${e(reference)}</small></article>`).join('')+'</div>';
  }
@@ -131,5 +130,5 @@ const Enrichment=(()=>{
    catch(error){notify(error.message);}finally{btn.disabled=false;}
   }
  });
- return {steam,life,load};
+ return {steam,lifeTopics,load};
 })();

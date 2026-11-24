@@ -382,7 +382,14 @@ async function initialize(){
   const hasRefinedBank = typeof MINISTERIAL_REVIEW!=='undefined' && MINISTERIAL_REVIEW!==null;
   S.units=units;
   S.questions=data.questions||[];
-  S.valid=S.questions.filter(q=>validQuestion(q)&&(hasRefinedBank||q.review?.source_checked===true)&&q.review?.excluded!==true);
+  const lessonRanges=new Map((hasRefinedBank?LEARNING_DATA.units:[]).flatMap(unit=>unit.lessons.map(lesson=>[lesson.id,lesson])));
+  S.valid=S.questions.filter(q=>{
+   if(!validQuestion(q)||q.review?.excluded||q.review?.source_checked!==true)return false;
+   if(!hasRefinedBank)return true;
+   const lesson=lessonRanges.get(q.lesson_id);
+   return Boolean(lesson && q.review.answer_checked===true && q.source.document_id==='islamic_education_g11_s2_2025' &&
+    q.source.printed_pages.every(page=>page>=lesson.startPage&&page<=lesson.endPage));
+  });
   S.byId=new Map([...S.questions,...(hasRefinedBank?data.archivedQuestions||[]:[])].filter(validQuestion).map(q=>[q.id,q]));
   const saved=await Promise.all([db.get('profile',null),db.get('settings',null),db.get('results',[]),db.get('mistakes',{}),db.get('active',null),db.get('achievements',{})]);
   const safeSaved=(key,value,fallback)=>{if(value===null||value===undefined)return fallback;try{return typeof validateBackup==='function'?validateBackup({app:'tahadi-islamic',version:1,records:{[key]:value}},S.byId)[key]:value;}catch(error){notify(`تعذر قراءة ${key} المحفوظ. بقيت البيانات الأصلية دون حذف ويمكن تصديرها للمراجعة.`);console.warn(error.message);return fallback;}};
