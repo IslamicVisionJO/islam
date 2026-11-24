@@ -27,7 +27,11 @@ test('responsive practice: moving wall, pause on hiding, four Arabic options and
    await page.locator('[data-action=guest-name]').click();
    await page.waitForFunction(()=>typeof S!=='undefined'&&authState().mode==='guest');
    await page.evaluate(()=>go('educational'));
-   await page.locator('.wall-catalog [data-page=wall]').click();
+   const card=page.locator('.edu-catalog > .wall-catalog');
+   assert.equal(await page.locator('.edu-catalog > article').count(),14);
+   assert.equal(await card.locator('h2').textContent(),'سباق الجدار');
+   await card.locator('[data-page=wall]').click();
+   await page.getByRole('heading',{name:'سباق الجدار',exact:true}).waitFor();
    await page.selectOption('#wall-unit','u01');
    await page.selectOption('#wall-lesson','u01_l01');
    await page.selectOption('#wall-level','hard');

@@ -33,7 +33,7 @@ const WallAdmin=(()=>{
  function view(){
   const query=search.trim().toLowerCase();
   const matched=rows.filter(q=>[q.id,q.prompt,q.name,byLesson(q.lesson_id)?.name].some(value=>value?.toLowerCase().includes(query)));
-  return heroTitle('إدارة تحدي الجدار','الأسئلة ونتائج الترتيب')+
+  return heroTitle('إدارة سباق الجدار','الأسئلة ونتائج الترتيب')+
    `<div class="wall-controls"><button class="btn" data-action="navigate" data-page="wall">العودة إلى التحدي</button>
    ${btn('questions','الأسئلة')}${btn('results','النتائج')}${btn('refresh','تحديث')}${tab==='questions'?btn('new','إضافة سؤال'):''}</div>
    ${error?`<p role="alert" class="auth-message is-error">${e(error)}</p>`:''}

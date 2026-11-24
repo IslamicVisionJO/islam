@@ -51,7 +51,7 @@ async function solve(page,q){if(q.type==='matching'){for(const p of q.answer.pai
 try{
  host=await newClient({width:390,height:844});guest=await newClient({width:1280,height:900});await login(host,'host@example.test');await login(guest,'guest@example.test');
  for(let game=0;game<13;game++)await step(`Game ${game+1}: two clients complete the actual activity with server-scored results`,async()=>{
-  await host.evaluate(()=>go('educational'));assert.equal(await host.locator('.edu-game-icon svg').count(),13);assert.equal(await host.locator('.edu-number').count(),0);
+  await host.evaluate(()=>go('educational'));assert.equal(await host.locator('.edu-game-icon svg').count(),14);assert.equal(await host.locator('.edu-number').count(),0);
   await host.selectOption('#edu-unit','u01');await host.selectOption('#edu-lesson','u01_l01');await host.selectOption('#edu-duration','custom');await host.locator('#edu-custom-duration').fill('137');await click(host,'online',game);await host.waitForSelector('[data-testid="online-room-code"]');invite=(await host.locator('[data-testid="online-room-code"]').textContent()).trim();
   const recent=await backend.call({name:'duel_recent',user:user(ids.host)});roomID=recent.data.find(r=>r.status==='waiting').id;
   await guest.evaluate(()=>go('online'));await guest.waitForTimeout(300);if(await guest.locator('[data-action="online-new"]').count())await guest.locator('[data-action="online-new"]').click();await guest.waitForSelector('#online-code');await guest.locator('#online-code').fill(invite);await guest.locator('#online-join-form button[type=submit]').click();await guest.waitForSelector('.edu-play');await host.waitForSelector('.edu-play');

@@ -1,4 +1,5 @@
 const Wall=(()=>{
+ const name='سباق الجدار';
  const letters=['أ','ب','ج','د'];
  const levels={easy:'سهل',medium:'متوسط',hard:'التحدي الوزاري'};
  const periods={day:'اليوم',week:'هذا الأسبوع',all:'جميع الأوقات'};
@@ -31,7 +32,7 @@ const Wall=(()=>{
    ${select('wall-level','المستوى',Object.entries(levels),level)}</div>
    <p class="muted">تعطى الأولوية لأسئلة المستوى المختار، ثم تُستخدم الأسئلة المتاحة في النطاق نفسه.</p>
    <div class="wall-actions">${online()?btn('ranked','ابدأ التحدي وحفظ النتيجة',pending||board===null||Boolean(boardError)):''}${btn('practice','ابدأ تدريبًا محليًا',pending)}</div>
-   ${authState().isAdmin?'<button class="btn btn-outline" data-action="navigate" data-page="wall-admin">إدارة تحدي الجدار</button>':''}
+   ${authState().isAdmin?'<button class="btn btn-outline" data-action="navigate" data-page="wall-admin">إدارة سباق الجدار</button>':''}
    ${online()?'<p class="muted">تحفظ الجولات المكتملة أو المنتهية بخط الخطر في حسابك.</p>':'<p class="muted">سجّل الدخول للمشاركة في لوحة المتصدرين.</p>'}
   </section>${ranks()}`;
  }
@@ -72,7 +73,7 @@ const Wall=(()=>{
  }
  function view(){
   syncAccount();
-  return heroTitle('تحدي الجدار – سباق مع المعرفة',round?`${e(levels[round.level])} · ${round.lesson==='all'?(round.unit==='all'?'جميع الدروس':e(unitFor(round.unit)?.name)):e(byLesson(round.lesson)?.name)}`:'أجب قبل خط الخطر')+
+  return heroTitle(name,round?`${e(levels[round.level])} · ${round.lesson==='all'?(round.unit==='all'?'جميع الدروس':e(unitFor(round.unit)?.name)):e(byLesson(round.lesson)?.name)}`:'أجب قبل خط الخطر')+
    (message?`<p class="auth-message is-error" role="alert">${e(message)}</p>`:'')+
    (round?(round.phase==='finished'?result():play()):setup());
  }
@@ -181,5 +182,5 @@ const Wall=(()=>{
   if(action==='exit'&&!confirm('إنهاء المحاولة الآن؟ المحاولة المنسحَب منها لا تدخل الترتيب.'))return;
   void act(action,b.dataset.value);
  });
- return {view,bind,enter,leave,card:()=>`<article class="surface panel wall-catalog"><div aria-hidden="true" class="wall-icon">▦</div><h2>تحدي الجدار – سباق مع المعرفة</h2><p>ادفع الجدار بإجاباتك الصحيحة وابقَ في التحدي لأطول وقت.</p><button type="button" class="btn btn-gold" data-action="navigate" data-page="wall">ابدأ التحدي</button></article>`};
+ return {view,bind,enter,leave,card:()=>`<article class="surface panel wall-catalog"><span class="edu-game-icon">${ico('eduBoard',38)}</span><h2>${name}</h2><p>ادفع الجدار بإجاباتك الصحيحة وابقَ في التحدي لأطول وقت.</p><button type="button" class="btn btn-gold" data-action="navigate" data-page="wall">ابدأ التحدي</button></article>`};
 })();
