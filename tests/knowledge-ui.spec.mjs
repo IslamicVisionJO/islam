@@ -138,11 +138,6 @@ async function save(page) {
   await page.locator('[data-ka-rows][aria-busy=false]').waitFor();
 }
 
-async function reenter(page) {
-  await navigate(page, 'home');
-  await navigate(page, 'knowledge');
-}
-
 async function confirmDelete(page, title, accept) {
   const action = page.locator('[data-ka-action=delete]');
   page.once('dialog', async dialog => {
@@ -182,7 +177,7 @@ try {
   await form.locator('[name=title]').fill(title);
   await save(admin);
   await admin.locator('.ka-row').getByRole('heading', {name:title}).waitFor();
-  await reenter(guest);
+  await guest.reload();
   await emptyContent(guest);
   console.log('PASS existing owner can save a title-only draft invisible to guests');
 
@@ -278,7 +273,7 @@ try {
   await form.locator('[name=published]').selectOption('draft');
   await form.locator('[data-ka-action=remove-photo]').last().click();
   await save(admin);
-  await reenter(guest);
+  await guest.reload();
   await emptyContent(guest);
   await confirmDelete(admin, title, true);
   await admin.locator('[data-ka-action=refresh]').click();
