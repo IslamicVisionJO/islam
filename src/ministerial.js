@@ -14,7 +14,7 @@ const Ministerial = (() => {
   const title = `<h2>الاختبار الوزاري — ضع دائرة حول رمز الإجابة الصحيحة</h2><p>${e(unit?.name || '')} · ${e(lesson.name)}</p>`;
   if (!attempt || attempt.lesson !== lesson.id || attempt.scope !== db.scopeToken()) {
    return title + '<p>اختر مستوى الاختبار</p><div class="study-actions">' +
-    DIFFICULTIES.map(level => button('start', `المستوى ${{easy:'السهل',medium:'المتوسط',hard:'الصعب'}[level]} — ${nf(levels[level].length)} سؤالًا`, level)).join('') + '</div>';
+    DIFFICULTIES.map(level => button('start', `المستوى ${{easy:'السهل',medium:'المتوسط',hard:'الصعب'}[level]}`, level)).join('') + '</div>';
   }
   const {questions, responses, index, level, done} = attempt;
   const total = questions.length;

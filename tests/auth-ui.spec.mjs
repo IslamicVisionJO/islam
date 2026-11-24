@@ -160,6 +160,24 @@ await test('mocked SDK identity change cannot upload account A progress under ac
  assert.equal(await page.evaluate(()=>S.results.length),0);assert.equal(await page.evaluate(()=>S.profile.xp),0);await page.evaluate(()=>Auth.syncNow());
  assert.deepEqual(backend.cloud.get(A).records,aCloud);assert.ok(!backend.writes.some(w=>w.user.id===B&&(w.args.p_records.results||[]).some(r=>aResultIDs.includes(r.id))));
 });
+await test('question inventory is reserved for administrators and the signed-in footer is just the student credit', async () => {
+ await fresh({mock:true});
+ await login('a@example.test');
+ for(const route of ['home','about','units','educational','compendium']){
+  await page.evaluate(route=>go(route),route);
+  assert.equal((await page.locator('.site-footer').textContent()).trim(),'إنشاء الطالب أيوب محمد البطوش');
+  assert.doesNotMatch(await page.locator('#main-content').textContent(),/البنك المستورد|سجلات البنك|مستبعد من التدريب|سجلًا مناسبًا|تغطية بنك المنهج/);
+ }
+ await page.evaluate(()=>go('admin'));
+ assert.equal(await page.locator('.admin-question-bank').count(),0);
+ await logout();
+ await login('admin@example.test');
+ await page.evaluate(()=>go('admin'));
+ await page.locator('.admin-question-bank').getByRole('heading',{name:'بنك الأسئلة'}).waitFor();
+ assert.equal(await page.locator('.admin-question-bank .mini-stat').count(),3);
+ await page.locator('.admin-question-bank summary').click();
+ assert.equal(await page.locator('.admin-question-bank li').count(),await page.evaluate(()=>allLessons().length));
+});
 await test('owner roster and student details expose safe progress without credentials and preserve disable controls',async()=>{
  const backend=await fresh({mock:true});await signup('new@academy.example.test',{name:'<img src=x onerror=alert(1)>'});await oneRound();const resultPrompt=await page.evaluate(()=>S.byId.get(S.results[0].items[0].id).prompt);const visitInfo=await page.evaluate(async()=>{const ids=['u01_l01','u01_l02'],dates=['2026-10-01T12:00:00.000Z','2026-10-02T12:00:00.000Z'];S.profile.visitedLessons=Object.fromEntries(ids.map((id,index)=>[id,dates[index]]));S.profile.lastLessonId=ids[1];await saveState();return{names:ids.map(id=>byLesson(id).name),lastName:byLesson(ids[1]).name,dates:dates.map(date=>new Date(date).toLocaleString('ar-JO'))};});await page.evaluate(async()=>{await createSession('training','u01_l01','easy','all',3,['a','b'],'none');await saveSession();await Auth.syncNow();});const activePrompt=await page.evaluate(()=>S.session.questions[S.session.current].prompt);await logout();await login('admin@example.test');await page.locator('.sidebar [data-page=admin]').click();await page.waitForFunction(()=>typeof S!=='undefined'&&typeof Auth!=='undefined'&&S.adminLoaded&&!S.adminLoading);
  assert.equal(await page.locator('img[src=x]').count(),0);assert.ok((await page.locator('.admin-roster').textContent()).includes('<img src=x onerror=alert(1)>'));assert.ok((await page.locator('.admin-roster').textContent()).includes('new@academy.example.test'));assert.equal(await page.locator('input[type=password]').count(),0);assert.equal(await page.locator('#admin-allow-form').count(),0);
