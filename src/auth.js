@@ -233,5 +233,14 @@ const Auth=(()=>{
   return data;
  }
  async function millionRpc(name,args={}){if(!['million_start','million_answer','million_finish','million_wallet'].includes(name))throw Error('طلب غير صالح');requireAccount();const id=state.user.id;await checkSession(id);const {data,error}=await client.rpc(name,args);await checkSession(id);if(error)throw Error('تعذر تأكيد مكافآت المليون على الخادم. يلزم تفعيل الترقية 006 أو استعادة الاتصال.');return data;}
- return {millionRpc,init,current,prepareStorage,signInEmail,signUpEmail,enterGuest,signOut,syncNow,flush,resolveConflict,resetProgress,adminRoster,adminStudentDetails,adminAllowAccount,adminDisableAccount,publicConfig,duelRpc};
+ async function steamRpc(name,args={}){
+  if(!['steam_list','steam_save','steam_delete'].includes(name))throw Error('طلب غير صالح');
+  if(!client)throw Error('خدمة الإنجازات غير متصلة.');
+  const manage=name!=='steam_list'||args.p_manage;
+  if(manage){requireAccount();if(!state.isAdmin)throw Error('إدارة الإنجازات تحتاج صلاحية إدارية.');}
+  const {data,error}=await client.rpc(name,args);
+  if(error)throw Error(error.code==='42501'?'لا توجد صلاحية لهذا الطلب.':'تعذر الاتصال بخدمة الإنجازات أو حفظ البيانات.');
+  return data;
+ }
+ return {steamRpc,millionRpc,init,current,prepareStorage,signInEmail,signUpEmail,enterGuest,signOut,syncNow,flush,resolveConflict,resetProgress,adminRoster,adminStudentDetails,adminAllowAccount,adminDisableAccount,publicConfig,duelRpc};
 })();

@@ -34,6 +34,22 @@ function questionPool(mode,lessonId,level,scope){
  else if(['training','speed','survival','hearts','duel'].includes(mode))p=p.filter(q=>q.lesson_id===lessonId);
  if(!['training','speed','survival','hearts','duel'].includes(mode)&&scope&&scope!=='all')p=p.filter(q=>q.unit_id===scope);
  p=p.filter(q=>level==='mixed'||q.difficulty===level);
+ if(mode==='exam'){
+  const seen = new Set();
+  const normalize=text=>text.normalize('NFKC').replace(/[\p{M}\p{P}\p{Z}\u0640]/gu,'');
+  p=p.filter(q=>{
+   if(q.type!=='multiple_choice'||q.payload.options.length!==4) return false;
+   const options=q.payload.options;
+   if(new Set(options.map(o=>normalize(o.text))).size!==4) return false;
+   if(options.some(o=>/جميعما(ذكر|سبق)|لاشيءمما(ذكر|سبق)/.test(normalize(o.text)))) return false;
+   const correct=options.find(o=>o.id===q.answer.option_id);
+   if(!correct||correct.text.length>1.8*Math.max(...options.filter(o=>o!==correct).map(o=>o.text.length))) return false;
+   const key=normalize(q.prompt);
+   if(seen.has(key)) return false;
+   seen.add(key);
+   return true;
+  });
+ }
  if(mode==='speed')p=p.filter(q=>['multiple_choice','fill_blank','true_false'].includes(q.type)&&q.prompt.length<=180&&(q.payload.options||[]).every(o=>o.text.length<=90));
  return p;
 }
@@ -50,7 +66,7 @@ async function createSession(mode='training',lessonId=S.lessonId,level=S.level,s
  S.busy=true;const token=storageScope();
  try{
   const pool=questionPool(mode,lessonId,level,scope),requestedCount=Math.min(100,Math.max(1,Math.floor(Number(count)||10)));
-  const day=localDay(),week=localWeek(),key=`${['training','speed','survival','hearts','duel'].includes(mode)?lessonId:scope}:${level}:${mode==='speed'?'short':'all'}`;
+  const day=localDay(),week=localWeek(),key=`${['training','speed','survival','hearts','duel'].includes(mode)?lessonId:scope}:${level}:${mode==='speed'?'short':mode==='exam'?'ministerial-final':'all'}`;
   let chosen;
   if(mode==='duel'){
    const old=activeBagCache.has(key)?activeBagCache.get(key):await db.get('bag:'+key,null);

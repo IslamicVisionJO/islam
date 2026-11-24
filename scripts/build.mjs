@@ -40,7 +40,7 @@ if(homeHero.src){
  if(!/^assets\/[a-zA-Z0-9_-]+\.(png|jpg|jpeg|webp)$/.test(homeHero.src)||![homeHero.width,homeHero.height].every(n=>Number.isInteger(n)&&n>0))throw Error('Invalid original home banner configuration');
  await access(path.join(root,'public',homeHero.src));
 }
-const sources = await Promise.all(['core', 'storage', 'auth', 'sound', 'home-hero', 'ui', 'online', 'educational-core', 'educational-boards', 'educational-scenes', 'educational', 'study', 'ministerial', 'learning', 'controller'].map(name => read(`src/${name}.js`)));
+const sources = await Promise.all(['core', 'storage', 'auth', 'sound', 'home-hero', 'ui', 'online', 'educational-core', 'educational-boards', 'educational-scenes', 'educational', 'study', 'ministerial', 'enrichment', 'book-solutions', 'learning', 'controller'].map(name => read(`src/${name}.js`)));
 // Canonical editorial metadata stays in data/questions.json. Embed only fields used by the offline runtime.
 const runtimeRecord = q => ({
   id:q.id,unit_id:q.unit_id,lesson_id:q.lesson_id,difficulty:q.difficulty,type:q.type,topic:q.topic,
@@ -54,11 +54,12 @@ const ministerialQuestions = bank ? Object.fromEntries(Object.entries(bank.minis
   lesson,Object.fromEntries(Object.entries(levels).map(([level,questions])=>[level,questions.map(runtimeRecord)]))
 ])) : null;
 const learning=JSON.parse(await read('data/learning-manifest.json'));
+const bookSolutions=JSON.parse(await read('data/book-solutions.json'));
 const media=JSON.parse(await read('config/media.json'));
 const compendiumExam=JSON.parse(await read('data/compendium-exam.json'));
 const guides=JSON.parse(await read('data/lesson-guides.json'));
 const summaries=JSON.parse(await read('data/lesson-summaries.json'));
-const code = `${vendor.outputFiles[0].text}\nconst REFINED_BANK_RELEASE=${Boolean(release)}; const MINISTERIAL_REVIEW=${JSON.stringify(ministerialQuestions)}; const HOME_HERO=${JSON.stringify(homeHero)}; const COMPENDIUM_EXAM=${JSON.stringify(compendiumExam)}; const LEARNING_DATA=${JSON.stringify(learning)}; const MEDIA_CONFIG=${JSON.stringify(media)}; const LESSON_SUMMARIES=${JSON.stringify(summaries)}; const LESSON_GUIDES=${JSON.stringify(guides)};\nconst AUTH_CONFIG=${JSON.stringify(authConfig)};\nconst EMBEDDED_LESSONS=${JSON.stringify(lessons)};\nconst EMBEDDED_QUESTIONS=${JSON.stringify(runtimeQuestions)};\n${sources.join('\n')}`;
+const code = `${vendor.outputFiles[0].text}\nconst REFINED_BANK_RELEASE=${Boolean(release)}; const MINISTERIAL_REVIEW=${JSON.stringify(ministerialQuestions)}; const BOOK_SOLUTIONS=${JSON.stringify(bookSolutions.lessons)}; const HOME_HERO=${JSON.stringify(homeHero)}; const COMPENDIUM_EXAM=${JSON.stringify(compendiumExam)}; const LEARNING_DATA=${JSON.stringify(learning)}; const MEDIA_CONFIG=${JSON.stringify(media)}; const LESSON_SUMMARIES=${JSON.stringify(summaries)}; const LESSON_GUIDES=${JSON.stringify(guides)};\nconst AUTH_CONFIG=${JSON.stringify(authConfig)};\nconst EMBEDDED_LESSONS=${JSON.stringify(lessons)};\nconst EMBEDDED_QUESTIONS=${JSON.stringify(runtimeQuestions)};\n${sources.join('\n')}`;
 new vm.Script(code, { filename: 'app.bundle.js' });
 const css = (await Promise.all(['styles','educational-boards','educational-scenes','learning'].map(name=>read(`src/${name}.css`)))).join('\n');
 // Inline the canonical brand icon so Pages and the standalone HTML need no asset request.
