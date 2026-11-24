@@ -12,8 +12,8 @@
     "2": 26
   },
   "cardCounts": {
-    "1": 185,
-    "2": 205
+    "1": 193,
+    "2": 214
   },
   "lessons": [
     {
@@ -719,6 +719,17 @@
           ],
           "category": "مراجعة مفاهيم الدرس",
           "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u01_l05-printed-32-1",
+          "question": "كيف يسهم الزواج في توثيق الصلة بين الناس كما يشرح الدرس؟",
+          "answer": "ينشئ صلة مصاهرة بين الأُسر، فتزداد فرص التعارف والتقارب والتواصل.",
+          "category": "تعليل",
+          "bookPages": [
+            32
+          ],
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
         }
       ],
       "academicLessonId": "academic-s1-u1-l05"
@@ -998,6 +1009,17 @@
           ],
           "category": "مراجعة مفاهيم الدرس",
           "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u02_l02-printed-51-1",
+          "question": "ما الفرق بين العزيمة والرخصة من حيث الحال التي يعمل فيها المكلّف؟",
+          "answer": "العزيمة هي الحكم الأصلي العام. والرخصة حكم شُرع للتخفيف في حالة خاصة، مثل قصر الصلاة الرباعية في السفر.",
+          "category": "مقارنة",
+          "bookPages": [
+            51
+          ],
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
         }
       ],
       "academicLessonId": "academic-s1-u2-l02"
@@ -1370,6 +1392,17 @@
           ],
           "category": "مراجعة مفاهيم الدرس",
           "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u02_l06-printed-73-1",
+          "question": "كيف تصنّف خريطة الدرس الحقوق المالية للمرأة؟",
+          "answer": "التملك والتصرف، والنفقة، والميراث.",
+          "category": "الخريطة التنظيمية",
+          "bookPages": [
+            73
+          ],
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
         }
       ],
       "academicLessonId": "academic-s1-u2-l06"
@@ -1709,6 +1742,17 @@
           ],
           "category": "مراجعة مفاهيم الدرس",
           "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u03_l04-printed-95-1",
+          "question": "كيف تفسر صفة الإيجابية قدرة الشريعة على الاستجابة لمشكلات الناس؟",
+          "answer": "تتفاعل الشريعة مع واقع الناس وتقدم حلولًا لمشكلاتهم بما يحقق مصالحهم ويساعدهم على عيش حياتهم بسعادة.",
+          "category": "مفهوم",
+          "bookPages": [
+            95
+          ],
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
         }
       ],
       "academicLessonId": "academic-s1-u3-l04"
@@ -1780,6 +1824,17 @@
           ],
           "category": "مراجعة مفاهيم الدرس",
           "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u03_l05-printed-101-1",
+          "question": "لماذا اشترط الدرس رضا الزوجين لصحة العقد؟",
+          "answer": "لِما قد يؤدي إليه إكراه أحدهما من تعذّر أداء الواجبات الزوجية وحدوث الفرقة.",
+          "category": "تعليل",
+          "bookPages": [
+            101
+          ],
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
         }
       ],
       "academicLessonId": "academic-s1-u3-l05"
@@ -1955,6 +2010,17 @@
           ],
           "category": "مراجعة مفاهيم الدرس",
           "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u04_l01-printed-113-1",
+          "question": "ما معنى «ابتغاؤكم» في الآيات المقررة من سورة الروم؟",
+          "answer": "طلبكم.",
+          "category": "المفردات والتراكيب",
+          "bookPages": [
+            113
+          ],
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
         }
       ],
       "academicLessonId": "academic-s1-u4-l01"
@@ -2283,6 +2349,17 @@
           ],
           "category": "مراجعة مفاهيم الدرس",
           "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u04_l05-printed-137-1",
+          "question": "ما المقصود بتنظيم النسل في درس تنظيم النسل وتحديده؟",
+          "answer": "اتخاذ وسيلة مشروعة لإيجاد مدد زمنية متباعدة بين مرات الحمل.",
+          "category": "مفهوم",
+          "bookPages": [
+            137
+          ],
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
         }
       ],
       "academicLessonId": "academic-s1-u4-l05"
@@ -2447,6 +2524,17 @@
           ],
           "category": "مراجعة مفاهيم الدرس",
           "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "s1_u04_l07-printed-147-1",
+          "question": "أي توجيهات يوردها الكتاب لتعزيز الوحدة الوطنية؟",
+          "answer": "الأخوّة الإنسانية، والدعوة إلى التعايش، ومحاربة التعصّب، والمساواة، والتكافل الاجتماعي، والدعوة إلى الوحدة.",
+          "category": "الخريطة التنظيمية",
+          "bookPages": [
+            147
+          ],
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
         }
       ],
       "academicLessonId": "academic-s1-u4-l07"
@@ -2731,6 +2819,17 @@
           ],
           "category": "مراجعة مفاهيم الدرس",
           "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u01_l02-printed-15-1",
+          "question": "ما معنى الفطرة في صندوق «أتوقف»؟",
+          "answer": "الطبيعة السليمة التي خلق الله تعالى الناس عليها.",
+          "category": "أتوقف",
+          "bookPages": [
+            15
+          ],
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
         }
       ]
     },
@@ -3360,6 +3459,17 @@
           ],
           "category": "مراجعة مفاهيم الدرس",
           "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u02_l02-printed-56-1",
+          "question": "ما ضوابط المصلحة التي تذكرها خريطة الدرس؟",
+          "answer": "ألا تعارض حكمًا ثابتًا بنص أو إجماع، وأن تكون عامة وحقيقية.",
+          "category": "الخريطة التنظيمية",
+          "bookPages": [
+            56
+          ],
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
         }
       ]
     },
@@ -4254,6 +4364,17 @@
           ],
           "category": "مراجعة مفاهيم الدرس",
           "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u03_l04-printed-115-1",
+          "question": "أعط مثالًا من الدرس لوصية ينتفع بها طلاب العلم.",
+          "answer": "أن يوصي شخص بتدريس طلبة العلم من جزء من ماله بعد وفاته.",
+          "category": "تطبيق",
+          "bookPages": [
+            115
+          ],
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
         }
       ]
     },
@@ -4346,6 +4467,17 @@
           ],
           "category": "مراجعة مفاهيم الدرس",
           "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u03_l05-printed-120-1",
+          "question": "هل يقتصر الميراث في تعريف الدرس على النقود؟",
+          "answer": "يشمل ما يتركه الميت من أموال، ومنها البيت والأرض والسيارة والذهب والفضة.",
+          "category": "أمثلة",
+          "bookPages": [
+            120
+          ],
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
         }
       ]
     },
@@ -4438,6 +4570,17 @@
           ],
           "category": "مراجعة مفاهيم الدرس",
           "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u03_l06-printed-126-1",
+          "question": "كيف يختلف الإفراط عن التفريط وفق صندوق «أتوقف»؟",
+          "answer": "الإفراط تشدّد وتجاوز للحد الذي أقره الشرع عند العمل، والتفريط تهاون في أداء الواجبات على الوجه الذي أقرّه الشرع.",
+          "category": "تمييز المصطلحات",
+          "bookPages": [
+            126
+          ],
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
         }
       ]
     },
@@ -4633,6 +4776,17 @@
           ],
           "category": "مراجعة مفاهيم الدرس",
           "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u04_l01-printed-141-1",
+          "question": "لماذا بدأ النبي ﷺ حديث المفلس بسؤال أصحابه عن معنى المفلس؟",
+          "answer": "ليثير تفكيرهم ويشدّ انتباههم، ثم يبين المعنى المراد في الآخرة.",
+          "category": "أسلوب تربوي",
+          "bookPages": [
+            141
+          ],
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
         }
       ]
     },
@@ -4736,6 +4890,17 @@
           ],
           "category": "مراجعة مفاهيم الدرس",
           "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u04_l02-printed-146-1",
+          "question": "ما مراتب مقاصد الشريعة الثلاث الواردة في الخريطة؟",
+          "answer": "الضروريات، والحاجيات، والتحسينيات.",
+          "category": "الخريطة التنظيمية",
+          "bookPages": [
+            146
+          ],
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
         }
       ]
     },
@@ -4817,6 +4982,17 @@
           ],
           "category": "مراجعة مفاهيم الدرس",
           "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u04_l03-printed-153-1",
+          "question": "كيف يصف الدرس أثر انتشار الجرائم في الثقة والأمان داخل المجتمع؟",
+          "answer": "ينتشر الخوف والقلق، وتضعف الثقة، وتنشأ الخصومات بين الناس.",
+          "category": "آثار",
+          "bookPages": [
+            153
+          ],
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
         }
       ]
     },
@@ -4979,6 +5155,17 @@
           ],
           "category": "مراجعة مفاهيم الدرس",
           "reviewStatus": "study_draft_not_teacher_approved"
+        },
+        {
+          "id": "u04_l05-printed-167-1",
+          "question": "كيف يكون الشعور بالرضا وتقدير الإنسان لذاته دافعًا إلى المسؤولية المجتمعية؟",
+          "answer": "عندما يشعر الفرد بأهمية دوره وانتمائه إلى المجتمع، تزداد رغبته في خدمته والمشاركة في إصلاحه.",
+          "category": "تطبيق",
+          "bookPages": [
+            167
+          ],
+          "sourceVerified": true,
+          "reviewStatus": "checked_against_printed_page"
         }
       ]
     },

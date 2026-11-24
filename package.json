@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "build": "node scripts/build.mjs",
-    "build:review": "node scripts/build.mjs --review",
+    "build:review": "node scripts/build.mjs --review && node scripts/print-revision.mjs --review",
     "start:review": "node scripts/serve.mjs --review",
     "start": "node scripts/serve.mjs",
     "dev": "node scripts/build.mjs && node scripts/serve.mjs",

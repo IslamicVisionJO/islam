@@ -1,6 +1,12 @@
 import './accept-confirmations.mjs';
 import {strict as assert} from 'node:assert';
 import {chromium} from 'playwright';
+import {readFile} from 'node:fs/promises';
+const source=async name=>JSON.parse(await readFile(new URL('../review/bank/'+name+'.json',import.meta.url),'utf8'));
+const gameIds=new Set((await source('games-challenges-index')).question_ids);
+const eligibleGames=(await source('questions')).questions.filter(q=>gameIds.has(q.id)&&!q.review.excluded&&q.review.source_checked&&q.review.answer_checked);
+const examIndex=(await source('lesson-wizari-index')).lessons;
+
 
 const release = process.argv.includes('--release');
 const browser = await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox']});
@@ -13,7 +19,8 @@ try {
   await page.locator('[data-action=guest-name]').click();
   await page.waitForFunction(()=>S.ready && Auth.current().mode==='guest');
   const bank = await page.evaluate(()=>({count:S.valid.length,released:REFINED_BANK_RELEASE,configured:Auth.current().configured}));
-  assert.equal(bank.count,1283);
+  assert.ok(eligibleGames.length>0);
+  assert.equal(bank.count,eligibleGames.length);
   assert.equal(bank.released,release);
   if (!release) assert.equal(bank.configured,false);
   const history = await page.evaluate(()=>{
@@ -52,9 +59,10 @@ try {
    assert.ok(await page.locator(`[data-ministerial-answer][value=${q.answer.option_id}]`).isChecked());
    assert.equal(await page.locator('.learning-panel progress').getAttribute('value'),'2');
    await page.locator('[data-ministerial=submit]').click();
-   assert.equal(await page.locator('.learning-panel details').count(),30);
+   const expected=examIndex.u01_l01[difficulty].length;
+   assert.equal(await page.locator('.learning-panel details').count(),expected);
    const summary = await page.locator('.learning-panel [role=status]').textContent();
-   for (const [label,count] of [['صحيحة',1],['خاطئة',1],['غير مجابة',28]]) {
+   for (const [label,count] of [['صحيحة',1],['خاطئة',1],['غير مجابة',expected-2]]) {
     assert.ok(summary.includes(label+' '+await page.evaluate(n=>nf(n),count)));
    }
    await page.getByText('اختر مستوى آخر',{exact:true}).click();

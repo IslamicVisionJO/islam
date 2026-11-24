@@ -20,6 +20,12 @@ if built_videos!=expected_videos:
  raise SystemExit('The built videos do not match the first and second BTEC lesson catalogs.')
 source=git('rev-parse','HEAD');git('fetch','origin','gh-pages');parent=git('rev-parse','FETCH_HEAD')
 old_files=git('ls-tree','--name-only',parent).splitlines()
+if 'release.json' in old_files:
+ deployed=json.loads(git('show',parent+':release.json')).get('sourceCommit')
+ if not deployed or subprocess.run(['git','-C',str(root),'merge-base','--is-ancestor',deployed,source]).returncode:
+  raise SystemExit('The built source must include the release already on gh-pages.')
+if git('hash-object',str(dist/'index.html'))!=git('rev-parse',source+':dist/index.html'):
+ raise SystemExit('Commit the tested HTML before packaging a release.')
 if 'CNAME' in old_files:(dist/'CNAME').write_text(git('show',parent+':CNAME')+'\n')
 (dist/'.nojekyll').write_text('')
 release={'sourceCommit':source,'buildSha256':hashlib.sha256((dist/'index.html').read_bytes()).hexdigest(),'name':'التربية الإسلامية برؤية رقمية'}
