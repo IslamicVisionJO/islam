@@ -536,6 +536,20 @@ function validQuestion(q){
   default:return false;
  }
 }
+/** Games can mix lessons; the prompt and selectable text must supply their own context. */
+function isStandaloneGameQuestion(question) {
+ const payload=question.payload||{};
+ const texts=[question.prompt,...['options','left','right','items'].flatMap(key=>(payload[key]||[]).map(item=>item.text))];
+ const lessonReference=/(?:^|[^\p{L}])(?:[وبفل]?الدرس|[وبفل]?درس|[وبفل]?الدروس|الخريطة التنظيمية|المخطط التنظيمي|الفقرة السابقة|تمهيد الوحدة|نشاط الدرس|صفحة الكتاب)(?=$|[^\p{L}])/u;
+ const textbookReference=/(?:^|[^\p{L}])[وبفل]?الكتاب(?=$|[^\p{L}])/u;
+ const namedBook=/(?:أهل الكتاب|الكتاب (?:الكريم|المقدس|والسنة))/gu;
+ const unspecifiedExcerpt=/(?:(?:النص|الآية|الحديث|العبارة|المثال|النصان|النصين)\s+(?:السابق(?:ة)?|المذكور(?:ة)?|أعلاه|آنفا)|(?:النص|الآية|الحديث|العبارة)\s+(?:الآتي(?:ة)?|التالي(?:ة)?))/u;
+ return texts.every(text=>{
+  const plain=(text||'').normalize('NFKC').replace(/[\p{M}\u0640]/gu,'');
+  return !lessonReference.test(plain)&&!textbookReference.test(plain.replace(namedBook,''))&&
+   (!unspecifiedExcerpt.test(plain)||/[«﴿]/u.test(plain));
+ });
+}
 function presentQuestion(q,rng=Math.random){
   const copy=clone(q), p=copy.payload;
   for(const key of ['options','left','right','items'])if(Array.isArray(p?.[key]))p[key]=shuffle(p[key],rng);
@@ -657,9 +671,11 @@ function balanceDuel(questions,countPerPlayer,rng=Math.random){
  const rank=new Map(questions.map((q,i)=>[q.id,i]));
  const pairs=[];
  for(const list of groups.values()){while(list.length>=2)pairs.push([list.shift(),list.shift()]);if(list.length)leftovers.push(list[0]);}
+ const fallback=[];
  const rest=new Map();for(const q of leftovers){const k=q.lesson_id+':'+q.difficulty;if(!rest.has(k))rest.set(k,[]);rest.get(k).push(q);}
- for(const list of rest.values())while(list.length>=2)pairs.push([list.shift(),list.shift()]);
- return pairs.sort((a,b)=>Math.max(...a.map(q=>rank.get(q.id)))-Math.max(...b.map(q=>rank.get(q.id)))).slice(0,countPerPlayer).flatMap(pair=>shuffle(pair,rng));
+ for(const list of rest.values())while(list.length>=2)fallback.push([list.shift(),list.shift()]);
+ const byRank=(a,b)=>Math.max(...a.map(q=>rank.get(q.id)))-Math.max(...b.map(q=>rank.get(q.id)));
+ return [...pairs.sort(byRank),...fallback.sort(byRank)].slice(0,countPerPlayer).flatMap(pair=>shuffle(pair,rng));
 }
 function localDay(d=new Date()){return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;}
 function localWeek(d=new Date()){const date=new Date(d.getFullYear(),d.getMonth(),d.getDate()),dow=(date.getDay()+6)%7;date.setDate(date.getDate()-dow);return localDay(date);}
@@ -1897,7 +1913,7 @@ const Educational=(()=>{
  const shuffle=a=>a.map(v=>[Math.random(),v]).sort((a,b)=>a[0]-b[0]).map(x=>x[1]);
  const btn=(label,action,value='',extra='')=>`<button type="button" class="btn btn-outline" data-edu="${action}" data-value="${e(value)}" ${extra}>${e(label)}</button>`;
  const source=q=>`<p class="muted">${e(q.explanation)}<br>المصدر: كتاب التربية الإسلامية — صفحة ${e(q.source?.printed_pages?.join('، ')||'غير محددة')} • ${e(byLesson(q.lesson_id)?.name)}. اعتماد البنك العلمي جزئي؛ راجع الكتاب والمعلم.</p>`;
- const scoped=()=>C.pool(S.valid,unit,lesson);
+ const scoped=()=>C.pool(S.valid.filter(isStandaloneGameQuestion),unit,lesson);
  const current=()=>g&&S.byId.get(g.ids[g.index]);
  function persist(){if(!g||g.online||token!==storageScope())return;S.profile.educationalActive=clone(g);const p=clone(S.profile),t=token;write=write.catch(()=>{}).then(()=>scopeIsCurrent(t)?db.put('profile',p,scopeOptions(t)):undefined);return write;}
  function restore(){if(g&&(token!==storageScope()||g.online&&S.page!=='online'))g=null;if(!g&&S.profile.educationalActive){const x=S.profile.educationalActive;if(x&&C.names[x.game]&&Array.isArray(x.ids)&&x.ids.every(id=>S.byId.has(id))){g=clone(x);if(g.game===0&&!g.cloud&&authState().mode==='account')g.practice=true;token=storageScope();unit=g.unit;lesson=g.lesson;}}}
@@ -3020,6 +3036,7 @@ function questionPool(mode,lessonId,level,scope){
    return true;
   });
  }
+ if(!['exam','mistakes'].includes(mode))p=p.filter(isStandaloneGameQuestion);
  if(mode==='speed')p=p.filter(q=>['multiple_choice','fill_blank','true_false'].includes(q.type)&&q.prompt.length<=180&&(q.payload.options||[]).every(o=>o.text.length<=90));
  return p;
 }
@@ -3036,7 +3053,7 @@ async function createSession(mode='training',lessonId=S.lessonId,level=S.level,s
  S.busy=true;const token=storageScope();
  try{
   const pool=questionPool(mode,lessonId,level,scope),requestedCount=Math.min(100,Math.max(1,Math.floor(Number(count)||10)));
-  const day=localDay(),week=localWeek(),key=`${['training','speed','survival','hearts','duel'].includes(mode)?lessonId:scope}:${level}:${mode==='speed'?'short':mode==='exam'?'ministerial-final':'all'}`;
+  const day=localDay(),week=localWeek(),key=`${['training','speed','survival','hearts','duel'].includes(mode)?lessonId:scope}:${level}:${mode==='speed'?'short':mode==='exam'?'ministerial-final':'standalone'}`;
   let chosen;
   if(mode==='duel'){
    const old=activeBagCache.has(key)?activeBagCache.get(key):await db.get('bag:'+key,null);
