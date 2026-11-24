@@ -1990,11 +1990,14 @@ function homeView(){
 function unitCards(){return `<div class="unit-card-grid">${S.units.map((u,i)=>{const answered=u.lessons.reduce((sum,l)=>sum+lessonMetrics(l.id).unique,0),count=unitQuestions(u.id).length;return `<button class="unit-map-card" data-action="unit" data-unit="${u.id}"><span class="unit-index">0${i+1}</span><span class="unit-book">${ico('book',23)}</span><h3>${e(u.name)}</h3><p>${e(u.theme)}</p><div class="unit-count">${nf(u.lessons.length)} دروس</div><div class="bar"><i style="width:${count?Math.round(answered/count*100):0}%"></i></div><div class="unit-map-footer">${nf(count?Math.round(answered/count*100):0)}% تغطية ${ico('arrow',17)}</div></button>`;}).join('')}</div>`;}
 function unitView(){const u=unitFor(S.unitId);return `${heroTitle(e(u.name),e(u.theme),'<button class="text-link" data-action="navigate" data-page="units">جميع الوحدات</button>')}${Educational.entry(u.id)}<div class="unit-lessons">${u.lessons.map((l,i)=>{const m=lessonMetrics(l.id);return `<button class="direct-lesson-card" data-action="lesson" data-lesson="${l.id}"><span class="direct-lesson-num">${nf(i+1)}</span><span class="direct-lesson-name">${e(l.name)}</span>${ico('arrow',19)}<small>${m.mastered?'متقن':m.answered?'قيد التدريب':S.profile.visitedLessons?.[l.id]?'تمت الزيارة؛ لم تتدرب بعد':'لم تبدأ التدريب'}</small></button>`;}).join('')}</div>`;}
 
+function lessonLevelCards(attributes){
+ return `<div class="difficulty-grid simple-difficulty-grid">${DIFFICULTIES.map((d,i)=>`<article class="difficulty-card diff-${d}"><div class="difficulty-icon">${ico(['book','target','fire'][i],26)}</div><h3>${DIFF_NAMES[d]}</h3><button class="btn btn-primary" ${attributes(d)}>ابدأ الأسئلة ${ico('arrow',17)}</button></article>`).join('')}</div>`;
+}
 function lessonView(){
  const l=byLesson(S.lessonId)||allLessons()[0],p=lessonProgress(S.results,l.id);
  return `<div class="backline"><button class="text-link" data-learning="questions-unit" data-id="${l.unitId||l.id.slice(0,3)}">${ico('arrow')} أسئلة الوحدة</button></div>
  <div class="lesson-hero simple-lesson-hero"><div class="eyebrow">اختر مستواك وابدأ</div><h1>${e(l.name)}</h1><p>اختر المستوى المناسب وابدأ التدريب على هذا الدرس.</p>${p.played?`<span class="lesson-best">أفضل نتيجة: ${nf(p.best)}%</span>`:''}</div>
- ${Educational.entry(l.id)}<div class="difficulty-grid simple-difficulty-grid">${DIFFICULTIES.map((d,i)=>`<article class="difficulty-card diff-${d}"><div class="difficulty-icon">${ico(['book','target','fire'][i],26)}</div><h3>${DIFF_NAMES[d]}</h3><button class="btn btn-primary" data-action="setup" data-mode="training" data-lesson="${l.id}" data-level="${d}">ابدأ الأسئلة ${ico('arrow',17)}</button></article>`).join('')}</div>
+ ${Educational.entry(l.id)}${lessonLevelCards(d=>`data-action="setup" data-mode="training" data-lesson="${l.id}" data-level="${d}"`)}
  <div class="duel-banner"><div>${ico('users',30)}<span><strong>تحدَّ صديقك</strong><small>تتناوبان على الإجابة، وتظهر النتيجة في النهاية</small></span></div><button class="btn btn-gold" data-action="setup" data-mode="duel" data-lesson="${l.id}">لعبة شخصين ${ico('arrow',17)}</button></div>`;
 }
 const modes=[['training','التدريب الحر','10 أسئلة من الدرس والمستوى الذي تختاره','book'],['speed','تحدي ٦ ثوانٍ','ست ثوانٍ فقط لكل سؤال','zap'],['survival','البقاء للأقوى','استمر بالإجابة حتى أول خطأ','shield'],['hearts','القلوب الثلاثة','ثلاث فرص، واستمر حتى تنفد','heart'],['random','التحدي العشوائي','أسئلة متنوعة من الوحدات التي تختارها','refresh'],['boss','زعيم الوحدة','تحدٍّ يجمع دروس الوحدة كاملة','trophy'],['daily','التحدي اليومي','تحدٍّ خاص بتاريخ اليوم','fire'],['weekly','التحدي الأسبوعي','أسئلة أوسع تتجدد كل أسبوع','star'],['mistakes','مراجعة الأخطاء','عد إلى الأسئلة التي أخطأت فيها','target'],['duel','تحدي لاعبين | 1 ضد 1','منافسة بالتناوب على الجهاز نفسه','users'],['exam','الامتحان النهائي الوزاري','اختر المستوى والوحدات، 45 دقيقة للامتحان كله','clock']];
@@ -2765,19 +2768,20 @@ const Ministerial = (() => {
   }
   return levels;
  }
- function view(lesson) {
+ function view(lesson, questionsPage=false) {
   const levels = pool(lesson.id);
   if(!levels&&MINISTERIAL_REVIEW&&!Revision.loaded(lesson.id,'levels'))return Revision.loading(lesson.id,'levels');
   if (!levels) return '';
   const unit = unitFor(lesson.unitId);
   const title = `<h2>محاكاة وزارية تدريبية — اختر الإجابة الصحيحة</h2><p>${e(unit?.name || '')} · ${e(lesson.name)}</p>`;
   if (!attempt || attempt.lesson !== lesson.id || attempt.scope !== db.scopeToken()) {
+   if(questionsPage)return lessonLevelCards(level=>`data-ministerial="start" data-value="${level}"`);
    return title + '<p>اختر مستوى الاختبار</p><div class="study-actions">' +
     DIFFICULTIES.map(level => button('start', `المستوى ${{easy:'السهل',medium:'المتوسط',hard:'الصعب'}[level]}`, level)).join('') + '</div>';
   }
   const {questions, responses, index, level, done} = attempt;
   const total = questions.length;
-  const heading = title + `<p>المستوى ${e(DIFF_NAMES[level])} · ${nf(total)} سؤالًا</p>`;
+  const heading = (questionsPage?'':title) + `<p>المستوى ${e(DIFF_NAMES[level])} · ${nf(total)} سؤالًا</p>`;
   if (done) {
    const correct = questions.filter(q => checkAnswer(q, responses.get(q.id))).length;
    return heading + `<p role="status">صحيحة ${nf(correct)} · خاطئة ${nf(answered()-correct)} · غير مجابة ${nf(total-answered())} · النسبة ${nf(Math.round(100*correct/total))}٪</p>
@@ -3259,6 +3263,14 @@ const Learning=(()=>{
   go('learning');
   if(S.profile.lastLearningLesson!==id)void updateProfile(next=>{next.lastLearningLesson=id;}).catch(()=>notify('تعذر حفظ آخر درس.'));
  }
+ function openQuestions(id){
+  const year=years[0],unit=year.units.find(u=>u.lessons.some(l=>l.id===id));
+  if(!unit)return;
+  selected=id;selectedYear=year;selectedUnit=unit;
+  Ministerial.reset();
+  route('#questions/'+year.id+'/'+unit.id+'/'+id);
+  go('units');
+ }
  function restore(){
   if(['#steam','#life'].includes(location.hash)){const life=location.hash==='#life';go('knowledge');if(life)document.querySelector('#knowledge-life')?.scrollIntoView();return;}
   if(typeof AcademicSemester!=='undefined'&&AcademicSemester.restore())return;
@@ -3270,6 +3282,8 @@ const Learning=(()=>{
   if(location.hash==='#compendium'){Revision.open();return;}
   const lesson=location.hash.match(/^#learning\/(?:btec[12]\/)?((?:s1_)?u\d\d_l\d\d)(?:\/([a-z]+))?$/);
   if(lesson){open(lesson[1],lesson[2]);return;}
+  const firstQuestions=location.hash.match(/^#questions\/btec1\/(s1_u0[1-4])\/(s1_u0[1-4]_l\d\d)$/);
+  if(firstQuestions&&firstQuestions[2].startsWith(firstQuestions[1]+'_')){openQuestions(firstQuestions[2]);return;}
   const directory=location.hash.match(/^#(learning|questions)(?:\/(btec[12])(?:\/((?:s1_)?u0[1-4]))?)?$/);
   if(directory){
    const year=years.find(y=>y.id===directory[2]);
@@ -3302,6 +3316,11 @@ const Learning=(()=>{
  }
  function directory(){
   const questions=S.page==='units';
+  if(questions&&selected&&selectedYear?.id==='btec1'){
+   const lesson=selectedUnit.lessons.find(l=>l.id===selected);
+   if(lesson)return `${trail(lesson)}<div class="lesson-hero simple-lesson-hero"><h1>${e(lesson.name)}</h1><p>اختر المستوى المناسب وابدأ التدريب على هذا الدرس.</p></div>
+    <section class="learning-panel">${Ministerial.view(lesson,true)}</section>`;
+  }
   if(!selectedYear){
    const last=catalogLessons.find(l=>l.id===S.profile.lastLearningLesson);
    return `${heroTitle(questions?'الدروس والأسئلة':'شرح الدروس','اختر السنة الدراسية')}
@@ -3327,7 +3346,7 @@ const Learning=(()=>{
     if(Number.isFinite(result?.accuracy))details.push('آخر نتيجة '+nf(result.accuracy)+'٪');
     let destination=`data-learning="open" data-id="${l.id}"`;
     if(questions)destination=selectedYear.id==='btec1'
-     ?`data-learning="quiz" data-id="${l.id}"`
+     ?`data-learning="open-questions" data-id="${l.id}"`
      :`data-action="lesson" data-lesson="${l.id}"`;
     return `<article class="surface panel"><small>الدرس ${nf(number)} · صفحة ${nf(l.startPage)}</small><h2>${e(l.name)}</h2>
      ${details.length?`<p>${details.join(' · ')}</p>`:''}
@@ -3419,6 +3438,7 @@ const Learning=(()=>{
   const b=ev.target.closest('[data-learning]');
   if(!b)return;
   const {learning:action,id}=b.dataset;
+  if(action==='open-questions'){openQuestions(id);return;}
   if(action==='open'){open(id);return;}
   if(action==='solutions-catalog'){BookSolutions.open();return;}
   if(action==='quiz'){open(id,'quiz');return;}

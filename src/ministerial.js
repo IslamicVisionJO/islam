@@ -17,19 +17,20 @@ const Ministerial = (() => {
   }
   return levels;
  }
- function view(lesson) {
+ function view(lesson, questionsPage=false) {
   const levels = pool(lesson.id);
   if(!levels&&MINISTERIAL_REVIEW&&!Revision.loaded(lesson.id,'levels'))return Revision.loading(lesson.id,'levels');
   if (!levels) return '';
   const unit = unitFor(lesson.unitId);
   const title = `<h2>محاكاة وزارية تدريبية — اختر الإجابة الصحيحة</h2><p>${e(unit?.name || '')} · ${e(lesson.name)}</p>`;
   if (!attempt || attempt.lesson !== lesson.id || attempt.scope !== db.scopeToken()) {
+   if(questionsPage)return lessonLevelCards(level=>`data-ministerial="start" data-value="${level}"`);
    return title + '<p>اختر مستوى الاختبار</p><div class="study-actions">' +
     DIFFICULTIES.map(level => button('start', `المستوى ${{easy:'السهل',medium:'المتوسط',hard:'الصعب'}[level]}`, level)).join('') + '</div>';
   }
   const {questions, responses, index, level, done} = attempt;
   const total = questions.length;
-  const heading = title + `<p>المستوى ${e(DIFF_NAMES[level])} · ${nf(total)} سؤالًا</p>`;
+  const heading = (questionsPage?'':title) + `<p>المستوى ${e(DIFF_NAMES[level])} · ${nf(total)} سؤالًا</p>`;
   if (done) {
    const correct = questions.filter(q => checkAnswer(q, responses.get(q.id))).length;
    return heading + `<p role="status">صحيحة ${nf(correct)} · خاطئة ${nf(answered()-correct)} · غير مجابة ${nf(total-answered())} · النسبة ${nf(Math.round(100*correct/total))}٪</p>

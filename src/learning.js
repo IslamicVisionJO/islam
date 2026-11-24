@@ -70,6 +70,14 @@ const Learning=(()=>{
   go('learning');
   if(S.profile.lastLearningLesson!==id)void updateProfile(next=>{next.lastLearningLesson=id;}).catch(()=>notify('تعذر حفظ آخر درس.'));
  }
+ function openQuestions(id){
+  const year=years[0],unit=year.units.find(u=>u.lessons.some(l=>l.id===id));
+  if(!unit)return;
+  selected=id;selectedYear=year;selectedUnit=unit;
+  Ministerial.reset();
+  route('#questions/'+year.id+'/'+unit.id+'/'+id);
+  go('units');
+ }
  function restore(){
   if(['#steam','#life'].includes(location.hash)){const life=location.hash==='#life';go('knowledge');if(life)document.querySelector('#knowledge-life')?.scrollIntoView();return;}
   if(typeof AcademicSemester!=='undefined'&&AcademicSemester.restore())return;
@@ -81,6 +89,8 @@ const Learning=(()=>{
   if(location.hash==='#compendium'){Revision.open();return;}
   const lesson=location.hash.match(/^#learning\/(?:btec[12]\/)?((?:s1_)?u\d\d_l\d\d)(?:\/([a-z]+))?$/);
   if(lesson){open(lesson[1],lesson[2]);return;}
+  const firstQuestions=location.hash.match(/^#questions\/btec1\/(s1_u0[1-4])\/(s1_u0[1-4]_l\d\d)$/);
+  if(firstQuestions&&firstQuestions[2].startsWith(firstQuestions[1]+'_')){openQuestions(firstQuestions[2]);return;}
   const directory=location.hash.match(/^#(learning|questions)(?:\/(btec[12])(?:\/((?:s1_)?u0[1-4]))?)?$/);
   if(directory){
    const year=years.find(y=>y.id===directory[2]);
@@ -113,6 +123,11 @@ const Learning=(()=>{
  }
  function directory(){
   const questions=S.page==='units';
+  if(questions&&selected&&selectedYear?.id==='btec1'){
+   const lesson=selectedUnit.lessons.find(l=>l.id===selected);
+   if(lesson)return `${trail(lesson)}<div class="lesson-hero simple-lesson-hero"><h1>${e(lesson.name)}</h1><p>اختر المستوى المناسب وابدأ التدريب على هذا الدرس.</p></div>
+    <section class="learning-panel">${Ministerial.view(lesson,true)}</section>`;
+  }
   if(!selectedYear){
    const last=catalogLessons.find(l=>l.id===S.profile.lastLearningLesson);
    return `${heroTitle(questions?'الدروس والأسئلة':'شرح الدروس','اختر السنة الدراسية')}
@@ -138,7 +153,7 @@ const Learning=(()=>{
     if(Number.isFinite(result?.accuracy))details.push('آخر نتيجة '+nf(result.accuracy)+'٪');
     let destination=`data-learning="open" data-id="${l.id}"`;
     if(questions)destination=selectedYear.id==='btec1'
-     ?`data-learning="quiz" data-id="${l.id}"`
+     ?`data-learning="open-questions" data-id="${l.id}"`
      :`data-action="lesson" data-lesson="${l.id}"`;
     return `<article class="surface panel"><small>الدرس ${nf(number)} · صفحة ${nf(l.startPage)}</small><h2>${e(l.name)}</h2>
      ${details.length?`<p>${details.join(' · ')}</p>`:''}
@@ -230,6 +245,7 @@ const Learning=(()=>{
   const b=ev.target.closest('[data-learning]');
   if(!b)return;
   const {learning:action,id}=b.dataset;
+  if(action==='open-questions'){openQuestions(id);return;}
   if(action==='open'){open(id);return;}
   if(action==='solutions-catalog'){BookSolutions.open();return;}
   if(action==='quiz'){open(id,'quiz');return;}
