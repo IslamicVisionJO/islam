@@ -174,7 +174,13 @@ test('two browsers use the online card, invite code, live scores and shared winn
   await page.evaluate(()=>go('educational'));
   const card=page.locator('.edu-catalog > .wall-catalog');
   assert.ok(await card.getByRole('button',{name:'ابدأ اللعبة',exact:true}).count());
-  await card.getByRole('button',{name:'تحدّ صديقك أونلاين'}).click();
+  const starts=page.getByRole('button',{name:'ابدأ اللعبة',exact:true});
+  assert.equal(await starts.count(),14);
+  assert.ok(await starts.evaluateAll(buttons=>buttons.every(button=>button.classList.contains('btn-gold'))));
+  if(width===1280){
+   await card.getByRole('button',{name:'ابدأ اللعبة',exact:true}).click();
+   await page.locator('.wall-lobby').getByRole('button',{name:'تحدّ صديقك أونلاين'}).click();
+  }else await card.getByRole('button',{name:'تحدّ صديقك أونلاين'}).click();
   return page;
  }
  try{

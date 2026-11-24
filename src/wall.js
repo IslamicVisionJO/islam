@@ -23,6 +23,7 @@ const Wall=(()=>{
     board.length?`<div class="wall-table"><table><thead><tr><th>الترتيب</th><th>الطالب</th><th>النقاط</th><th>الدقة</th><th>الصمود</th></tr></thead>
      <tbody>${board.map(r=>`<tr><td>${nf(r.rank)}</td><td>${e(r.name)}</td><td>${nf(r.score)}</td><td>${nf(r.accuracy)}٪</td><td>${fmt(r.elapsed)}</td></tr>`).join('')}</tbody></table></div>`:'<p>لا توجد نتائج لهذه الفترة.</p>'}</section>`;
  }
+ const onlineMatchButton='<button type="button" class="btn btn-outline" data-action="navigate" data-page="wall-online">تحدّ صديقك أونلاين</button>';
  function setup(){
   return `<section class="wall-lobby surface panel"><div class="wall-lobby-title"><span aria-hidden="true">▦</span>
    <h2>كم سؤالًا تجيب قبل أن يصل الجدار؟</h2></div>
@@ -31,7 +32,7 @@ const Wall=(()=>{
    ${select('wall-lesson','الدرس',[['all',unit==='all'?'جميع الدروس':'جميع دروس الوحدة'],...S.units.filter(u=>unit==='all'||u.id===unit).flatMap(u=>u.lessons.map(l=>[l.id,l.name]))],lesson)}
    ${select('wall-level','المستوى',Object.entries(levels),level)}</div>
    <p class="muted">تعطى الأولوية لأسئلة المستوى المختار، ثم تُستخدم الأسئلة المتاحة في النطاق نفسه.</p>
-   <div class="wall-actions">${online()?btn('ranked','ابدأ التحدي وحفظ النتيجة',pending||board===null||Boolean(boardError)):''}${btn('practice','ابدأ تدريبًا محليًا',pending)}</div>
+   <div class="wall-actions">${onlineMatchButton}${online()?btn('ranked','ابدأ التحدي وحفظ النتيجة',pending||board===null||Boolean(boardError)):''}${btn('practice','ابدأ تدريبًا محليًا',pending)}</div>
    ${authState().isAdmin?'<button class="btn btn-outline" data-action="navigate" data-page="wall-admin">إدارة سباق الجدار</button>':''}
    ${online()?'<p class="muted">تحفظ الجولات المكتملة أو المنتهية بخط الخطر في حسابك.</p>':'<p class="muted">سجّل الدخول للمشاركة في لوحة المتصدرين.</p>'}
   </section>${ranks()}`;
@@ -188,5 +189,5 @@ const Wall=(()=>{
   if(action==='exit'&&!confirm('إنهاء المحاولة الآن؟ المحاولة المنسحَب منها لا تدخل الترتيب.'))return;
   void act(action,b.dataset.value);
  });
- return {view,bind,enter,leave,play,bindScene,card:()=>`<article class="surface panel wall-catalog"><span class="edu-game-icon">${ico('eduBoard',38)}</span><h2>${name}</h2><p>ادفع الجدار بإجاباتك الصحيحة وابقَ في التحدي لأطول وقت.</p><button type="button" class="btn btn-gold" data-action="navigate" data-page="wall">ابدأ اللعبة</button><button type="button" class="btn btn-outline" data-action="navigate" data-page="wall-online">تحدّ صديقك أونلاين</button></article>`};
+ return {view,bind,enter,leave,play,bindScene,card:()=>`<article class="surface panel wall-catalog"><span class="edu-game-icon">${ico('eduBoard',38)}</span><h2>${name}</h2><p>ادفع الجدار بإجاباتك الصحيحة وابقَ في التحدي لأطول وقت.</p><button type="button" class="btn btn-gold" data-action="navigate" data-page="wall">ابدأ اللعبة</button>${onlineMatchButton}</article>`};
 })();
