@@ -59,6 +59,7 @@ const Enrichment=(()=>{
   const authorized=manage&&admin();
   const shown=authorized?rows:rows.filter(row=>row.published);
   return heroTitle('التكامل المعرفي STEAM','مشاريع تربط التربية الإسلامية بالعلوم والتكنولوجيا والهندسة والفنون والرياضيات')+
+   SteamCalculators.view()+
    '<div class="enrichment-grid">'+fields.map(([title,value])=>`<article class="surface panel"><h2>${e(title)}</h2><p>${e(value)}</p></article>`).join('')+'</div>'+
    `<section class="steam-achievements"><h2>الإنجازات</h2>
    ${admin()?'<button class="btn btn-outline" data-steam="manage">'+(authorized?'عرض صفحة الزوار':'إدارة الإنجازات')+'</button>':''}

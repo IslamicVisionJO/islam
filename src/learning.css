@@ -57,3 +57,13 @@ html:fullscreen .layout:has(.revision-reader) :is(.sidebar,.topbar,.site-footer,
 .revision-reader select,.revision-reader input { max-width:100%; min-width:0; }
 .revision-entry [aria-pressed=true] { outline:2px solid var(--gold); }
 @media print {body:has(.revision-reader) :is(.sidebar,.topbar,.mobile-bottom,.no-print,.site-footer,.identity-banner){display:none!important}body:has(.revision-reader) :is(.layout,.main-column,.content,.revision-reader){display:block;width:100%;color:black;background:white}.revision-entry{break-inside:avoid}}
+.steam-calculators details+details{margin-block-start:12px}
+.steam-calculators summary{cursor:pointer;font-weight:700;color:var(--text)}
+.steam-calculators form{display:grid;gap:12px;margin-block-start:16px}
+.steam-calculators .enrichment-grid{margin:0}
+.steam-calculators label:has(select),.steam-calculators label:has(input[type=number]){display:grid;gap:5px}
+.steam-calculators button{justify-self:start}
+.steam-calculators [role=status]:empty{display:none}
+.zakat-options{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,130px),1fr));gap:8px;margin-block:16px}
+.zakat-options [aria-pressed=true]{background:var(--gold,#e9cd8e);color:#182d26}
+.steam-calculators form[hidden]{display:none}

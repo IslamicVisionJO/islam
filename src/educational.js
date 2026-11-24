@@ -17,7 +17,7 @@ const Educational=(()=>{
  function setWallet(receipt){S.millionWallet={coins:receipt.walletCoins,token:storageScope()};}
  const C=EducationalContent;let startPending=false;let durationChoice='0',customSeconds='180',questionTimer='0',unit='all',lesson='all',g=null,token=null,write=Promise.resolve();
  const shuffle=a=>a.map(v=>[Math.random(),v]).sort((a,b)=>a[0]-b[0]).map(x=>x[1]);
- const btn=(label,action,value='',extra='')=>`<button type="button" class="btn btn-outline" data-edu="${action}" data-value="${e(value)}" ${extra}>${e(label)}</button>`;
+ const btn=(label,action,value='',extra='')=>`<button type="button" class="btn ${action==='start'?'btn-gold':'btn-outline'}" data-edu="${action}" data-value="${e(value)}" ${extra}>${e(label)}</button>`;
  const source=q=>`<p class="muted">${e(q.explanation)}<br>المصدر: كتاب التربية الإسلامية — صفحة ${e(q.source?.printed_pages?.join('، ')||'غير محددة')} • ${e(byLesson(q.lesson_id)?.name)}. اعتماد البنك العلمي جزئي؛ راجع الكتاب والمعلم.</p>`;
  const scoped=()=>C.pool(S.valid.filter(isStandaloneGameQuestion),unit,lesson);
  const current=()=>g&&S.byId.get(g.ids[g.index]);
