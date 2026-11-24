@@ -66,14 +66,10 @@ validateFirstBtec(firstBtecLessons, firstBtecBank, [
   ...legacyBank.questions.map(q=>q.id), ...(bank?.gameQuestions ?? []).map(q=>q.id),
   ...Object.values(bank?.ministerial ?? {}).flatMap(levels=>Object.values(levels).flatMap(list=>list.map(q=>q.id)))
 ], {ministerial:firstMinisterialIndex,games:firstGamesIndex,priority});
-const firstVideoDir = path.join(root, 'public/videos/first-btec');
-const firstVideos = await access(firstVideoDir).then(() => true, () => false);
-if (firstVideos) {
-  for (const unit of firstBtecLessons) for (const lesson of unit.lessons) {
-    const video = 'videos/first-btec/'+lesson.id+'.mp4';
-    await access(path.join(root, 'public', video));
-    lesson.video = video;
-  }
+for (const unit of firstBtecLessons) for (const lesson of unit.lessons) {
+  const video = 'videos/first-btec/'+lesson.id+'.mp4';
+  await access(path.join(root, 'public', video));
+  lesson.video = video;
 }
 async function copyRevisionViewer(output) {
   const target = path.join(output, 'vendor/pdfjs');

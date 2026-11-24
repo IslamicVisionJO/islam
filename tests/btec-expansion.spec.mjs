@@ -35,6 +35,36 @@ try {
     }
     await page.locator('.learning-trail [data-learning=catalog]').click();
   }
+  const firstBtecIds=await page.evaluate(()=>FIRST_BTEC_LESSONS.flatMap(unit=>unit.lessons.map(lesson=>lesson.id)));
+  assert.equal(firstBtecIds.length,25);
+  for(const [index,id] of firstBtecIds.entries()){
+    const source=origin+'videos/first-btec/'+id+'.mp4';
+    const range=await fetch(source,{headers:{Range:'bytes=0-31'}});
+    assert.equal(range.status,206,id);
+    assert.equal(range.headers.get('content-type'),'video/mp4',id);
+    assert.equal((await range.arrayBuffer()).byteLength,32,id);
+    if(index===12)await page.setViewportSize({width:390,height:840});
+    await page.evaluate(id=>Learning.open(id),id);
+    const video=page.locator('#lesson-video');
+    assert.equal(await video.getAttribute('src'),source,id);
+    assert.equal(await video.getAttribute('preload'),'none',id);
+    await video.evaluate(async v=>{v.muted=true;await v.play();});
+    await page.waitForFunction(min=>document.querySelector('#lesson-video')?.currentTime>min,index===0?1:0);
+    await video.evaluate(v=>v.pause());
+    assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),id);
+    if(index===0){
+      await page.waitForFunction(id=>(S.profile.learning?.[id]?.position>=1) && S.profile.learning?.[id]?.ranges?.length>0,id);
+      const position=await page.evaluate(id=>S.profile.learning[id].position,id);
+      await page.reload();
+      await video.evaluate(v=>v.load());
+      await page.waitForFunction(saved=>{
+        const player=document.querySelector('#lesson-video');
+        return player?.readyState>=2 && Math.abs(player.currentTime-saved)<0.2;
+      },position);
+    }
+  }
+  await page.setViewportSize({width:1360,height:920});
+  await page.locator('.sidebar [data-page=learning]').click();
   await page.locator('.learning-units [data-id=btec1]').click();
   await page.locator('.learning-units [data-id=s1_u04]').click();
   await page.locator('[data-learning=open][data-id=s1_u04_l07]').click();
@@ -94,7 +124,7 @@ try {
   await page.getByText('الإجابة المرجعية في المسودة').click();
   assert.ok(await page.getByText(/مرجع الكتاب/).isVisible());
   assert.deepEqual(errors,[]);
-  console.log('PASS: 8 units and 51 lesson cards, first-year draft isolated, mobile and desktop PDF rendering, PDF search and deep links.');
+  console.log('PASS: 8 units and 51 lesson cards, 25 first-year MP4 videos and resume verified, first-year draft isolated, mobile and desktop PDF rendering, PDF search and deep links.');
 } finally {
   await browser.close();
 }

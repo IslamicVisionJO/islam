@@ -9,7 +9,13 @@ pdfs={file.relative_to(dist) for file in dist.rglob('*.pdf')}
 if pdfs!={revision}:raise SystemExit('Only the supplied two-year revision guide PDF is allowed in dist.')
 if (dist/revision).read_bytes()!=(root/'public'/revision).read_bytes():raise SystemExit('The revision PDF must match the supplied asset.')
 if (dist/'first-btec-review').exists():raise SystemExit('First BTEC question candidates cannot be published.')
-if len(list((dist/'videos').glob('*.mp4')))!=26:raise SystemExit('Expected 26 videos.')
+second_btec=json.loads((root/'data/learning-manifest.json').read_text())['units']
+first_btec=json.loads((root/'data/first-btec-lessons.json').read_text())
+expected_videos={pathlib.Path(lesson['video']) for unit in second_btec for lesson in unit['lessons']}
+expected_videos.update(pathlib.Path('videos/first-btec',lesson['id']+'.mp4') for unit in first_btec for lesson in unit['lessons'])
+built_videos={file.relative_to(dist) for file in (dist/'videos').rglob('*.mp4')}
+if built_videos!=expected_videos:
+ raise SystemExit('The built videos do not match the first and second BTEC lesson catalogs.')
 source=git('rev-parse','HEAD');git('fetch','origin','gh-pages');parent=git('rev-parse','FETCH_HEAD')
 old_files=git('ls-tree','--name-only',parent).splitlines()
 if 'CNAME' in old_files:(dist/'CNAME').write_text(git('show',parent+':CNAME')+'\n')
