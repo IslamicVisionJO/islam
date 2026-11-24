@@ -5,7 +5,7 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 const review=process.argv.includes('--review');
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),review?'../.review-dist':'../dist');
-const types={'.html':'text/html; charset=utf-8','.json':'application/json','.mp4':'video/mp4','.png':'image/png','.ttf':'font/ttf','.css':'text/css','.js':'text/javascript','.svg':'image/svg+xml'};
+const types={'.html':'text/html; charset=utf-8','.json':'application/json','.pdf':'application/pdf','.mjs':'text/javascript','.wasm':'application/wasm','.mp4':'video/mp4','.png':'image/png','.ttf':'font/ttf','.css':'text/css','.js':'text/javascript','.svg':'image/svg+xml'};
 const server=http.createServer(async(req,res)=>{try{
  if(!['GET','HEAD'].includes(req.method)){res.writeHead(405);res.end();return;}
  let p=decodeURIComponent(new URL(req.url,'http://localhost').pathname);if(p==='/islam'){res.writeHead(301,{Location:'/islam/'});res.end();return;}if(p.startsWith('/islam/'))p=p.slice(6);if(p.endsWith('/'))p+='index.html';

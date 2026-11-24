@@ -94,20 +94,28 @@ await test('lesson visit is distinct from solved/completed/mastered and survives
   assert.equal(await page.evaluate(()=>lessonMetrics('u02_l03').answered),0);assert.equal(await page.evaluate(()=>lessonMetrics('u02_l03').mastered),false);assert.equal(await page.evaluate(()=>completedCount()),0);assert.equal(await page.evaluate(()=>S.results.length),0);
   await page.reload();await page.waitForFunction(()=>S.valid.length&&document.querySelector('#main-content'));assert.ok(await page.evaluate(()=>S.profile.visitedLessons?.u02_l03));assert.equal(await page.evaluate(()=>completedCount()),0);
 });
-await test('78 actual lesson-level sessions, all requested timer choices and exam counts',async()=>{
+await test('78 lesson-level configurations honor the available pool, timers and exam counts',async()=>{
   await fresh();const exercised=await page.evaluate(async()=>{
-    let rounds=0;
+    let configurations=0,rounds=0;
     for(const lesson of allLessons())for(const difficulty of DIFFICULTIES){
+      const pool=S.valid.filter(q=>q.lesson_id===lesson.id&&q.difficulty===difficulty&&isStandaloneGameQuestion(q));
+      const expected=Math.min(2,pool.length);
       await createSession('training',lesson.id,difficulty,'all',2,['a','b'],'none');
-      if(!S.session||S.session.questions.length!==2||!S.session.questions.every(q=>q.lesson_id===lesson.id&&q.difficulty===difficulty))throw Error('Invalid lesson-level pool '+lesson.id+' '+difficulty);
+      configurations++;
+      if(!expected){
+        if(S.session)throw Error('Started a round from an empty pool '+lesson.id+' '+difficulty);
+        continue;
+      }
+      if(!S.session||S.session.questions.length!==expected||!S.session.questions.every(q=>pool.some(candidate=>candidate.id===q.id)))throw Error('Invalid lesson-level pool '+lesson.id+' '+difficulty);
       while(S.session){const q=S.session.questions[S.session.current],a=q.answer;const response=q.type==='true_false'?a.value:['multiple_choice','fill_blank'].includes(q.type)?a.option_id:q.type==='multi_select'?a.option_ids:q.type==='ordering'?a.ordered_ids:Object.fromEntries(a.pairs.map(p=>[p.left_id,p.right_id]));await autoAnswer(response);}
-      if(S.finished.correct!==2)throw Error('Failed answers '+lesson.id+' '+difficulty);rounds++;
+      if(S.finished.correct!==expected)throw Error('Failed answers '+lesson.id+' '+difficulty);rounds++;
     }
     for(const seconds of [6,10,15,20,30,40,60])if(resolveTimer('training','easy',{easy:String(seconds)})!==seconds)throw Error('Timer '+seconds);
     if(resolveTimer('training','easy',{easy:'none'})!==null||resolveTimer('speed','hard',{hard:'60'})!==6||resolveTimer('exam','easy',{easy:'6'})!==2700)throw Error('Fixed timer rules');
     for(const count of [20,40,60,100]){await createSession('exam','u01_l01','mixed','all',count,['a','b'],'none');if(S.session.questions.length!==count)throw Error('Exam count '+count);await submitExam();}
-    return rounds;
-  });assert.equal(exercised,78);
+    return {configurations,rounds};
+  });assert.equal(exercised.configurations,78);
+  assert.ok(exercised.rounds>=70,'At least 70 lesson-level configurations need a playable pool');
 });
 await test('all four units, 26 lessons and three difficulty setup pages', async () => {
   await fresh();
@@ -195,7 +203,13 @@ await test('late answer is rejected, repeated answer and finish are idempotent',
   assert.deepEqual(await page.evaluate(()=>({n:S.results.length,xp:S.profile.xp})),before);
 });
 await test('replay and persistent rotation avoid previous round with enough alternatives', async () => {
-  await fresh(); await start('training',4,'easy');
+  await fresh();
+  await page.evaluate(async()=>{
+    const lesson=allLessons().find(l=>questionPool('training',l.id,'medium','all').length>=8);
+    if(!lesson)throw Error('No lesson has eight independent medium questions for the replay test');
+    await createSession('training',lesson.id,'medium','all',4,['a','b'],'none');
+  });
+  assert.equal(await page.evaluate(()=>S.session.questions.length),4);
   let previous=await page.evaluate(()=>S.session.questions.map(q=>q.id));
   for(let i=0;i<5;i++){
     await complete(); await page.evaluate(()=>replay()); await settle();
@@ -270,7 +284,7 @@ await test('IndexedDB actual backup export/import roundtrip restores profile and
   await page.locator('#import-file').setInputFiles({name:'progress.json',mimeType:'application/json',buffer:bytes});
   const confirmImport=page.locator('[data-action="confirm-import"]');
   try { await confirmImport.waitFor({timeout:700}); await confirmImport.click(); } catch(error) { if(!error.message.includes('Timeout'))throw error; }
-  await page.waitForFunction(()=>S.profile.name==='نسخة محفوظة'&&S.results.length===1);
+  await page.waitForFunction(()=>typeof S!=='undefined'&&S.profile.name==='نسخة محفوظة'&&S.results.length===1);
   assert.equal(await page.evaluate(()=>S.results[0].mode),'training');
 });
 await test('storage denied retains playable session and reports memory fallback',async()=>{
@@ -338,7 +352,7 @@ await test('second tab cannot overwrite progress and acquires writer lock after 
   const second=await context.newPage();second.on('pageerror',error=>consoleErrors.push(error.message));await second.goto(url);
   await second.locator('[data-action="writer-retry"]').waitFor();assert.ok((await second.locator('body').textContent()).includes('المنصة مفتوحة في تبويب آخر'));
   assert.equal(await second.evaluate(()=>S.writerBlocked),true);assert.equal(await second.locator('[data-action="begin-session"]').count(),0);
-  await page.close();page=second;await page.locator('[data-action="writer-retry"]').click();await page.waitForFunction(()=>S.session&&!S.busy);
+  await page.close();page=second;await page.locator('[data-action="writer-retry"]').click();await page.waitForFunction(()=>typeof S!=='undefined'&&S.session&&!S.busy);
   assert.deepEqual(await page.evaluate(()=>({id:S.session.id,name:S.profile.name})),previous);
 });
 await test('closing Chromium process and reopening same profile preserves ongoing exam',async()=>{

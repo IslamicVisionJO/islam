@@ -34,13 +34,13 @@ async function newClient(viewport){
   return route.fulfill({status:200,contentType:'text/html;charset=utf-8',body:configured.replace('const Auth=(()=>{','SupabaseSDK=window.__fixtureSDK;\nconst Auth=(()=>{')});
  });
  const page=await context.newPage();page.on('pageerror',e=>browserErrors.push(e.message));
- await page.goto(base);await page.waitForFunction(()=>S.ready&&Auth.current().configured);
+ await page.goto(base);await page.waitForFunction(()=>typeof S!=='undefined'&&S.ready&&Auth.current().configured);
  return page;
 }
 async function login(page,email){
  await page.locator('#auth-email').fill(email);await page.locator('#auth-password').fill('local-test-password');
  await page.locator('#auth-email-form button[type=submit]').click();
- await page.waitForFunction(()=>S.ready&&Auth.current().mode==='account'&&db.status().userId===Auth.current().user.id);
+ await page.waitForFunction(()=>typeof S!=='undefined'&&S.ready&&Auth.current().mode==='account'&&db.status().userId===Auth.current().user.id);
 }
 async function online(page){await page.evaluate(()=>go('online'));await page.waitForSelector('[data-action="online-create"]');}
 async function step(name,fn){const started=Date.now();try{await fn();results.push({name,status:'passed',milliseconds:Date.now()-started});console.log('PASS '+name);}catch(error){results.push({name,status:'failed',error:error.stack,milliseconds:Date.now()-started});console.error('FAIL '+name+': '+error.message);}}
@@ -72,7 +72,7 @@ try{
   assert.equal('correct_answer' in a.question,false);
  });
  await step('Reload reconnects the player to the active room without resetting deadline or progress',async()=>{
-  const before=await snapshot(hostUser());await host.reload();await host.waitForFunction(()=>S.ready&&Auth.current().mode==='account');
+  const before=await snapshot(hostUser());await host.reload();await host.waitForFunction(()=>typeof S!=='undefined'&&S.ready&&Auth.current().mode==='account');
   await host.evaluate(()=>go('online'));await host.waitForSelector('[data-action="online-answer"]');
   const after=await snapshot(hostUser());assert.equal(after.id,before.id);assert.equal(after.deadline,before.deadline);assert.equal(after.me.answered,0);
   assert.equal(await host.evaluate(()=>S.profile.coins),17);
@@ -102,7 +102,7 @@ try{
   const denied=await backend.call({name:'duel_state',args:{p_room_id:roomID},user:outsider});assert.ok(denied.error);
   const deniedAdmin=await backend.call({name:'platform_admin_duels',args:{p_limit:20,p_offset:0},user:hostUser()});assert.ok(deniedAdmin.error);
   admin=await newClient({width:1366,height:900});await login(admin,'ayobalbtoosh41@gmail.com');
-  await admin.evaluate(()=>go('admin'));await admin.waitForFunction(()=>S.adminLoaded&&!S.adminLoading);
+  await admin.evaluate(()=>go('admin'));await admin.waitForFunction(()=>typeof S!=='undefined'&&S.adminLoaded&&!S.adminLoading);
   await admin.locator('[data-action="online-admin-refresh"]').click();
   await admin.waitForFunction(()=>document.querySelector('.online-admin .admin-table')?.textContent.includes('host@example.test'));
   const response=await backend.call({name:'platform_admin_duels',args:{p_limit:20,p_offset:0},user:backend.users.find(u=>u.id===ids.admin)});

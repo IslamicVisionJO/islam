@@ -23,3 +23,31 @@
 .enrichment-grid h2{font-size:1.2rem}.steam-achievements{margin-block:30px}.steam-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,120px),1fr));gap:8px}
 .steam-gallery img{width:100%;height:auto;border-radius:10px}#steam-editor{margin-block:16px}#steam-editor textarea{width:100%;min-height:8rem}#steam-editor input[type=checkbox]{width:auto}
 .book-lesson-picker{display:block;max-width:600px;margin:0 0 16px}
+
+.learning-trail{display:flex;align-items:center;flex-wrap:wrap;gap:.55rem;margin:0 0 1rem}
+.learning-trail button{min-height:2.4rem}
+.learning-units .panel progress{width:100%;accent-color:var(--gold)}
+.learning-units .panel h2{overflow-wrap:anywhere}
+.revision-reader{min-width:0}
+.revision-reader input[type=number]{width:4.5rem}
+.revision-reader input[type=search]{max-width:100%}
+.revision-controls label{display:flex;align-items:center;gap:.4rem}
+.revision-sheet{display:grid;justify-items:safe center;overflow:auto;background:#0003;border-radius:.6rem}
+.revision-sheet canvas{display:block}
+html:fullscreen .layout:has(.revision-reader){display:block;padding-bottom:0}
+html:fullscreen .layout:has(.revision-reader) :is(.sidebar,.topbar,.site-footer,.mobile-bottom){display:none}
+.sidebar .nav-group{border-top:1px solid var(--line);padding-block:.4rem}
+.sidebar .nav-group summary{padding:.25rem .65rem;cursor:pointer;color:inherit;font-size:.8rem}
+.sidebar .student-credit{color:inherit}
+.desktop-sidebar-toggle{display:none}
+@media(min-width:1081px){
+ .desktop-sidebar-toggle{display:grid}
+ .layout.sidebar-compact{grid-template-columns:76px minmax(0,1fr)}
+ .sidebar-compact .sidebar{padding-inline:9px}
+ .sidebar-compact :is(.brand>div:last-child,.nav-item span,.student-credit){display:none}
+ .sidebar-compact .nav-item{justify-content:center}
+ .sidebar-compact .nav-group summary{font-size:.65rem;padding-inline:.1rem}
+}
+@media(max-width:1080px) and (min-width:761px){
+ .sidebar .nav-group summary{font-size:.65rem;padding-inline:.1rem}
+}

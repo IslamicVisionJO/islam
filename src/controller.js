@@ -296,7 +296,17 @@ async function onAction(btn){const action=btn.dataset.action;if(action==='writer
  case 'color-preset':await saveHeaderColor(btn.dataset.target,btn.dataset.color);break;
  case 'colors-close':closeHeaderColors(true);break;
  case 'colors-reset':await saveHeaderColor(btn.dataset.target,'');break;
- case 'navigate':go(btn.dataset.page);break;
+ case 'navigate':
+  if(btn.dataset.page==='learning')Learning.catalog();
+  else if(btn.dataset.page==='revision')Revision.open();
+  else go(btn.dataset.page);
+  break;
+ case 'sidebar-compact':{
+  S.sidebarCompact=!S.sidebarCompact;
+  render();
+  document.querySelector('[data-action="sidebar-compact"]')?.focus({preventScroll:true});
+  break;
+ }
  case 'begin-session':{const el=btn;el.disabled=true;el.setAttribute('aria-busy','true');return startForm().finally(()=>{if(el.isConnected){el.disabled=false;el.removeAttribute('aria-busy');}});break;}
  case 'unit':unit(btn.dataset.unit);break;
  case 'lesson':lesson(btn.dataset.lesson);break;

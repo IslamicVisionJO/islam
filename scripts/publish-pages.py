@@ -4,7 +4,11 @@ root=pathlib.Path(__file__).resolve().parents[1];dist=root/'dist'
 def git(*args,**kwargs):return subprocess.check_output(['git','-C',str(root),*args],text=True,**kwargs).strip()
 if not (dist/'index.html').is_file():raise SystemExit('Build the production site first.')
 if 'class="review-preview-banner"' in (dist/'index.html').read_text():raise SystemExit('Candidate review builds cannot be published.')
-if list(dist.rglob('*.pdf')):raise SystemExit('Original PDFs must not be published.')
+revision=pathlib.Path('content/BTEC_Islamic_Education_Revision.pdf')
+pdfs={file.relative_to(dist) for file in dist.rglob('*.pdf')}
+if pdfs!={revision}:raise SystemExit('Only the supplied two-year revision guide PDF is allowed in dist.')
+if (dist/revision).read_bytes()!=(root/'public'/revision).read_bytes():raise SystemExit('The revision PDF must match the supplied asset.')
+if (dist/'first-btec-review').exists():raise SystemExit('First BTEC question candidates cannot be published.')
 if len(list((dist/'videos').glob('*.mp4')))!=26:raise SystemExit('Expected 26 videos.')
 source=git('rev-parse','HEAD');git('fetch','origin','gh-pages');parent=git('rev-parse','FETCH_HEAD')
 old_files=git('ls-tree','--name-only',parent).splitlines()
