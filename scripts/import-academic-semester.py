@@ -51,6 +51,23 @@ def clean(line):
     return re.sub(r'\bو (?=[\u0621-\u064a])', 'و', line)
 
 
+def repair_row_text(text):
+    # Apply after assembling the lines so PDF extraction cannot split a citation.
+    for old, new in {
+        'اللك': 'الك', 'للكم': 'لكم', 'ير يكم': 'يريكم', 'السماو ية': 'السماوية',
+        'تفر يغ': 'تفريغ', ' .هل .الإيمان': '. هـ. الإيمان',
+        'أ﴿ .': 'أ. ﴿', 'ب﴿ .': 'ب. ﴿', 'تعالى﴿: ': 'تعالى: ﴿',
+        'ﷺ«: ': 'ﷺ: «', 'ص.)84': 'ص 84).', '(الإسراء.)31:': '(الإسراء، 31).',
+        '(البقرة: )233:': '(البقرة، 233):',
+    }.items():
+        text = text.replace(old, new)
+    text = re.sub(r'(?<=[ء-ي]) +(?=[ً-ْ])', '', text)
+    text = re.sub(r'(\d+)هل\b', r'\1 هـ', text)
+    text = re.sub(r'﴾ \( *\.\)(\d+)', r'﴾ (\1). ', text)
+    text = re.sub(r' +\.(?=[ء-ي])', '. ', text)
+    return text.strip()
+
+
 def load(path):
     lessons = []
     block = None
@@ -118,6 +135,8 @@ def load(path):
         if start == 137:
             lesson['actualStartPage'] = 136
         for row in lesson['rows']:
+            for key in ('question', 'answer'):
+                row[key] = repair_row_text(row[key])
             assert row['answer'] and (136 if start == 137 else start) <= row['page'] <= lesson['endPage'], row
             if re.match(r'^[أبجد] — ', row['answer']):
                 row['option'] = row['answer'][0]
