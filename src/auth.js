@@ -265,7 +265,7 @@ const Auth=(()=>{
   return data;
  }
  async function wallRpc(name,args={}){
-  if(!['wall_start','wall_act','wall_board','wall_admin'].includes(name))fail('طلب غير صالح.');
+  if(!['wall_start','wall_act','wall_board','wall_admin','wall_match'].includes(name))fail('طلب غير صالح.');
   await init();
   if(!client)fail('لوحة المتصدرين غير متصلة. التدريب المحلي متاح.');
   if(name==='wall_admin')requireAdmin();
@@ -275,9 +275,12 @@ const Auth=(()=>{
   const {data,error}=await client.rpc(name,args);
   if(id)await checkSession(id);
   if(error){
-   if(['PGRST202','42883','42P01'].includes(error.code))fail('حفظ ترتيب الجدار بانتظار تفعيل خدمة قاعدة البيانات.');
+   if(['PGRST202','42883','42P01'].includes(error.code))fail(name==='wall_match'?'الأونلاين ينتظر تفعيل تحديث 012 في Supabase.':'حفظ ترتيب الجدار بانتظار تفعيل خدمة قاعدة البيانات.');
    if(error.code==='42501')fail('لا توجد صلاحية للطلب أو الجولة.');
    if(String(error.message||'').includes('wall_no_questions'))fail('لا توجد أسئلة متاحة في النطاق المختار.');
+   if(/wall_invite_unavailable|wall_invalid_code/.test(error.message))fail('رمز الدعوة غير صالح أو لم تعد الغرفة متاحة.');
+   if(/wall_match_already_open/.test(error.message))fail('لديك مواجهة مفتوحة. ارجع إليها أو أنهها أولًا.');
+   if(/wall_solo_already_open/.test(error.message))fail('أنهِ الجولة الفردية المصنّفة أولًا.');
    if(/wall_invalid|wall_context/.test(error.message))fail('تحقق من البيانات والخيارات وصفحة الكتاب.');
    fail('تعذر الاتصال بخدمة تحدي الجدار. يمكنك المحاولة مجددًا.');
   }

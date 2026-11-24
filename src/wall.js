@@ -51,25 +51,25 @@ const Wall=(()=>{
    <div class="wall-actions">${btn('replay','إعادة اللعب')}<button class="btn" data-action="navigate" data-page="educational">اختيار لعبة أخرى</button><button class="btn btn-outline" data-action="navigate" data-page="home">الرئيسية</button></div>
    ${wrong?`<h3>راجع إجاباتك الخاطئة</h3>${r.receipts.filter(a=>!a.correct).map(a=>`<details><summary>${e(a.prompt)}</summary><p><b>${e(a.answer)}</b><br>${e(a.explanation)}</p><small>صفحة الكتاب ${nf(a.page)}</small></details>`).join('')}`:''}</section>${ranks()}`;
  }
- function play(){
-  const r=round,q=question(),countdown=r.phase==='playing'&&r.delay>elapsed();
+ function play(r=round,q=question(),clock=elapsed,busy=pending,isMatch=false){
+  const countdown=r.phase==='playing'&&r.delay>clock();
   // Numbered verses need their surah shown even in an all-lessons round.
   const context=q&&/الآي(?:ة|ات)\s*\(?[0-9٠-٩]/u.test(q.prompt)?
    {u01_l01:'سورة البقرة',u02_l01:'سورة الأعراف',u03_l01:'سورة الفرقان'}[q.lesson_id]:'';
   let body;
-  if(r.phase==='paused')body=`<div class="wall-feedback"><h3>اللعبة متوقفة</h3>${btn('resume','استئناف',pending)}</div>`;
+  if(r.phase==='paused')body=`<div class="wall-feedback"><h3>اللعبة متوقفة</h3>${btn('resume','استئناف',busy)}</div>`;
   else if(r.phase==='feedback'){
    const a=r.feedback;
    body=`<div class="wall-feedback ${a.correct?'wall-right':'wall-wrong'}" role="status"><h3>${a.correct?'إجابة صحيحة!':'راجع الإجابة'}</h3><p>${e(a.prompt)}</p><b>${e(a.answer)}</b><p>${e(a.explanation)}</p><small>صفحة الكتاب ${nf(a.page)}</small>
    ${r.streak===3?'<p>سلسلة 3 • +50 نقطة</p>':r.streak===5?'<p>سلسلة 5 • +100 نقطة وتراجع إضافي للجدار</p>':r.streak===10?'<p>سلسلة 10 • تجميد الجدار 3 ثوانٍ بعد المتابعة</p>':''}
-   <div>${btn('next','متابعة',pending)}</div></div>`;
+   <div>${btn('next','متابعة',busy)}</div></div>`;
   }else if(countdown)body='<p class="wall-countdown" aria-live="polite" id="wall-countdown"></p>';
-  else body=q?`<div class="wall-question"><p>ضع دائرة حول رمز الإجابة الصحيحة${context?' · '+e(context):''}</p><h3>${e(q.prompt)}</h3><div class="wall-answers">${q.options.map((o,i)=>`<button type="button" class="wall-choice" data-wall="answer" data-value="${e(o.id)}" ${pending?'disabled':''}><b>${letters[i]}</b><span>${e(o.text)}</span></button>`).join('')}</div></div>`:'';
+  else body=q?`<div class="wall-question"><p>ضع دائرة حول رمز الإجابة الصحيحة${context?' · '+e(context):''}</p><h3>${e(q.prompt)}</h3><div class="wall-answers">${q.options.map((o,i)=>`<button type="button" class="wall-choice" data-wall="answer" data-value="${e(o.id)}" ${busy?'disabled':''}><b>${letters[i]}</b><span>${e(o.text)}</span></button>`).join('')}</div></div>`:'';
   return `<section class="wall-play">
    <div class="wall-hud"><span>النقاط <b>${nf(r.score)}</b></span><span>السلسلة <b>${nf(r.streak)}</b></span><span>السرعة <b>${nf(Math.round(r.speed*100))}٪/ث</b></span><span>السؤال <b>${nf(r.index+1)} من ${nf(r.total)}</b></span></div>
    <div class="wall-arena" data-danger="green" aria-hidden="true"><div class="wall-stones"></div><div class="wall-danger-line"></div></div>
    <div class="wall-danger-status"><span id="wall-danger-label" role="status">الخطورة منخفضة</span><span id="wall-time">${fmt(r.elapsed)}</span></div>
-   <div class="wall-controls">${btn('sound',S.settings.sounds?'كتم الصوت':'تشغيل الصوت')}${r.phase==='playing'?btn('pause','إيقاف مؤقت',pending):''}${btn('exit','إنهاء الجولة',pending)}</div>${body}</section>`;
+   <div class="wall-controls">${btn('sound',S.settings.sounds?'كتم الصوت':'تشغيل الصوت')}${!isMatch&&r.phase==='playing'?btn('pause','إيقاف مؤقت',busy):''}${btn('exit',isMatch?'انسحاب':'إنهاء الجولة',busy)}</div>${body}</section>`;
  }
  function view(){
   syncAccount();
@@ -77,26 +77,32 @@ const Wall=(()=>{
    (message?`<p class="auth-message is-error" role="alert">${e(message)}</p>`:'')+
    (round?(round.phase==='finished'?result():play()):setup());
  }
- function bind(){
+ function bindScene(r,clock,isCurrent,redraw,onDanger){
   cancelAnimationFrame(raf);
-  const arena=document.querySelector('.wall-arena'),r=round;
+  const arena=document.querySelector('.wall-arena');
   if(!arena||!r)return;
   const stone=arena.querySelector('.wall-stones'),label=document.getElementById('wall-danger-label'),time=document.getElementById('wall-time');
   const counter=document.getElementById('wall-countdown');
   function tick(){
-   if(!active()||!arena.isConnected||round!==r)return;
-   const seconds=elapsed(),p=WallRules.project(r,seconds);
+   if(!isCurrent()||!arena.isConnected)return;
+   const seconds=clock(),p=WallRules.project(r,seconds);
    stone.style.transform=`translateY(${p.height*100}cqh)`;
    const band=p.height<.42?'green':p.height<.65?'yellow':p.height<.84?'orange':'red';
    if(arena.dataset.danger!==band)arena.dataset.danger=band;
    const text=r.phase==='playing'&&r.freeze>seconds&&r.delay<=seconds?'الجدار مجمّد':p.height<.42?'الخطورة منخفضة':p.height<.65?'الخطورة متوسطة':p.height<.84?'اقترب الجدار':'خطر وشيك';
    if(label.textContent!==text)label.textContent=text;
    if(time.textContent!==fmt(p.elapsed))time.textContent=fmt(p.elapsed);
-   if(counter){const n=Math.ceil(r.delay-seconds);if(n<=0){ui();return;}if(counter.textContent!==nf(n))counter.textContent=nf(n);}
-   if(p.height>=1&&r.phase==='playing'){if(!pending&&!stateRequested){stateRequested=true;void act('state');}return;}
+   if(counter){const n=Math.ceil(r.delay-seconds);if(n<=0){redraw();return;}if(counter.textContent!==nf(n))counter.textContent=nf(n);}
+   if(p.height>=1&&r.phase==='playing'){onDanger();return;}
    if(r.phase==='playing'&&!document.hidden)raf=requestAnimationFrame(tick);
   }
   tick();
+ }
+ function bind(){
+  const current=round;
+  bindScene(current,elapsed,()=>active()&&round===current,ui,()=>{
+   if(!pending&&!stateRequested){stateRequested=true;void act('state');}
+  });
  }
  async function refreshBoard(){
   const requested=period;
@@ -182,5 +188,5 @@ const Wall=(()=>{
   if(action==='exit'&&!confirm('إنهاء المحاولة الآن؟ المحاولة المنسحَب منها لا تدخل الترتيب.'))return;
   void act(action,b.dataset.value);
  });
- return {view,bind,enter,leave,card:()=>`<article class="surface panel wall-catalog"><span class="edu-game-icon">${ico('eduBoard',38)}</span><h2>${name}</h2><p>ادفع الجدار بإجاباتك الصحيحة وابقَ في التحدي لأطول وقت.</p><button type="button" class="btn btn-gold" data-action="navigate" data-page="wall">ابدأ التحدي</button></article>`};
+ return {view,bind,enter,leave,play,bindScene,card:()=>`<article class="surface panel wall-catalog"><span class="edu-game-icon">${ico('eduBoard',38)}</span><h2>${name}</h2><p>ادفع الجدار بإجاباتك الصحيحة وابقَ في التحدي لأطول وقت.</p><button type="button" class="btn btn-gold" data-action="navigate" data-page="wall">ابدأ اللعبة</button><button type="button" class="btn btn-outline" data-action="navigate" data-page="wall-online">تحدّ صديقك أونلاين</button></article>`};
 })();

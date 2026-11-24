@@ -145,3 +145,61 @@ test('ranked and admin screens call the actual SQL service through the test tran
   assert.deepEqual(errors,[]);
  }finally{await browser.close();await backend.db.close();}
 });
+
+test('two browsers use the online card, invite code, live scores and shared winner',async()=>{
+ const backend=await createDuelServer({educationalFiles:['migrations/011_wall_challenge.sql',...seed.map(f=>'wall-seed/'+f),'migrations/012_wall_matches.sql']});
+ const browser=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox']});
+ const built=await readFile(new URL('../dist/index.html',import.meta.url),'utf8');
+ const fixtureFile=await readFile(new URL('./fixtures/authorized-account.js',import.meta.url),'utf8');
+ const errors=[];
+ async function member(id,width){
+  const context=await browser.newContext({viewport:{width,height:900}});
+  await context.exposeBinding('matchSql',(_,name,args)=>backend.serialize(async()=>{
+   await backend.db.exec('begin;set local role authenticated');
+   try{
+    await backend.db.query("select set_config('request.jwt.claims',$1,true)",[JSON.stringify({sub:id})]);
+    const {p_action,p_id,p_code,p_level,p_unit,p_lesson,p_move,p_question,p_option}=args;
+    assert.equal(name,'wall_match');
+    const {rows}=await backend.db.query('select public.wall_match($1,$2,$3,$4,$5,$6,$7,$8,$9) as value',
+     [p_action,p_id??null,p_code??null,p_level??'medium',p_unit??'all',p_lesson??'all',p_move??'state',p_question??null,p_option??null]);
+    await backend.db.exec('commit');return rows[0].value;
+   }catch(error){await backend.db.exec('rollback');throw error;}
+  }));
+  const script=fixtureFile+'\n__authorizedAccountFixture.identity.user.id='+JSON.stringify(id)+';Auth.wallRpc=(name,args)=>matchSql(name,args);';
+  await context.route('**/*',route=>route.request().resourceType()==='document'?route.fulfill({
+   status:200,contentType:'text/html; charset=utf-8',body:built.replace('startApplication();',script+'\nstartApplication();')
+  }):route.request().url().startsWith(base)?route.continue():route.abort());
+  const page=await context.newPage();page.on('pageerror',error=>errors.push(error.message));
+  await page.goto(base);await page.waitForFunction(()=>typeof S!=='undefined'&&S.ready);
+  await page.evaluate(()=>go('educational'));
+  const card=page.locator('.edu-catalog > .wall-catalog');
+  assert.ok(await card.getByRole('button',{name:'ابدأ اللعبة',exact:true}).count());
+  await card.getByRole('button',{name:'تحدّ صديقك أونلاين'}).click();
+  return page;
+ }
+ try{
+  const host=await member(ids.host,1280),guest=await member(ids.guest,390);
+  await host.selectOption('#wall-match-unit','u01');
+  await host.selectOption('#wall-match-lesson','u01_l01');
+  await host.getByRole('button',{name:'إنشاء مواجهة'}).click();
+  const code=await host.locator('[data-wall-code]').textContent();
+  await guest.locator('#wall-join [name=code]').fill(code);
+  await guest.getByRole('button',{name:'انضمام',exact:true}).click();
+  await host.locator('.wall-choice').first().waitFor();
+  await guest.locator('.wall-choice').first().waitFor();
+  assert.equal(await host.locator('.wall-question h3').textContent(),await guest.locator('.wall-question h3').textContent());
+  assert.equal(await host.locator('[data-wall=pause]').count(),0);
+  const {rows:[room]}=await backend.serialize(()=>backend.db.query("select id,questions->0 as q from school_private.wall_matches"));
+  await host.locator(`[data-wall=answer][data-value="${room.q.correct_id}"]`).click();
+  await host.locator('.wall-right').waitFor();
+  await guest.getByText('١٠٠',{exact:true}).first().waitFor();
+  await host.reload();await host.waitForFunction(()=>typeof S!=='undefined'&&S.ready);
+  await host.evaluate(()=>go('wall-online'));
+  await host.locator('.wall-right').waitFor();
+  await backend.serialize(()=>backend.db.query("update school_private.wall_matches set deadline=clock_timestamp()-interval '1 second' where id=$1",[room.id]));
+  await host.getByRole('heading',{name:'فزت بالمواجهة'}).waitFor();
+  await guest.getByRole('heading',{name:'فاز منافسك'}).waitFor();
+  assert.ok(await guest.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
+  assert.deepEqual(errors,[]);
+ }finally{await browser.close();await backend.db.close();}
+});

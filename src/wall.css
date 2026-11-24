@@ -22,3 +22,5 @@
 @media(prefers-reduced-motion:reduce){.wall-arena[data-danger=red] .wall-danger-line,.wall-feedback{animation:none}}
 
 .effects-low .wall-arena[data-danger=red] .wall-danger-line,.effects-low .wall-feedback{animation:none}
+.wall-join{margin-block:16px}.wall-join label{display:block;max-width:280px;margin-block:12px}
+.wall-match-score{grid-template-columns:repeat(3,minmax(0,1fr))}

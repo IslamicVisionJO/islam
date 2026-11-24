@@ -12,7 +12,7 @@
     "dev": "node scripts/build.mjs && node scripts/serve.mjs",
     "test": "node --test --test-isolation=none tests/*.test.mjs",
     "test:content-upgrade": "node --test supabase/tests/steam-achievements.test.mjs supabase/tests/textbook-seeds.test.mjs && node tests/content-upgrade.spec.mjs",
-    "test:wall": "node --test tests/wall-rules.test.mjs supabase/tests/wall-challenge.test.mjs tests/wall-ui.spec.mjs",
+    "test:wall": "node --test tests/wall-rules.test.mjs supabase/tests/wall-challenge.test.mjs supabase/tests/wall-matches.test.mjs tests/wall-ui.spec.mjs",
     "test:browser": "node tests/browser.spec.mjs",
     "check": "npm run build && npm test && npm run test:browser && npm run test:auth && npm run test:online:sql && npm run test:online:browser && npm run test:background && npm run test:games && npm run test:games:online && npm run test:sql-editor && npm run test:learning && npm run test:study && npm run test:million && npm run test:scenes && npm run test:knowledge && npm run test:qr && npm run test:content-upgrade && npm run test:wall",
     "test:auth": "node tests/auth-ui.spec.mjs",

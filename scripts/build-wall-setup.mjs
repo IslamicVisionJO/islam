@@ -13,10 +13,11 @@ const parts=await Promise.all([
 ]);
 const sql=parts.join('');
 const escape=value=>value.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;');
-const html=`<!doctype html>
+function guide(title,parts,fullLabel,extra=''){
+ return `<!doctype html>
 <html lang="ar" dir="rtl"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>تفعيل سباق الجدار</title>
+<title>${title}</title>
 <style>
 body{margin:0;background:#0b3028;color:#fff;font:18px/1.8 system-ui}
 main{max-width:720px;margin:auto;padding:clamp(16px,4vw,32px)}a{color:#f2cf85}
@@ -28,19 +29,20 @@ summary{cursor:pointer}.parts{display:flex;flex-wrap:wrap;gap:10px;margin-block:
 textarea{width:100%;box-sizing:border-box;background:#061f1a;color:white;font:14px monospace;padding:10px}
 </style></head><body><main>
 <a href="./">العودة إلى المنصة</a>
-<h1>تفعيل سباق الجدار</h1>
+<h1>${title}</h1>
 <section>
 <p>انسخ SQL ثم الصقه في <a href="https://supabase.com/dashboard/project/${project}/sql/new" target="_blank" rel="noopener">محرر SQL في Supabase</a> واضغط <bdi>Run</bdi>.</p>
-<button type="button" id="copy-all" data-copy="all">نسخ SQL كامل</button>
+<button type="button" id="copy-all" data-copy="all">${fullLabel}</button>
 <p id="status" role="status" aria-live="polite"></p>
 <textarea id="manual-copy" aria-label="SQL للنسخ اليدوي" dir="ltr" rows="5" readonly hidden></textarea>
 </section>
-<details><summary>إذا رفض Supabase حجم النص</summary>
+${parts.length>1?`<details><summary>إذا رفض Supabase حجم النص</summary>
 <p>شغّل الترحيل أولًا، ثم شغّل أجزاء الأسئلة بالترتيب. استخدم استعلامًا جديدًا لكل جزء.</p>
 <div class="parts">
 <button type="button" data-copy="0">نسخ الترحيل 011</button>
 ${seedFiles.map((name,i)=>`<button type="button" data-copy="${i+1}">نسخ الجزء ${name.slice(0,2)}</button>`).join('')}
-</div></details>
+</div></details>`:''}
+${extra}
 ${parts.map((part,i)=>`<template id="sql-${i}">${escape(part)}</template>`).join('\n')}
 <script>
 const blocks=[...document.querySelectorAll('template')].map(node=>node.content.textContent);
@@ -64,8 +66,17 @@ document.addEventListener('click',async event=>{
  }
 });
 </script></main></body></html>`;
+}
+const html=guide('تفعيل سباق الجدار',parts,'نسخ SQL كامل',
+ '<p>فعّلت اللعب الفردي مسبقًا؟ <a href="setup-wall-online.html">افتح تفعيل مواجهات الأونلاين</a>.</p>');
+const online=guide('تفعيل سباق الجدار أونلاين',
+ [await readFile(new URL('supabase/migrations/012_wall_matches.sql',root),'utf8')],
+ 'نسخ تحديث الأونلاين 012',
+ '<p>يُشغّل هذا التحديث بعد إعداد <a href="setup-wall.html">سباق الجدار الفردي</a>.</p>');
 await Promise.all([
  writeFile(new URL('dist/setup-wall.html',root),html),
- writeFile(new URL('setup-wall.html',root),html)
+ writeFile(new URL('setup-wall.html',root),html),
+ writeFile(new URL('dist/setup-wall-online.html',root),online),
+ writeFile(new URL('setup-wall-online.html',root),online)
 ]);
 console.log('Wall Challenge copy guide built ('+Buffer.byteLength(sql)+' SQL bytes).');
