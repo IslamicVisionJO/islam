@@ -264,5 +264,24 @@ const Auth=(()=>{
   if(error)throw Error(error.code==='42501'?'لا توجد صلاحية لهذا الطلب.':'تعذر الاتصال بخدمة الإنجازات أو حفظ البيانات.');
   return data;
  }
- return {steamRpc,knowledgeRpc,millionRpc,init,current,prepareStorage,signInEmail,signUpEmail,enterGuest,signOut,syncNow,flush,resolveConflict,resetProgress,adminRoster,adminStudentDetails,adminAllowAccount,adminDisableAccount,publicConfig,duelRpc};
+ async function wallRpc(name,args={}){
+  if(!['wall_start','wall_act','wall_board','wall_admin'].includes(name))fail('طلب غير صالح.');
+  await init();
+  if(!client)fail('لوحة المتصدرين غير متصلة. التدريب المحلي متاح.');
+  if(name==='wall_admin')requireAdmin();
+  else if(name!=='wall_board')requireAccount();
+  const id=state.user?.id;
+  if(id)await checkSession(id);
+  const {data,error}=await client.rpc(name,args);
+  if(id)await checkSession(id);
+  if(error){
+   if(['PGRST202','42883','42P01'].includes(error.code))fail('حفظ ترتيب الجدار بانتظار تفعيل خدمة قاعدة البيانات.');
+   if(error.code==='42501')fail('لا توجد صلاحية للطلب أو الجولة.');
+   if(String(error.message||'').includes('wall_no_questions'))fail('لا توجد أسئلة متاحة في النطاق المختار.');
+   if(/wall_invalid|wall_context/.test(error.message))fail('تحقق من البيانات والخيارات وصفحة الكتاب.');
+   fail('تعذر الاتصال بخدمة تحدي الجدار. يمكنك المحاولة مجددًا.');
+  }
+  return data;
+ }
+ return {wallRpc,steamRpc,knowledgeRpc,millionRpc,init,current,prepareStorage,signInEmail,signUpEmail,enterGuest,signOut,syncNow,flush,resolveConflict,resetProgress,adminRoster,adminStudentDetails,adminAllowAccount,adminDisableAccount,publicConfig,duelRpc};
 })();
