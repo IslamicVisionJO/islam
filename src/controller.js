@@ -297,7 +297,8 @@ async function onAction(btn){const action=btn.dataset.action;if(action==='writer
  case 'colors-close':closeHeaderColors(true);break;
  case 'colors-reset':await saveHeaderColor(btn.dataset.target,'');break;
  case 'navigate':
-  if(btn.dataset.page==='learning')Learning.catalog();
+  if(btn.dataset.page==='academic-semester')AcademicSemester.open();
+  else if(btn.dataset.page==='learning')Learning.catalog();
   else if(btn.dataset.page==='units')Learning.questionsCatalog();
   else if(btn.dataset.page==='revision'||btn.dataset.page==='compendium')Revision.open();
   else go(btn.dataset.page);

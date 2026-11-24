@@ -235,8 +235,8 @@ const Auth=(()=>{
  async function millionRpc(name,args={}){if(!['million_start','million_answer','million_finish','million_wallet'].includes(name))throw Error('طلب غير صالح');requireAccount();const id=state.user.id;await checkSession(id);const {data,error}=await client.rpc(name,args);await checkSession(id);if(error)throw Error('تعذر تأكيد مكافآت المليون على الخادم. يلزم تفعيل الترقية 006 أو استعادة الاتصال.');return data;}
  // Use the current account's existing SDK client for school content, including guest reads.
  async function knowledgeRpc(name,args={}){
-  const read=name==='knowledge_list'||name==='knowledge_image';
-  const write=['knowledge_save_achievement','knowledge_save_tool','knowledge_delete'].includes(name);
+  const read=name==='knowledge_list'||name==='knowledge_image'||name==='academic_guide_list';
+  const write=['knowledge_save_achievement','knowledge_save_tool','knowledge_delete','academic_guide_save'].includes(name);
   if(!read&&!write)fail('طلب غير صالح.');
   await init();
   if(!client)fail('خدمة المحتوى المدرسي غير مفعّلة.');

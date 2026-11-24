@@ -21,7 +21,7 @@ const Learning=(()=>{
    change(profile);
    await db.put('profile',profile,{scopeToken:token});
    if(token!==db.scopeToken())return;
-   for(const key of ['learning','lastLearningLesson','revisionPage']){
+   for(const key of ['learning','lastLearningLesson','revisionPage','academicSemesterOne']){
     if(Object.hasOwn(profile,key))S.profile[key]=profile[key];
    }
   });
@@ -68,6 +68,7 @@ const Learning=(()=>{
  }
  function restore(){
   if(['#steam','#life'].includes(location.hash)){const life=location.hash==='#life';go('knowledge');if(life)document.querySelector('#knowledge-life')?.scrollIntoView();return;}
+  if(typeof AcademicSemester!=='undefined'&&AcademicSemester.restore())return;
   if(S.session)return;
   if(Revision.restore())return;
   if(location.hash==='#learning/solutions'){BookSolutions.open();return;}

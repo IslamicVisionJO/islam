@@ -17,8 +17,9 @@ const Knowledge = (() => {
     </article>`).join('');
     return `<div id="knowledge-page" class="knowledge-page">
       ${Enrichment.steam()}
+      ${section('مشروعات STEAM','book',AcademicSemester.applicationsView(true))}
       ${section('الإنجازات والمسابقات والمشاركات', 'trophy', '<div data-k-achievements role="status">جارٍ تحميل الإنجازات…</div>')}
-      ${section('التربية الإسلامية في حياتنا', 'book', `<div id="knowledge-life" class="knowledge-grid">${lessons}</div>${Enrichment.lifeTopics()}`)}
+      ${section('التربية الإسلامية في حياتنا', 'book', `<div id="knowledge-life" class="knowledge-grid">${lessons}</div>${Enrichment.lifeTopics()}${AcademicSemester.applicationsView(false)}`)}
       ${section('مواقع وأدوات مفيدة', 'list', '<div data-k-tools role="status">جارٍ تحميل المواقع والأدوات…</div>')}
       <dialog class="knowledge-dialog" aria-labelledby="knowledge-detail-title"></dialog>
     </div>`;

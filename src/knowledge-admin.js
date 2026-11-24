@@ -2,6 +2,7 @@
 const KnowledgeAdmin = (() => {
   const sections = {
     students: 'إدارة الطلاب',
+    academic: 'شروحات الفصل الأول',
     achievements: 'إدارة الإنجازات والمسابقات',
     tools: 'إدارة المواقع والأدوات'
   };
@@ -44,19 +45,20 @@ const KnowledgeAdmin = (() => {
     const tabs = Object.entries(sections).map(([key, label]) =>
       `<button type="button" class="btn btn-outline" data-ka-tab="${key}" aria-pressed="${key === section}" ${state?.busy ? 'disabled' : ''}>${label}</button>`).join('');
     return `<div id="knowledge-admin"><nav class="ka-tabs" aria-label="أقسام لوحة الإدارة">${tabs}</nav>
-      ${section === 'students' ? studentView() : content()}</div>`;
+      ${section === 'students' ? studentView() : section === 'academic' ? AcademicAdmin.view() : content()}</div>`;
   }
 
   function changeSection(next) {
     if (!(next in sections) || next === section || state?.busy) return;
     clearEditor();
     section = next;
-    state = next === 'students' ? null : {
+    state = ['students','academic'].includes(next) ? null : {
       rows: [], loading: true, loaded: false, busy: false, query: '', sort: 'newest',
       feedback: '', error: '', editor: null
     };
     render();
     document.querySelector(`[data-ka-tab="${next}"]`)?.focus();
+    if (next === 'academic') void AcademicAdmin.enter();
     if (state) void load(state);
   }
 

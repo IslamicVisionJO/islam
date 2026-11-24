@@ -17,7 +17,7 @@
 
 .book-answer{margin:14px 0}.book-answer h2{font-size:1.2rem}.book-answer-text{white-space:pre-wrap;line-height:1.9}
 .book-answer[hidden]{display:none}.public-section{max-width:1040px;padding:24px;margin:auto}
-@media print{body:has(.book-solutions) :is(.sidebar,.topbar,.mobile-bottom,.site-footer,.skip-link,.identity-banner,.no-print){display:none!important}body:has(.book-solutions) :is(.layout,.main-column,.content){display:block;width:100%;margin:0;padding:0;color:#000;background:#fff}body:has(.book-solutions) .content> :not(.book-solutions){display:none!important}.book-answer{break-inside:avoid;background:#fff!important;color:#000!important;box-shadow:none}}
+@media print{body:has(.book-solutions) :is(.sidebar,.topbar,.mobile-bottom,.site-footer,.skip-link,.identity-banner,.no-print){display:none!important}body:has(.book-solutions) :is(.layout,.main-column,.content){display:block;width:100%;margin:0;padding:0;color:#000;background:#fff}body:has(.book-solutions) .content> :not(.book-solutions,.academic-semester){display:none!important}.book-answer{break-inside:avoid;background:#fff!important;color:#000!important;box-shadow:none}}
 
 .enrichment-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,245px),1fr));gap:16px;margin:18px 0}
 .enrichment-grid h2{font-size:1.2rem}.steam-achievements{margin-block:30px}.steam-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,120px),1fr));gap:8px}
