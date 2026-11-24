@@ -41,6 +41,20 @@ function validQuestion(q){
   default:return false;
  }
 }
+/** Games can mix lessons; the prompt and selectable text must supply their own context. */
+function isStandaloneGameQuestion(question) {
+ const payload=question.payload||{};
+ const texts=[question.prompt,...['options','left','right','items'].flatMap(key=>(payload[key]||[]).map(item=>item.text))];
+ const lessonReference=/(?:^|[^\p{L}])(?:[وبفل]?الدرس|[وبفل]?درس|[وبفل]?الدروس|الخريطة التنظيمية|المخطط التنظيمي|الفقرة السابقة|تمهيد الوحدة|نشاط الدرس|صفحة الكتاب)(?=$|[^\p{L}])/u;
+ const textbookReference=/(?:^|[^\p{L}])[وبفل]?الكتاب(?=$|[^\p{L}])/u;
+ const namedBook=/(?:أهل الكتاب|الكتاب (?:الكريم|المقدس|والسنة))/gu;
+ const unspecifiedExcerpt=/(?:(?:النص|الآية|الحديث|العبارة|المثال|النصان|النصين)\s+(?:السابق(?:ة)?|المذكور(?:ة)?|أعلاه|آنفا)|(?:النص|الآية|الحديث|العبارة)\s+(?:الآتي(?:ة)?|التالي(?:ة)?))/u;
+ return texts.every(text=>{
+  const plain=(text||'').normalize('NFKC').replace(/[\p{M}\u0640]/gu,'');
+  return !lessonReference.test(plain)&&!textbookReference.test(plain.replace(namedBook,''))&&
+   (!unspecifiedExcerpt.test(plain)||/[«﴿]/u.test(plain));
+ });
+}
 function presentQuestion(q,rng=Math.random){
   const copy=clone(q), p=copy.payload;
   for(const key of ['options','left','right','items'])if(Array.isArray(p?.[key]))p[key]=shuffle(p[key],rng);
@@ -162,9 +176,11 @@ function balanceDuel(questions,countPerPlayer,rng=Math.random){
  const rank=new Map(questions.map((q,i)=>[q.id,i]));
  const pairs=[];
  for(const list of groups.values()){while(list.length>=2)pairs.push([list.shift(),list.shift()]);if(list.length)leftovers.push(list[0]);}
+ const fallback=[];
  const rest=new Map();for(const q of leftovers){const k=q.lesson_id+':'+q.difficulty;if(!rest.has(k))rest.set(k,[]);rest.get(k).push(q);}
- for(const list of rest.values())while(list.length>=2)pairs.push([list.shift(),list.shift()]);
- return pairs.sort((a,b)=>Math.max(...a.map(q=>rank.get(q.id)))-Math.max(...b.map(q=>rank.get(q.id)))).slice(0,countPerPlayer).flatMap(pair=>shuffle(pair,rng));
+ for(const list of rest.values())while(list.length>=2)fallback.push([list.shift(),list.shift()]);
+ const byRank=(a,b)=>Math.max(...a.map(q=>rank.get(q.id)))-Math.max(...b.map(q=>rank.get(q.id)));
+ return [...pairs.sort(byRank),...fallback.sort(byRank)].slice(0,countPerPlayer).flatMap(pair=>shuffle(pair,rng));
 }
 function localDay(d=new Date()){return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;}
 function localWeek(d=new Date()){const date=new Date(d.getFullYear(),d.getMonth(),d.getDate()),dow=(date.getDay()+6)%7;date.setDate(date.getDate()-dow);return localDay(date);}

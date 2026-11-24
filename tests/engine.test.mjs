@@ -46,7 +46,7 @@ test('exam respects scope/easy and never substitutes hard',async()=>{
  assert.equal(run('S.session.questions.length'),20);assert.equal(run('timerLimit(S.session)'),2700);assert.equal(run('S.session.deadline-S.session.startedAt'),2700000);
 });
 test('duel creates 20 questions for 10 each with equal pair difficulty/topic and no duplicate',async()=>{
- const {run}=context();await run(`createSession('duel','u01_l01','easy','all',10,['سارة','عمر'],'20')`);
+ const {run}=context();await run(`createSession('duel','u02_l02','easy','all',10,['سارة','عمر'],'20')`);
  assert.equal(run('S.session.questions.length'),20);assert.equal(run('S.session.phase'),'ready');
  assert.equal(run(`S.session.questions.every((q,i,a)=>i%2===0||(q.difficulty===a[i-1].difficulty&&q.topic===a[i-1].topic))`),true);
  assert.equal(run('new Set(S.session.questions.map(q=>q.id)).size'),20);assert.equal(run('timeRemaining(S.session)'),20);
@@ -82,8 +82,11 @@ test('ordinary paused round preserves remaining time; partial draft saved',async
  assert.equal(run('timeRemaining(S.session)'),17);assert.equal(run('S.session.draft[0]'),'one');
 });
 test('endless extension exhausts finite pool without repeat',async()=>{
- const {run}=context();await run(`createSession('survival','u01_l01','easy','all',10,S.players,'none')`);
- await run(`extendEndless(S.session);`);await run(`extendEndless(S.session);`);assert.equal(run('new Set(S.session.questions.map(q=>q.id)).size'),30);assert.equal(await run('extendEndless(S.session)'),false);
+ const {run}=context();
+ const pool=run(`questionPool('survival','u01_l01','easy','all').length`);
+ assert.ok(pool>10 && pool<30);
+ await run(`createSession('survival','u01_l01','easy','all',10,S.players,'none')`);
+ await run(`extendEndless(S.session);`);await run(`extendEndless(S.session);`);assert.equal(run('new Set(S.session.questions.map(q=>q.id)).size'),pool);assert.equal(await run('extendEndless(S.session)'),false);
 });
 test('two concurrent clicks record one answer and transition once',async()=>{
  const {run}=context();await run(`createSession('training','u01_l01','easy','all',10,S.players,'none')`);
@@ -100,8 +103,9 @@ test('failed atomic result write preserves active round and rolls back XP',async
  await assert.rejects(run('finishSession()'),/quota/);assert.equal(run('S.results.length'),0);assert.equal(run('S.profile.xp'),0);assert.equal(run('S.session.phase'),'locked');
 });
 test('duel replay prioritizes different question set when pool is sufficient',async()=>{
- const {run}=context();await run(`createSession('duel','u01_l01','easy','all',5,S.players,'none')`);
- const first=run('S.session.questions.map(q=>q.id)');run('S.session=null');await run(`createSession('duel','u01_l01','easy','all',5,S.players,'none')`);
+ const {run}=context();await run(`createSession('duel','u02_l02','easy','all',4,S.players,'none')`);
+ const first=run('S.session.questions.map(q=>q.id)');run('S.session=null');await run(`createSession('duel','u02_l02','easy','all',4,S.players,'none')`);
+ assert.equal(run('S.session.questions.length'),8);
  assert.equal(run(`S.session.questions.some(q=>${JSON.stringify(first)}.includes(q.id))`),false);
 });
 test('new challenge refuses to replace an active saved round',async()=>{

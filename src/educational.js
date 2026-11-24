@@ -19,7 +19,7 @@ const Educational=(()=>{
  const shuffle=a=>a.map(v=>[Math.random(),v]).sort((a,b)=>a[0]-b[0]).map(x=>x[1]);
  const btn=(label,action,value='',extra='')=>`<button type="button" class="btn btn-outline" data-edu="${action}" data-value="${e(value)}" ${extra}>${e(label)}</button>`;
  const source=q=>`<p class="muted">${e(q.explanation)}<br>المصدر: كتاب التربية الإسلامية — صفحة ${e(q.source?.printed_pages?.join('، ')||'غير محددة')} • ${e(byLesson(q.lesson_id)?.name)}. اعتماد البنك العلمي جزئي؛ راجع الكتاب والمعلم.</p>`;
- const scoped=()=>C.pool(S.valid,unit,lesson);
+ const scoped=()=>C.pool(S.valid.filter(isStandaloneGameQuestion),unit,lesson);
  const current=()=>g&&S.byId.get(g.ids[g.index]);
  function persist(){if(!g||g.online||token!==storageScope())return;S.profile.educationalActive=clone(g);const p=clone(S.profile),t=token;write=write.catch(()=>{}).then(()=>scopeIsCurrent(t)?db.put('profile',p,scopeOptions(t)):undefined);return write;}
  function restore(){if(g&&(token!==storageScope()||g.online&&S.page!=='online'))g=null;if(!g&&S.profile.educationalActive){const x=S.profile.educationalActive;if(x&&C.names[x.game]&&Array.isArray(x.ids)&&x.ids.every(id=>S.byId.has(id))){g=clone(x);if(g.game===0&&!g.cloud&&authState().mode==='account')g.practice=true;token=storageScope();unit=g.unit;lesson=g.lesson;}}}

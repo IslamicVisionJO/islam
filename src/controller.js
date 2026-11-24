@@ -50,6 +50,7 @@ function questionPool(mode,lessonId,level,scope){
    return true;
   });
  }
+ if(!['exam','mistakes'].includes(mode))p=p.filter(isStandaloneGameQuestion);
  if(mode==='speed')p=p.filter(q=>['multiple_choice','fill_blank','true_false'].includes(q.type)&&q.prompt.length<=180&&(q.payload.options||[]).every(o=>o.text.length<=90));
  return p;
 }
@@ -66,7 +67,7 @@ async function createSession(mode='training',lessonId=S.lessonId,level=S.level,s
  S.busy=true;const token=storageScope();
  try{
   const pool=questionPool(mode,lessonId,level,scope),requestedCount=Math.min(100,Math.max(1,Math.floor(Number(count)||10)));
-  const day=localDay(),week=localWeek(),key=`${['training','speed','survival','hearts','duel'].includes(mode)?lessonId:scope}:${level}:${mode==='speed'?'short':mode==='exam'?'ministerial-final':'all'}`;
+  const day=localDay(),week=localWeek(),key=`${['training','speed','survival','hearts','duel'].includes(mode)?lessonId:scope}:${level}:${mode==='speed'?'short':mode==='exam'?'ministerial-final':'standalone'}`;
   let chosen;
   if(mode==='duel'){
    const old=activeBagCache.has(key)?activeBagCache.get(key):await db.get('bag:'+key,null);
