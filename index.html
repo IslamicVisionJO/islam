@@ -1810,7 +1810,7 @@ const notify=message=>{const el=document.createElement('div');el.className='toas
 const playSound=(kind='tap')=>Sound.play(kind);
 const navGroups=[
  {id:'main',title:'الرئيسية',links:[['home','الرئيسية','home']]},
- {id:'study',title:'التعلم والمراجعة',links:[['learning','شرح الدروس','book'],['units','الدروس والأسئلة','book'],['revision','المكثف الشامل','list'],['compendium','مكثف السنة الثانية','list'],['knowledge','التكامل المعرفي STEAM','book'],['mistakes','مراجعة الأخطاء','refresh'],['exam','الامتحان النهائي','clock']]},
+ {id:'study',title:'التعلم والمراجعة',links:[['learning','شرح الدروس','book'],['units','الدروس والأسئلة','book'],['revision','المكثف الشامل','list'],['knowledge','التكامل المعرفي STEAM','book'],['mistakes','مراجعة الأخطاء','refresh'],['exam','الامتحان النهائي','clock']]},
  {id:'play',title:'الألعاب والمنافسات',links:[['educational','ألعاب','sparkle'],['challenges','التحديات','zap'],['online','مواجهة أونلاين','users']]},
  {id:'profile',title:'حسابي وتقدمي',links:[['stats','الإحصائيات','chart'],['achievements','إنجازاتي','award'],['settings','الإعدادات','settings']]},
  {id:'admin',title:'الإدارة',links:[['admin','إدارة الطلاب','shield']],admin:true},
@@ -1925,16 +1925,6 @@ function topShell(content){
  if(S.modal)document.querySelector('.modal')?.focus({preventScroll:true});
 }
 function heroTitle(title,sub,actions=''){return `<div class="heading"><div><div class="eyebrow">تعلّم • تدرب • نافس</div><h1>${title}</h1><p>${sub}</p></div>${actions}</div>`;}
-function lessonDirectory(includeTitle=true){
- const lessons=allLessons();
- const cards=lessons.map((l,i)=>{
-   const p=lessonProgress(S.results,l.id);
-   return `<button class="direct-lesson-card" data-action="lesson" data-lesson="${l.id}"><span class="direct-lesson-num">${nf(i+1)}</span><span class="direct-lesson-name">${e(l.name)}</span><span class="direct-lesson-arrow">${ico('arrow',19)}</span>${p.played?`<small>أفضل نتيجة ${nf(p.best)}%</small>`:''}</button>`;
- }).join('');
- return `${includeTitle?`<div class="section-header"><div><h2>الدروس والأسئلة</h2><p>اختر أي درس وابدأ الحل</p></div></div>`:''}
- <label class="search-lessons"><span>${ico('book',19)}</span><input id="lesson-search" type="search" placeholder="ابحث عن اسم الدرس..." autocomplete="off" aria-label="البحث عن الدروس"></label>
- <div class="direct-lessons-grid" id="lesson-directory">${cards}</div><p id="no-lessons" class="muted" hidden>لم نجد درسًا بهذا الاسم.</p>`;
-}
 function homeView(){
  const t=statsTotals(), lessons=allLessons(), practiced=lessons.filter(l=>lessonMetrics(l.id).answered>0).length;
  const last=soloResults().at(-1);const lastLesson=S.profile.lastLessonId||last?.lessonId||last?.lessonIds?.[0]||lessons[0]?.id;
@@ -1949,12 +1939,11 @@ function homeView(){
  <div class="dashboard-lower"><section class="surface panel"><h2>${ico('award')} أحدث إنجازاتك</h2>${achievements.length?achievements.map(a=>`<div class="earned-row">${ico(a.icon)}<span>${a.title}<small>${a.date?new Date(a.date).toLocaleDateString('ar-JO'):''}</small></span>${ico('check',16)}</div>`).join(''):'<p class="muted">إنجازك الأول ينتظرك. أكمل جولة لتبدأ مجموعتك.</p>'}<button class="text-link" data-action="navigate" data-page="achievements">استكشف إنجازاتي ${ico('arrow',16)}</button></section><section class="surface panel"><h2>${ico('rotate')} آخر محطة</h2><p>${last||S.profile.lastLessonId?e(byLesson(lastLesson)?.name||'جولة متنوعة'):'لم تبدأ أي جولة بعد. اختر درسًا يناسبك؛ كل الدروس متاحة.'}</p><button class="text-link" data-action="navigate" data-page="about">عن المحتوى والمنصة ${ico('arrow',16)}</button></section></div>`;
 }
 function unitCards(){return `<div class="unit-card-grid">${S.units.map((u,i)=>{const answered=u.lessons.reduce((sum,l)=>sum+lessonMetrics(l.id).unique,0),count=unitQuestions(u.id).length;return `<button class="unit-map-card" data-action="unit" data-unit="${u.id}"><span class="unit-index">0${i+1}</span><span class="unit-book">${ico('book',23)}</span><h3>${e(u.name)}</h3><p>${e(u.theme)}</p><div class="unit-count">${nf(u.lessons.length)} دروس</div><div class="bar"><i style="width:${count?Math.round(answered/count*100):0}%"></i></div><div class="unit-map-footer">${nf(count?Math.round(answered/count*100):0)}% تغطية ${ico('arrow',17)}</div></button>`;}).join('')}</div>`;}
-function unitsView(){return `${heroTitle('الدروس والأسئلة','السنة الثانية BTEC','<button class="btn btn-outline" data-learning="year" data-id="btec1">دروس السنة الأولى BTEC</button>')}${unitCards()}${lessonDirectory(true)}`;}
 function unitView(){const u=unitFor(S.unitId);return `${heroTitle(e(u.name),e(u.theme),'<button class="text-link" data-action="navigate" data-page="units">جميع الوحدات</button>')}${Educational.entry(u.id)}<div class="unit-lessons">${u.lessons.map((l,i)=>{const m=lessonMetrics(l.id);return `<button class="direct-lesson-card" data-action="lesson" data-lesson="${l.id}"><span class="direct-lesson-num">${nf(i+1)}</span><span class="direct-lesson-name">${e(l.name)}</span>${ico('arrow',19)}<small>${m.mastered?'متقن':m.answered?'قيد التدريب':S.profile.visitedLessons?.[l.id]?'تمت الزيارة؛ لم تتدرب بعد':'لم تبدأ التدريب'}</small></button>`;}).join('')}</div>`;}
 
 function lessonView(){
  const l=byLesson(S.lessonId)||allLessons()[0],p=lessonProgress(S.results,l.id);
- return `<div class="backline"><button class="text-link" data-action="navigate" data-page="units">${ico('arrow')} جميع الدروس</button></div>
+ return `<div class="backline"><button class="text-link" data-learning="questions-unit" data-id="${l.unitId||l.id.slice(0,3)}">${ico('arrow')} أسئلة الوحدة</button></div>
  <div class="lesson-hero simple-lesson-hero"><div class="eyebrow">اختر مستواك وابدأ</div><h1>${e(l.name)}</h1><p>اختر المستوى المناسب وابدأ التدريب على هذا الدرس.</p>${p.played?`<span class="lesson-best">أفضل نتيجة: ${nf(p.best)}%</span>`:''}</div>
  ${Educational.entry(l.id)}<div class="difficulty-grid simple-difficulty-grid">${DIFFICULTIES.map((d,i)=>`<article class="difficulty-card diff-${d}"><div class="difficulty-icon">${ico(['book','target','fire'][i],26)}</div><h3>${DIFF_NAMES[d]}</h3><button class="btn btn-primary" data-action="setup" data-mode="training" data-lesson="${l.id}" data-level="${d}">ابدأ الأسئلة ${ico('arrow',17)}</button></article>`).join('')}</div>
  <div class="duel-banner"><div>${ico('users',30)}<span><strong>تحدَّ صديقك</strong><small>تتناوبان على الإجابة، وتظهر النتيجة في النهاية</small></span></div><button class="btn btn-gold" data-action="setup" data-mode="duel" data-lesson="${l.id}">لعبة شخصين ${ico('arrow',17)}</button></div>`;
@@ -2058,8 +2047,8 @@ function resultView(){
  ${correct.length?`<details class="surface panel correct-details"><summary>${ico('check',20)} عرض الأسئلة التي أجبت عنها بشكل صحيح (${nf(correct.length)})</summary><div class="review-list">${correct.map(x=>reviewCard(x,x.index,r,duel)).join('')}</div></details>`:''}
  </div>`;
 }
-function render(){Revision.beforeRender();document.documentElement.classList.toggle('effects-low',!!S.settings.lowEffects);Learning.beforeRender();if(S.page!=='admin'||!authState().isAdmin)KnowledgeAdmin.reset();if(authState().mode==='signed-out'&&S.page!=='knowledge'){topShell('');Knowledge.bind();return;}if(S.page==='admin'&&!authState().isAdmin)S.page='home';let view='';switch(S.page){case 'home':view=homeView();break;case 'compendium':view=Study.view();break;case 'revision':view=Revision.view();break;case 'learning':view=Learning.view();break;case 'units':view=unitsView();break;case 'unit':view=unitView();break;case 'lesson':view=lessonView();break;case 'educational':view=Educational.view();break;case 'wall':view=Wall.view();break;case 'wall-online':view=WallMatch.view();break;case 'wall-admin':view=authState().isAdmin?WallAdmin.view():'<p>الصفحة مخصصة للمسؤول.</p>';break;case 'challenges':view=challengesView();break;case 'setup':view=setupView();break;case 'online':view=Online.view();break;case 'game':view=gameView();break;case 'result':view=resultView();break;case 'mistakes':view=mistakesView();break;case 'stats':view=statsView();break;case 'knowledge':view=Knowledge.view();break;case 'book-solutions':view=BookSolutions.view();break;case 'achievements':view=achievementsView();break;case 'settings':view=settingsView();break;case 'about':view=aboutView();break;case 'admin':view=KnowledgeAdmin.view(adminView);break;default:view=homeView();}topShell(view);Learning.bind();Revision.bind();if(S.page==='wall')Wall.bind();if(S.page==='wall-online')WallMatch.bind();Knowledge.bind();if(S.page==='admin')KnowledgeAdmin.bind();}
-function go(page){if(S.page==='wall-online'&&page!=='wall-online')WallMatch.leave();if(S.page==='wall'&&page!=='wall')Wall.leave();if(S.page==='wall-admin'&&page!=='wall-admin')WallAdmin.leave();if(page==='knowledge')history.replaceState(null,'','#steam');else if(['#steam','#life'].includes(location.hash))history.replaceState(null,'',location.pathname+location.search);if(page!=='revision'&&location.hash.startsWith('#revision'))history.replaceState(null,'',location.pathname+location.search);if(page==='compendium')history.replaceState(null,'','#compendium');if(page!=='learning'&&page!=='compendium'&&page!=='book-solutions'&&(location.hash.startsWith('#learning')||location.hash==='#compendium'))history.replaceState(null,'',location.pathname+location.search);S.colorsOpen=false;if(S.page==='online'&&page!=='online')Online.stop();if(S.page==='game'&&page!=='game')pauseSession();if(page==='game')resumeSessionClock();S.page=page;S.menuOpen=false;S.selected=page==='game'?(S.session?.draft??(S.session?.mode==='exam'?S.session.answers[S.session.current]?.response:null)??null):null;S.modal=null;render();document.getElementById('main-content')?.focus({preventScroll:true});window.scrollTo({top:0,behavior:'instant'});if(page==='admin'&&authState().isAdmin&&!S.adminLoaded&&!S.adminLoading)queueMicrotask(loadAdminRoster);if(page==='wall')void Wall.enter();if(page==='wall-online')void WallMatch.enter();if(page==='wall-admin')void WallAdmin.load();if(page==='online')void Online.open();if(page==='knowledge')void Enrichment.load();}
+function render(){Revision.beforeRender();document.documentElement.classList.toggle('effects-low',!!S.settings.lowEffects);Learning.beforeRender();if(S.page!=='admin'||!authState().isAdmin)KnowledgeAdmin.reset();if(authState().mode==='signed-out'&&S.page!=='knowledge'){topShell('');Knowledge.bind();return;}if(S.page==='admin'&&!authState().isAdmin)S.page='home';let view='';switch(S.page){case 'home':view=homeView();break;case 'compendium':view=Study.view();break;case 'revision':view=Revision.view();break;case 'learning':view=Learning.view();break;case 'units':view=Learning.directory();break;case 'unit':view=unitView();break;case 'lesson':view=lessonView();break;case 'educational':view=Educational.view();break;case 'wall':view=Wall.view();break;case 'wall-online':view=WallMatch.view();break;case 'wall-admin':view=authState().isAdmin?WallAdmin.view():'<p>الصفحة مخصصة للمسؤول.</p>';break;case 'challenges':view=challengesView();break;case 'setup':view=setupView();break;case 'online':view=Online.view();break;case 'game':view=gameView();break;case 'result':view=resultView();break;case 'mistakes':view=mistakesView();break;case 'stats':view=statsView();break;case 'knowledge':view=Knowledge.view();break;case 'book-solutions':view=BookSolutions.view();break;case 'achievements':view=achievementsView();break;case 'settings':view=settingsView();break;case 'about':view=aboutView();break;case 'admin':view=KnowledgeAdmin.view(adminView);break;default:view=homeView();}topShell(view);Learning.bind();Revision.bind();if(S.page==='wall')Wall.bind();if(S.page==='wall-online')WallMatch.bind();Knowledge.bind();if(S.page==='admin')KnowledgeAdmin.bind();}
+function go(page){if(S.page==='wall-online'&&page!=='wall-online')WallMatch.leave();if(S.page==='wall'&&page!=='wall')Wall.leave();if(S.page==='wall-admin'&&page!=='wall-admin')WallAdmin.leave();if(page==='knowledge')history.replaceState(null,'','#steam');else if(['#steam','#life'].includes(location.hash))history.replaceState(null,'',location.pathname+location.search);if(page!=='units'&&location.hash.startsWith('#questions'))history.replaceState(null,'',location.pathname+location.search);if(page!=='revision'&&location.hash.startsWith('#revision'))history.replaceState(null,'',location.pathname+location.search);if(page==='compendium')history.replaceState(null,'','#compendium');if(page!=='learning'&&page!=='compendium'&&page!=='book-solutions'&&(location.hash.startsWith('#learning')||location.hash==='#compendium'))history.replaceState(null,'',location.pathname+location.search);S.colorsOpen=false;if(S.page==='online'&&page!=='online')Online.stop();if(S.page==='game'&&page!=='game')pauseSession();if(page==='game')resumeSessionClock();S.page=page;S.menuOpen=false;S.selected=page==='game'?(S.session?.draft??(S.session?.mode==='exam'?S.session.answers[S.session.current]?.response:null)??null):null;S.modal=null;render();document.getElementById('main-content')?.focus({preventScroll:true});window.scrollTo({top:0,behavior:'instant'});if(page==='admin'&&authState().isAdmin&&!S.adminLoaded&&!S.adminLoading)queueMicrotask(loadAdminRoster);if(page==='wall')void Wall.enter();if(page==='wall-online')void WallMatch.enter();if(page==='wall-admin')void WallAdmin.load();if(page==='online')void Online.open();if(page==='knowledge')void Enrichment.load();}
 function lesson(id){if(!byLesson(id))return;S.lessonId=id;S.unitId=id.slice(0,3);S.profile.lastLessonId=id;S.profile.visitedLessons={...(S.profile.visitedLessons||{}),[id]:new Date().toISOString()};saveState().catch(()=>notify('تعذر حفظ زيارة الدرس.'));go('lesson');}
 function unit(id){if(!unitFor(id))return;S.unitId=id;S.lessonId=unitFor(id).lessons[0].id;go('unit');}
 function setup(mode,id){S.mode=mode||'training';if(S.mode==='exam')S.level='mixed';if(!['exam','random','boss','daily','weekly','duel'].includes(S.mode)&&S.level==='mixed')S.level='easy';if(id){S.lessonId=id;S.unitId=id.slice(0,3);}go('setup');}
@@ -3020,15 +3009,20 @@ const Learning=(()=>{
   });
  }
  const lessonTabs=[['video','الفيديو'],['explanation','الشرح'],['solutions','حلول الكتاب'],['quiz','اختبر فهمك'],['revision','المكثف']];
- function show(year,unit){
+ function show(year,unit,page='learning'){
   selected=null;
   selectedYear=year||null;
   selectedUnit=unit||null;
   search='';
-  history.replaceState(null,'','#learning'+(year?'/'+year.id:'')+(unit?'/'+unit.id:''));
-  go('learning');
+  history.replaceState(null,'',(page==='units'?'#questions':'#learning')+(year?'/'+year.id:'')+(unit?'/'+unit.id:''));
+  go(page);
  }
  function catalog(){show();}
+ function questionsCatalog(){show(null,null,'units');}
+ function questionsUnit(id){
+  const year=years.find(year=>year.units.some(unit=>unit.id===id));
+  if(year)show(year,year.units.find(unit=>unit.id===id),'units');
+ }
  function open(id,initialTab='video'){
   const lesson=catalogLessons.find(l=>l.id===id);
   if(!lesson)return;
@@ -3054,13 +3048,13 @@ const Learning=(()=>{
   if(location.hash==='#learning/solutions'){BookSolutions.open();return;}
   const solution=location.hash.match(/^#learning\/(u\d\d_l\d\d)\/solutions$/);
   if(solution){BookSolutions.open(solution[1]);return;}
-  if(location.hash==='#compendium'){Study.open();return;}
+  if(location.hash==='#compendium'){Revision.open();return;}
   const lesson=location.hash.match(/^#learning\/(?:btec[12]\/)?((?:s1_)?u\d\d_l\d\d)(?:\/([a-z]+))?$/);
   if(lesson){open(lesson[1],lesson[2]);return;}
-  const directory=location.hash.match(/^#learning(?:\/(btec[12])(?:\/((?:s1_)?u0[1-4]))?)?$/);
+  const directory=location.hash.match(/^#(learning|questions)(?:\/(btec[12])(?:\/((?:s1_)?u0[1-4]))?)?$/);
   if(directory){
-   const year=years.find(y=>y.id===directory[1]);
-   show(year,year?.units.find(unit=>unit.id===directory[2]));
+   const year=years.find(y=>y.id===directory[2]);
+   show(year,year?.units.find(unit=>unit.id===directory[3]),directory[1]==='questions'?'units':'learning');
   }
  }
  function completion(list){
@@ -3082,36 +3076,43 @@ const Learning=(()=>{
  }
  function trail(lesson){
   const action=(kind,id,title)=>`<button class="text-link" data-learning="${kind}" data-id="${id}">${e(title)}</button>`;
-  return `<nav class="learning-trail" aria-label="مسار الدرس">${action('catalog','','شرح الدروس')}
+  return `<nav class="learning-trail" aria-label="مسار الدرس">${action('catalog','',S.page==='units'?'الدروس والأسئلة':'شرح الدروس')}
    ${selectedYear?`<span aria-hidden="true">/</span>${action('year',selectedYear.id,selectedYear.name)}`:''}
    ${selectedUnit?`<span aria-hidden="true">/</span>${action('unit',selectedUnit.id,selectedUnit.name)}`:''}
    ${lesson?`<span aria-hidden="true">/</span><span aria-current="page">${e(lesson.name)}</span>`:''}</nav>`;
  }
  function directory(){
+  const questions=S.page==='units';
   if(!selectedYear){
    const last=catalogLessons.find(l=>l.id===S.profile.lastLearningLesson);
-   return `${heroTitle('شرح الدروس','اختر السنة الدراسية')}
+   return `${heroTitle(questions?'الدروس والأسئلة':'شرح الدروس','اختر السنة الدراسية')}
     <div class="learning-units">${years.map(year=>{
      const list=year.units.flatMap(unit=>unit.lessons),videos=list.filter(lesson=>lesson.video).length;
-     return `<section class="surface panel"><h2>${year.name}</h2><p>${nf(year.units.length)} وحدات • ${nf(list.length)} درسًا • ${nf(videos)} فيديو متاح</p>
-     ${completion(list)}<button class="btn btn-gold" data-learning="year" data-id="${year.id}" aria-label="اختر ${year.name}">اختر السنة</button></section>`;
+     return `<section class="surface panel"><h2>${year.name}</h2><p>${nf(year.units.length)} وحدات • ${nf(list.length)} درسًا${questions?'':' • '+nf(videos)+' فيديو متاح'}</p>
+     ${questions?'':completion(list)}<button class="btn btn-gold" data-learning="year" data-id="${year.id}" aria-label="اختر ${year.name}">اختر السنة</button></section>`;
     }).join('')}</div>
-    <div class="study-actions">${last?`<button class="btn btn-gold" data-learning="open" data-id="${last.id}">متابعة آخر درس · ${e(last.name)}</button>`:''}
+    ${questions?'':`<div class="study-actions">${last?`<button class="btn btn-gold" data-learning="open" data-id="${last.id}">متابعة آخر درس · ${e(last.name)}</button>`:''}
     <button class="btn btn-outline" data-learning="solutions-catalog">حلول كتاب السنة الثانية</button>
-    <button class="btn btn-outline" data-revision-page="1">المكثف الشامل</button></div>`;
+    <button class="btn btn-outline" data-revision-page="1">المكثف الشامل</button></div>`}`;
   }
   if(!selectedUnit)return `${trail()}${heroTitle(selectedYear.name,'اختر الوحدة')}
    <div class="learning-units">${selectedYear.units.map(unit=>`<section class="surface panel"><h2>${e(unit.name)}</h2>
-    ${completion(unit.lessons)}<button class="btn btn-gold" data-learning="unit" data-id="${unit.id}" aria-label="افتح ${e(unit.name)}">افتح الوحدة</button></section>`).join('')}</div>`;
+    ${questions?`<p>${nf(unit.lessons.length)} دروس</p>`:completion(unit.lessons)}<button class="btn btn-gold" data-learning="unit" data-id="${unit.id}" aria-label="افتح ${e(unit.name)}">افتح الوحدة</button></section>`).join('')}</div>`;
   const items=selectedUnit.lessons.filter(l=>normalize(l.name).includes(normalize(search)));
   return `${trail()}${heroTitle(e(selectedUnit.name),'اختر الدرس')}
    <label>البحث داخل الوحدة <input id="learning-search" type="search" value="${e(search)}" placeholder="اسم الدرس"></label>
    <div class="learning-units">${items.map(l=>{
     const result=S.results.findLast(row=>row.lessonId===l.id||(row.lessonIds?.length===1&&row.lessonIds[0]===l.id));
     const number=selectedUnit.lessons.indexOf(l)+1;
+    const details=questions?[]:[progress(l.id).completed?'اكتملت المشاهدة':l.video?'فيديو متاح':'الفيديو غير متاح'];
+    if(Number.isFinite(result?.accuracy))details.push('آخر نتيجة '+nf(result.accuracy)+'٪');
+    let destination=`data-learning="open" data-id="${l.id}"`;
+    if(questions)destination=selectedYear.id==='btec1'
+     ?`data-learning="quiz" data-id="${l.id}"`
+     :`data-action="lesson" data-lesson="${l.id}"`;
     return `<article class="surface panel"><small>الدرس ${nf(number)} · صفحة ${nf(l.startPage)}</small><h2>${e(l.name)}</h2>
-     <p>${progress(l.id).completed?'اكتملت المشاهدة':l.video?'فيديو متاح':'الفيديو غير متاح'}${Number.isFinite(result?.accuracy)?' · آخر نتيجة '+nf(result.accuracy)+'٪':''}</p>
-     <button class="btn btn-gold" data-learning="open" data-id="${l.id}" aria-label="افتح ${e(l.name)}">افتح الدرس</button></article>`;
+     ${details.length?`<p>${details.join(' · ')}</p>`:''}
+     <button class="btn btn-gold" ${destination} aria-label="افتح ${e(l.name)}">${questions?'أسئلة الدرس':'افتح الدرس'}</button></article>`;
    }).join('')}</div>${items.length?'':'<p>لم يُعثر على درس مطابق.</p>'}`;
  }
  function revisionPanel(lesson,title='مراجعة الدرس في المكثف'){
@@ -3169,7 +3170,7 @@ const Learning=(()=>{
   if(tab==='explanation'&&selectedYear.id==='btec2')body=`<div class="lesson-overview"><span class="eyebrow">افهم الفكرة ثم طبّقها</span><h2>شرح الدرس</h2><p>${e(LESSON_SUMMARIES[l.id])}</p></div><nav class="guide-topics" aria-label="محاور الشرح">${(LESSON_GUIDES[l.id]||[]).map((g,i)=>`<a href="#guide-${i}" data-guide-scroll="guide-${i}">${e(g.heading)}</a>`).join('')}</nav>${(LESSON_GUIDES[l.id]||[]).map((g,i)=>`<section class="guide-section" id="guide-${i}"><h3>${e(g.heading)}</h3>${g.items.map(x=>`<article><h4>${e(x.question)}</h4><p class="guide-answer">${e(x.answer)}</p><p>${e(x.explanation)}</p><small>مرجع الشرح في بنك المنصة: صفحة ${e(x.pages.join('، '))}</small></article>`).join('')}</section>`).join('')}<details class="guide-source-note"><summary>مصدر الشرح</summary><p>شرح منظم من تفسيرات بنك المنصة المرتبطة بالكتاب. لا يغني عن نص الكتاب وتوجيه المعلم؛ المراجعة العلمية المستقلة لكل فقرة لم تكتمل.</p></details><h3>تثبيت الفهم</h3><p>راجع محاور الشرح، ثم اختبر فهمك بأسئلة الدرس.</p><button class="btn btn-gold" data-learning="tab" data-id="quiz">اختبر فهمك الآن</button>`;
   if(tab==='revision')body=revisionPanel(l);
   if(tab==='solutions')body='<p>الحلول الكاملة الموثقة لهذا الدرس قيد الإعداد.</p>';
-  if(tab==='quiz'&&selectedYear.id==='btec1')body=reviewView(l);
+  if(tab==='quiz'&&selectedYear.id==='btec1')body=`<button class="text-link" data-learning="questions-unit" data-id="${selectedUnit.id}">أسئلة الوحدة</button>`+reviewView(l);
   if(tab==='quiz'&&selectedYear.id==='btec2')body=Ministerial.view(l)||`<p>اختبر هذا الدرس باستخدام بنك الأسئلة الحالي.</p><button class="btn btn-gold" data-action="lesson" data-lesson="${l.id}">انتقل إلى اختبار الدرس</button>`;
   return `${trail(l)}${heroTitle(e(l.name),`صفحات الكتاب ${l.startPage}–${l.endPage}`)}<div class="learning-tabs" role="tablist" aria-label="محتوى الدرس">${tabs.map(([id,name])=>`<button role="tab" aria-controls="lesson-panel" id="learning-tab-${id}" aria-selected="${tab===id}" data-learning="tab" data-id="${id}">${name}</button>`).join('')}</div><section class="surface panel learning-panel" id="lesson-panel" role="tabpanel" aria-labelledby="learning-tab-${tab}">${body}</section><div class="learning-toolbar">${i?`<button class="btn" data-learning="open" data-id="${yearLessons[i-1].id}">الدرس السابق</button>`:''}${i<yearLessons.length-1?`<button class="btn" data-learning="open" data-id="${yearLessons[i+1].id}">الدرس التالي</button>`:''}</div>`;
  }
@@ -3188,9 +3189,11 @@ const Learning=(()=>{
   const {learning:action,id}=b.dataset;
   if(action==='open'){open(id);return;}
   if(action==='solutions-catalog'){BookSolutions.open();return;}
-  if(action==='catalog'){catalog();return;}
-  if(action==='year'){const year=years.find(y=>y.id===id);if(year)show(year);return;}
-  if(action==='unit'){const unit=selectedYear?.units.find(u=>u.id===id);if(unit)show(selectedYear,unit);return;}
+  if(action==='quiz'){open(id,'quiz');return;}
+  if(action==='questions-unit'){questionsUnit(id);return;}
+  if(action==='catalog'){if(S.page==='units')questionsCatalog();else catalog();return;}
+  if(action==='year'){const year=years.find(y=>y.id===id);if(year)show(year,null,S.page==='units'?'units':'learning');return;}
+  if(action==='unit'){const unit=selectedYear?.units.find(u=>u.id===id);if(unit)show(selectedYear,unit,S.page==='units'?'units':'learning');return;}
   if(action==='tab'&&id==='solutions'&&selectedYear.id==='btec2'){BookSolutions.open(selected);return;}
   if(action==='tab'){
    if(!lessonTabs.some(([key])=>key===id))return;
@@ -3218,7 +3221,7 @@ const Learning=(()=>{
  window.addEventListener('hashchange',()=>{if(S.ready)restore();});
  document.addEventListener('click',ev=>{const a=ev.target.closest('[data-guide-scroll]');if(a){ev.preventDefault();document.getElementById(a.dataset.guideScroll)?.scrollIntoView({block:'start'});}});
  document.addEventListener('keydown',ev=>{if(!ev.target.matches('.learning-tabs [role=tab]')||!['ArrowLeft','ArrowRight','Home','End'].includes(ev.key))return;ev.preventDefault();const buttons=[...document.querySelectorAll('.learning-tabs [role=tab]')],i=buttons.indexOf(ev.target),n=ev.key==='Home'?0:ev.key==='End'?buttons.length-1:(i+(ev.key==='ArrowLeft'?1:-1)+buttons.length)%buttons.length;const id=buttons[n].dataset.id;buttons[n].click();document.getElementById('learning-tab-'+id)?.focus();});
- return {view,bind,beforeRender,restore,open,catalog,mergeRanges,save,updateProfile,progressView,selectedLesson:()=>selected};
+ return {view,directory,questionsCatalog,bind,beforeRender,restore,open,catalog,mergeRanges,save,updateProfile,progressView,selectedLesson:()=>selected};
 })();
 
 // School-wide content lives in Supabase and uses the same session as the rest of the site.
@@ -4198,7 +4201,8 @@ async function onAction(btn){const action=btn.dataset.action;if(action==='writer
  case 'colors-reset':await saveHeaderColor(btn.dataset.target,'');break;
  case 'navigate':
   if(btn.dataset.page==='learning')Learning.catalog();
-  else if(btn.dataset.page==='revision')Revision.open();
+  else if(btn.dataset.page==='units')Learning.questionsCatalog();
+  else if(btn.dataset.page==='revision'||btn.dataset.page==='compendium')Revision.open();
   else go(btn.dataset.page);
   break;
  case 'sidebar-compact':{
@@ -4244,14 +4248,7 @@ async function onAction(btn){const action=btn.dataset.action;if(action==='writer
 document.addEventListener('click',event=>{if(S.colorsOpen&&!event.target.closest('.appearance-picker'))closeHeaderColors();const b=event.target.closest('[data-action]');if(!b||b.disabled)return;if(b.classList.contains('modal-backdrop')&&event.target.closest('.modal'))return;event.preventDefault();onAction(b).catch(error=>{console.warn(error.message);notify('تعذر تنفيذ الإجراء: '+error.message);});});
 
 document.addEventListener('input',event=>{
- if(event.target?.id==='setting-theme'){applyAppearance({...S.settings,theme:event.target.value});return;}
- if(event.target?.id!=='lesson-search')return;
- const query=event.target.value.trim().toLocaleLowerCase('ar').normalize('NFKC');
- let visible=0;for(const card of document.querySelectorAll('#lesson-directory .direct-lesson-card')){
-  const text=card.querySelector('.direct-lesson-name')?.textContent.toLocaleLowerCase('ar').normalize('NFKC')||'';
-  card.hidden=!text.includes(query);if(!card.hidden)visible++;
- }
- const empty=document.getElementById('no-lessons');if(empty)empty.hidden=visible>0;
+ if(event.target?.id==='setting-theme')applyAppearance({...S.settings,theme:event.target.value});
 });
 document.addEventListener('submit',event=>{if(event.target?.id!=='setup-form')return;event.preventDefault();startForm().catch(error=>notify('تعذر بدء الجولة: '+error.message));});
 document.addEventListener('change',async event=>{try{const t=event.target;
