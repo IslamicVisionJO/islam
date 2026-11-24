@@ -43,7 +43,7 @@ if(homeHero.src){
  if(!/^assets\/[a-zA-Z0-9_-]+\.(png|jpg|jpeg|webp)$/.test(homeHero.src)||![homeHero.width,homeHero.height].every(n=>Number.isInteger(n)&&n>0))throw Error('Invalid original home banner configuration');
  await access(path.join(root,'public',homeHero.src));
 }
-const sources = await Promise.all(['core', 'storage', 'auth', 'sound', 'wall-core', 'wall', 'wall-match', 'wall-admin', 'home-hero', 'qr', 'ui', 'online', 'educational-core', 'educational-boards', 'educational-scenes', 'educational', 'study', 'revision', 'ministerial', 'enrichment', 'book-solutions', 'learning', 'knowledge-api', 'knowledge', 'knowledge-admin', 'academic-semester', 'academic-admin', 'controller'].map(name => read(`src/${name}.js`)));
+const sources = await Promise.all(['core', 'storage', 'auth', 'sound', 'wall-core', 'wall', 'wall-match', 'wall-admin', 'home-hero', 'qr', 'ui', 'online', 'educational-core', 'educational-boards', 'educational-scenes', 'educational', 'study', 'revision', 'ministerial', 'steam-calculators', 'enrichment', 'book-solutions', 'learning', 'knowledge-api', 'knowledge', 'knowledge-admin', 'academic-semester', 'academic-admin', 'controller'].map(name => read(`src/${name}.js`)));
 // Canonical editorial metadata stays in data/questions.json. Embed only fields used by the offline runtime.
 const runtimeRecord = q => ({
   id:q.id,unit_id:q.unit_id,lesson_id:q.lesson_id,difficulty:q.difficulty,type:q.type,topic:q.topic,

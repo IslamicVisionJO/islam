@@ -51,3 +51,10 @@ html:fullscreen .layout:has(.revision-reader) :is(.sidebar,.topbar,.site-footer,
 @media(max-width:1080px) and (min-width:761px){
  .sidebar .nav-group summary{font-size:.65rem;padding-inline:.1rem}
 }
+.steam-calculators details+details{margin-block-start:12px}
+.steam-calculators summary{cursor:pointer;font-weight:700;color:var(--text)}
+.steam-calculators form{display:grid;gap:12px;margin-block-start:16px}
+.steam-calculators .enrichment-grid{margin:0}
+.steam-calculators label:has(select),.steam-calculators label:has(input[type=number]){display:grid;gap:5px}
+.steam-calculators button{justify-self:start}
+.steam-calculators [role=status]:empty{display:none}
