@@ -4,7 +4,7 @@ import {readFile} from 'node:fs/promises';
 import {createDuelServer,ids} from '../../tests/helpers/duel-server.mjs';
 
 test('STEAM stores multiple validated images and enforces every administrative operation on the database',async()=>{
- const {db}=await createDuelServer({educationalFiles:['migrations/007_steam_achievements.sql']});
+ const {db}=await createDuelServer({educationalFiles:['migrations/008_steam_achievements.sql']});
  const call=async(role,user,sql,params=[])=>{
   await db.exec('begin; set local role '+role);
   try{

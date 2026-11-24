@@ -71,7 +71,7 @@ const Enrichment=(()=>{
     <button class="btn btn-outline" data-steam="delete" data-id="${e(row.id)}">حذف</button>`:''}
    </article>`).join('')}</div>`:loading||message?'':'<p>سيتم إضافة الإنجازات قريبًا.</p>'}</section>`;
  }
- const repaint=()=>{if(S.page==='steam')render();};
+ const repaint=()=>{if(S.page==='knowledge')render();};
  async function load(){
   const request=++generation;
   const identity=authState().user?.id;

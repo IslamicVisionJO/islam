@@ -5,7 +5,7 @@ import {readFile} from 'node:fs/promises';
 import {createDuelServer,ids} from './helpers/duel-server.mjs';
 
 const base='http://127.0.0.1:4173/islam/';
-const server=await createDuelServer({educationalFiles:['migrations/007_steam_achievements.sql']});
+const server=await createDuelServer({educationalFiles:['migrations/008_steam_achievements.sql']});
 const browser=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox']});
 const html=await readFile(new URL('../dist/index.html',import.meta.url),'utf8');
 const fixture=await readFile(new URL('./fixtures/authorized-account.js',import.meta.url),'utf8');
@@ -42,7 +42,7 @@ try{
  await visitor.getByRole('link',{name:'التكامل المعرفي STEAM'}).click();
  await visitor.getByText('سيتم إضافة الإنجازات قريبًا.').waitFor();
  assert.equal(await visitor.locator('[data-steam=manage]').count(),0);
- await admin.locator('[data-action=navigate][data-page=steam]').click();
+ await admin.locator('[data-action=navigate][data-page=knowledge]').click();
  await admin.locator('[data-steam=manage]').click();
  const form=admin.locator('#steam-editor');
  await form.locator('[name=title]').fill('مشروع علمي للاختبار');

@@ -233,6 +233,28 @@ const Auth=(()=>{
   return data;
  }
  async function millionRpc(name,args={}){if(!['million_start','million_answer','million_finish','million_wallet'].includes(name))throw Error('طلب غير صالح');requireAccount();const id=state.user.id;await checkSession(id);const {data,error}=await client.rpc(name,args);await checkSession(id);if(error)throw Error('تعذر تأكيد مكافآت المليون على الخادم. يلزم تفعيل الترقية 006 أو استعادة الاتصال.');return data;}
+ // Use the current account's existing SDK client for school content, including guest reads.
+ async function knowledgeRpc(name,args={}){
+  const read=name==='knowledge_list'||name==='knowledge_image';
+  const write=['knowledge_save_achievement','knowledge_save_tool','knowledge_delete'].includes(name);
+  if(!read&&!write)fail('طلب غير صالح.');
+  await init();
+  if(!client)fail('خدمة المحتوى المدرسي غير مفعّلة.');
+  const admin=write||args.p_admin===true;
+  if(admin)requireAdmin();
+  const id=state.user?.id;
+  if(id)await checkSession(id);
+  const {data,error}=await client.rpc(name,args);
+  if(id)await checkSession(id);
+  if(error){
+   if(error.code==='40001')fail('تغيّر السجل منذ فتحه. حدّث القائمة ثم أعد المحاولة.');
+   if(error.code==='42501')fail('لا يملك الحساب صلاحية تنفيذ هذا الطلب.');
+   if(['PGRST202','42883','42P01'].includes(error.code))fail('المحتوى المدرسي بانتظار تفعيل تحديث قاعدة البيانات.');
+   if(['22023','22007','22008','23514','22P02','22001'].includes(error.code))fail('راجع البيانات المدخلة وصيغة الصور وأحجامها ثم أعد المحاولة.');
+   fail('تعذّر الاتصال بخدمة المحتوى المدرسي. تحقق من الاتصال وأعد تحميل القائمة.');
+  }
+  return data;
+ }
  async function steamRpc(name,args={}){
   if(!['steam_list','steam_save','steam_delete'].includes(name))throw Error('طلب غير صالح');
   if(!client)throw Error('خدمة الإنجازات غير متصلة.');
@@ -242,5 +264,5 @@ const Auth=(()=>{
   if(error)throw Error(error.code==='42501'?'لا توجد صلاحية لهذا الطلب.':'تعذر الاتصال بخدمة الإنجازات أو حفظ البيانات.');
   return data;
  }
- return {steamRpc,millionRpc,init,current,prepareStorage,signInEmail,signUpEmail,enterGuest,signOut,syncNow,flush,resolveConflict,resetProgress,adminRoster,adminStudentDetails,adminAllowAccount,adminDisableAccount,publicConfig,duelRpc};
+ return {steamRpc,knowledgeRpc,millionRpc,init,current,prepareStorage,signInEmail,signUpEmail,enterGuest,signOut,syncNow,flush,resolveConflict,resetProgress,adminRoster,adminStudentDetails,adminAllowAccount,adminDisableAccount,publicConfig,duelRpc};
 })();
