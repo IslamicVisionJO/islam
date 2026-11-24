@@ -211,9 +211,7 @@ try {
   await fits(admin);
 
   await guest.reload();
-  await guest.locator('[data-action=guest-name]').click();
-  await guest.waitForFunction(() => Auth.current().mode === 'guest' && !S.authBusy);
-  await navigate(guest, 'knowledge');
+  await guest.waitForFunction(() => typeof S!=='undefined' && S.ready && S.page==='knowledge' && Auth.current().mode==='signed-out');
   await guest.getByRole('heading', {name:title}).waitFor();
   await guest.locator('[data-k-open]').click();
   const dialog = guest.locator('.knowledge-dialog[open]');
