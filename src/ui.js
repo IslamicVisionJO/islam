@@ -6,6 +6,25 @@ const iconPaths={palette:'<path d="M12 3a9 9 0 1 0 0 18h1a2 2 0 0 0 1-3.7 1.6 1.
 const ico=(name,size=20)=>`<svg class="icon" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${iconPaths[name]||iconPaths.sparkle}</svg>`;
 const e=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const nf=n=>new Intl.NumberFormat('ar-JO').format(n||0);
+function readingButton(source,title){
+ return `<button class="btn btn-outline no-print" data-reading-source="${source}" data-reading-title="${e(title)}">افتح للقراءة في تبويب آخر</button>`;
+}
+document.addEventListener('click',event=>{
+ const button=event.target.closest('[data-reading-source]');
+ if(!button)return;
+ const source=document.getElementById(button.dataset.readingSource);
+ if(!source)return;
+ // Copy only study text, never a form, profile, script or progress writer.
+ const tags='h2,h3,h4,p,small,dt,dd,li,th,td';
+ const blocks=[...source.querySelectorAll(tags)].filter(el=>
+  !el.closest('button,form,nav,.no-print,[role=status]')&&!el.querySelector(tags));
+ const content=blocks.map(el=>`<p class="${/^H[234]$/.test(el.tagName)?'heading':''}">${e(el.textContent)}</p>`).join('');
+ const title=e(button.dataset.readingTitle);
+ const html=`<!doctype html><html lang="ar" dir="rtl"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'"><title>${title}</title><style>:root{color-scheme:light dark}body{max-width:48rem;margin:auto;padding:1rem;font:1.1rem/1.9 system-ui}p{white-space:pre-line}.heading{font-weight:bold;margin-top:2rem}</style><h1>${title}</h1>${content}</html>`;
+ const url=URL.createObjectURL(new Blob([html],{type:'text/html;charset=utf-8'}));
+ window.open(url,'_blank','noopener,noreferrer');
+ setTimeout(()=>URL.revokeObjectURL(url),60000);
+});
 const pct=n=>`${Math.max(0,Math.min(100,n||0))}%`;
 const fmt=t=>{t=Math.max(0,Math.ceil(t));return `${String(Math.floor(t/60)).padStart(2,'0')}:${String(t%60).padStart(2,'0')}`;};
 const byLesson=id=>S.units.flatMap(u=>u.lessons).find(x=>x.id===id);

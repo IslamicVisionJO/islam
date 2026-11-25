@@ -94,7 +94,7 @@ const Revision=(()=>{
    <form id="revision-search" class="study-filters no-print"><label>بحث<input type="search" name="query" value="${e(query)}"></label>
    <label>النطاق<select name="scope">${options([['lesson','داخل الدرس'],['all','الفصلان']],globalSearch?'all':'lesson')}</select></label>
    <label>حالة السؤال<select name="filter">${options([['','الكل'],['saved','محفوظ'],['difficult','صعب'],['mastered','متقن']],filter)}</select></label><button class="btn">بحث وتصفية</button></form>
-   <div class="study-actions no-print"><button class="btn" data-rev-mode>${single?'عرض جميع الأسئلة':'مراجعة سؤال واحد'}</button><button class="btn" data-rev-print>طباعة العرض</button>
+   <div class="study-actions no-print"><button class="btn" data-rev-mode>${single?'عرض جميع الأسئلة':'مراجعة سؤال واحد'}</button>${loaded(l.id)?readingButton('rev-results',globalSearch?'نتائج البحث في المكثف':l.title):''}<button class="btn" data-rev-print>طباعة العرض</button>
    <a href="revision-downloads/semester-${l.semester}.pdf" download>تحميل مكثف الفصل PDF</a><a href="revision-downloads/full.pdf" download>تحميل المكثف كاملًا PDF</a>
    <a href="content/BTEC_Islamic_Education_Revision.pdf${(archivePage||Number(S.profile.revisionPage))>0?'#page='+(archivePage||Number(S.profile.revisionPage)):''}" data-revision-archive>النسخة السابقة</a></div>
    <div class="revision-list" id="rev-results">${loaded(l.id)?results():loading(l.id)}</div></section>`;

@@ -157,7 +157,7 @@ const Learning=(()=>{
    }).join('')}</div>${items.length?'':'<p>لم يُعثر على درس مطابق.</p>'}`;
  }
  function revisionPanel(lesson){
-  return Revision.panel(lesson.id)+Revision.button(lesson.id);
+  return Revision.button(lesson.id);
  }
  function reviewView(lesson){
   if(!LOCAL_REVIEW)return '<p>أسئلة هذا الدرس بانتظار المراجعة العلمية والاعتماد.</p>';
@@ -257,7 +257,7 @@ const Learning=(()=>{
   let body='';
   if(tab==='video'&&!l.video)body='<p>فيديو هذا الدرس غير متاح حاليًا.</p>';
   if(tab==='video'&&l.video)body=`<video id="lesson-video" data-paused controls playsinline preload="none" src="${e(media(l.video))}" aria-label="شرح ${e(l.name)}"></video><label class="video-speed">سرعة التشغيل<select id="video-speed">${[.5,.75,1,1.25,1.5,2].map(n=>`<option value="${n}" ${n===1?'selected':''}>${n}×</option>`).join('')}</select></label><progress id="watch-progress" max="100" value="${Math.min(100,(progress(l.id).ranges||[]).reduce((s,[a,b])=>s+b-a,0)/(progress(l.id).duration||1)*100)}" aria-label="نسبة المشاهدة الفعلية"></progress><p id="video-status" role="status">${progress(l.id).completed?'اكتملت المشاهدة':'يُحسب التقدم من المقاطع المشاهدة، وليس من القفز إلى النهاية.'}</p>`;
-  if(tab==='explanation')body=explanationView(l);
+  if(tab==='explanation')body=explanationView(l)+readingButton('lesson-panel',l.name);
   if(tab==='revision')body=revisionPanel(l);
   if(tab==='solutions'&&selectedYear.id==='btec1')body=AcademicSemester.solutions(Revision.academicLesson(Revision.meta(l.id).academicId));
   if(tab==='solutions'&&selectedYear.id==='btec2')body=BookSolutions.view();

@@ -35,9 +35,13 @@ try{
     const levels=await page.evaluate(id=>['easy','medium','hard'].map(level=>questionPool('training',id,level,'all').map(q=>q.id)),l.id);
     for(const questions of levels)assert.equal(new Set(questions).size,30,l.id);
    }else if(tab==='revision'){
-    await panel.locator('.revision-entry').first().waitFor();
-    assert.equal(await panel.locator('.revision-entry').count(),chapters[l.id].length);
-    assert.ok((await panel.locator('h3').first().textContent()).includes(chapters[l.id][0].question));
+    await panel.getByRole('link',{name:'راجع هذا الدرس في المكثف'}).click();
+    const entries=page.locator('#rev-results .revision-entry');
+    await entries.first().waitFor();
+    assert.equal(await entries.count(),chapters[l.id].length);
+    assert.ok((await entries.first().innerText()).includes(chapters[l.id][0].question));
+    await page.goBack();
+    await panel.waitFor();
    }else{
     const cards=page.locator('.book-answer');
     await cards.first().waitFor();
