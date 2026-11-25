@@ -45,8 +45,7 @@ try {
         await page.reload();
         await cards.first().waitFor();
         await cards.first().click();
-        if(year==='btec1')await page.locator('[data-ministerial=start]').first().waitFor();
-        else assert.equal(await page.locator('[data-mode=training][data-action=setup]').count(),3);
+        assert.equal(await page.locator('[data-mode=training][data-action=setup]').count(),3);
         await page.getByRole('button',{name:'أسئلة الوحدة',exact:true}).click();
         assert.equal(await cards.count(),count);
       }
@@ -75,7 +74,7 @@ try {
     assert.equal(range.headers.get('content-type'),'video/mp4',id);
     assert.equal((await range.arrayBuffer()).byteLength,32,id);
     if(index===12)await page.setViewportSize({width:390,height:840});
-    await page.evaluate(id=>Learning.open(id),id);
+    await page.evaluate(id=>Learning.open(id,"video"),id);
     const video=page.locator('#lesson-video');
     assert.equal(await video.getAttribute('src'),source,id);
     assert.equal(await video.getAttribute('preload'),'none',id);
@@ -99,9 +98,9 @@ try {
   await page.locator('.learning-units [data-id=btec1]').click();
   await page.locator('.learning-units [data-id=s1_u04]').click();
   await page.locator('[data-learning=open][data-id=s1_u04_l07]').click();
-  await page.locator('[data-learning=tab][data-id=quiz]').click();
+  assert.equal(await page.locator('[role=tab][data-id=quiz]').count(),0);
   await page.reload();
-  await page.locator('[data-ministerial=start]').first().waitFor();
+  await page.getByRole('heading',{name:'شرح الدرس',exact:true}).waitFor();
   await page.locator('[data-learning=tab][data-id=revision]').click();
   await page.getByRole('link',{name:'راجع هذا الدرس في المكثف'}).click();
   const firstRow=page.locator('#rev-results .revision-entry').first();

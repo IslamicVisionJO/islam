@@ -33,7 +33,7 @@ const Learning=(()=>{
    next.learning[id]={...next.learning[id],...patch};
   });
  }
- const lessonTabs=[['explanation','الشرح'],['video','الفيديو'],['solutions','حلول الكتاب'],...(LOCAL_REVIEW?[['quiz','مراجعة بنك الأسئلة']]:[]),['revision','المكثف']];
+ const lessonTabs=[['explanation','الشرح'],['video','الفيديو'],['solutions','حلول الكتاب'],...(typeof LOCAL_REVIEW!=="undefined"&&LOCAL_REVIEW?[['quiz','مراجعة بنك الأسئلة']]:[]),['revision','المكثف']];
  function route(hash){
   if(location.hash!==hash)history.pushState(null,'',hash);
  }

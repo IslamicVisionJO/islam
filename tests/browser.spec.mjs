@@ -86,7 +86,7 @@ async function complete(correct = true) {
 await test('initial load, real data counts, creator separate from learner', async () => {
   await fresh();
   const data = await page.evaluate(() => ({ units: S.units.length, lessons: allLessons().length, bank: S.questions.length, refined:REFINED_BANK_RELEASE, active: S.valid.length, name: S.profile.name, credit: document.body.textContent.includes(STUDENT_CREDIT) }));
-  assert.equal(data.units, 4); assert.equal(data.lessons, 26); assert.equal(data.bank, data.refined?2795:2340); assert.ok(data.active > 0); assert.ok(data.credit); assert.notEqual(data.name, 'أيوب محمد البطوش');
+  assert.equal(data.units, 8); assert.equal(data.lessons, 51); assert.equal(data.bank, (data.refined?2795:2340)+2598); assert.ok(data.active > 0); assert.ok(data.credit); assert.notEqual(data.name, 'أيوب محمد البطوش');
 });
 await test('lesson visit is distinct from solved/completed/mastered and survives reload',async()=>{
   await fresh();await page.evaluate(async()=>{lesson('u02_l03');await db.get('profile');});
@@ -94,12 +94,14 @@ await test('lesson visit is distinct from solved/completed/mastered and survives
   assert.equal(await page.evaluate(()=>lessonMetrics('u02_l03').answered),0);assert.equal(await page.evaluate(()=>lessonMetrics('u02_l03').mastered),false);assert.equal(await page.evaluate(()=>completedCount()),0);assert.equal(await page.evaluate(()=>S.results.length),0);
   await page.reload();await page.waitForFunction(()=>S.valid.length&&document.querySelector('#main-content'));assert.ok(await page.evaluate(()=>S.profile.visitedLessons?.u02_l03));assert.equal(await page.evaluate(()=>completedCount()),0);
 });
-await test('78 lesson-level configurations honor the available pool, timers and exam counts',async()=>{
+await test('153 lesson-level configurations honor the available pool, timers and exam counts',async()=>{
   await fresh();const exercised=await page.evaluate(async()=>{
     let configurations=0,rounds=0;
     for(const lesson of allLessons())for(const difficulty of DIFFICULTIES){
-      const pool=S.valid.filter(q=>q.lesson_id===lesson.id&&q.difficulty===difficulty&&isStandaloneGameQuestion(q));
-      const expected=Math.min(2,pool.length);
+      const first=lesson.id.startsWith('s1_');
+      const pool=(first?S.valid.filter(q=>q.delivery_allocation==='lesson_wizari'):S.ministerial).filter(q=>q.lesson_id===lesson.id&&q.difficulty===difficulty);
+      const expected=first?30:2;
+      if(pool.length!==30)throw Error(lesson.id);
       await createSession('training',lesson.id,difficulty,'all',2,['a','b'],'none');
       configurations++;
       if(!expected){
@@ -114,7 +116,7 @@ await test('78 lesson-level configurations honor the available pool, timers and 
     if(resolveTimer('training','easy',{easy:'none'})!==null||resolveTimer('speed','hard',{hard:'60'})!==6||resolveTimer('exam','easy',{easy:'6'})!==2700)throw Error('Fixed timer rules');
     for(const count of [20,40,60,100]){await createSession('exam','u01_l01','mixed','all',count,['a','b'],'none');if(S.session.questions.length!==count)throw Error('Exam count '+count);await submitExam();}
     return {configurations,rounds};
-  });assert.equal(exercised.configurations,78);
+  });assert.equal(exercised.configurations,153);
   assert.ok(exercised.rounds>=70,'At least 70 lesson-level configurations need a playable pool');
 });
 await test('all four units, 26 lessons and three difficulty setup pages', async () => {

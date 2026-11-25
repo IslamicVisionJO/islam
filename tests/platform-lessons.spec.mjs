@@ -24,24 +24,16 @@ try{
   await page.evaluate(hash=>{location.hash=hash;},path);
   const panel=page.locator('#lesson-panel');
   await page.getByRole('heading',{name:l.title,exact:true,level:1}).waitFor();
-  for(const tab of ['explanation','quiz','revision','solutions']){
+  for(const tab of ['explanation','video','revision','solutions']){
    await page.locator(`[role=tab][data-id=${tab}]`).click();
    if(tab==='explanation'){
     await panel.getByRole('heading',{name:'شرح الدرس',exact:true}).waitFor();
     assert.ok((await panel.textContent()).length>180);
-   }else if(tab==='quiz'){
-    await panel.locator('[data-ministerial=start]').first().click();
-    await panel.locator('.ministerial-options legend').waitFor();
-    assert.equal(await panel.locator('input[type=radio]').count(),4);
-    const prompt=await panel.locator('.ministerial-options legend').textContent();
-    const correct=await page.evaluate(({id,prompt})=>{
-     const academicId=Revision.meta(id).academicId;
-     return academicId?String(ACADEMIC_STUDY[academicId].questions.find(q=>q.prompt===prompt).correct):MINISTERIAL_REVIEW[id].easy.find(q=>q.prompt===prompt).answer.option_id;
-    },{id:l.id,prompt});
-    await panel.locator('input[type=radio]').evaluateAll((inputs,id)=>inputs.find(i=>i.value===id).click(),correct);
-    await panel.locator('[data-ministerial=submit]').click();
-    assert.ok((await panel.getByRole('status').innerText()).includes('صحيحة ١'));
-    assert.ok(await panel.locator('details').count()>0);
+   }else if(tab==='video'){
+    assert.equal(await page.locator('[role=tab][data-id=quiz]').count(),0);
+    assert.ok((await panel.locator('video').getAttribute('src')).endsWith(l.id+'.mp4'));
+    const levels=await page.evaluate(id=>['easy','medium','hard'].map(level=>questionPool('training',id,level,'all').map(q=>q.id)),l.id);
+    for(const questions of levels)assert.equal(new Set(questions).size,30,l.id);
    }else if(tab==='revision'){
     await panel.locator('.revision-entry').first().waitFor();
     assert.equal(await panel.locator('.revision-entry').count(),chapters[l.id].length);

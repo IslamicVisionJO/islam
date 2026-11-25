@@ -31,7 +31,8 @@ function beginQuestion(s){const now=Date.now();s.questionStartedAt=now;s.elapsed
 function questionPool(mode,lessonId,level,scope){
  const lessonMode=['training','speed','survival','hearts','duel'].includes(mode);
  const first=String(lessonMode?lessonId:scope||'all').startsWith('s1_');
- let p=S.valid.filter(q=>q.lesson_id.startsWith('s1_')===first);
+ const trainingBank=!first&&['training','exam'].includes(mode)&&Array.isArray(S.ministerial)?S.ministerial:S.valid;
+ let p=(mode==='mistakes'?[...S.valid,...(S.ministerial||[])]:trainingBank).filter(q=>q.lesson_id.startsWith('s1_')===first);
  if(first&&mode!=='mistakes')p=p.filter(q=>q.delivery_allocation===(mode==='training'||mode==='exam'?'lesson_wizari':'games_challenges'));
  if(mode==='mistakes')p=p.filter(q=>S.mistakes[q.id]&&(S.mistakes[q.id].mastery||0)<100);
  else if(lessonMode)p=p.filter(q=>q.lesson_id===lessonId);
@@ -53,7 +54,7 @@ function questionPool(mode,lessonId,level,scope){
    return true;
   });
  }
- if(!['exam','mistakes'].includes(mode)&&!(first&&mode==='training'))p=p.filter(isStandaloneGameQuestion);
+ if(!['exam','mistakes','training'].includes(mode))p=p.filter(isStandaloneGameQuestion);
  if(mode==='speed')p=p.filter(q=>['multiple_choice','fill_blank','true_false'].includes(q.type)&&q.prompt.length<=180&&(q.payload.options||[]).every(o=>o.text.length<=90));
  return p;
 }
@@ -356,6 +357,7 @@ document.addEventListener('change',async event=>{try{const t=event.target;
  if(t.id==='form-unit'){S.unitId=t.value;S.lessonId=unitFor(S.unitId)?.lessons?.[0]?.id||S.lessonId;const lessonSelect=document.getElementById('form-lesson');if(lessonSelect)lessonSelect.innerHTML=(unitFor(S.unitId)?.lessons||[]).map(l=>`<option value="${l.id}">${e(l.name)}</option>`).join('');}
  if(t.id==='form-lesson')S.lessonId=t.value;
  if(t.id==='form-scope')S.scope=t.value;
+ if(['form-unit','form-lesson','form-scope'].includes(t.id))render();
  if(t.id==='form-timer')S.roundTimer=t.value;
  if(t.dataset.match!==undefined){const current=responseFor(S.session);const next={...(current&&typeof current==='object'&&!Array.isArray(current)?current:{}),[t.dataset.match]:t.value};if(isAnswered(S.session.questions[S.session.current],next))await autoAnswer(next);else {S.selected=next;captureDraft().catch(console.warn);}}
  if(t.id==='import-file'&&t.files?.[0])await importData(t.files[0]);
@@ -389,7 +391,7 @@ async function initialize(){
  try{
   const [units,data]=[EMBEDDED_LESSONS,EMBEDDED_QUESTIONS];
   const hasRefinedBank = typeof MINISTERIAL_REVIEW!=='undefined' && MINISTERIAL_REVIEW!==null;
-  S.units=[...units,...FIRST_BTEC_LESSONS.map(u=>({...u,theme:u.theme||'السنة الأولى BTEC',lessons:u.lessons.map(l=>({...l,unitId:u.id}))}))];
+  S.units=[...units,...(typeof FIRST_BTEC_LESSONS==="undefined"?[]:FIRST_BTEC_LESSONS).map(u=>({...u,theme:u.theme||'السنة الأولى BTEC',lessons:u.lessons.map(l=>({...l,unitId:u.id}))}))];
   S.questions=data.questions||[];
   const lessonRanges=new Map((hasRefinedBank?LEARNING_DATA.units:[]).flatMap(unit=>unit.lessons.map(lesson=>[lesson.id,lesson])));
   S.valid=S.questions.filter(q=>{
@@ -401,7 +403,11 @@ async function initialize(){
    return Boolean(lesson && q.review.answer_checked===true && q.source.document_id==='islamic_education_g11_s2_2025' &&
     q.source.printed_pages.every(page=>page>=lesson.startPage&&page<=lesson.endPage));
   });
-  S.byId=new Map([...S.questions,...(hasRefinedBank?data.archivedQuestions||[]:[])].filter(validQuestion).map(q=>[q.id,q]));
+  S.ministerial=hasRefinedBank?(data.ministerialQuestions||[]).filter(q=>{
+    const lesson=lessonRanges.get(q.lesson_id);
+    return validQuestion(q)&&!q.review?.excluded&&q.type==='multiple_choice'&&Boolean(lesson)&&q.source.document_id==='islamic_education_g11_s2_2025'&&q.source.printed_pages.every(page=>page>=lesson.startPage&&page<=lesson.endPage);
+   }):null;
+   S.byId=new Map([...S.questions,...(S.ministerial||[]),...(hasRefinedBank?data.archivedQuestions||[]:[])].filter(validQuestion).map(q=>[q.id,q]));
   const saved=await Promise.all([db.get('profile',null),db.get('settings',null),db.get('results',[]),db.get('mistakes',{}),db.get('active',null),db.get('achievements',{})]);
   const safeSaved=(key,value,fallback)=>{if(value===null||value===undefined)return fallback;try{return typeof validateBackup==='function'?validateBackup({app:'tahadi-islamic',version:1,records:{[key]:value}},S.byId)[key]:value;}catch(error){notify(`تعذر قراءة ${key} المحفوظ. بقيت البيانات الأصلية دون حذف ويمكن تصديرها للمراجعة.`);console.warn(error.message);return fallback;}};
   const profile=safeSaved('profile',saved[0],null),settings=safeSaved('settings',saved[1],null);
