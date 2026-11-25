@@ -5,3 +5,34 @@ test('server millionaire: losses at all 15 stages, exit, timeout, win once, priv
  for(const reason of ['exit','timeout']){const r=await rpc('million_start',{p_unit:'all',p_lesson:'all',p_seconds:10});const first=(await s.db.query('select questions from school_private.million_sessions where id=$1',[r.id])).rows[0].questions[0];await rpc('million_answer',{p_session:r.id,p_question:first.id,p_answer:first.answer.option_id});if(reason==='timeout')await s.db.query("update school_private.million_sessions set deadline=clock_timestamp()-interval '1 second' where id=$1",[r.id]);const out=await rpc('million_finish',{p_session:r.id});assert.equal(out.status,reason);assert.equal(out.walletCoins,0);}
  const r=await rpc('million_start',{p_unit:'all',p_lesson:'all',p_seconds:0});const restored=await rpc('million_start',{p_unit:'u01',p_lesson:'u01_l01',p_seconds:0});assert.equal(restored.id,r.id);assert.equal(restored.unit,'all');assert.equal(restored.lesson,'all');await assert.rejects(rpc('million_finish',{p_session:r.id},other));const qs=(await s.db.query('select questions from school_private.million_sessions where id=$1',[r.id])).rows[0].questions;let out;for(const q of qs){out=await rpc('million_answer',{p_session:r.id,p_question:q.id,p_answer:q.answer.option_id});const retry=await rpc('million_answer',{p_session:r.id,p_question:q.id,p_answer:q.answer.option_id});assert.equal(retry.receipts.length,out.receipts.length);}assert.equal(out.status,'won');assert.equal(out.walletCoins,7);const again=await rpc('million_finish',{p_session:r.id});assert.equal(again.walletCoins,7);assert.equal((await rpc('million_wallet',{},other)).coins,0);assert.equal((await s.db.query('select count(*)::int as n from school_private.million_awards')).rows[0].n,1);await s.db.exec(await fs.readFile(new URL('../migrations/006_million_rewards.sql',import.meta.url),'utf8'));assert.equal((await rpc('million_wallet')).coins,7);
  }finally{await s.db.close();}});
+
+test('updated wallet resumes old sessions and requires 15 distinct reviewed questions from the selected year',async()=>{
+ const migrations=['migrations/005_educational_online.sql','migrations/006_million_rewards.sql'];
+ const server=await createDuelServer({educationalFiles:migrations});
+ const user=server.users.find(u=>u.id===ids.host);
+ async function rpc(name,args){
+  const result=await server.call({name,args,user});
+  if(result.error)throw Error(result.error.message);
+  return result.data;
+ }
+ const start=(unit,lesson)=>rpc('million_start',{p_unit:unit,p_lesson:lesson,p_seconds:0});
+ try{
+  const previous=await start('all','all');
+  const {readFile}=await import('node:fs/promises');
+  for(const n of ['014_scoped_educational_rooms','015_scoped_million_rewards']){
+   await server.db.exec(await readFile(new URL('../../supabase/migrations/'+n+'.sql',import.meta.url),'utf8'));
+  }
+  assert.deepEqual((await start('all','all')).ids,previous.ids);
+  await rpc('million_finish',{p_session:previous.id});
+  await assert.rejects(start('all','s1_u01_l01'),/invalid_million_settings/);
+  await assert.rejects(start('s1_u01','s1_u01_l02'),/million_no_questions/);
+  for(const [unit,lesson] of [['s1_u01','s1_u01_l01'],['u01','u01_l01']]){
+   const r=await start(unit,lesson);
+   assert.equal(new Set(r.ids).size,15);
+   assert.ok(r.ids.every(id=>id.startsWith(lesson+'_q')));
+   const rows=(await server.db.query('select data from school_private.scoped_educational_questions where id=any($1::text[]) and 0=any(games)',[r.ids])).rows;
+   assert.equal(rows.length,15);
+   await rpc('million_finish',{p_session:r.id});
+  }
+ }finally{await server.db.close();}
+});
