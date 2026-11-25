@@ -13,7 +13,7 @@ function resolveTimer(mode,difficulty,overrides={}){
  const value=Number(preference);
  return [6,10,15,20,30,40,45,60,90,120].includes(value)?value:DEFAULT_TIMERS[difficulty];
 }
-const idPattern = /^u0[1-4]_l\d\d_q\d{3}$/;
+const idPattern = /^(?:s1_)?u0[1-4]_l\d\d_q\d{3}$/;
 const clone = x=>JSON.parse(JSON.stringify(x));
 function shuffle(items, rng=Math.random) {
   const result=[...items];
@@ -27,7 +27,7 @@ function seededRandom(text){
 }
 function validQuestion(q){
  if(!q||typeof q.id!=='string'||!idPattern.test(q.id)||!DIFFICULTIES.includes(q.difficulty)||!TYPES.includes(q.type)||typeof q.prompt!=='string'||!q.prompt.trim()||typeof q.explanation!=='string'||!q.explanation.trim())return false;
- if(q.lesson_id!==q.id.slice(0,7)||q.unit_id!==q.id.slice(0,3))return false;
+ if(q.lesson_id!==q.id.replace(/_q\d{3}$/,'')||q.unit_id!==q.lesson_id.replace(/_l\d{2}$/,''))return false;
  if(!Array.isArray(q.source?.printed_pages)||!q.source.printed_pages.length||!q.source.printed_pages.every(n=>Number.isInteger(n)&&n>0))return false;
  const p=q.payload||{},a=q.answer||{};
  const unique=xs=>Array.isArray(xs)&&xs.length>=2&&xs.every(x=>x&&typeof x.id==='string'&&x.id&&typeof x.text==='string'&&x.text.trim())&&new Set(xs.map(x=>x.id)).size===xs.length&&new Set(xs.map(x=>x.text.trim())).size===xs.length;
@@ -185,7 +185,7 @@ function balanceDuel(questions,countPerPlayer,rng=Math.random){
 function localDay(d=new Date()){return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;}
 function localWeek(d=new Date()){const date=new Date(d.getFullYear(),d.getMonth(),d.getDate()),dow=(date.getDay()+6)%7;date.setDate(date.getDate()-dow);return localDay(date);}
 function lessonProgress(results,lessonId){
- const arr=results.filter(r=>r.mode!=='duel').map(r=>{const items=(r.items||[]).filter(x=>(x.lesson_id||x.id?.slice(0,7))===lessonId);if(items.length){const answered=items.filter(x=>x.response!==null&&x.response!==undefined);return {at:r.at,items,accuracy:Math.round(100*items.filter(x=>x.correct).length/items.length),answered:answered.length};}if(r.lessonId===lessonId)return {...r,items:[]};return null;}).filter(Boolean);
+ const arr=results.filter(r=>r.mode!=='duel').map(r=>{const items=(r.items||[]).filter(x=>(x.lesson_id||x.id?.replace(/_q\d{3}$/,''))===lessonId);if(items.length){const answered=items.filter(x=>x.response!==null&&x.response!==undefined);return {at:r.at,items,accuracy:Math.round(100*items.filter(x=>x.correct).length/items.length),answered:answered.length};}if(r.lessonId===lessonId)return {...r,items:[]};return null;}).filter(Boolean);
  const last=arr.at(-1),unique=new Set(arr.flatMap(r=>r.items.filter(x=>x.response!==null&&x.response!==undefined).map(x=>x.id))).size;
  const best=Math.max(0,...arr.map(r=>r.accuracy||0)),accuracy=Math.round(arr.slice(-5).reduce((s,x)=>s+(x.accuracy||0),0)/(Math.min(arr.length,5)||1));
  const mastery=unique>=10?accuracy:Math.min(49,accuracy);

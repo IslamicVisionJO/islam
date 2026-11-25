@@ -29,10 +29,13 @@ function pauseSession(){const s=S.session;if(!s)return;if(s.mode!=='exam'&&s.pha
 function resumeSessionClock(){const s=S.session;if(!s)return;if(s.mode!=='exam'&&s.pausedAt){const pause=Date.now()-s.pausedAt;s.questionStartedAt+=pause;if(s.questionDeadline)s.questionDeadline+=pause;s.pausedAt=null;}S.selected=s.draft??(s.mode==='exam'?s.answers[s.current]?.response??null:null);saveSession().catch(console.warn);}
 function beginQuestion(s){const now=Date.now();s.questionStartedAt=now;s.elapsedBefore=0;s.pausedAt=null;s.draft=null;const limit=timerLimit(s);s.questionDeadline=limit===null?null:now+limit*1000;}
 function questionPool(mode,lessonId,level,scope){
- let p=S.valid;
- if(mode==='mistakes')p=S.valid.filter(q=>S.mistakes[q.id]&&(S.mistakes[q.id].mastery||0)<100);
- else if(['training','speed','survival','hearts','duel'].includes(mode))p=p.filter(q=>q.lesson_id===lessonId);
- if(!['training','speed','survival','hearts','duel'].includes(mode)&&scope&&scope!=='all')p=p.filter(q=>q.unit_id===scope);
+ const lessonMode=['training','speed','survival','hearts','duel'].includes(mode);
+ const first=String(lessonMode?lessonId:scope||'all').startsWith('s1_');
+ let p=S.valid.filter(q=>q.lesson_id.startsWith('s1_')===first);
+ if(first&&mode!=='mistakes')p=p.filter(q=>q.delivery_allocation===(mode==='training'||mode==='exam'?'lesson_wizari':'games_challenges'));
+ if(mode==='mistakes')p=p.filter(q=>S.mistakes[q.id]&&(S.mistakes[q.id].mastery||0)<100);
+ else if(lessonMode)p=p.filter(q=>q.lesson_id===lessonId);
+ if(!lessonMode&&scope&&scope!=='all'&&scope!=='s1_all')p=p.filter(q=>q.unit_id===scope);
  p=p.filter(q=>level==='mixed'||q.difficulty===level);
  if(mode==='exam'){
   const seen = new Set();
@@ -50,7 +53,7 @@ function questionPool(mode,lessonId,level,scope){
    return true;
   });
  }
- if(!['exam','mistakes'].includes(mode))p=p.filter(isStandaloneGameQuestion);
+ if(!['exam','mistakes'].includes(mode)&&!(first&&mode==='training'))p=p.filter(isStandaloneGameQuestion);
  if(mode==='speed')p=p.filter(q=>['multiple_choice','fill_blank','true_false'].includes(q.type)&&q.prompt.length<=180&&(q.payload.options||[]).every(o=>o.text.length<=90));
  return p;
 }
@@ -66,7 +69,7 @@ async function createSession(mode='training',lessonId=S.lessonId,level=S.level,s
  if(S.session){notify('توجد جولة محفوظة. استأنفها أو أنهها أولًا قبل بدء جولة جديدة.');return;}
  S.busy=true;const token=storageScope();
  try{
-  const pool=questionPool(mode,lessonId,level,scope),requestedCount=Math.min(100,Math.max(1,Math.floor(Number(count)||10)));
+  const pool=questionPool(mode,lessonId,level,scope),requestedCount=mode==='training'&&lessonId.startsWith('s1_')?30:Math.min(100,Math.max(1,Math.floor(Number(count)||10)));
   const day=localDay(),week=localWeek(),key=`${['training','speed','survival','hearts','duel'].includes(mode)?lessonId:scope}:${level}:${mode==='speed'?'short':mode==='exam'?'ministerial-final':'standalone'}`;
   let chosen;
   if(mode==='duel'){
@@ -92,7 +95,7 @@ async function startForm(){
  S.starting=true;
  try{
   const unitId=document.getElementById('form-unit')?.value||S.unitId,lessonId=document.getElementById('form-lesson')?.value||S.lessonId;
-  const scope=document.getElementById('form-scope')?.value||(S.mode==='boss'?unitId:S.scope),count=Number(document.getElementById('form-count')?.value||(S.mode==='exam'?40:10));
+  const scope=document.getElementById('form-scope')?.value||(['training','speed','survival','hearts','duel','boss'].includes(S.mode)?unitId:S.scope),count=Number(document.getElementById('form-count')?.value||(S.mode==='exam'?40:10));
   const players=S.mode==='duel'?[document.getElementById('player-one')?.value.trim()||'اللاعب الأول',document.getElementById('player-two')?.value.trim()||'اللاعب الثاني']:S.players;
   const timerChoice=document.getElementById('form-timer')?.value||S.roundTimer;
   S.unitId=unitId;S.lessonId=lessonId;S.scope=scope;S.players=players;S.roundTimer=timerChoice;S.settings.roundTimer=timerChoice;
@@ -386,11 +389,13 @@ async function initialize(){
  try{
   const [units,data]=[EMBEDDED_LESSONS,EMBEDDED_QUESTIONS];
   const hasRefinedBank = typeof MINISTERIAL_REVIEW!=='undefined' && MINISTERIAL_REVIEW!==null;
-  S.units=units;
+  S.units=[...units,...FIRST_BTEC_LESSONS.map(u=>({...u,theme:u.theme||'السنة الأولى BTEC',lessons:u.lessons.map(l=>({...l,unitId:u.id}))}))];
   S.questions=data.questions||[];
   const lessonRanges=new Map((hasRefinedBank?LEARNING_DATA.units:[]).flatMap(unit=>unit.lessons.map(lesson=>[lesson.id,lesson])));
   S.valid=S.questions.filter(q=>{
-   if(!validQuestion(q)||q.review?.excluded||q.review?.source_checked!==true)return false;
+   if(!validQuestion(q)||q.review?.excluded)return false;
+   if(q.lesson_id.startsWith('s1_')){const l=byLesson(q.lesson_id);return Boolean(l&&q.source.document_id==='islamic_education_g11_s1_2026_uploaded_review_edition'&&q.review?.teacher_approved===false&&['lesson_wizari','games_challenges'].includes(q.delivery_allocation)&&q.source.printed_pages.every(p=>p>=l.startPage&&p<=l.endPage));}
+   if(q.review?.source_checked!==true)return false;
    if(!hasRefinedBank)return true;
    const lesson=lessonRanges.get(q.lesson_id);
    return Boolean(lesson && q.review.answer_checked===true && q.source.document_id==='islamic_education_g11_s2_2025' &&

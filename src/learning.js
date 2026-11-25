@@ -73,10 +73,7 @@ const Learning=(()=>{
  function openQuestions(id){
   const year=years[0],unit=year.units.find(u=>u.lessons.some(l=>l.id===id));
   if(!unit)return;
-  selected=id;selectedYear=year;selectedUnit=unit;
-  Ministerial.reset();
-  route('#questions/'+year.id+'/'+unit.id+'/'+id);
-  go('units');
+  lesson(id);
  }
  function restore(){
   if(['#steam','#life'].includes(location.hash)){const life=location.hash==='#life';go('knowledge');if(life)document.querySelector('#knowledge-life')?.scrollIntoView();return;}
@@ -123,11 +120,7 @@ const Learning=(()=>{
  }
  function directory(){
   const questions=S.page==='units';
-  if(questions&&selected&&selectedYear?.id==='btec1'){
-   const lesson=selectedUnit.lessons.find(l=>l.id===selected);
-   if(lesson)return `${trail(lesson)}<div class="lesson-hero simple-lesson-hero"><h1>${e(lesson.name)}</h1><p>اختر المستوى المناسب وابدأ التدريب على هذا الدرس.</p></div>
-    <section class="learning-panel">${Ministerial.view(lesson,true)}</section>`;
-  }
+
   if(!selectedYear){
    const last=catalogLessons.find(l=>l.id===S.profile.lastLearningLesson);
    return `${heroTitle(questions?'الدروس والأسئلة':'شرح الدروس','اختر السنة الدراسية')}
@@ -152,9 +145,7 @@ const Learning=(()=>{
     const details=questions?[]:[progress(l.id).completed?'اكتملت المشاهدة':l.video?'فيديو متاح':'الفيديو غير متاح'];
     if(Number.isFinite(result?.accuracy))details.push('آخر نتيجة '+nf(result.accuracy)+'٪');
     let destination=`data-learning="open" data-id="${l.id}"`;
-    if(questions)destination=selectedYear.id==='btec1'
-     ?`data-learning="open-questions" data-id="${l.id}"`
-     :`data-action="lesson" data-lesson="${l.id}"`;
+    if(questions)destination=`data-action="lesson" data-lesson="${l.id}"`;
     return `<article class="surface panel"><small>الدرس ${nf(number)} · صفحة ${nf(l.startPage)}</small><h2>${e(l.name)}</h2>
      ${details.length?`<p>${details.join(' · ')}</p>`:''}
      <button class="btn btn-gold" ${destination} aria-label="افتح ${e(l.name)}">${questions?'أسئلة الدرس':'افتح الدرس'}</button></article>`;

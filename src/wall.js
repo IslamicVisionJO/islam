@@ -28,11 +28,11 @@ const Wall=(()=>{
   return `<section class="wall-lobby surface panel"><div class="wall-lobby-title"><span aria-hidden="true">▦</span>
    <h2>كم سؤالًا تجيب قبل أن يصل الجدار؟</h2></div>
    <p>كل إجابة صحيحة تكسبك 100 نقطة وتدفع الجدار إلى الأعلى. عند الخطأ يتسارع، وتتوقف حركته أثناء قراءة التفسير.</p>
-   <div class="wall-settings">${select('wall-unit','الوحدة',[['all','جميع الوحدات'],...S.units.map(u=>[u.id,u.name])],unit)}
-   ${select('wall-lesson','الدرس',[['all',unit==='all'?'جميع الدروس':'جميع دروس الوحدة'],...S.units.filter(u=>unit==='all'||u.id===unit).flatMap(u=>u.lessons.map(l=>[l.id,l.name]))],lesson)}
+   <div class="wall-settings">${select('wall-unit','الوحدة',[['all','جميع وحدات السنة الثانية'],['s1_all','جميع وحدات السنة الأولى'],...S.units.map(u=>[u.id,unitLabel(u)])],unit)}
+   ${select('wall-lesson','الدرس',[['all',unit==='all'?'جميع الدروس':'جميع دروس الوحدة'],...S.units.filter(u=>unit==='all'?!firstScope(u.id):unit==='s1_all'?firstScope(u.id):u.id===unit).flatMap(u=>u.lessons.map(l=>[l.id,l.name]))],lesson)}
    ${select('wall-level','المستوى',Object.entries(levels),level)}</div>
-   <p class="muted">تعطى الأولوية لأسئلة المستوى المختار، ثم تُستخدم الأسئلة المتاحة في النطاق نفسه.</p>
-   <div class="wall-actions">${onlineMatchButton}${online()?btn('ranked','ابدأ التحدي وحفظ النتيجة',pending||board===null||Boolean(boardError)):''}${btn('practice','ابدأ تدريبًا محليًا',pending)}</div>
+   <p class="muted">تعطى الأولوية لأسئلة المستوى المختار، ثم تُستخدم الأسئلة المتاحة في النطاق نفسه.</p>${firstScope(unit)?'<p class="source-warning">'+FIRST_DRAFT_NOTE+' تدريب محلي فقط.</p>':''}
+   <div class="wall-actions">${firstScope(unit)?'':onlineMatchButton}${online()&&!firstScope(unit)?btn('ranked','ابدأ التحدي وحفظ النتيجة',pending||board===null||Boolean(boardError)):''}${btn('practice','ابدأ تدريبًا محليًا',pending)}</div>
    ${authState().isAdmin?'<button class="btn btn-outline" data-action="navigate" data-page="wall-admin">إدارة سباق الجدار</button>':''}
    ${online()?'<p class="muted">تحفظ الجولات المكتملة أو المنتهية بخط الخطر في حسابك.</p>':'<p class="muted">سجّل الدخول للمشاركة في لوحة المتصدرين.</p>'}
   </section>${ranks()}`;
@@ -132,12 +132,13 @@ const Wall=(()=>{
   if(pending||round)return;
   const token=scope;pending=true;message='';
   try{
+   if(server&&firstScope(unit))throw Error('السنة الأولى متاحة للتدريب المحلي فقط.');
    if(server){
     const next=await Auth.wallRpc('wall_start',{p_level:level,p_unit:unit,p_lesson:lesson});
     if(token!==db.scopeToken())return;
     ranked=true;install(next);
    }else{
-    const pool=S.valid.filter(q=>ids.has(q.id)&&(unit==='all'||q.unit_id===unit)&&(lesson==='all'||q.lesson_id===lesson));
+    const pool=EducationalContent.pool(S.valid.filter(q=>firstScope(q.lesson_id)?q.delivery_allocation==='games_challenges'&&q.type==='multiple_choice'&&isStandaloneGameQuestion(q):ids.has(q.id)),unit,lesson);
     const priority=q=>q.difficulty===level?0:q.difficulty==='medium'?1:2;
     const questions=shuffle(pool).sort((a,b)=>priority(a)-priority(b)).slice(0,40).map(q=>presentQuestion(q));
     if(!questions.length)throw Error('لا توجد أسئلة في هذا النطاق.');

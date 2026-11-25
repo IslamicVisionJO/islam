@@ -107,13 +107,13 @@ function validateBackup(data,byId){
  const finite=(n,max=1e12)=>typeof n==='number'&&Number.isFinite(n)&&n>=0&&n<=max;
  const integer=(n,max=1e9)=>finite(n,max)&&Number.isInteger(n);
  const text=(s,max=1000)=>typeof s==='string'&&s.length<=max;
- const id=s=>typeof s==='string'&&/^u0[1-4]_l\d{2}_q\d{3}$/.test(s);
+ const id=s=>typeof s==='string'&&/^(?:s1_)?u0[1-4]_l\d{2}_q\d{3}$/.test(s);
  const epoch=n=>finite(n,8.64e15);
  const date=s=>text(s,80)&&Number.isFinite(Date.parse(s));
- const unitId=s=>typeof s==='string'&&/^u0[1-4]$/.test(s);
- const lessonId=s=>typeof s==='string'&&/^u0[1-4]_l\d{2}$/.test(s)&&(!byId||[...byId.values()].some(q=>q.lesson_id===s));
+ const unitId=s=>typeof s==='string'&&/^(?:s1_)?u0[1-4]$/.test(s);
+ const lessonId=s=>typeof s==='string'&&/^(?:s1_)?u0[1-4]_l\d{2}$/.test(s)&&(!byId||[...byId.values()].some(q=>q.lesson_id===s));
  const difficulties=['easy','medium','hard','mixed'];
- const scope=s=>s==='all'||unitId(s);
+ const scope=s=>s==='all'||s==='s1_all'||unitId(s);
  const players=a=>Array.isArray(a)&&a.length===2&&a.every(x=>text(x,64));
  const safe=(value,depth=0)=>{
   if(depth>35)fail('تداخل مفرط');
@@ -134,10 +134,10 @@ function validateBackup(data,byId){
   if(p.educationalActive!==undefined){
    const g=p.educationalActive;
    if(!object(g)||!text(g.id,160)||!integer(g.game,12)||!Array.isArray(g.ids)||g.ids.length<1||g.ids.length>15||new Set(g.ids).size!==g.ids.length||g.ids.some(qid=>!id(qid)||byId&&!byId.has(qid))||!integer(g.index,Math.max(0,g.ids.length-1))||!finite(g.score,1e9)||typeof g.done!=='boolean'||!scope(g.unit)||g.lesson!=='all'&&!lessonId(g.lesson)||!Array.isArray(g.items)||g.items.length>g.ids.length||JSON.stringify(g).length>100000)fail('جلسة الألعاب التعليمية');
-   if(byId&&g.ids.some(qid=>{const q=byId.get(qid);return (g.unit!=='all'&&q.unit_id!==g.unit)||(g.lesson!=='all'&&q.lesson_id!==g.lesson);}))fail('نطاق الألعاب التعليمية');
+   if(byId&&g.ids.some(qid=>{const q=byId.get(qid);return (g.unit==='s1_all'?!q.unit_id.startsWith('s1_'):g.unit!=='all'&&q.unit_id!==g.unit)||(g.lesson!=='all'&&q.lesson_id!==g.lesson);}))fail('نطاق الألعاب التعليمية');
   }
   if(p.lastLessonId!==undefined&&!lessonId(p.lastLessonId))fail('آخر درس');
-  if(p.visitedLessons!==undefined&&(!object(p.visitedLessons)||Object.keys(p.visitedLessons).length>26||Object.entries(p.visitedLessons).some(([id,at])=>!lessonId(id)||!date(at))))fail('زيارات الدروس');
+  if(p.visitedLessons!==undefined&&(!object(p.visitedLessons)||Object.keys(p.visitedLessons).length>51||Object.entries(p.visitedLessons).some(([id,at])=>!lessonId(id)||!date(at))))fail('زيارات الدروس');
  }
  const timers=['default','none','6','10','15','20','30','40','45','60','90','120'];
  if(records.settings!==undefined){
@@ -170,7 +170,7 @@ function validateBackup(data,byId){
    if(r.players!==undefined&&!players(r.players))fail('أسماء المتنافسين');
    if(r.mode==='duel'&&(!players(r.players)||!Array.isArray(r.duelScores)||r.duelScores.length!==2||r.duelScores.some(n=>!finite(n))||![null,0,1].includes(r.winner)))fail('نتيجة المواجهة');
    if(r.reward!==undefined&&(!object(r.reward)||!finite(r.reward.xp)||!finite(r.reward.coins)))fail('مكافأة النتيجة');
-   if(r.difficulty!==undefined&&!difficulties.includes(r.difficulty)||r.scope!==undefined&&!scope(r.scope)||r.lessonId!==undefined&&r.lessonId!==null&&!lessonId(r.lessonId)||r.lessonIds!==undefined&&(!Array.isArray(r.lessonIds)||r.lessonIds.length>26||r.lessonIds.some(x=>!lessonId(x))))fail('نطاق النتيجة');
+   if(r.difficulty!==undefined&&!difficulties.includes(r.difficulty)||r.scope!==undefined&&!scope(r.scope)||r.lessonId!==undefined&&r.lessonId!==null&&!lessonId(r.lessonId)||r.lessonIds!==undefined&&(!Array.isArray(r.lessonIds)||r.lessonIds.length>51||r.lessonIds.some(x=>!lessonId(x))))fail('نطاق النتيجة');
    const itemIds=new Set();
    for(const item of r.items){if(!object(item)||!known(item.id)||itemIds.has(item.id)||typeof item.correct!=='boolean'||item.points!==undefined&&!finite(item.points)||item.elapsed!==undefined&&!finite(item.elapsed))fail('تفاصيل النتيجة');itemIds.add(item.id);const q=byId?.get(item.id);if(q)validateResponse(q,item.response);}
   }
@@ -188,7 +188,7 @@ function validateBackup(data,byId){
   const s=records.active;
   if(!object(s)||!text(s.id,160)||!s.id||!modes.includes(s.mode)||!['ready','question','locked','feedback'].includes(s.phase)||!Array.isArray(s.questions)||!s.questions.length||s.questions.length>2340||!Array.isArray(s.answers)||s.answers.length!==s.questions.length||!integer(s.current,s.questions.length-1)||!epoch(s.startedAt)||s.questionStartedAt!==null&&s.questionStartedAt!==undefined&&!epoch(s.questionStartedAt))fail('الجلسة الجارية');
   if(!players(s.players))fail('أسماء الجلسة');
-  if(s.difficulty!==undefined&&!difficulties.includes(s.difficulty)||s.scope!==undefined&&!scope(s.scope)||s.lessonId!==undefined&&s.lessonId!==null&&!lessonId(s.lessonId)||s.lessonIds!==undefined&&(!Array.isArray(s.lessonIds)||s.lessonIds.length>26||s.lessonIds.some(x=>!lessonId(x))))fail('نطاق الجلسة');
+  if(s.difficulty!==undefined&&!difficulties.includes(s.difficulty)||s.scope!==undefined&&!scope(s.scope)||s.lessonId!==undefined&&s.lessonId!==null&&!lessonId(s.lessonId)||s.lessonIds!==undefined&&(!Array.isArray(s.lessonIds)||s.lessonIds.length>51||s.lessonIds.some(x=>!lessonId(x))))fail('نطاق الجلسة');
   if(s.timerSeconds!==null&&s.timerSeconds!==undefined&&!timers.includes(String(s.timerSeconds)))fail('مؤقت الجلسة');
   if(s.hearts!==undefined&&!integer(s.hearts,3)||s.elapsedBefore!==undefined&&!finite(s.elapsedBefore))fail('حالة الجلسة');
   for(const field of ['deadline','questionDeadline','pausedAt'])if(s[field]!==null&&s[field]!==undefined&&!epoch(s[field]))fail('توقيت الجلسة');

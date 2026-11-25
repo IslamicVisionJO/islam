@@ -13,8 +13,8 @@ const WallMatch=(()=>{
   if(checking)return '<p role="status">جارٍ التحقق من اتصال الأونلاين…</p>';
   if(blocked)return button('retry','إعادة المحاولة');
   return `<section class="surface panel"><h2>أنشئ مواجهة</h2><p>يلعب كلاكما ترتيب الأسئلة نفسه. يبدأ عدّ مشترك مدته 90 ثانية بعد انضمام صديقك.</p>
-   <div class="wall-settings">${select('wall-match-unit','الوحدة',[['all','جميع الوحدات'],...S.units.map(u=>[u.id,u.name])],unit)}
-   ${select('wall-match-lesson','الدرس',[['all','جميع الدروس'],...S.units.filter(u=>unit==='all'||u.id===unit).flatMap(u=>u.lessons.map(l=>[l.id,l.name]))],lesson)}
+   <div class="wall-settings">${select('wall-match-unit','الوحدة',[['all','جميع الوحدات'],...S.units.filter(u=>!firstScope(u.id)).map(u=>[u.id,u.name])],unit)}
+   ${select('wall-match-lesson','الدرس',[['all','جميع الدروس'],...S.units.filter(u=>!firstScope(u.id)&&(unit==='all'||u.id===unit)).flatMap(u=>u.lessons.map(l=>[l.id,l.name]))],lesson)}
    ${select('wall-match-level','المستوى',Object.entries(DIFF_NAMES),level)}</div>
    ${button('create','إنشاء مواجهة')}</section>
    <form class="surface panel wall-join" id="wall-join"><h2>انضم إلى صديقك</h2><label>رمز الدعوة<input dir="ltr" name="code" value="${e(code)}" required maxlength="8" autocomplete="off" autocapitalize="characters"></label>

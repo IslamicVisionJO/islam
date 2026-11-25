@@ -67,6 +67,11 @@ validateFirstBtec(firstBtecLessons, firstBtecBank, [
   ...legacyBank.questions.map(q=>q.id), ...(bank?.gameQuestions ?? []).map(q=>q.id),
   ...Object.values(bank?.ministerial ?? {}).flatMap(levels=>Object.values(levels).flatMap(list=>list.map(q=>q.id)))
 ], {ministerial:firstMinisterialIndex,games:firstGamesIndex,priority});
+// Owner requested student practice from this exact draft bank. Preserve its review status.
+runtimeQuestions.questions.push(...firstBtecBank.questions.map(q=>({
+ ...runtimeRecord(q),delivery_allocation:q.delivery_allocation,
+ review:{...runtimeRecord(q).review,teacher_approved:false,human_review_required:true}
+})));
 for (const unit of firstBtecLessons) for (const lesson of unit.lessons) {
   const video = 'videos/first-btec/'+lesson.id+'.mp4';
   await access(path.join(root, 'public', video));

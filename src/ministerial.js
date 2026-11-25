@@ -8,6 +8,11 @@ const Ministerial = (() => {
   `<button type="button" class="btn btn-outline" data-ministerial="${action}" data-value="${e(value)}" ${disabled?'disabled':''}>${e(label)}</button>`;
 
  function pool(id){
+  if(firstScope(id)){
+   const levels={easy:[],medium:[],hard:[]};
+   for(const q of EMBEDDED_QUESTIONS.questions)if(q.lesson_id===id&&q.delivery_allocation==='lesson_wizari')levels[q.difficulty].push(q);
+   if(Object.values(levels).every(items=>items.length===30))return levels;
+  }
   const academicId=Revision.meta(id)?.academicId;
   if(!academicId)return MINISTERIAL_REVIEW?.[id]||Revision.loaded(id,'levels')?.levels;
   const levels={easy:[],medium:[],hard:[]};
@@ -24,20 +29,20 @@ const Ministerial = (() => {
   const unit = unitFor(lesson.unitId);
   const title = `<h2>محاكاة وزارية تدريبية — اختر الإجابة الصحيحة</h2><p>${e(unit?.name || '')} · ${e(lesson.name)}</p>`;
   if (!attempt || attempt.lesson !== lesson.id || attempt.scope !== db.scopeToken()) {
-   if(questionsPage)return lessonLevelCards(level=>`data-ministerial="start" data-value="${level}"`);
-   return title + '<p>اختر مستوى الاختبار</p><div class="study-actions">' +
+   if(questionsPage)return lessonLevelCards(level=>`data-ministerial="start" data-value="${level}"`,firstScope(lesson.id));
+   return (firstScope(lesson.id)?'<p class="source-warning">'+FIRST_DRAFT_NOTE+'</p>':'') + title + '<p>اختر مستوى الاختبار</p><div class="study-actions">' +
     DIFFICULTIES.map(level => button('start', `المستوى ${{easy:'السهل',medium:'المتوسط',hard:'الصعب'}[level]}`, level)).join('') + '</div>';
   }
   const {questions, responses, index, level, done} = attempt;
   const total = questions.length;
-  const heading = (questionsPage?'':title) + `<p>المستوى ${e(DIFF_NAMES[level])} · ${nf(total)} سؤالًا</p>`;
+  const heading = (firstScope(lesson.id)?'<p class="source-warning">'+FIRST_DRAFT_NOTE+'</p>':'') + (questionsPage?'':title) + `<p>المستوى ${e(DIFF_NAMES[level])} · ${nf(total)} سؤالًا</p>`;
   if (done) {
    const correct = questions.filter(q => checkAnswer(q, responses.get(q.id))).length;
    return heading + `<p role="status">صحيحة ${nf(correct)} · خاطئة ${nf(answered()-correct)} · غير مجابة ${nf(total-answered())} · النسبة ${nf(Math.round(100*correct/total))}٪</p>
     ${button('start','أعد اختبار المستوى',level)}${button('reset','اختر مستوى آخر')}
     ${questions.map((q, i) => `<details class="learning-card"><summary>${nf(i+1)}. ${e(q.prompt)}</summary>
      <p>إجابتك: ${e(q.payload.options.find(o=>o.id===responses.get(q.id))?.text || 'لم تتم الإجابة')}</p>
-     <p>${typeof REFINED_BANK_RELEASE!=='undefined'&&REFINED_BANK_RELEASE?'الإجابة الصحيحة:':'الإجابة في مفتاح المراجعة:'} ${e(describeAnswer(q))}</p><p>${e(q.explanation)}</p>
+     <p>${!firstScope(lesson.id)&&typeof REFINED_BANK_RELEASE!=='undefined'&&REFINED_BANK_RELEASE?'الإجابة الصحيحة:':'الإجابة في مفتاح المراجعة:'} ${e(describeAnswer(q))}</p><p>${e(q.explanation)}</p>
      <small>صفحة الكتاب: ${q.source.printed_pages.map(nf).join('، ')}</small></details>`).join('')}`;
   }
   const q = questions[index];
