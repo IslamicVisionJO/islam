@@ -5,7 +5,7 @@ const Learning=(()=>{
   {id:'btec2',name:'السنة الثانية BTEC',units:LEARNING_DATA.units}
  ];
  const catalogLessons=years.flatMap(year=>year.units.flatMap(unit=>unit.lessons));
- let selected=null,selectedYear=null,selectedUnit=null,tab='video',search='',saveQueue=Promise.resolve();
+ let selected=null,selectedYear=null,selectedUnit=null,tab='explanation',search='',saveQueue=Promise.resolve();
  let reviewLevel='easy',reviewIndex=0,reviewAnswer=null;
  const reviewBank=new Map(), reviewLoading=new Set();
  const normalize=s=>s.normalize('NFKC').replace(/[\u064B-\u065F\u0670\u0640]/g,'').replace(/[أإآ]/g,'ا');
@@ -33,10 +33,11 @@ const Learning=(()=>{
    next.learning[id]={...next.learning[id],...patch};
   });
  }
- const lessonTabs=[['video','الفيديو'],['explanation','الشرح'],['solutions','حلول الكتاب'],['quiz','اختبر فهمك'],['revision','المكثف']];
+ const lessonTabs=[['explanation','الشرح'],['video','الفيديو'],['solutions','حلول الكتاب'],...(LOCAL_REVIEW?[['quiz','مراجعة بنك الأسئلة']]:[]),['revision','المكثف']];
  function route(hash){
   if(location.hash!==hash)history.pushState(null,'',hash);
  }
+ function lessonHash(){return '#learning/'+selectedYear.id+'/'+selectedUnit.id+'/'+selected+'/'+tab;}
  function show(year,unit,page='learning'){
   selected=null;
   selectedYear=year||null;
@@ -51,7 +52,7 @@ const Learning=(()=>{
   const year=years.find(year=>year.units.some(unit=>unit.id===id));
   if(year)show(year,year.units.find(unit=>unit.id===id),'units');
  }
- function open(id,initialTab='video'){
+ function open(id,initialTab='explanation'){
   const lesson=catalogLessons.find(l=>l.id===id);
   if(!lesson)return;
   if(initialTab==='solutions'&&!id.startsWith('s1_')){BookSolutions.open(id);return;}
@@ -64,9 +65,8 @@ const Learning=(()=>{
   selected=id;
   selectedYear=years.find(year=>year.units.some(unit=>unit.id===lesson.unitId||unit.id===lesson.unit_id));
   selectedUnit=selectedYear.units.find(unit=>unit.lessons.includes(lesson));
-  tab=lessonTabs.some(([key])=>key===initialTab)?initialTab:'video';
-  const suffix=tab==='video'?'':'/'+tab;
-  route(id.startsWith('s1_')?'#learning/btec1/'+id+suffix:'#learning/'+id+suffix);
+  tab=lessonTabs.some(([key])=>key===initialTab)?initialTab:'explanation';
+  route(lessonHash());
   go('learning');
   if(S.profile.lastLearningLesson!==id)void updateProfile(next=>{next.lastLearningLesson=id;}).catch(()=>notify('تعذر حفظ آخر درس.'));
  }
@@ -84,8 +84,13 @@ const Learning=(()=>{
   const solution=location.hash.match(/^#learning\/(u\d\d_l\d\d)\/solutions$/);
   if(solution){BookSolutions.open(solution[1]);return;}
   if(location.hash==='#compendium'){Revision.open();return;}
+  const fullLesson=location.hash.match(/^#learning\/(btec[12])\/((?:s1_)?u0[1-4])\/((?:s1_)?u0[1-4]_l\d\d)(?:\/([a-z]+))?$/);
+  if(fullLesson){
+   const year=years.find(y=>y.id===fullLesson[1]),unit=year?.units.find(u=>u.id===fullLesson[2]);
+   if(unit?.lessons.some(l=>l.id===fullLesson[3])){open(fullLesson[3],fullLesson[4]||'explanation');return;}
+  }
   const lesson=location.hash.match(/^#learning\/(?:btec[12]\/)?((?:s1_)?u\d\d_l\d\d)(?:\/([a-z]+))?$/);
-  if(lesson){open(lesson[1],lesson[2]);return;}
+  if(lesson){open(lesson[1],lesson[2]||'video');return;}
   const firstQuestions=location.hash.match(/^#questions\/btec1\/(s1_u0[1-4])\/(s1_u0[1-4]_l\d\d)$/);
   if(firstQuestions&&firstQuestions[2].startsWith(firstQuestions[1]+'_')){openQuestions(firstQuestions[2]);return;}
   const directory=location.hash.match(/^#(learning|questions)(?:\/(btec[12])(?:\/((?:s1_)?u0[1-4]))?)?$/);
@@ -116,7 +121,7 @@ const Learning=(()=>{
   return `<nav class="learning-trail" aria-label="مسار الدرس">${action('catalog','',S.page==='units'?'الدروس والأسئلة':'شرح الدروس')}
    ${selectedYear?`<span aria-hidden="true">/</span>${action('year',selectedYear.id,selectedYear.name)}`:''}
    ${selectedUnit?`<span aria-hidden="true">/</span>${action('unit',selectedUnit.id,selectedUnit.name)}`:''}
-   ${lesson?`<span aria-hidden="true">/</span><span aria-current="page">${e(lesson.name)}</span>`:''}</nav>`;
+   ${lesson?`<span aria-hidden="true">/</span><span class="learning-current" aria-current="page">${e(lesson.name)}</span>`:''}</nav>`;
  }
  function directory(){
   const questions=S.page==='units';
@@ -193,6 +198,56 @@ const Learning=(()=>{
    if(S.page==='learning'&&selected===id&&tab==='quiz')render();
   });
  }
+
+ // Read-only explanation cards reuse the source-linked answers in the existing bank.
+ // The first-year bank is a draft; keep its scientific review status explicit.
+ function firstGuideGroups(lesson){
+  const buckets=new Map();
+  const broad=new Set(['الربط بين معلومات الدرس','تحديد المفهوم أو المحور','تفاصيل الدرس والفهم والتطبيق','تصنيف المفاهيم وتطبيقها ومراجعة التفاصيل','التطبيق والمقارنة','تطبيق','التطبيق','تحليل','الفهم','الربط','ربط','الاستنتاج','تمييز','التصنيف']);
+  const questions=EMBEDDED_QUESTIONS.questions.filter(q=>q.lesson_id===lesson.id&&q.delivery_allocation==='lesson_wizari'&&q.type==='multiple_choice'&&!q.review?.excluded);
+  for(const q of questions){
+   const answer=q.payload.options.find(o=>o.id===q.answer.option_id)?.text;
+   const pages=q.source?.printed_pages||[];
+   if(!answer||!q.explanation||!pages.length||pages.some(p=>p<lesson.startPage||p>lesson.endPage))continue;
+   const topic=(q.topic||'').trim();
+   const heading=!topic||broad.has(topic)?'الفهم والربط والتطبيق':topic;
+   if(!buckets.has(heading))buckets.set(heading,[]);
+   buckets.get(heading).push({question:q.prompt,answer,explanation:q.explanation,pages,questionId:q.id,difficulty:q.difficulty});
+  }
+  const groups=[];
+  for(const [heading,items] of buckets){
+   const ordered=items.slice().sort((a,b)=>Math.min(...a.pages)-Math.min(...b.pages)||DIFFICULTIES.indexOf(a.difficulty)-DIFFICULTIES.indexOf(b.difficulty)||a.questionId.localeCompare(b.questionId));
+   const chosen=[],seen=new Set();
+   const limit=heading==='الفهم والربط والتطبيق'?6:2;
+   // Prefer coverage of different source pages before taking a second item from a page.
+   for(const item of ordered){
+    const key=item.pages.join(',');
+    if(seen.has(key))continue;
+    seen.add(key);chosen.push(item);
+    if(chosen.length===limit)break;
+   }
+   for(const item of ordered){
+    if(chosen.length>=limit)break;
+    if(!chosen.includes(item))chosen.push(item);
+   }
+   if(chosen.length)groups.push({heading,items:chosen.sort((a,b)=>Math.min(...a.pages)-Math.min(...b.pages))});
+  }
+  return groups.sort((a,b)=>Math.min(...a.items.flatMap(x=>x.pages))-Math.min(...b.items.flatMap(x=>x.pages)));
+ }
+ function explanationView(lesson){
+  const first=selectedYear.id==='btec1';
+  const academicId=first?Revision.meta(lesson.id)?.academicId:null;
+  const academicLesson=academicId?Revision.academicLesson(academicId):null;
+  const guide=academicId?AcademicAdmin.guide(academicId):null;
+  const groups=first?firstGuideGroups(lesson):(LESSON_GUIDES[lesson.id]||[]);
+  const overview=guide?.overview||LESSON_SUMMARIES[lesson.id]||'';
+  return `<div class="lesson-overview"><span class="eyebrow">افهم الفكرة ثم طبّقها</span><h2>شرح الدرس</h2>${guide?.outcome?`<p><strong>نتاج التعلّم:</strong> ${e(guide.outcome)}</p>`:''}<p>${e(overview)}</p></div>
+   ${groups.length?`<nav class="guide-topics" aria-label="محاور الشرح">${groups.map((g,i)=>`<a href="#guide-${i}" data-guide-scroll="guide-${i}">${e(g.heading)}</a>`).join('')}</nav>`:''}
+   ${groups.map((g,i)=>`<section class="guide-section" id="guide-${i}"><h3>${e(g.heading)}</h3>${g.items.map(x=>`<article><h4>${e(x.question)}</h4><p class="guide-answer">${e(x.answer)}</p><p>${e(x.explanation)}</p><small>مرجع الشرح في بنك المنصة: صفحة ${e(x.pages.join('، '))}</small></article>`).join('')}</section>`).join('')}
+   ${academicLesson?`<section class="guide-section"><h3>المفاهيم والخرائط والتطبيقات</h3>${AcademicSemester.lessonResources(academicLesson)}</section>`:''}
+   ${guide?.practice?`<section class="guide-section"><h3>تطبيق عملي</h3><p>${e(guide.practice)}</p></section>`:''}
+   <details class="guide-source-note"><summary>مصدر الشرح</summary><p>${first?'شرح منظم من ملخصات المنصة وتفسيرات بنك السنة الأولى المرتبطة بصفحات الكتاب. هذا المحتوى التدريبي قيد المراجعة العلمية ولم يُعتمد من المعلم بعد.':'شرح منظم من تفسيرات بنك المنصة المرتبطة بالكتاب. لا يغني عن نص الكتاب وتوجيه المعلم؛ المراجعة العلمية المستقلة لكل فقرة لم تكتمل.'}</p></details>`;
+ }
  function view(){
   const l=catalogLessons.find(lesson=>lesson.id===selected);
   if(!l)return directory();
@@ -202,17 +257,12 @@ const Learning=(()=>{
   let body='';
   if(tab==='video'&&!l.video)body='<p>فيديو هذا الدرس غير متاح حاليًا.</p>';
   if(tab==='video'&&l.video)body=`<video id="lesson-video" data-paused controls playsinline preload="none" src="${e(media(l.video))}" aria-label="شرح ${e(l.name)}"></video><label class="video-speed">سرعة التشغيل<select id="video-speed">${[.5,.75,1,1.25,1.5,2].map(n=>`<option value="${n}" ${n===1?'selected':''}>${n}×</option>`).join('')}</select></label><progress id="watch-progress" max="100" value="${Math.min(100,(progress(l.id).ranges||[]).reduce((s,[a,b])=>s+b-a,0)/(progress(l.id).duration||1)*100)}" aria-label="نسبة المشاهدة الفعلية"></progress><p id="video-status" role="status">${progress(l.id).completed?'اكتملت المشاهدة':'يُحسب التقدم من المقاطع المشاهدة، وليس من القفز إلى النهاية.'}</p>`;
-  if(tab==='explanation'&&selectedYear.id==='btec1'){
-   const id=Revision.meta(l.id).academicId;
-   const guide=AcademicAdmin.guide(id);
-   body=`<h2>شرح الدرس</h2><p>${e(guide.outcome)}</p><p>${e(guide.overview)}</p>${AcademicSemester.lessonResources(Revision.academicLesson(id))}<h3>تطبيق عملي</h3><p>${e(guide.practice)}</p>`;
-  }
-  if(tab==='explanation'&&selectedYear.id==='btec2')body=`<div class="lesson-overview"><span class="eyebrow">افهم الفكرة ثم طبّقها</span><h2>شرح الدرس</h2><p>${e(LESSON_SUMMARIES[l.id])}</p></div><nav class="guide-topics" aria-label="محاور الشرح">${(LESSON_GUIDES[l.id]||[]).map((g,i)=>`<a href="#guide-${i}" data-guide-scroll="guide-${i}">${e(g.heading)}</a>`).join('')}</nav>${(LESSON_GUIDES[l.id]||[]).map((g,i)=>`<section class="guide-section" id="guide-${i}"><h3>${e(g.heading)}</h3>${g.items.map(x=>`<article><h4>${e(x.question)}</h4><p class="guide-answer">${e(x.answer)}</p><p>${e(x.explanation)}</p><small>مرجع الشرح في بنك المنصة: صفحة ${e(x.pages.join('، '))}</small></article>`).join('')}</section>`).join('')}<details class="guide-source-note"><summary>مصدر الشرح</summary><p>شرح منظم من تفسيرات بنك المنصة المرتبطة بالكتاب. لا يغني عن نص الكتاب وتوجيه المعلم؛ المراجعة العلمية المستقلة لكل فقرة لم تكتمل.</p></details><h3>تثبيت الفهم</h3><p>راجع محاور الشرح، ثم اختبر فهمك بأسئلة الدرس.</p><button class="btn btn-gold" data-learning="quiz" data-id="${l.id}">اختبر فهمك الآن</button>`;
+  if(tab==='explanation')body=explanationView(l);
   if(tab==='revision')body=revisionPanel(l);
   if(tab==='solutions'&&selectedYear.id==='btec1')body=AcademicSemester.solutions(Revision.academicLesson(Revision.meta(l.id).academicId));
   if(tab==='solutions'&&selectedYear.id==='btec2')body=BookSolutions.view();
-  if(tab==='quiz'&&selectedYear.id==='btec1')body=`<button class="text-link" data-learning="questions-unit" data-id="${selectedUnit.id}">أسئلة الوحدة</button>`+(LOCAL_REVIEW?reviewView(l):Ministerial.view(l));
-  if(tab==='quiz'&&selectedYear.id==='btec2')body=Ministerial.view(l)||`<p>اختبر هذا الدرس باستخدام بنك الأسئلة الحالي.</p><button class="btn btn-gold" data-action="lesson" data-lesson="${l.id}">انتقل إلى اختبار الدرس</button>`;
+  if(LOCAL_REVIEW&&tab==='quiz'&&selectedYear.id==='btec1')body=`<button class="text-link" data-learning="questions-unit" data-id="${selectedUnit.id}">أسئلة الوحدة</button>`+(LOCAL_REVIEW?reviewView(l):Ministerial.view(l));
+  if(LOCAL_REVIEW&&tab==='quiz'&&selectedYear.id==='btec2')body=Ministerial.view(l)||`<p>اختبر هذا الدرس باستخدام بنك الأسئلة الحالي.</p><button class="btn btn-gold" data-action="lesson" data-lesson="${l.id}">انتقل إلى اختبار الدرس</button>`;
   return `${trail(l)}${heroTitle(e(l.name),`صفحات الكتاب ${l.startPage}–${l.endPage}`)}<div class="learning-tabs" role="tablist" aria-label="محتوى الدرس">${tabs.map(([id,name])=>`<button role="tab" aria-controls="lesson-panel" id="learning-tab-${id}" aria-selected="${tab===id}" data-learning="tab" data-id="${id}">${name}</button>`).join('')}</div><section class="surface panel learning-panel" id="lesson-panel" role="tabpanel" aria-labelledby="learning-tab-${tab}">${body}</section><div class="learning-toolbar">${i?`<button class="btn" data-learning="open" data-id="${yearLessons[i-1].id}">الدرس السابق</button>`:''}${i<yearLessons.length-1?`<button class="btn" data-learning="open" data-id="${yearLessons[i+1].id}">الدرس التالي</button>`:''}</div>`;
  }
  function bind(){if(S.page==='learning'){
@@ -239,7 +289,7 @@ const Learning=(()=>{
   if(action==='open-questions'){openQuestions(id);return;}
   if(action==='open'){open(id);return;}
   if(action==='solutions-catalog'){BookSolutions.open();return;}
-  if(action==='quiz'){open(id,'quiz');return;}
+  if(action==='quiz'){open(id,LOCAL_REVIEW?'quiz':'explanation');return;}
   if(action==='questions-unit'){questionsUnit(id);return;}
   if(action==='catalog'){if(S.page==='units')questionsCatalog();else catalog();return;}
   if(action==='year'){const year=years.find(y=>y.id===id);if(year)show(year,null,S.page==='units'?'units':'learning');return;}
@@ -248,8 +298,7 @@ const Learning=(()=>{
   if(action==='tab'){
    if(!lessonTabs.some(([key])=>key===id))return;
    tab=id;
-   const prefix=selectedYear.id==='btec1'?'#learning/btec1/':'#learning/';
-   route(prefix+selected+(tab==='video'?'':'/'+tab));
+   route(lessonHash());
    render();
    document.getElementById('learning-tab-'+tab)?.focus({preventScroll:true});
    return;

@@ -173,3 +173,10 @@ html:fullscreen .layout:has(.revision-reader) :is(.sidebar,.topbar,.site-footer,
   }
   :root .edu-play .edu-feedback :is(h2,p) {color:#fff!important}
 }
+/* Consistent lesson breadcrumb and readable explanation panels on both BTEC years. */
+.learning-trail{padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--panel);line-height:1.7}
+.learning-trail .learning-current{font-weight:800;color:var(--fg);overflow-wrap:anywhere;min-width:0}
+.learning-panel .guide-section article{overflow-wrap:anywhere}
+.learning-panel .guide-section article h4{font-family:Tahoma,"Segoe UI",sans-serif;line-height:1.8}
+.learning-panel .guide-section article p{line-height:1.95}
+@media(max-width:560px){.learning-trail{gap:.25rem .4rem;padding:9px 10px;font-size:.88rem}.learning-panel .guide-section article{padding:13px}}
