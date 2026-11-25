@@ -53,7 +53,11 @@ const runtimeRecord = q => ({
   review:{answer_checked:q.review?.answer_checked,source_checked:q.review?.source_checked,excluded:q.review?.excluded,verification_status:q.review?.verification_status}
 });
 const runtimeQuestions = { ...questions, questions: questions.questions.map(runtimeRecord) };
-if (bank) runtimeQuestions.archivedQuestions = legacyBank.questions.map(runtimeRecord);
+if (bank) {
+  runtimeQuestions.archivedQuestions = legacyBank.questions.map(runtimeRecord);
+  // Keep lesson training separate from the game bank; include canonical IDs for saved progress.
+  runtimeQuestions.ministerialQuestions = Object.values(bank.ministerial).flatMap(levels=>Object.values(levels).flat()).map(runtimeRecord);
+}
 const ministerialQuestions = bank ? Object.fromEntries(Object.entries(bank.ministerial).map(([lesson,levels])=>[
   lesson,Object.fromEntries(Object.entries(levels).map(([level,questions])=>[level,questions.map(runtimeRecord)]))
 ])) : null;
