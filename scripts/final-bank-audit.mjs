@@ -23,7 +23,7 @@ for(const path of ['review/first-btec/questions.json','review/bank/questions.jso
    if(opts.filter(o=>o.id===q.answer.option_id).length!==1)issues.push('key');
   }
   const signature=q.lesson_id+'|'+norm(q.prompt);
-  const row={id:q.id,book:q.source.document_id,lesson:q.lesson_id,pages,level:q.difficulty,type:q.type,pool:q.delivery_allocation,issues,scientificStatus:path.includes('supplement')?'page_and_answer_checked':pageChecked.has(q.id)?'printed_page_supports_answer':'pending',action:'retain_original_review_status'};
+  const row={id:q.id,originalQuestion:q.prompt,correctedQuestion:null,payload:q.payload,answer:q.answer,explanation:q.explanation,book:q.source.document_id,lesson:q.lesson_id,pages,level:q.difficulty,type:q.type,pool:q.delivery_allocation,issues,scientificStatus:path.includes('supplement')&&q.review?.source_checked===true&&q.review?.answer_checked===true?'page_and_answer_checked':pageChecked.has(q.id)?'printed_page_supports_answer':'pending',action:'retain_original_review_status'};
   if(!groups.has(signature))groups.set(signature,[]);groups.get(signature).push(row);records.push(row);
   const k=[q.lesson_id,q.difficulty,q.delivery_allocation,q.type].join('/');counts[k]=(counts[k]||0)+1;
  }

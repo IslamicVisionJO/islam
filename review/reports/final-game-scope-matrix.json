@@ -7,79 +7,105 @@
         "name": "تحدي المليون",
         "unique": 605,
         "minimum": 15,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 605,
+        "canStartOnline": true
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 56,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 56,
+        "canStartOnline": true
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 605,
         "minimum": 5,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 605,
+        "canStartOnline": true
       },
       {
         "name": "عجلة الحظ",
         "unique": 605,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 605,
+        "canStartOnline": true
       },
       {
         "name": "صح أم خطأ",
         "unique": 74,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 74,
+        "canStartOnline": true
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 605,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 605,
+        "canStartOnline": true
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 605,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 605,
+        "canStartOnline": true
       },
       {
         "name": "رتّب الحروف",
         "unique": 31,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 30,
+        "canStartOnline": true
       },
       {
         "name": "رتّب البلاطات",
         "unique": 57,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 57,
+        "canStartOnline": true
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 31,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 30,
+        "canStartOnline": true
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 605,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 605,
+        "canStartOnline": true
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 18,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 18,
+        "canStartOnline": true
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 56,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 56,
+        "canStartOnline": true
       }
     ],
     "wallCandidates": 605
@@ -92,79 +118,105 @@
         "name": "تحدي المليون",
         "unique": 22,
         "minimum": 15,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 15,
+        "canStartOnline": true
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 64,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 22,
         "minimum": 5,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 15,
+        "canStartOnline": true
       },
       {
         "name": "عجلة الحظ",
         "unique": 22,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 15,
+        "canStartOnline": true
       },
       {
         "name": "صح أم خطأ",
         "unique": 56,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 22,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 15,
+        "canStartOnline": true
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 22,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 15,
+        "canStartOnline": true
       },
       {
         "name": "رتّب الحروف",
         "unique": 20,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب البلاطات",
         "unique": 74,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 20,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 22,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 15,
+        "canStartOnline": true
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 3,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 1,
+        "canStartOnline": true
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 64,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       }
     ],
     "wallCandidates": 22
@@ -177,79 +229,105 @@
         "name": "تحدي المليون",
         "unique": 143,
         "minimum": 15,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 143,
+        "canStartOnline": true
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 12,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 12,
+        "canStartOnline": true
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 143,
         "minimum": 5,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 143,
+        "canStartOnline": true
       },
       {
         "name": "عجلة الحظ",
         "unique": 143,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 143,
+        "canStartOnline": true
       },
       {
         "name": "صح أم خطأ",
         "unique": 15,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 15,
+        "canStartOnline": true
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 143,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 143,
+        "canStartOnline": true
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 143,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 143,
+        "canStartOnline": true
       },
       {
         "name": "رتّب الحروف",
         "unique": 5,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 5,
+        "canStartOnline": true
       },
       {
         "name": "رتّب البلاطات",
         "unique": 13,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 13,
+        "canStartOnline": true
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 5,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 5,
+        "canStartOnline": true
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 143,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 143,
+        "canStartOnline": true
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 9,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 9,
+        "canStartOnline": true
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 12,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 12,
+        "canStartOnline": true
       }
     ],
     "wallCandidates": 143
@@ -262,79 +340,105 @@
         "name": "تحدي المليون",
         "unique": 28,
         "minimum": 15,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 28,
+        "canStartOnline": true
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 3,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 3,
+        "canStartOnline": true
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 28,
         "minimum": 5,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 28,
+        "canStartOnline": true
       },
       {
         "name": "عجلة الحظ",
         "unique": 28,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 28,
+        "canStartOnline": true
       },
       {
         "name": "صح أم خطأ",
         "unique": 4,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 4,
+        "canStartOnline": true
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 28,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 28,
+        "canStartOnline": true
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 28,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 28,
+        "canStartOnline": true
       },
       {
         "name": "رتّب الحروف",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 2,
+        "canStartOnline": true
       },
       {
         "name": "رتّب البلاطات",
         "unique": 3,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 3,
+        "canStartOnline": true
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 2,
+        "canStartOnline": true
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 28,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 28,
+        "canStartOnline": true
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 1,
+        "canStartOnline": true
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 3,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 3,
+        "canStartOnline": true
       }
     ],
     "wallCandidates": 28
@@ -347,79 +451,105 @@
         "name": "تحدي المليون",
         "unique": 18,
         "minimum": 15,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 18,
+        "canStartOnline": true
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 2,
+        "canStartOnline": true
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 18,
         "minimum": 5,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 18,
+        "canStartOnline": true
       },
       {
         "name": "عجلة الحظ",
         "unique": 18,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 18,
+        "canStartOnline": true
       },
       {
         "name": "صح أم خطأ",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 2,
+        "canStartOnline": true
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 18,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 18,
+        "canStartOnline": true
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 18,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 18,
+        "canStartOnline": true
       },
       {
         "name": "رتّب الحروف",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 1,
+        "canStartOnline": true
       },
       {
         "name": "رتّب البلاطات",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 2,
+        "canStartOnline": true
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 1,
+        "canStartOnline": true
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 18,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 18,
+        "canStartOnline": true
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 8,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 8,
+        "canStartOnline": true
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 2,
+        "canStartOnline": true
       }
     ],
     "wallCandidates": 18
@@ -432,79 +562,105 @@
         "name": "تحدي المليون",
         "unique": 21,
         "minimum": 15,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 21,
+        "canStartOnline": true
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 1,
+        "canStartOnline": true
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 21,
         "minimum": 5,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 21,
+        "canStartOnline": true
       },
       {
         "name": "عجلة الحظ",
         "unique": 21,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 21,
+        "canStartOnline": true
       },
       {
         "name": "صح أم خطأ",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 1,
+        "canStartOnline": true
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 21,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 21,
+        "canStartOnline": true
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 21,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 21,
+        "canStartOnline": true
       },
       {
         "name": "رتّب الحروف",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب البلاطات",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 2,
+        "canStartOnline": true
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 21,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 21,
+        "canStartOnline": true
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 1,
+        "canStartOnline": true
       }
     ],
     "wallCandidates": 21
@@ -517,79 +673,105 @@
         "name": "تحدي المليون",
         "unique": 30,
         "minimum": 15,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 30,
+        "canStartOnline": true
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 3,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 3,
+        "canStartOnline": true
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 30,
         "minimum": 5,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 30,
+        "canStartOnline": true
       },
       {
         "name": "عجلة الحظ",
         "unique": 30,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 30,
+        "canStartOnline": true
       },
       {
         "name": "صح أم خطأ",
         "unique": 3,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 3,
+        "canStartOnline": true
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 30,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 30,
+        "canStartOnline": true
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 30,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 30,
+        "canStartOnline": true
       },
       {
         "name": "رتّب الحروف",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 2,
+        "canStartOnline": true
       },
       {
         "name": "رتّب البلاطات",
         "unique": 3,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 3,
+        "canStartOnline": true
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 2,
+        "canStartOnline": true
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 30,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 30,
+        "canStartOnline": true
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 3,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 3,
+        "canStartOnline": true
       }
     ],
     "wallCandidates": 30
@@ -602,79 +784,105 @@
         "name": "تحدي المليون",
         "unique": 20,
         "minimum": 15,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 20,
+        "canStartOnline": true
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 1,
+        "canStartOnline": true
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 20,
         "minimum": 5,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 20,
+        "canStartOnline": true
       },
       {
         "name": "عجلة الحظ",
         "unique": 20,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 20,
+        "canStartOnline": true
       },
       {
         "name": "صح أم خطأ",
         "unique": 3,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 3,
+        "canStartOnline": true
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 20,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 20,
+        "canStartOnline": true
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 20,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 20,
+        "canStartOnline": true
       },
       {
         "name": "رتّب الحروف",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب البلاطات",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 1,
+        "canStartOnline": true
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 20,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 20,
+        "canStartOnline": true
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 1,
+        "canStartOnline": true
       }
     ],
     "wallCandidates": 20
@@ -687,79 +895,105 @@
         "name": "تحدي المليون",
         "unique": 26,
         "minimum": 15,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 26,
+        "canStartOnline": true
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 2,
+        "canStartOnline": true
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 26,
         "minimum": 5,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 26,
+        "canStartOnline": true
       },
       {
         "name": "عجلة الحظ",
         "unique": 26,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 26,
+        "canStartOnline": true
       },
       {
         "name": "صح أم خطأ",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 2,
+        "canStartOnline": true
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 26,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 26,
+        "canStartOnline": true
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 26,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 26,
+        "canStartOnline": true
       },
       {
         "name": "رتّب الحروف",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب البلاطات",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 2,
+        "canStartOnline": true
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 26,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 26,
+        "canStartOnline": true
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 2,
+        "canStartOnline": true
       }
     ],
     "wallCandidates": 26
@@ -772,79 +1006,105 @@
         "name": "تحدي المليون",
         "unique": 176,
         "minimum": 15,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 176,
+        "canStartOnline": true
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 15,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 15,
+        "canStartOnline": true
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 176,
         "minimum": 5,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 176,
+        "canStartOnline": true
       },
       {
         "name": "عجلة الحظ",
         "unique": 176,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 176,
+        "canStartOnline": true
       },
       {
         "name": "صح أم خطأ",
         "unique": 26,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 26,
+        "canStartOnline": true
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 176,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 176,
+        "canStartOnline": true
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 176,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 176,
+        "canStartOnline": true
       },
       {
         "name": "رتّب الحروف",
         "unique": 12,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 11,
+        "canStartOnline": true
       },
       {
         "name": "رتّب البلاطات",
         "unique": 15,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 15,
+        "canStartOnline": true
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 12,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 11,
+        "canStartOnline": true
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 176,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 176,
+        "canStartOnline": true
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 9,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 9,
+        "canStartOnline": true
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 15,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 15,
+        "canStartOnline": true
       }
     ],
     "wallCandidates": 176
@@ -857,79 +1117,105 @@
         "name": "تحدي المليون",
         "unique": 28,
         "minimum": 15,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 28,
+        "canStartOnline": true
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 28,
         "minimum": 5,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 28,
+        "canStartOnline": true
       },
       {
         "name": "عجلة الحظ",
         "unique": 28,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 28,
+        "canStartOnline": true
       },
       {
         "name": "صح أم خطأ",
         "unique": 5,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 5,
+        "canStartOnline": true
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 28,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 28,
+        "canStartOnline": true
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 28,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 28,
+        "canStartOnline": true
       },
       {
         "name": "رتّب الحروف",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب البلاطات",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 28,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 28,
+        "canStartOnline": true
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 5,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 5,
+        "canStartOnline": true
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       }
     ],
     "wallCandidates": 28
@@ -942,79 +1228,105 @@
         "name": "تحدي المليون",
         "unique": 21,
         "minimum": 15,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 21,
+        "canStartOnline": true
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 2,
+        "canStartOnline": true
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 21,
         "minimum": 5,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 21,
+        "canStartOnline": true
       },
       {
         "name": "عجلة الحظ",
         "unique": 21,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 21,
+        "canStartOnline": true
       },
       {
         "name": "صح أم خطأ",
         "unique": 5,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 5,
+        "canStartOnline": true
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 21,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 21,
+        "canStartOnline": true
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 21,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 21,
+        "canStartOnline": true
       },
       {
         "name": "رتّب الحروف",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 1,
+        "canStartOnline": true
       },
       {
         "name": "رتّب البلاطات",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 2,
+        "canStartOnline": true
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 1,
+        "canStartOnline": true
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 21,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 21,
+        "canStartOnline": true
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 2,
+        "canStartOnline": true
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 2,
+        "canStartOnline": true
       }
     ],
     "wallCandidates": 21
@@ -1027,79 +1339,105 @@
         "name": "تحدي المليون",
         "unique": 26,
         "minimum": 15,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 26,
+        "canStartOnline": true
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 1,
+        "canStartOnline": true
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 26,
         "minimum": 5,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 26,
+        "canStartOnline": true
       },
       {
         "name": "عجلة الحظ",
         "unique": 26,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 26,
+        "canStartOnline": true
       },
       {
         "name": "صح أم خطأ",
         "unique": 6,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 6,
+        "canStartOnline": true
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 26,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 26,
+        "canStartOnline": true
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 26,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 26,
+        "canStartOnline": true
       },
       {
         "name": "رتّب الحروف",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 1,
+        "canStartOnline": true
       },
       {
         "name": "رتّب البلاطات",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 1,
+        "canStartOnline": true
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 1,
+        "canStartOnline": true
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 26,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 26,
+        "canStartOnline": true
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 1,
+        "canStartOnline": true
       }
     ],
     "wallCandidates": 26
@@ -1112,79 +1450,105 @@
         "name": "تحدي المليون",
         "unique": 27,
         "minimum": 15,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 27,
+        "canStartOnline": true
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 4,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 4,
+        "canStartOnline": true
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 27,
         "minimum": 5,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 27,
+        "canStartOnline": true
       },
       {
         "name": "عجلة الحظ",
         "unique": 27,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 27,
+        "canStartOnline": true
       },
       {
         "name": "صح أم خطأ",
         "unique": 4,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 4,
+        "canStartOnline": true
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 27,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 27,
+        "canStartOnline": true
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 27,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 27,
+        "canStartOnline": true
       },
       {
         "name": "رتّب الحروف",
         "unique": 4,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 4,
+        "canStartOnline": true
       },
       {
         "name": "رتّب البلاطات",
         "unique": 4,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 4,
+        "canStartOnline": true
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 4,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 4,
+        "canStartOnline": true
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 27,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 27,
+        "canStartOnline": true
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 1,
+        "canStartOnline": true
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 4,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 4,
+        "canStartOnline": true
       }
     ],
     "wallCandidates": 27
@@ -1197,79 +1561,105 @@
         "name": "تحدي المليون",
         "unique": 28,
         "minimum": 15,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 28,
+        "canStartOnline": true
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 2,
+        "canStartOnline": true
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 28,
         "minimum": 5,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 28,
+        "canStartOnline": true
       },
       {
         "name": "عجلة الحظ",
         "unique": 28,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 28,
+        "canStartOnline": true
       },
       {
         "name": "صح أم خطأ",
         "unique": 3,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 3,
+        "canStartOnline": true
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 28,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 28,
+        "canStartOnline": true
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 28,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 28,
+        "canStartOnline": true
       },
       {
         "name": "رتّب الحروف",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 1,
+        "canStartOnline": true
       },
       {
         "name": "رتّب البلاطات",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 2,
+        "canStartOnline": true
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 1,
+        "canStartOnline": true
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 28,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 28,
+        "canStartOnline": true
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 2,
+        "canStartOnline": true
       }
     ],
     "wallCandidates": 28
@@ -1282,79 +1672,105 @@
         "name": "تحدي المليون",
         "unique": 26,
         "minimum": 15,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 26,
+        "canStartOnline": true
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 2,
+        "canStartOnline": true
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 26,
         "minimum": 5,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 26,
+        "canStartOnline": true
       },
       {
         "name": "عجلة الحظ",
         "unique": 26,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 26,
+        "canStartOnline": true
       },
       {
         "name": "صح أم خطأ",
         "unique": 3,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 3,
+        "canStartOnline": true
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 26,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 26,
+        "canStartOnline": true
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 26,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 26,
+        "canStartOnline": true
       },
       {
         "name": "رتّب الحروف",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 2,
+        "canStartOnline": true
       },
       {
         "name": "رتّب البلاطات",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 2,
+        "canStartOnline": true
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 2,
+        "canStartOnline": true
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 26,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 26,
+        "canStartOnline": true
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 2,
+        "canStartOnline": true
       }
     ],
     "wallCandidates": 26
@@ -1367,79 +1783,105 @@
         "name": "تحدي المليون",
         "unique": 20,
         "minimum": 15,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 20,
+        "canStartOnline": true
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 4,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 4,
+        "canStartOnline": true
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 20,
         "minimum": 5,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 20,
+        "canStartOnline": true
       },
       {
         "name": "عجلة الحظ",
         "unique": 20,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 20,
+        "canStartOnline": true
       },
       {
         "name": "صح أم خطأ",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 20,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 20,
+        "canStartOnline": true
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 20,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 20,
+        "canStartOnline": true
       },
       {
         "name": "رتّب الحروف",
         "unique": 3,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 2,
+        "canStartOnline": true
       },
       {
         "name": "رتّب البلاطات",
         "unique": 4,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 4,
+        "canStartOnline": true
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 3,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 2,
+        "canStartOnline": true
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 20,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 20,
+        "canStartOnline": true
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 1,
+        "canStartOnline": true
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 4,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 4,
+        "canStartOnline": true
       }
     ],
     "wallCandidates": 20
@@ -1452,79 +1894,105 @@
         "name": "تحدي المليون",
         "unique": 154,
         "minimum": 15,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 154,
+        "canStartOnline": true
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 16,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 16,
+        "canStartOnline": true
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 154,
         "minimum": 5,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 154,
+        "canStartOnline": true
       },
       {
         "name": "عجلة الحظ",
         "unique": 154,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 154,
+        "canStartOnline": true
       },
       {
         "name": "صح أم خطأ",
         "unique": 20,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 20,
+        "canStartOnline": true
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 154,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 154,
+        "canStartOnline": true
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 154,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 154,
+        "canStartOnline": true
       },
       {
         "name": "رتّب الحروف",
         "unique": 8,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 8,
+        "canStartOnline": true
       },
       {
         "name": "رتّب البلاطات",
         "unique": 16,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 16,
+        "canStartOnline": true
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 8,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 8,
+        "canStartOnline": true
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 154,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 154,
+        "canStartOnline": true
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 16,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 16,
+        "canStartOnline": true
       }
     ],
     "wallCandidates": 154
@@ -1537,79 +2005,105 @@
         "name": "تحدي المليون",
         "unique": 31,
         "minimum": 15,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 31,
+        "canStartOnline": true
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 3,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 3,
+        "canStartOnline": true
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 31,
         "minimum": 5,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 31,
+        "canStartOnline": true
       },
       {
         "name": "عجلة الحظ",
         "unique": 31,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 31,
+        "canStartOnline": true
       },
       {
         "name": "صح أم خطأ",
         "unique": 3,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 3,
+        "canStartOnline": true
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 31,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 31,
+        "canStartOnline": true
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 31,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 31,
+        "canStartOnline": true
       },
       {
         "name": "رتّب الحروف",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 2,
+        "canStartOnline": true
       },
       {
         "name": "رتّب البلاطات",
         "unique": 3,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 3,
+        "canStartOnline": true
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 2,
+        "canStartOnline": true
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 31,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 31,
+        "canStartOnline": true
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 3,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 3,
+        "canStartOnline": true
       }
     ],
     "wallCandidates": 31
@@ -1622,79 +2116,105 @@
         "name": "تحدي المليون",
         "unique": 15,
         "minimum": 15,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 15,
+        "canStartOnline": true
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 1,
+        "canStartOnline": true
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 15,
         "minimum": 5,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 15,
+        "canStartOnline": true
       },
       {
         "name": "عجلة الحظ",
         "unique": 15,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 15,
+        "canStartOnline": true
       },
       {
         "name": "صح أم خطأ",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 2,
+        "canStartOnline": true
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 15,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 15,
+        "canStartOnline": true
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 15,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 15,
+        "canStartOnline": true
       },
       {
         "name": "رتّب الحروف",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب البلاطات",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 1,
+        "canStartOnline": true
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 15,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 15,
+        "canStartOnline": true
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 1,
+        "canStartOnline": true
       }
     ],
     "wallCandidates": 15
@@ -1707,79 +2227,105 @@
         "name": "تحدي المليون",
         "unique": 17,
         "minimum": 15,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 17,
+        "canStartOnline": true
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 2,
+        "canStartOnline": true
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 17,
         "minimum": 5,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 17,
+        "canStartOnline": true
       },
       {
         "name": "عجلة الحظ",
         "unique": 17,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 17,
+        "canStartOnline": true
       },
       {
         "name": "صح أم خطأ",
         "unique": 3,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 3,
+        "canStartOnline": true
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 17,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 17,
+        "canStartOnline": true
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 17,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 17,
+        "canStartOnline": true
       },
       {
         "name": "رتّب الحروف",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 1,
+        "canStartOnline": true
       },
       {
         "name": "رتّب البلاطات",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 2,
+        "canStartOnline": true
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 1,
+        "canStartOnline": true
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 17,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 17,
+        "canStartOnline": true
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 2,
+        "canStartOnline": true
       }
     ],
     "wallCandidates": 17
@@ -1792,79 +2338,105 @@
         "name": "تحدي المليون",
         "unique": 27,
         "minimum": 15,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 27,
+        "canStartOnline": true
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 4,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 4,
+        "canStartOnline": true
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 27,
         "minimum": 5,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 27,
+        "canStartOnline": true
       },
       {
         "name": "عجلة الحظ",
         "unique": 27,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 27,
+        "canStartOnline": true
       },
       {
         "name": "صح أم خطأ",
         "unique": 4,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 4,
+        "canStartOnline": true
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 27,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 27,
+        "canStartOnline": true
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 27,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 27,
+        "canStartOnline": true
       },
       {
         "name": "رتّب الحروف",
         "unique": 3,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 3,
+        "canStartOnline": true
       },
       {
         "name": "رتّب البلاطات",
         "unique": 4,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 4,
+        "canStartOnline": true
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 3,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 3,
+        "canStartOnline": true
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 27,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 27,
+        "canStartOnline": true
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 4,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 4,
+        "canStartOnline": true
       }
     ],
     "wallCandidates": 27
@@ -1877,79 +2449,105 @@
         "name": "تحدي المليون",
         "unique": 18,
         "minimum": 15,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 18,
+        "canStartOnline": true
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 2,
+        "canStartOnline": true
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 18,
         "minimum": 5,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 18,
+        "canStartOnline": true
       },
       {
         "name": "عجلة الحظ",
         "unique": 18,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 18,
+        "canStartOnline": true
       },
       {
         "name": "صح أم خطأ",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 2,
+        "canStartOnline": true
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 18,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 18,
+        "canStartOnline": true
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 18,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 18,
+        "canStartOnline": true
       },
       {
         "name": "رتّب الحروف",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 1,
+        "canStartOnline": true
       },
       {
         "name": "رتّب البلاطات",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 2,
+        "canStartOnline": true
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 1,
+        "canStartOnline": true
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 18,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 18,
+        "canStartOnline": true
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 2,
+        "canStartOnline": true
       }
     ],
     "wallCandidates": 18
@@ -1962,79 +2560,105 @@
         "name": "تحدي المليون",
         "unique": 21,
         "minimum": 15,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 21,
+        "canStartOnline": true
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 2,
+        "canStartOnline": true
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 21,
         "minimum": 5,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 21,
+        "canStartOnline": true
       },
       {
         "name": "عجلة الحظ",
         "unique": 21,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 21,
+        "canStartOnline": true
       },
       {
         "name": "صح أم خطأ",
         "unique": 4,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 4,
+        "canStartOnline": true
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 21,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 21,
+        "canStartOnline": true
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 21,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 21,
+        "canStartOnline": true
       },
       {
         "name": "رتّب الحروف",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب البلاطات",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 2,
+        "canStartOnline": true
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 21,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 21,
+        "canStartOnline": true
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 2,
+        "canStartOnline": true
       }
     ],
     "wallCandidates": 21
@@ -2047,79 +2671,105 @@
         "name": "تحدي المليون",
         "unique": 25,
         "minimum": 15,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 25,
+        "canStartOnline": true
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 2,
+        "canStartOnline": true
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 25,
         "minimum": 5,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 25,
+        "canStartOnline": true
       },
       {
         "name": "عجلة الحظ",
         "unique": 25,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 25,
+        "canStartOnline": true
       },
       {
         "name": "صح أم خطأ",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 2,
+        "canStartOnline": true
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 25,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 25,
+        "canStartOnline": true
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 25,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 25,
+        "canStartOnline": true
       },
       {
         "name": "رتّب الحروف",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 1,
+        "canStartOnline": true
       },
       {
         "name": "رتّب البلاطات",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 2,
+        "canStartOnline": true
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 1,
+        "canStartOnline": true
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 25,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 25,
+        "canStartOnline": true
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 2,
+        "canStartOnline": true
       }
     ],
     "wallCandidates": 25
@@ -2132,79 +2782,105 @@
         "name": "تحدي المليون",
         "unique": 132,
         "minimum": 15,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 132,
+        "canStartOnline": true
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 13,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 13,
+        "canStartOnline": true
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 132,
         "minimum": 5,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 132,
+        "canStartOnline": true
       },
       {
         "name": "عجلة الحظ",
         "unique": 132,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 132,
+        "canStartOnline": true
       },
       {
         "name": "صح أم خطأ",
         "unique": 13,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 13,
+        "canStartOnline": true
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 132,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 132,
+        "canStartOnline": true
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 132,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 132,
+        "canStartOnline": true
       },
       {
         "name": "رتّب الحروف",
         "unique": 6,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 6,
+        "canStartOnline": true
       },
       {
         "name": "رتّب البلاطات",
         "unique": 13,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 13,
+        "canStartOnline": true
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 6,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 6,
+        "canStartOnline": true
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 132,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 132,
+        "canStartOnline": true
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 13,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 13,
+        "canStartOnline": true
       }
     ],
     "wallCandidates": 132
@@ -2217,79 +2893,105 @@
         "name": "تحدي المليون",
         "unique": 25,
         "minimum": 15,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 25,
+        "canStartOnline": true
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 2,
+        "canStartOnline": true
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 25,
         "minimum": 5,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 25,
+        "canStartOnline": true
       },
       {
         "name": "عجلة الحظ",
         "unique": 25,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 25,
+        "canStartOnline": true
       },
       {
         "name": "صح أم خطأ",
         "unique": 3,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 3,
+        "canStartOnline": true
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 25,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 25,
+        "canStartOnline": true
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 25,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 25,
+        "canStartOnline": true
       },
       {
         "name": "رتّب الحروف",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 1,
+        "canStartOnline": true
       },
       {
         "name": "رتّب البلاطات",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 2,
+        "canStartOnline": true
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 1,
+        "canStartOnline": true
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 25,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 25,
+        "canStartOnline": true
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 2,
+        "canStartOnline": true
       }
     ],
     "wallCandidates": 25
@@ -2302,79 +3004,105 @@
         "name": "تحدي المليون",
         "unique": 20,
         "minimum": 15,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 20,
+        "canStartOnline": true
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 1,
+        "canStartOnline": true
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 20,
         "minimum": 5,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 20,
+        "canStartOnline": true
       },
       {
         "name": "عجلة الحظ",
         "unique": 20,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 20,
+        "canStartOnline": true
       },
       {
         "name": "صح أم خطأ",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 2,
+        "canStartOnline": true
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 20,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 20,
+        "canStartOnline": true
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 20,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 20,
+        "canStartOnline": true
       },
       {
         "name": "رتّب الحروف",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 1,
+        "canStartOnline": true
       },
       {
         "name": "رتّب البلاطات",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 1,
+        "canStartOnline": true
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 1,
+        "canStartOnline": true
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 20,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 20,
+        "canStartOnline": true
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 1,
+        "canStartOnline": true
       }
     ],
     "wallCandidates": 20
@@ -2387,79 +3115,105 @@
         "name": "تحدي المليون",
         "unique": 21,
         "minimum": 15,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 21,
+        "canStartOnline": true
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 2,
+        "canStartOnline": true
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 21,
         "minimum": 5,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 21,
+        "canStartOnline": true
       },
       {
         "name": "عجلة الحظ",
         "unique": 21,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 21,
+        "canStartOnline": true
       },
       {
         "name": "صح أم خطأ",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 1,
+        "canStartOnline": true
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 21,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 21,
+        "canStartOnline": true
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 21,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 21,
+        "canStartOnline": true
       },
       {
         "name": "رتّب الحروف",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب البلاطات",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 2,
+        "canStartOnline": true
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 21,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 21,
+        "canStartOnline": true
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 2,
+        "canStartOnline": true
       }
     ],
     "wallCandidates": 21
@@ -2472,79 +3226,105 @@
         "name": "تحدي المليون",
         "unique": 32,
         "minimum": 15,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 32,
+        "canStartOnline": true
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 3,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 3,
+        "canStartOnline": true
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 32,
         "minimum": 5,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 32,
+        "canStartOnline": true
       },
       {
         "name": "عجلة الحظ",
         "unique": 32,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 32,
+        "canStartOnline": true
       },
       {
         "name": "صح أم خطأ",
         "unique": 5,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 5,
+        "canStartOnline": true
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 32,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 32,
+        "canStartOnline": true
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 32,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 32,
+        "canStartOnline": true
       },
       {
         "name": "رتّب الحروف",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 1,
+        "canStartOnline": true
       },
       {
         "name": "رتّب البلاطات",
         "unique": 3,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 3,
+        "canStartOnline": true
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 1,
+        "canStartOnline": true
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 32,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 32,
+        "canStartOnline": true
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 3,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 3,
+        "canStartOnline": true
       }
     ],
     "wallCandidates": 32
@@ -2557,79 +3337,105 @@
         "name": "تحدي المليون",
         "unique": 23,
         "minimum": 15,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 23,
+        "canStartOnline": true
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 4,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 4,
+        "canStartOnline": true
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 23,
         "minimum": 5,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 23,
+        "canStartOnline": true
       },
       {
         "name": "عجلة الحظ",
         "unique": 23,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 23,
+        "canStartOnline": true
       },
       {
         "name": "صح أم خطأ",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 2,
+        "canStartOnline": true
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 23,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 23,
+        "canStartOnline": true
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 23,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 23,
+        "canStartOnline": true
       },
       {
         "name": "رتّب الحروف",
         "unique": 3,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 3,
+        "canStartOnline": true
       },
       {
         "name": "رتّب البلاطات",
         "unique": 4,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 4,
+        "canStartOnline": true
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 3,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 3,
+        "canStartOnline": true
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 23,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 23,
+        "canStartOnline": true
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 4,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 4,
+        "canStartOnline": true
       }
     ],
     "wallCandidates": 23
@@ -2642,79 +3448,105 @@
         "name": "تحدي المليون",
         "unique": 11,
         "minimum": 15,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 11,
+        "canStartOnline": false
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 1,
+        "canStartOnline": true
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 11,
         "minimum": 5,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 11,
+        "canStartOnline": true
       },
       {
         "name": "عجلة الحظ",
         "unique": 11,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 11,
+        "canStartOnline": true
       },
       {
         "name": "صح أم خطأ",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 11,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 11,
+        "canStartOnline": true
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 11,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 11,
+        "canStartOnline": true
       },
       {
         "name": "رتّب الحروف",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب البلاطات",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 1,
+        "canStartOnline": true
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 11,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 11,
+        "canStartOnline": true
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 1,
+        "canStartOnline": true
       }
     ],
     "wallCandidates": 11
@@ -2727,79 +3559,105 @@
         "name": "تحدي المليون",
         "unique": 18,
         "minimum": 15,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 15,
+        "canStartOnline": true
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 18,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 18,
         "minimum": 5,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 15,
+        "canStartOnline": true
       },
       {
         "name": "عجلة الحظ",
         "unique": 18,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 15,
+        "canStartOnline": true
       },
       {
         "name": "صح أم خطأ",
         "unique": 10,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 18,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 15,
+        "canStartOnline": true
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 18,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 15,
+        "canStartOnline": true
       },
       {
         "name": "رتّب الحروف",
         "unique": 5,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب البلاطات",
         "unique": 22,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 5,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 18,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 15,
+        "canStartOnline": true
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 1,
+        "canStartOnline": true
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 18,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       }
     ],
     "wallCandidates": 18
@@ -2812,79 +3670,105 @@
         "name": "تحدي المليون",
         "unique": 16,
         "minimum": 15,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 15,
+        "canStartOnline": true
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 16,
         "minimum": 5,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 15,
+        "canStartOnline": true
       },
       {
         "name": "عجلة الحظ",
         "unique": 16,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 15,
+        "canStartOnline": true
       },
       {
         "name": "صح أم خطأ",
         "unique": 4,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 16,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 15,
+        "canStartOnline": true
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 16,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 15,
+        "canStartOnline": true
       },
       {
         "name": "رتّب الحروف",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب البلاطات",
         "unique": 3,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 16,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 15,
+        "canStartOnline": true
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 1,
+        "canStartOnline": true
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       }
     ],
     "wallCandidates": 16
@@ -2897,79 +3781,105 @@
         "name": "تحدي المليون",
         "unique": 0,
         "minimum": 15,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 5,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 0,
         "minimum": 5,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "عجلة الحظ",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "صح أم خطأ",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب الحروف",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب البلاطات",
         "unique": 5,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 5,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       }
     ],
     "wallCandidates": 0
@@ -2982,79 +3892,105 @@
         "name": "تحدي المليون",
         "unique": 0,
         "minimum": 15,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 4,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 0,
         "minimum": 5,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "عجلة الحظ",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "صح أم خطأ",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب الحروف",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب البلاطات",
         "unique": 5,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 4,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       }
     ],
     "wallCandidates": 0
@@ -3067,79 +4003,105 @@
         "name": "تحدي المليون",
         "unique": 0,
         "minimum": 15,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 0,
         "minimum": 5,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "عجلة الحظ",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "صح أم خطأ",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب الحروف",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب البلاطات",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       }
     ],
     "wallCandidates": 0
@@ -3152,79 +4114,105 @@
         "name": "تحدي المليون",
         "unique": 1,
         "minimum": 15,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 4,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 1,
         "minimum": 5,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "عجلة الحظ",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "صح أم خطأ",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب الحروف",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب البلاطات",
         "unique": 5,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 4,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       }
     ],
     "wallCandidates": 1
@@ -3237,79 +4225,105 @@
         "name": "تحدي المليون",
         "unique": 1,
         "minimum": 15,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 1,
         "minimum": 5,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "عجلة الحظ",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "صح أم خطأ",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب الحروف",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب البلاطات",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       }
     ],
     "wallCandidates": 1
@@ -3322,79 +4336,105 @@
         "name": "تحدي المليون",
         "unique": 1,
         "minimum": 15,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 16,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 1,
         "minimum": 5,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "عجلة الحظ",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "صح أم خطأ",
         "unique": 16,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب الحروف",
         "unique": 4,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب البلاطات",
         "unique": 19,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 4,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 16,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       }
     ],
     "wallCandidates": 1
@@ -3407,79 +4447,105 @@
         "name": "تحدي المليون",
         "unique": 0,
         "minimum": 15,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 5,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 0,
         "minimum": 5,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "عجلة الحظ",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "صح أم خطأ",
         "unique": 4,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب الحروف",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب البلاطات",
         "unique": 7,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 5,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       }
     ],
     "wallCandidates": 0
@@ -3492,79 +4558,105 @@
         "name": "تحدي المليون",
         "unique": 0,
         "minimum": 15,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 3,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 0,
         "minimum": 5,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "عجلة الحظ",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "صح أم خطأ",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب الحروف",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب البلاطات",
         "unique": 4,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 3,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       }
     ],
     "wallCandidates": 0
@@ -3577,79 +4669,105 @@
         "name": "تحدي المليون",
         "unique": 1,
         "minimum": 15,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 1,
         "minimum": 5,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "عجلة الحظ",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "صح أم خطأ",
         "unique": 4,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب الحروف",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب البلاطات",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       }
     ],
     "wallCandidates": 1
@@ -3662,79 +4780,105 @@
         "name": "تحدي المليون",
         "unique": 0,
         "minimum": 15,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 4,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 0,
         "minimum": 5,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "عجلة الحظ",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "صح أم خطأ",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب الحروف",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب البلاطات",
         "unique": 4,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 4,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       }
     ],
     "wallCandidates": 0
@@ -3747,79 +4891,105 @@
         "name": "تحدي المليون",
         "unique": 0,
         "minimum": 15,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 0,
         "minimum": 5,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "عجلة الحظ",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "صح أم خطأ",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب الحروف",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب البلاطات",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       }
     ],
     "wallCandidates": 0
@@ -3832,79 +5002,105 @@
         "name": "تحدي المليون",
         "unique": 0,
         "minimum": 15,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 0,
         "minimum": 5,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "عجلة الحظ",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "صح أم خطأ",
         "unique": 3,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب الحروف",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب البلاطات",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       }
     ],
     "wallCandidates": 0
@@ -3917,79 +5113,105 @@
         "name": "تحدي المليون",
         "unique": 2,
         "minimum": 15,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 15,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 2,
         "minimum": 5,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "عجلة الحظ",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "صح أم خطأ",
         "unique": 13,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب الحروف",
         "unique": 6,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب البلاطات",
         "unique": 17,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 6,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 15,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       }
     ],
     "wallCandidates": 2
@@ -4002,79 +5224,105 @@
         "name": "تحدي المليون",
         "unique": 1,
         "minimum": 15,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 1,
         "minimum": 5,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "عجلة الحظ",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "صح أم خطأ",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب الحروف",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب البلاطات",
         "unique": 3,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       }
     ],
     "wallCandidates": 1
@@ -4087,79 +5335,105 @@
         "name": "تحدي المليون",
         "unique": 0,
         "minimum": 15,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 4,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 0,
         "minimum": 5,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "عجلة الحظ",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "صح أم خطأ",
         "unique": 3,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب الحروف",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب البلاطات",
         "unique": 5,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 4,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       }
     ],
     "wallCandidates": 0
@@ -4172,79 +5446,105 @@
         "name": "تحدي المليون",
         "unique": 0,
         "minimum": 15,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 3,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 0,
         "minimum": 5,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "عجلة الحظ",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "صح أم خطأ",
         "unique": 3,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب الحروف",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب البلاطات",
         "unique": 3,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 3,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       }
     ],
     "wallCandidates": 0
@@ -4257,79 +5557,105 @@
         "name": "تحدي المليون",
         "unique": 0,
         "minimum": 15,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 0,
         "minimum": 5,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "عجلة الحظ",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "صح أم خطأ",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب الحروف",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب البلاطات",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       }
     ],
     "wallCandidates": 0
@@ -4342,79 +5668,105 @@
         "name": "تحدي المليون",
         "unique": 0,
         "minimum": 15,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 3,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 0,
         "minimum": 5,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "عجلة الحظ",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "صح أم خطأ",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب الحروف",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب البلاطات",
         "unique": 3,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 3,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       }
     ],
     "wallCandidates": 0
@@ -4427,79 +5779,105 @@
         "name": "تحدي المليون",
         "unique": 1,
         "minimum": 15,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 1,
         "minimum": 5,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "عجلة الحظ",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "صح أم خطأ",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب الحروف",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب البلاطات",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       }
     ],
     "wallCandidates": 1
@@ -4512,79 +5890,105 @@
         "name": "تحدي المليون",
         "unique": 1,
         "minimum": 15,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 15,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 1,
         "minimum": 5,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "عجلة الحظ",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "صح أم خطأ",
         "unique": 17,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب الحروف",
         "unique": 5,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب البلاطات",
         "unique": 16,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 5,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 15,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       }
     ],
     "wallCandidates": 1
@@ -4597,79 +6001,105 @@
         "name": "تحدي المليون",
         "unique": 0,
         "minimum": 15,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 3,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 0,
         "minimum": 5,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "عجلة الحظ",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "صح أم خطأ",
         "unique": 4,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب الحروف",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب البلاطات",
         "unique": 3,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 3,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       }
     ],
     "wallCandidates": 0
@@ -4682,79 +6112,105 @@
         "name": "تحدي المليون",
         "unique": 1,
         "minimum": 15,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 1,
         "minimum": 5,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "عجلة الحظ",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "صح أم خطأ",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب الحروف",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب البلاطات",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       }
     ],
     "wallCandidates": 1
@@ -4767,79 +6223,105 @@
         "name": "تحدي المليون",
         "unique": 0,
         "minimum": 15,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 0,
         "minimum": 5,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "عجلة الحظ",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "صح أم خطأ",
         "unique": 4,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب الحروف",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب البلاطات",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       }
     ],
     "wallCandidates": 0
@@ -4852,79 +6334,105 @@
         "name": "تحدي المليون",
         "unique": 0,
         "minimum": 15,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 0,
         "minimum": 5,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "عجلة الحظ",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "صح أم خطأ",
         "unique": 3,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب الحروف",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب البلاطات",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       }
     ],
     "wallCandidates": 0
@@ -4937,79 +6445,105 @@
         "name": "تحدي المليون",
         "unique": 0,
         "minimum": 15,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 0,
         "minimum": 5,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "عجلة الحظ",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "صح أم خطأ",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب الحروف",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب البلاطات",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       }
     ],
     "wallCandidates": 0
@@ -5022,79 +6556,105 @@
         "name": "تحدي المليون",
         "unique": 0,
         "minimum": 15,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 3,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 0,
         "minimum": 5,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "عجلة الحظ",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "صح أم خطأ",
         "unique": 2,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب الحروف",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب البلاطات",
         "unique": 3,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 3,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       }
     ],
     "wallCandidates": 0
@@ -5107,79 +6667,105 @@
         "name": "تحدي المليون",
         "unique": 0,
         "minimum": 15,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "صِل المصطلح بمعناه",
         "unique": 3,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اهرب من الغرفة",
         "unique": 0,
         "minimum": 5,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "عجلة الحظ",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "صح أم خطأ",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "لوحة بنك الأسئلة",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "البحث عن الأدلة المخفية",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب الحروف",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "رتّب البلاطات",
         "unique": 3,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "شبكة المصطلحات",
         "unique": 1,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "ابنِ منارة العلم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "أوصل الدليل بالحكم",
         "unique": 0,
         "minimum": 1,
-        "canStart": false
+        "canStart": false,
+        "onlineUnique": 0,
+        "canStartOnline": false
       },
       {
         "name": "اختبر ذاكرتك الإسلامية",
         "unique": 3,
         "minimum": 1,
-        "canStart": true
+        "canStart": true,
+        "onlineUnique": 0,
+        "canStartOnline": false
       }
     ],
     "wallCandidates": 0
