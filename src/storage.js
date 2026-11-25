@@ -148,6 +148,7 @@ function validateBackup(data,byId){
   if(s.timers!==undefined&&(!object(s.timers)||Object.entries(s.timers).some(([k,v])=>!['easy','medium','hard'].includes(k)||!timers.includes(String(v)))))fail('إعدادات المؤقت');
  }
  const known=qid=>id(qid)&&(!byId||byId.has(qid));
+ const bankLimit=byId?.size??10000;
  const modes=['training','speed','survival','hearts','duel','random','boss','daily','weekly','mistakes','exam'];
  const validateResponse=(q,r)=>{
   if(r===null||r===undefined)return;
@@ -175,14 +176,14 @@ function validateBackup(data,byId){
    for(const item of r.items){if(!object(item)||!known(item.id)||itemIds.has(item.id)||typeof item.correct!=='boolean'||item.points!==undefined&&!finite(item.points)||item.elapsed!==undefined&&!finite(item.elapsed))fail('تفاصيل النتيجة');itemIds.add(item.id);const q=byId?.get(item.id);if(q)validateResponse(q,item.response);}
   }
  }
- if(records.mistakes!==undefined){if(!object(records.mistakes)||Object.keys(records.mistakes).length>2340)fail('سجل الأخطاء');for(const [qid,m]of Object.entries(records.mistakes)){if(!known(qid)||!object(m)||!integer(m.count)||m.corrected!==undefined&&!integer(m.corrected)||m.mastery!==undefined&&!finite(m.mastery,100))fail('تفاصيل الأخطاء');}}
+ if(records.mistakes!==undefined){if(!object(records.mistakes)||Object.keys(records.mistakes).length>bankLimit)fail('سجل الأخطاء');for(const [qid,m]of Object.entries(records.mistakes)){if(!known(qid)||!object(m)||!integer(m.count)||m.corrected!==undefined&&!integer(m.corrected)||m.mastery!==undefined&&!finite(m.mastery,100))fail('تفاصيل الأخطاء');}}
  if(records.achievements!==undefined){
   const a=records.achievements;if(!object(a))fail('الإنجازات');
   if(Object.keys(a).length>200)fail('عدد الإنجازات');
   for(const [key,value]of Object.entries(a))if(!/^[a-zA-Z0-9_-]{1,100}$/.test(key)||!date(value))fail('تاريخ الإنجاز');
  }
  for(const [key,b]of Object.entries(records))if(key.startsWith('bag:')){
-  if(!object(b)||!Array.isArray(b.remaining)||!Array.isArray(b.lastSession)||b.remaining.length>2340||b.lastSession.length>2340||[...b.remaining,...b.lastSession].some(qid=>!known(qid)))fail('سجل دوران الأسئلة');
+  if(!object(b)||!Array.isArray(b.remaining)||!Array.isArray(b.lastSession)||b.remaining.length>bankLimit||b.lastSession.length>bankLimit||[...b.remaining,...b.lastSession].some(qid=>!known(qid)))fail('سجل دوران الأسئلة');
  }
  if(records.active!==undefined&&records.active!==null){
   const s=records.active;
