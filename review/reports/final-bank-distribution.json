@@ -4,7 +4,7 @@
   "s1_u01_l01/hard/lesson_wizari/multiple_choice": 30,
   "s1_u01_l01/medium/games_challenges/matching": 5,
   "s1_u01_l01/easy/games_challenges/true_false": 5,
-  "s1_u01_l01/medium/games_challenges/multiple_choice": 1,
+  "s1_u01_l01/medium/games_challenges/multiple_choice": 6,
   "s1_u01_l01/easy/games_challenges/fill_blank": 1,
   "s1_u01_l01/medium/games_challenges/multi_select": 2,
   "s1_u01_l01/medium/games_challenges/ordering": 1,
@@ -542,5 +542,7 @@
   "u04_l03/easy/games_challenges/multiple_choice": 30,
   "u04_l04/easy/games_challenges/multiple_choice": 24,
   "u04_l05/easy/games_challenges/multiple_choice": 17,
-  "u04_l06/easy/games_challenges/multiple_choice": 31
+  "u04_l06/easy/games_challenges/multiple_choice": 31,
+  "s1_u01_l01/easy/games_challenges/multiple_choice": 5,
+  "s1_u01_l01/hard/games_challenges/multiple_choice": 5
 }

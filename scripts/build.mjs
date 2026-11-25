@@ -72,7 +72,8 @@ validateFirstBtec(firstBtecLessons, firstBtecBank, [
   ...Object.values(bank?.ministerial ?? {}).flatMap(levels=>Object.values(levels).flatMap(list=>list.map(q=>q.id)))
 ], {ministerial:firstMinisterialIndex,games:firstGamesIndex,priority});
 // Owner requested student practice from this exact draft bank. Preserve its review status.
-runtimeQuestions.questions.push(...firstBtecBank.questions.map(q=>({
+const gameSupplement=JSON.parse(await read('data/first-semester-game-supplement.json'));
+runtimeQuestions.questions.push(...[...firstBtecBank.questions,...gameSupplement.questions].map(q=>({
  ...runtimeRecord(q),delivery_allocation:q.delivery_allocation,
  review:{...runtimeRecord(q).review,teacher_approved:false,human_review_required:true}
 })));
@@ -152,8 +153,7 @@ if (reviewPreview) {
 } else {
   await mkdir(path.join(root, 'dist'), { recursive: true });
   await writeFile(path.join(root, 'dist/index.html'), html);
-  const standalone=html.replace('const OFFLINE_REVISION=null;',()=> 'const OFFLINE_REVISION='+JSON.stringify(revision.chapters).replace(/</g,'\\u003c')+';')
-   .replace('const MINISTERIAL_REVIEW={};',()=> 'const MINISTERIAL_REVIEW='+JSON.stringify(ministerialQuestions).replace(/</g,'\\u003c')+';');
+  const standalone=html.replace('const OFFLINE_REVISION=null;',()=> 'const OFFLINE_REVISION='+JSON.stringify(revision.chapters).replace(/</g,'\\u003c')+';');
   await writeFile(path.join(root,'standalone.html'), standalone);
   await writeFile(path.join(root,'index.html'), standalone);
   await rm(path.join(root, 'dist/sw.js'), { force: true });

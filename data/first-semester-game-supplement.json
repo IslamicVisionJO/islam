@@ -1,0 +1,769 @@
+{
+  "questions": [
+    {
+      "id": "s1_u01_l01_q401",
+      "unit_id": "s1_u01",
+      "lesson_id": "s1_u01_l01",
+      "difficulty": "easy",
+      "type": "multiple_choice",
+      "topic": "سورة آل عمران 102–105",
+      "prompt": "في وصف حافة وادٍ، أي لفظ من مفردات سورة آل عمران يدل على الحافة؟",
+      "payload": {
+        "options": [
+          {
+            "id": "o1",
+            "text": "بيّنات"
+          },
+          {
+            "id": "o2",
+            "text": "نعمة"
+          },
+          {
+            "id": "o3",
+            "text": "حبل"
+          },
+          {
+            "id": "o4",
+            "text": "شفا"
+          }
+        ]
+      },
+      "answer": {
+        "option_id": "o4"
+      },
+      "explanation": "الشفا حافة الشيء وطرفه.",
+      "delivery_allocation": "games_challenges",
+      "source": {
+        "document_id": "islamic_education_g11_s1_2026_uploaded_review_edition",
+        "printed_pages": [
+          7
+        ],
+        "pdf_pages": [
+          7
+        ]
+      },
+      "review": {
+        "source_checked": true,
+        "answer_checked": true,
+        "teacher_approved": false,
+        "human_review_required": true,
+        "excluded": false,
+        "verification_status": "page_checked_pending_teacher_review"
+      }
+    },
+    {
+      "id": "s1_u01_l01_q402",
+      "unit_id": "s1_u01",
+      "lesson_id": "s1_u01_l01",
+      "difficulty": "easy",
+      "type": "multiple_choice",
+      "topic": "سورة آل عمران 102–105",
+      "prompt": "ورد في سورة آل عمران الأمر بالاعتصام بحبل الله. بمَ يكون هذا الاعتصام؟",
+      "payload": {
+        "options": [
+          {
+            "id": "o1",
+            "text": "بالانفراد عن جماعة المؤمنين"
+          },
+          {
+            "id": "o2",
+            "text": "بترك التعاون عند الاختلاف"
+          },
+          {
+            "id": "o3",
+            "text": "بالتمسّك بدين الله"
+          },
+          {
+            "id": "o4",
+            "text": "بالتشبث بعادات الآباء كلها"
+          }
+        ]
+      },
+      "answer": {
+        "option_id": "o3"
+      },
+      "explanation": "فسّر جدول المفردات حبل الله بدينه، والاعتصام بالتمسّك.",
+      "delivery_allocation": "games_challenges",
+      "source": {
+        "document_id": "islamic_education_g11_s1_2026_uploaded_review_edition",
+        "printed_pages": [
+          7
+        ],
+        "pdf_pages": [
+          7
+        ]
+      },
+      "review": {
+        "source_checked": true,
+        "answer_checked": true,
+        "teacher_approved": false,
+        "human_review_required": true,
+        "excluded": false,
+        "verification_status": "page_checked_pending_teacher_review"
+      }
+    },
+    {
+      "id": "s1_u01_l01_q403",
+      "unit_id": "s1_u01",
+      "lesson_id": "s1_u01_l01",
+      "difficulty": "easy",
+      "type": "multiple_choice",
+      "topic": "سورة آل عمران 102–105",
+      "prompt": "أي معنى تحمله كلمة «البيّنات» حين ترد في التحذير من الاختلاف بعد مجيئها؟",
+      "payload": {
+        "options": [
+          {
+            "id": "o1",
+            "text": "الحوادث المتوقعة"
+          },
+          {
+            "id": "o2",
+            "text": "الدلائل الواضحة"
+          },
+          {
+            "id": "o3",
+            "text": "العادات المألوفة"
+          },
+          {
+            "id": "o4",
+            "text": "الآراء المتعارضة"
+          }
+        ]
+      },
+      "answer": {
+        "option_id": "o2"
+      },
+      "explanation": "البيّنات هي البراهين والدلائل الواضحة.",
+      "delivery_allocation": "games_challenges",
+      "source": {
+        "document_id": "islamic_education_g11_s1_2026_uploaded_review_edition",
+        "printed_pages": [
+          7
+        ],
+        "pdf_pages": [
+          7
+        ]
+      },
+      "review": {
+        "source_checked": true,
+        "answer_checked": true,
+        "teacher_approved": false,
+        "human_review_required": true,
+        "excluded": false,
+        "verification_status": "page_checked_pending_teacher_review"
+      }
+    },
+    {
+      "id": "s1_u01_l01_q404",
+      "unit_id": "s1_u01",
+      "lesson_id": "s1_u01_l01",
+      "difficulty": "easy",
+      "type": "multiple_choice",
+      "topic": "سورة آل عمران 102–105",
+      "prompt": "بأي وصف تُصنّف سورة آل عمران من حيث زمن النزول؟",
+      "payload": {
+        "options": [
+          {
+            "id": "o1",
+            "text": "مدنية"
+          },
+          {
+            "id": "o2",
+            "text": "مكية كلها"
+          },
+          {
+            "id": "o3",
+            "text": "مكية عدا آية واحدة"
+          },
+          {
+            "id": "o4",
+            "text": "لم يرد تصنيفها"
+          }
+        ]
+      },
+      "answer": {
+        "option_id": "o1"
+      },
+      "explanation": "يصف التعريف بالسورة آل عمران بأنها مدنية.",
+      "delivery_allocation": "games_challenges",
+      "source": {
+        "document_id": "islamic_education_g11_s1_2026_uploaded_review_edition",
+        "printed_pages": [
+          7
+        ],
+        "pdf_pages": [
+          7
+        ]
+      },
+      "review": {
+        "source_checked": true,
+        "answer_checked": true,
+        "teacher_approved": false,
+        "human_review_required": true,
+        "excluded": false,
+        "verification_status": "page_checked_pending_teacher_review"
+      }
+    },
+    {
+      "id": "s1_u01_l01_q405",
+      "unit_id": "s1_u01",
+      "lesson_id": "s1_u01_l01",
+      "difficulty": "easy",
+      "type": "multiple_choice",
+      "topic": "سورة آل عمران 102–105",
+      "prompt": "أي سورتين ورد الحث على قراءتهما باسم «الزهراوين»؟",
+      "payload": {
+        "options": [
+          {
+            "id": "o1",
+            "text": "البقرة والنساء"
+          },
+          {
+            "id": "o2",
+            "text": "آل عمران والمائدة"
+          },
+          {
+            "id": "o3",
+            "text": "النساء والمائدة"
+          },
+          {
+            "id": "o4",
+            "text": "البقرة وآل عمران"
+          }
+        ]
+      },
+      "answer": {
+        "option_id": "o4"
+      },
+      "explanation": "وردت البقرة وآل عمران في الحديث الذي أورده التعريف بالسورة.",
+      "delivery_allocation": "games_challenges",
+      "source": {
+        "document_id": "islamic_education_g11_s1_2026_uploaded_review_edition",
+        "printed_pages": [
+          7
+        ],
+        "pdf_pages": [
+          7
+        ]
+      },
+      "review": {
+        "source_checked": true,
+        "answer_checked": true,
+        "teacher_approved": false,
+        "human_review_required": true,
+        "excluded": false,
+        "verification_status": "page_checked_pending_teacher_review"
+      }
+    },
+    {
+      "id": "s1_u01_l01_q406",
+      "unit_id": "s1_u01",
+      "lesson_id": "s1_u01_l01",
+      "difficulty": "medium",
+      "type": "multiple_choice",
+      "topic": "سورة آل عمران 102–105",
+      "prompt": "أدى بعض المسلمين صلاة الجنازة على متوفى، فكيف يؤثر ذلك في تكليف الآخرين بهذه الصلاة؟",
+      "payload": {
+        "options": [
+          {
+            "id": "o1",
+            "text": "تصير واجبة على الأقارب وحدهم"
+          },
+          {
+            "id": "o2",
+            "text": "يلزم جميع الناس إعادتها"
+          },
+          {
+            "id": "o3",
+            "text": "يسقط الطلب عن الباقين إذا قام بها من يكفي"
+          },
+          {
+            "id": "o4",
+            "text": "تبقى واجبة على كل فرد بعينه"
+          }
+        ]
+      },
+      "answer": {
+        "option_id": "o3"
+      },
+      "explanation": "صلاة الجنازة مثال لفرض الكفاية.",
+      "delivery_allocation": "games_challenges",
+      "source": {
+        "document_id": "islamic_education_g11_s1_2026_uploaded_review_edition",
+        "printed_pages": [
+          9
+        ],
+        "pdf_pages": [
+          9
+        ]
+      },
+      "review": {
+        "source_checked": true,
+        "answer_checked": true,
+        "teacher_approved": false,
+        "human_review_required": true,
+        "excluded": false,
+        "verification_status": "page_checked_pending_teacher_review"
+      }
+    },
+    {
+      "id": "s1_u01_l01_q407",
+      "unit_id": "s1_u01",
+      "lesson_id": "s1_u01_l01",
+      "difficulty": "medium",
+      "type": "multiple_choice",
+      "topic": "سورة آل عمران 102–105",
+      "prompt": "أدّى طالب صلاة الظهر، وظن زميله أن ذلك يُسقطها عنه. أي وصف لحكم الصلوات الخمس يصحح هذا الفهم؟",
+      "payload": {
+        "options": [
+          {
+            "id": "o1",
+            "text": "فرض يختص بمن يؤمّ الناس"
+          },
+          {
+            "id": "o2",
+            "text": "فرض عين على كل مكلّف"
+          },
+          {
+            "id": "o3",
+            "text": "فرض كفاية تؤديه الجماعة"
+          },
+          {
+            "id": "o4",
+            "text": "نافلة لمن فاتته الجماعة"
+          }
+        ]
+      },
+      "answer": {
+        "option_id": "o2"
+      },
+      "explanation": "الصلوات الخمس من أمثلة فرض العين.",
+      "delivery_allocation": "games_challenges",
+      "source": {
+        "document_id": "islamic_education_g11_s1_2026_uploaded_review_edition",
+        "printed_pages": [
+          9
+        ],
+        "pdf_pages": [
+          9
+        ]
+      },
+      "review": {
+        "source_checked": true,
+        "answer_checked": true,
+        "teacher_approved": false,
+        "human_review_required": true,
+        "excluded": false,
+        "verification_status": "page_checked_pending_teacher_review"
+      }
+    },
+    {
+      "id": "s1_u01_l01_q408",
+      "unit_id": "s1_u01",
+      "lesson_id": "s1_u01_l01",
+      "difficulty": "medium",
+      "type": "multiple_choice",
+      "topic": "سورة آل عمران 102–105",
+      "prompt": "يملك داعية علمًا بما يدعو إليه. أي أسلوب يوافق واجبه عند مخاطبة الناس؟",
+      "payload": {
+        "options": [
+          {
+            "id": "o1",
+            "text": "يبشّرهم ويخاطبهم بحكمة"
+          },
+          {
+            "id": "o2",
+            "text": "يعنفهم ليضمن استجابتهم"
+          },
+          {
+            "id": "o3",
+            "text": "يعرض عليهم ما لا يفهمونه عمدًا"
+          },
+          {
+            "id": "o4",
+            "text": "يقيس نجاحه بمقدار الخوف منه"
+          }
+        ]
+      },
+      "answer": {
+        "option_id": "o1"
+      },
+      "explanation": "من شروط الدعوة الأسلوب الحكيم الذي يبشّر الناس ولا ينفّرهم.",
+      "delivery_allocation": "games_challenges",
+      "source": {
+        "document_id": "islamic_education_g11_s1_2026_uploaded_review_edition",
+        "printed_pages": [
+          9
+        ],
+        "pdf_pages": [
+          9
+        ]
+      },
+      "review": {
+        "source_checked": true,
+        "answer_checked": true,
+        "teacher_approved": false,
+        "human_review_required": true,
+        "excluded": false,
+        "verification_status": "page_checked_pending_teacher_review"
+      }
+    },
+    {
+      "id": "s1_u01_l01_q409",
+      "unit_id": "s1_u01",
+      "lesson_id": "s1_u01_l01",
+      "difficulty": "medium",
+      "type": "multiple_choice",
+      "topic": "سورة آل عمران 102–105",
+      "prompt": "أراد طالب أن يرشد زملاءه إلى عمل خير، لكنه يجهل حكمه. ما الشرط الذي ينبغي أن يستكمله أولًا؟",
+      "payload": {
+        "options": [
+          {
+            "id": "o1",
+            "text": "كثرة عدد المستمعين"
+          },
+          {
+            "id": "o2",
+            "text": "علو الصوت عند الحديث"
+          },
+          {
+            "id": "o3",
+            "text": "انتماؤه إلى أسرة معروفة"
+          },
+          {
+            "id": "o4",
+            "text": "العلم بما يدعو إليه"
+          }
+        ]
+      },
+      "answer": {
+        "option_id": "o4"
+      },
+      "explanation": "ذُكر العلم ضمن شروط مباشرة الدعوة إلى الخير.",
+      "delivery_allocation": "games_challenges",
+      "source": {
+        "document_id": "islamic_education_g11_s1_2026_uploaded_review_edition",
+        "printed_pages": [
+          9
+        ],
+        "pdf_pages": [
+          9
+        ]
+      },
+      "review": {
+        "source_checked": true,
+        "answer_checked": true,
+        "teacher_approved": false,
+        "human_review_required": true,
+        "excluded": false,
+        "verification_status": "page_checked_pending_teacher_review"
+      }
+    },
+    {
+      "id": "s1_u01_l01_q410",
+      "unit_id": "s1_u01",
+      "lesson_id": "s1_u01_l01",
+      "difficulty": "medium",
+      "type": "multiple_choice",
+      "topic": "سورة آل عمران 102–105",
+      "prompt": "أيُّ تعبير يوافق مفهوم المنكر عند بيان وظيفة النهي عنه؟",
+      "payload": {
+        "options": [
+          {
+            "id": "o1",
+            "text": "كل أمر يصعب أداؤه"
+          },
+          {
+            "id": "o2",
+            "text": "كل أمر يخالف المألوف"
+          },
+          {
+            "id": "o3",
+            "text": "كل أمر مستقبح"
+          },
+          {
+            "id": "o4",
+            "text": "كل أمر يجهله بعض الناس"
+          }
+        ]
+      },
+      "answer": {
+        "option_id": "o3"
+      },
+      "explanation": "يبيّن شرح الآية أن المنكر كل أمر مستقبح.",
+      "delivery_allocation": "games_challenges",
+      "source": {
+        "document_id": "islamic_education_g11_s1_2026_uploaded_review_edition",
+        "printed_pages": [
+          9
+        ],
+        "pdf_pages": [
+          9
+        ]
+      },
+      "review": {
+        "source_checked": true,
+        "answer_checked": true,
+        "teacher_approved": false,
+        "human_review_required": true,
+        "excluded": false,
+        "verification_status": "page_checked_pending_teacher_review"
+      }
+    },
+    {
+      "id": "s1_u01_l01_q411",
+      "unit_id": "s1_u01",
+      "lesson_id": "s1_u01_l01",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "topic": "سورة آل عمران 102–105",
+      "prompt": "بلدة تتوافر فيها القدرة على أداء فرض كفاية، فتَركه جميع أهلها اتكالًا بعضهم على بعض. ما النتيجة؟",
+      "payload": {
+        "options": [
+          {
+            "id": "o1",
+            "text": "يؤجر الجميع على انتظار المبادرة"
+          },
+          {
+            "id": "o2",
+            "text": "يأثم الجميع لعدم قيام من يكفي به"
+          },
+          {
+            "id": "o3",
+            "text": "يسقط الطلب بتوزع المسؤولية"
+          },
+          {
+            "id": "o4",
+            "text": "يتحول الفرض إلى نافلة"
+          }
+        ]
+      },
+      "answer": {
+        "option_id": "o2"
+      },
+      "explanation": "فرض الكفاية إذا لم يقم به أحد أثم الجميع.",
+      "delivery_allocation": "games_challenges",
+      "source": {
+        "document_id": "islamic_education_g11_s1_2026_uploaded_review_edition",
+        "printed_pages": [
+          9
+        ],
+        "pdf_pages": [
+          9
+        ]
+      },
+      "review": {
+        "source_checked": true,
+        "answer_checked": true,
+        "teacher_approved": false,
+        "human_review_required": true,
+        "excluded": false,
+        "verification_status": "page_checked_pending_teacher_review"
+      }
+    },
+    {
+      "id": "s1_u01_l01_q412",
+      "unit_id": "s1_u01",
+      "lesson_id": "s1_u01_l01",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "topic": "سورة آل عمران 102–105",
+      "prompt": "يريد فريق أن يختار من يبين للناس وجه الخير. ما المعيار الذي يجمع شروط هذه المهمة؟",
+      "payload": {
+        "options": [
+          {
+            "id": "o1",
+            "text": "العلم والحكمة والقدرة على إيصال الرسالة"
+          },
+          {
+            "id": "o2",
+            "text": "الحماس وحده ولو نقص العلم"
+          },
+          {
+            "id": "o3",
+            "text": "الشهرة ولو نفّر أسلوبه الناس"
+          },
+          {
+            "id": "o4",
+            "text": "المعرفة دون قدرة على البيان"
+          }
+        ]
+      },
+      "answer": {
+        "option_id": "o1"
+      },
+      "explanation": "تحتاج المهمة إلى العلم والأسلوب الحكيم والمهارة في إيصال الرسالة.",
+      "delivery_allocation": "games_challenges",
+      "source": {
+        "document_id": "islamic_education_g11_s1_2026_uploaded_review_edition",
+        "printed_pages": [
+          9
+        ],
+        "pdf_pages": [
+          9
+        ]
+      },
+      "review": {
+        "source_checked": true,
+        "answer_checked": true,
+        "teacher_approved": false,
+        "human_review_required": true,
+        "excluded": false,
+        "verification_status": "page_checked_pending_teacher_review"
+      }
+    },
+    {
+      "id": "s1_u01_l01_q413",
+      "unit_id": "s1_u01",
+      "lesson_id": "s1_u01_l01",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "topic": "سورة آل عمران 102–105",
+      "prompt": "أي حجة يردّ بها على من يقول إن مجرد وصول البراهين كافٍ لحماية الأمة من الضعف؟",
+      "payload": {
+        "options": [
+          {
+            "id": "o1",
+            "text": "كل اختلاف يقع قبل ظهور الدليل"
+          },
+          {
+            "id": "o2",
+            "text": "الأدلة تغني الأمم عن العمل"
+          },
+          {
+            "id": "o3",
+            "text": "الضعف لا يتأثر بتنازع الناس"
+          },
+          {
+            "id": "o4",
+            "text": "تنازعت أمم بعد مجيء البيّنات فضعفت"
+          }
+        ]
+      },
+      "answer": {
+        "option_id": "o4"
+      },
+      "explanation": "ذكر الشرح أن الاختلاف بعد مجيء البراهين كان سببًا في الضعف.",
+      "delivery_allocation": "games_challenges",
+      "source": {
+        "document_id": "islamic_education_g11_s1_2026_uploaded_review_edition",
+        "printed_pages": [
+          9
+        ],
+        "pdf_pages": [
+          9
+        ]
+      },
+      "review": {
+        "source_checked": true,
+        "answer_checked": true,
+        "teacher_approved": false,
+        "human_review_required": true,
+        "excluded": false,
+        "verification_status": "page_checked_pending_teacher_review"
+      }
+    },
+    {
+      "id": "s1_u01_l01_q414",
+      "unit_id": "s1_u01",
+      "lesson_id": "s1_u01_l01",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "topic": "سورة آل عمران 102–105",
+      "prompt": "ما الدليل من موضوع الآية 103 من سورة آل عمران على أن للأمة أساسًا يجمع أفرادها؟",
+      "payload": {
+        "options": [
+          {
+            "id": "o1",
+            "text": "بيان حكم صلاة الجنازة"
+          },
+          {
+            "id": "o2",
+            "text": "ذكر وقت الصلوات الخمس"
+          },
+          {
+            "id": "o3",
+            "text": "الأمر بالاعتصام بحبل الله جميعًا"
+          },
+          {
+            "id": "o4",
+            "text": "تحديد عدد آيات السورة"
+          }
+        ]
+      },
+      "answer": {
+        "option_id": "o3"
+      },
+      "explanation": "موضوع الآية التمسك بالإسلام أساس وحدة الأمة.",
+      "delivery_allocation": "games_challenges",
+      "source": {
+        "document_id": "islamic_education_g11_s1_2026_uploaded_review_edition",
+        "printed_pages": [
+          7
+        ],
+        "pdf_pages": [
+          7
+        ]
+      },
+      "review": {
+        "source_checked": true,
+        "answer_checked": true,
+        "teacher_approved": false,
+        "human_review_required": true,
+        "excluded": false,
+        "verification_status": "page_checked_pending_teacher_review"
+      }
+    },
+    {
+      "id": "s1_u01_l01_q415",
+      "unit_id": "s1_u01",
+      "lesson_id": "s1_u01_l01",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "topic": "سورة آل عمران 102–105",
+      "prompt": "استثار شخصٌ عداوة قديمة بين جماعتين بعد صلحهما. ما وجه الشبه بين عمله وفعل شاس بن قيس؟",
+      "payload": {
+        "options": [
+          {
+            "id": "o1",
+            "text": "تنظيم التعاون على الخير"
+          },
+          {
+            "id": "o2",
+            "text": "محاولة تجديد النزاع بعد اجتماع القلوب"
+          },
+          {
+            "id": "o3",
+            "text": "السعي إلى إصلاح ذات البين"
+          },
+          {
+            "id": "o4",
+            "text": "تعليم الناس حكم فرض الكفاية"
+          }
+        ]
+      },
+      "answer": {
+        "option_id": "o2"
+      },
+      "explanation": "يذكر سبب النزول أنه استاء من اجتماع الأوس والخزرج وسعى إلى إثارة العداوة القديمة.",
+      "delivery_allocation": "games_challenges",
+      "source": {
+        "document_id": "islamic_education_g11_s1_2026_uploaded_review_edition",
+        "printed_pages": [
+          9
+        ],
+        "pdf_pages": [
+          9
+        ]
+      },
+      "review": {
+        "source_checked": true,
+        "answer_checked": true,
+        "teacher_approved": false,
+        "human_review_required": true,
+        "excluded": false,
+        "verification_status": "page_checked_pending_teacher_review"
+      }
+    }
+  ]
+}

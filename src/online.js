@@ -57,7 +57,7 @@ const Online=(()=>{
  async function command(name,args){
   if(state.busy||state.loading)return;const token=generation;state.busy=true;state.error='';state.notice='';clearTimeout(timer);paint();
   try{adopt(await rpc(name,args));failures=0;}
-  catch(error){if(error.stale)return;state.error=/educational_duel_create|educational_duel_finish|schema cache|Could not find/.test(error.message)?'الألعاب الأونلاين بانتظار التفعيل من إدارة الموقع. يمكنك اللعب الفردي الآن.':error.message;}
+  catch(error){if(error.stale)return;state.error=error.message.includes('activity_content_unavailable')?'مخزون الخادم لا يكفي لإكمال هذه الجولة. اختر نطاقًا أوسع.':name==='educational_duel_create'&&args?.p_unit?.startsWith('s1_')&&error.message.includes('invalid_activity_settings')?'الخادم لم يقبل نطاق السنة الأولى. راجع تفعيل تحديث المواجهات.':/educational_duel_create|educational_duel_finish|schema cache|Could not find/.test(error.message)?'الألعاب الأونلاين بانتظار التفعيل من إدارة الموقع. يمكنك اللعب الفردي الآن.':error.message;}
   finally{if(token===generation){state.busy=false;paint();schedule();}}
  }
  function outcome(room){

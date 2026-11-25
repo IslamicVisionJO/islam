@@ -86,7 +86,7 @@ async function complete(correct = true) {
 await test('initial load, real data counts, creator separate from learner', async () => {
   await fresh();
   const data = await page.evaluate(() => ({ units: S.units.length, lessons: allLessons().length, bank: S.questions.length, refined:REFINED_BANK_RELEASE, active: S.valid.length, name: S.profile.name, credit: document.body.textContent.includes(STUDENT_CREDIT) }));
-  assert.equal(data.units, 8); assert.equal(data.lessons, 51); assert.equal(data.bank, (data.refined?2795:2340)+2598); assert.ok(data.active > 0); assert.ok(data.credit); assert.notEqual(data.name, 'أيوب محمد البطوش');
+  assert.equal(data.units, 8); assert.equal(data.lessons, 51); assert.equal(data.bank, (data.refined?2795:2340)+2598+15); assert.ok(data.active > 0); assert.ok(data.credit); assert.notEqual(data.name, 'أيوب محمد البطوش');
 });
 await test('lesson visit is distinct from solved/completed/mastered and survives reload',async()=>{
   await fresh();await page.evaluate(async()=>{lesson('u02_l03');await db.get('profile');});

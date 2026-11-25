@@ -20,7 +20,7 @@
     "test:online:browser": "node tests/online-ui.spec.mjs",
     "test:background": "node tests/background-ui.spec.mjs",
     "test:games": "node --test tests/educational-content.test.mjs && node tests/educational-ui.spec.mjs && node tests/educational-lifecycle.spec.mjs",
-    "test:games:online": "node --test supabase/tests/educational-online.test.mjs && node tests/educational-online-ui.spec.mjs && node tests/educational-online-edge.spec.mjs",
+    "test:games:online": "node --test supabase/tests/educational-online.test.mjs supabase/tests/scoped-games.test.mjs && node tests/educational-online-ui.spec.mjs && node tests/educational-online-edge.spec.mjs",
     "test:sql-editor": "node --test supabase/tests/sql-editor-install.test.mjs && node tests/sql-editor-guide.spec.mjs",
     "test:learning": "node --test tests/learning.test.mjs && node tests/learning-ui.spec.mjs && node tests/learning-rewards.spec.mjs",
     "test:platform-lessons": "node tests/platform-lessons.spec.mjs",

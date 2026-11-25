@@ -4,7 +4,7 @@ const Auth=(()=>{
  const state={mode:'signed-out',configured:false,user:null,isAdmin:false,cloudStatus:'local',error:''};
  let client=null,initialising=null,unsubscribe=null,syncTimer=null,syncPromise=null,pending=null;
  let revision=0,ackHash=null,preparedUser=null,scopeToken=null,loggingOut=false,authStorageKey=null;
- const knownBank=()=>new Map([...EMBEDDED_QUESTIONS.questions,...(EMBEDDED_QUESTIONS.archivedQuestions||[])].filter(validQuestion).map(q=>[q.id,q]));
+ const knownBank=()=>new Map([...EMBEDDED_QUESTIONS.questions,...(EMBEDDED_QUESTIONS.ministerialQuestions||[]),...(EMBEDDED_QUESTIONS.archivedQuestions||[])].filter(validQuestion).map(q=>[q.id,q]));
  const stable=value=>Array.isArray(value)?value.map(stable):value&&typeof value==='object'?Object.fromEntries(Object.keys(value).sort().map(key=>[key,stable(value[key])])):value;
  const hash=async value=>[...new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(JSON.stringify(stable(value)))))].map(n=>n.toString(16).padStart(2,'0')).join('');
  const clean=records=>{const next=copy(records||{});delete next['cloud-sync'];return next;};

@@ -14,7 +14,14 @@ const Ministerial = (() => {
    if(Object.values(levels).every(items=>items.length===30))return levels;
   }
   const academicId=Revision.meta(id)?.academicId;
-  if(!academicId)return MINISTERIAL_REVIEW?.[id]||Revision.loaded(id,'levels')?.levels;
+  if(!academicId){
+   const cached=MINISTERIAL_REVIEW?.[id]||Revision.loaded(id,'levels')?.levels;
+   if(cached)return cached;
+   const levels={easy:[],medium:[],hard:[]};
+   for(const q of S.ministerial||[])if(q.lesson_id===id)levels[q.difficulty].push(q);
+   if(Object.values(levels).every(items=>items.length===30))return levels;
+   return;
+  }
   const levels={easy:[],medium:[],hard:[]};
   for(const q of ACADEMIC_STUDY[academicId].questions){
    levels[q.difficulty].push({id:q.id,type:'multiple_choice',prompt:q.prompt,explanation:q.explanation,

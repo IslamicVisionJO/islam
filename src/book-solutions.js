@@ -2,6 +2,7 @@ const BookSolutions=(()=>{
  let lessonId;
  const normalize=text=>text.normalize('NFKC').replace(/[\p{M}\u0640]/gu,'').replace(/[أإآ]/g,'ا');
  function open(id){
+  if(id&&firstScope(id)&&byLesson(id)){Learning.open(id,'solutions');return;}
   if(id&&!Object.hasOwn(BOOK_SOLUTIONS,id))return;
   lessonId=id||null;
   const hash=id?'#learning/'+id+'/solutions':'#learning/solutions';
@@ -15,7 +16,7 @@ const BookSolutions=(()=>{
     ${heroTitle('حلول الكتاب',lessonId?e(unitOfLesson(lessonId).name+' · '+byLesson(lessonId).name):'اختر درسًا لعرض أسئلته وإجاباته')}
     <label class="book-lesson-picker no-print">الدرس
     <select id="book-lesson"><option value="">اختر درسًا</option>
-    ${S.units.map(unit=>`<optgroup label="${e(unit.name)}">${unit.lessons.filter(lesson=>Object.hasOwn(BOOK_SOLUTIONS,lesson.id)).map(lesson=>`<option value="${lesson.id}" ${lessonId===lesson.id?'selected':''}>${e(lesson.name)}</option>`).join('')}</optgroup>`).join('')}
+    ${S.units.map(unit=>`<optgroup label="${firstScope(unit.id)?'السنة الأولى':'السنة الثانية'} · ${e(unit.name)}">${unit.lessons.filter(lesson=>firstScope(lesson.id)||Object.hasOwn(BOOK_SOLUTIONS,lesson.id)).map(lesson=>`<option value="${lesson.id}" ${lessonId===lesson.id?'selected':''}>${e(lesson.name)}</option>`).join('')}</optgroup>`).join('')}
     </select></label>
     ${!lessonId?'<button type="button" class="btn btn-outline" data-book-catalog>العودة إلى شرح الدروس</button>':`
     <div class="study-actions no-print"><button class="btn" data-learning="open" data-id="${lessonId}">العودة إلى شرح الدرس</button>
