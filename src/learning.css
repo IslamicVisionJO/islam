@@ -73,6 +73,8 @@ html:fullscreen .layout:has(.revision-reader) :is(.sidebar,.topbar,.site-footer,
   :root {
     --qa-ink:#17251f;
     --qa-paper:#ffffff;
+    --qa-success-bg:#dcfce7;--qa-success-ink:#166534;
+    --qa-error-bg:#fee2e2;--qa-error-ink:#991b1b;
     --qa-option:#f2f6f4;
     --qa-border:#52695d;
     --qa-accent:#075e42;
@@ -82,6 +84,8 @@ html:fullscreen .layout:has(.revision-reader) :is(.sidebar,.topbar,.site-footer,
   :root[data-theme="dark"] {
     --qa-ink:#f8faf9;
     --qa-paper:#101e25;
+    --qa-success-bg:#14532d;--qa-success-ink:#dcfce7;
+    --qa-error-bg:#7f1d1d;--qa-error-ink:#fee2e2;
     --qa-option:#1c3039;
     --qa-border:#82969b;
     --qa-accent:#a6edce;
@@ -153,25 +157,33 @@ html:fullscreen .layout:has(.revision-reader) :is(.sidebar,.topbar,.site-footer,
   :root .edu-play .edu-task > h2 {
     font-family:Tahoma,"Segoe UI","Noto Sans Arabic",sans-serif;
     font-weight:700;
-    color:#fff!important;
-    background:#123044!important;
+    color:var(--qa-ink)!important;
+    background:var(--qa-paper)!important;
   }
   :root .edu-play :is([data-edu="answer"],[data-edu="left"],[data-edu="right"],
     [data-edu="order"],[data-edu="remove"]) {
     font-family:Tahoma,"Segoe UI","Noto Sans Arabic",sans-serif;
     font-weight:700;
     line-height:1.8;
-    color:#fff!important;
-    background:#163b52!important;
-    border-color:#c6a660!important;
+    color:var(--qa-ink)!important;
+    background:var(--qa-option)!important;
+    border-color:var(--qa-border)!important;
   }
   :root .edu-play :is([data-edu="answer"],[data-edu="left"],[data-edu="right"],
     [data-edu="order"],[data-edu="remove"])[aria-pressed="true"] {
-    color:#102c24!important;
-    background:#bcebd4!important;
+    color:var(--qa-selected-ink)!important;
+    background:var(--qa-selected)!important;
     outline:3px solid #e5b857;
   }
-  :root .edu-play .edu-feedback :is(h2,p) {color:#fff!important}
+  #app :is(.edu-feedback,.wall-feedback)[data-correct=true],#app .review-good {
+    color:var(--qa-success-ink)!important;background:var(--qa-success-bg)!important;
+  }
+  #app :is(.edu-feedback,.wall-feedback)[data-correct=false],#app :is(.review-wrong,.timer-box.urgent) {
+    color:var(--qa-error-ink)!important;background:var(--qa-error-bg)!important;
+  }
+  #app [data-correct] :is(h2,h3,p,b,small) {color:inherit!important;background:transparent!important}
+  #app :is(.choice,.wall-choice,[data-edu=answer],.study-answers button):disabled {opacity:1;border-style:dashed}
+  #app :is(.choice,.wall-choice,[data-edu=answer]):active:not(:disabled) {box-shadow:inset 0 0 0 2px currentColor}
 }
 /* Consistent lesson breadcrumb and readable explanation panels on both BTEC years. */
 .learning-trail{padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--panel);line-height:1.7}

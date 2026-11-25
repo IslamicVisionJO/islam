@@ -9,7 +9,7 @@ const root=new URL('../',import.meta.url),base=process.env.TEST_BASE_URL||'http:
 const html=await readFile(new URL('dist/index.html',root),'utf8');
 assert.ok(html.includes('educational_duel_create'),'Build the online release before running this test');
 const testedBuildSha256=createHash('sha256').update(html).digest('hex');
-const backend=await createDuelServer(),browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||'/usr/bin/chromium',args:['--no-sandbox','--disable-dev-shm-usage']});
+const backend=await createDuelServer({educationalFiles:['migrations/005_educational_online.sql','migrations/014_scoped_educational_rooms.sql']}),browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||'/usr/bin/chromium',args:['--no-sandbox','--disable-dev-shm-usage']});
 const contexts=[],results=[],browserErrors=[],externalRequests=[];
 let host,guest,admin,roomID,invite,progressBefore;
 async function newClient(viewport){
@@ -50,13 +50,34 @@ const click=async(page,a,v)=>page.locator(`[data-edu="${a}"]${v===undefined?'':`
 async function solve(page,q){if(q.type==='matching'){for(const p of q.answer.pairs){await click(page,'left',p.left_id);await click(page,'right',p.right_id);}await click(page,'submit');}else if(q.type==='ordering'){for(const id of q.answer.ordered_ids)await click(page,'order',id);await click(page,'submit');}else await click(page,'answer',q.type==='true_false'?String(q.answer.value):q.answer.option_id);}
 try{
  host=await newClient({width:390,height:844});guest=await newClient({width:1280,height:900});await login(host,'host@example.test');await login(guest,'guest@example.test');
+ await step('second-semester training syncs and restores through the progress RPC',async()=>{
+  const itemIds=await host.evaluate(async()=>{
+   await createSession('training','u01_l01','easy','all',2,['أ','ب'],'none');
+   const ids=S.session.questions.map(q=>q.id);
+   if(!ids.every(id=>S.ministerial.some(q=>q.id===id)))throw Error('Wrong training bank');
+   while(S.session)await autoAnswer(S.session.questions[S.session.current].answer.option_id);
+   await Auth.syncNow();
+   return ids;
+  });
+  const saved=await backend.call({name:'read_progress',args:{user_id:ids.host},user:user(ids.host)});
+  assert.equal(saved.error,null);
+  assert.deepEqual(saved.data.records.results.at(-1).items.map(q=>q.id),itemIds);
+  const other=await backend.call({name:'read_progress',args:{user_id:ids.host},user:user(ids.guest)});
+  assert.equal(other.data,null);
+  const restored=await newClient({width:768,height:900});
+  await login(restored,'host@example.test');
+  assert.deepEqual(await restored.evaluate(()=>S.results.at(-1).items.map(q=>q.id)),itemIds);
+  await restored.context().close();
+ });
  for(let game=0;game<13;game++)await step(`Game ${game+1}: two clients complete the actual activity with server-scored results`,async()=>{
   await host.evaluate(()=>go('educational'));assert.equal(await host.locator('.edu-game-icon svg').count(),14);assert.equal(await host.locator('.edu-number').count(),0);
-  await host.selectOption('#edu-unit','u01');await host.selectOption('#edu-lesson','u01_l01');await host.selectOption('#edu-duration','custom');await host.locator('#edu-custom-duration').fill('137');await click(host,'online',game);await host.waitForSelector('[data-testid="online-room-code"]');invite=(await host.locator('[data-testid="online-room-code"]').textContent()).trim();
+  const unit=game===0?'s1_u01':'u01';
+  await host.selectOption('#edu-unit',unit);await host.selectOption('#edu-lesson',unit+'_l01');await host.selectOption('#edu-duration','custom');await host.locator('#edu-custom-duration').fill('137');await click(host,'online',game);await host.waitForSelector('[data-testid="online-room-code"]');invite=(await host.locator('[data-testid="online-room-code"]').textContent()).trim();
   const recent=await backend.call({name:'duel_recent',user:user(ids.host)});roomID=recent.data.find(r=>r.status==='waiting').id;
   await guest.evaluate(()=>go('online'));await guest.waitForTimeout(300);if(await guest.locator('[data-action="online-new"]').count())await guest.locator('[data-action="online-new"]').click();await guest.waitForSelector('#online-code');await guest.locator('#online-code').fill(invite);await guest.locator('#online-join-form button[type=submit]').click();await guest.waitForSelector('.edu-play');await host.waitForSelector('.edu-play');
   const initial=await snapshot(ids.host);assert.equal(initial.activity.seconds,137);assert.equal(Date.parse(initial.deadline)-Date.parse(initial.started_at),137000);
   const questions=(await backend.serialize(()=>backend.db.query('select questions from school_private.duel_rooms where id=$1',[roomID]))).rows[0].questions;
+  if(game===0){assert.equal(new Set(questions.map(q=>q.id)).size,15);assert.ok(questions.every(q=>q.lesson_id==='s1_u01_l01'));}
   // Reconnection must preserve this room's configured deadline and exact activity content.
   if(game===1){await host.reload();await host.waitForFunction(()=>typeof S!=='undefined'&&S.ready&&Auth.current().mode==='account');await host.evaluate(()=>go('online'));await host.waitForSelector('.edu-play');assert.equal((await snapshot(ids.host)).deadline,initial.deadline);}
   for(const [page,id] of [[host,ids.host],[guest,ids.guest]]){

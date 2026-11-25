@@ -125,6 +125,29 @@ try{
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false);
   await page.screenshot({path:new URL('artifacts/preset-sidebar-mobile.png',root).pathname});
  });
+ await test('Question, selection and feedback contrast across all saved backgrounds',async()=>{
+  const pairs=await page.evaluate(()=>{
+   const block=document.createElement('section');
+   block.className='edu-play';
+   block.innerHTML='<div class="edu-task"><h2>سؤال</h2></div><button data-edu="answer">خيار</button><button data-edu="answer" aria-pressed="true">محدد</button><button data-edu="answer" disabled>معطّل</button><div class="edu-feedback" data-correct="true">✓ صحيح</div><div class="edu-feedback" data-correct="false">✗ خطأ</div><div class="timer-box urgent">٠٥</div>';
+   document.querySelector('#app').append(block);
+   const pairs=new Set();
+   try{
+    for(const theme of ['light','dark'])for(const backgroundColor of ['',...BACKGROUND_PRESETS]){
+     applyAppearance({...S.settings,theme,backgroundColor});
+     for(const el of block.querySelectorAll('h2,button,.edu-feedback,.timer-box')){
+      const style=getComputedStyle(el);
+      pairs.add(style.color+'|'+style.backgroundColor);
+     }
+    }
+   }finally{block.remove();applyAppearance();}
+   return [...pairs];
+  });
+  for(const pair of pairs){
+   const [ink,paper]=pair.split('|');
+   assert.ok(!paper.startsWith('rgba')&&contrast(ink,paper)>=4.5,'Question contrast: '+pair);
+  }
+ });
  await test('Matching inline book favicon decodes and the frozen build has no browser errors or external requests',async()=>{
   const icon=await page.evaluate(async()=>{
    const link=document.querySelector('link[rel="icon"][type="image/svg+xml"]');if(!link)return null;

@@ -116,17 +116,22 @@ const SteamCalculators = (() => {
  }
  function zakat(form,kind) {
   if(kind==='livestock')return livestock(form);
-  let detail='',total;
+  // Keep fractional fils until after the nisab comparison (weights have three decimals).
+  const thousandths=key=>BigInt(Math.round(Number(form.get(key))*1000));
+  let numerator,denominator=1n,detail='';
   if(kind==='gold'){
-   const pure=[24,22,21,18,14].reduce((sum,k)=>sum+Number(form.get('gold'+k))*k/24,0);
-   detail='وزن الذهب الخالص '+digits.format(pure)+' غرام. ';
-   total=Math.round(pure*Number(form.get('price'))*1000);
+   const weighted=[24,22,21,18,14].reduce((sum,k)=>sum+thousandths('gold'+k)*BigInt(k),0n);
+   denominator=24000n;
+   numerator=weighted*thousandths('price');
+   detail='وزن الذهب الخالص '+digits.format(Number(weighted)/24000)+' غرام. ';
   }else if(kind==='shares'){
-   total=Number(form.get('shares'))*Math.round(Number(form.get('shareValue'))*1000);
-  }else total=['cash','trade','metals'].reduce((sum,key)=>sum+Math.round(Number(form.get(key))*1000),0);
-  const nisab=Math.round(Number(form.get('nisab'))*1000);
-  const reason=total<nisab?'المجموع دون النصاب.':form.get('year')!=='yes'?'لم يكتمل الحول الهجري.':'بلغ المال النصاب واكتمل الحول. نسبة الزكاة ٢٫٥٪.';
-  const due=total>=nisab&&form.get('year')==='yes'?total/40000:0;
+   numerator=BigInt(form.get('shares'))*thousandths('shareValue');
+  }else numerator=['cash','trade','metals'].reduce((sum,key)=>sum+thousandths(key),0n);
+  if(numerator>BigInt(Number.MAX_SAFE_INTEGER)*denominator)return 'القيمة الإجمالية تتجاوز نطاق الحساب الدقيق بالفلس.';
+  const total=Number(numerator)/Number(denominator);
+  const below=numerator<thousandths('nisab')*denominator;
+  const reason=below?'المجموع دون النصاب.':form.get('year')!=='yes'?'لم يكتمل الحول الهجري.':'بلغ المال النصاب واكتمل الحول. نسبة الزكاة ٢٫٥٪.';
+  const due=!below&&form.get('year')==='yes'?total/40000:0;
   return `<h3>الزكاة المستحقة · ${money(due)}</h3><p>${detail}القيمة الزكوية ${money(total/1000)}. ${reason}</p>`;
  }
  document.addEventListener('click',event=>{
@@ -149,6 +154,7 @@ const SteamCalculators = (() => {
   const form=event.target;
   if(!form.matches('[data-steam-calc]'))return;
   event.preventDefault();
+  if(!form.reportValidity())return;
   const data=new FormData(form);
   form.querySelector('[role=status]').innerHTML=form.dataset.steamCalc==='estate'?inheritance(data):zakat(data,form.dataset.steamCalc);
  });

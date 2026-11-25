@@ -25,6 +25,13 @@ document.addEventListener('click',event=>{
  window.open(url,'_blank','noopener,noreferrer');
  setTimeout(()=>URL.revokeObjectURL(url),60000);
 });
+const questionPlural=new Intl.PluralRules('ar-JO');
+function questionCount(n){
+ const form=questionPlural.select(n);
+ if(form==='one')return 'سؤال واحد';
+ if(form==='two')return 'سؤالان';
+ return nf(n)+' '+({few:'أسئلة',many:'سؤالًا'}[form]||'سؤال');
+}
 const pct=n=>`${Math.max(0,Math.min(100,n||0))}%`;
 const fmt=t=>{t=Math.max(0,Math.ceil(t));return `${String(Math.floor(t/60)).padStart(2,'0')}:${String(t%60).padStart(2,'0')}`;};
 const byLesson=id=>S.units.flatMap(u=>u.lessons).find(x=>x.id===id);

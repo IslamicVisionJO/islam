@@ -61,7 +61,7 @@ const Wall=(()=>{
   if(r.phase==='paused')body=`<div class="wall-feedback"><h3>اللعبة متوقفة</h3>${btn('resume','استئناف',busy)}</div>`;
   else if(r.phase==='feedback'){
    const a=r.feedback;
-   body=`<div class="wall-feedback ${a.correct?'wall-right':'wall-wrong'}" role="status"><h3>${a.correct?'إجابة صحيحة!':'راجع الإجابة'}</h3><p>${e(a.prompt)}</p><b>${e(a.answer)}</b><p>${e(a.explanation)}</p><small>صفحة الكتاب ${nf(a.page)}</small>
+   body=`<div class="wall-feedback ${a.correct?'wall-right':'wall-wrong'}" data-correct="${a.correct}" role="status"><h3>${a.correct?'✓ إجابة صحيحة!':'✗ راجع الإجابة'}</h3><p>${e(a.prompt)}</p><b>${e(a.answer)}</b><p>${e(a.explanation)}</p><small>صفحة الكتاب ${nf(a.page)}</small>
    ${r.streak===3?'<p>سلسلة 3 • +50 نقطة</p>':r.streak===5?'<p>سلسلة 5 • +100 نقطة وتراجع إضافي للجدار</p>':r.streak===10?'<p>سلسلة 10 • تجميد الجدار 3 ثوانٍ بعد المتابعة</p>':''}
    <div>${btn('next','متابعة',busy)}</div></div>`;
   }else if(countdown)body='<p class="wall-countdown" aria-live="polite" id="wall-countdown"></p>';

@@ -42,7 +42,7 @@ const Ministerial = (() => {
   }
   const {questions, responses, index, level, done} = attempt;
   const total = questions.length;
-  const heading = (firstScope(lesson.id)?'<p class="source-warning">'+FIRST_DRAFT_NOTE+'</p>':'') + (questionsPage?'':title) + `<p>المستوى ${e(DIFF_NAMES[level])} · ${nf(total)} سؤالًا</p>`;
+  const heading = (firstScope(lesson.id)?'<p class="source-warning">'+FIRST_DRAFT_NOTE+'</p>':'') + (questionsPage?'':title) + `<p>المستوى ${e(DIFF_NAMES[level])} · ${questionCount(total)}</p>`;
   if (done) {
    const correct = questions.filter(q => checkAnswer(q, responses.get(q.id))).length;
    return heading + `<p role="status">صحيحة ${nf(correct)} · خاطئة ${nf(answered()-correct)} · غير مجابة ${nf(total-answered())} · النسبة ${nf(Math.round(100*correct/total))}٪</p>
@@ -91,7 +91,7 @@ const Ministerial = (() => {
    if (action==='previous') attempt.index = Math.max(0,attempt.index-1);
    if (action==='submit') {
     const remaining = attempt.questions.length-answered();
-    if (!window.confirm(remaining ? `بقي ${nf(remaining)} سؤالًا بلا إجابة. هل تريد التسليم؟` : 'هل تريد تسليم الاختبار؟')) return;
+    if (!window.confirm(remaining ? `بقي ${questionCount(remaining)} بلا إجابة. هل تريد التسليم؟` : 'هل تريد تسليم الاختبار؟')) return;
     attempt.done = true;
    }
   }

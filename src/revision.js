@@ -80,7 +80,7 @@ const Revision=(()=>{
   const rows=(globalSearch?catalog.flatMap(l=>entries(l.id)):entries(selected.id)).filter(({row,lesson})=>
    (!filter||state().marks?.[row.id]?.[filter])&&(!query||normalize([lesson.title,row.question,row.answer].join(' ')).includes(normalize(query))));
   index=Math.max(0,Math.min(index,rows.length-1));
-  return `<p role="status">${nf(rows.length)} سؤالًا</p>${single&&rows.length?`<div class="study-actions no-print"><button class="btn" data-rev-step="-1" ${index?'':'disabled'}>السابق</button><span>${nf(index+1)} / ${nf(rows.length)}</span><button class="btn" data-rev-step="1" ${index===rows.length-1?'disabled':''}>التالي</button></div>`:''}
+  return `<p role="status">${questionCount(rows.length)}</p>${single&&rows.length?`<div class="study-actions no-print"><button class="btn" data-rev-step="-1" ${index?'':'disabled'}>السابق</button><span>${nf(index+1)} / ${nf(rows.length)}</span><button class="btn" data-rev-step="1" ${index===rows.length-1?'disabled':''}>التالي</button></div>`:''}
    ${(single?rows.slice(index,index+1):rows).map(item=>(globalSearch?`<h2>${button(item.lesson.id,item.lesson.title)}</h2>`:'')+article(item,true)).join('')}`;
  }
  function options(items,current){return items.map(([key,label])=>`<option value="${e(key)}" ${key===current?'selected':''}>${e(label)}</option>`).join('');}

@@ -268,6 +268,8 @@ html:fullscreen .layout:has(.revision-reader) :is(.sidebar,.topbar,.site-footer,
   :root {
     --qa-ink:#17251f;
     --qa-paper:#ffffff;
+    --qa-success-bg:#dcfce7;--qa-success-ink:#166534;
+    --qa-error-bg:#fee2e2;--qa-error-ink:#991b1b;
     --qa-option:#f2f6f4;
     --qa-border:#52695d;
     --qa-accent:#075e42;
@@ -277,6 +279,8 @@ html:fullscreen .layout:has(.revision-reader) :is(.sidebar,.topbar,.site-footer,
   :root[data-theme="dark"] {
     --qa-ink:#f8faf9;
     --qa-paper:#101e25;
+    --qa-success-bg:#14532d;--qa-success-ink:#dcfce7;
+    --qa-error-bg:#7f1d1d;--qa-error-ink:#fee2e2;
     --qa-option:#1c3039;
     --qa-border:#82969b;
     --qa-accent:#a6edce;
@@ -348,25 +352,33 @@ html:fullscreen .layout:has(.revision-reader) :is(.sidebar,.topbar,.site-footer,
   :root .edu-play .edu-task > h2 {
     font-family:Tahoma,"Segoe UI","Noto Sans Arabic",sans-serif;
     font-weight:700;
-    color:#fff!important;
-    background:#123044!important;
+    color:var(--qa-ink)!important;
+    background:var(--qa-paper)!important;
   }
   :root .edu-play :is([data-edu="answer"],[data-edu="left"],[data-edu="right"],
     [data-edu="order"],[data-edu="remove"]) {
     font-family:Tahoma,"Segoe UI","Noto Sans Arabic",sans-serif;
     font-weight:700;
     line-height:1.8;
-    color:#fff!important;
-    background:#163b52!important;
-    border-color:#c6a660!important;
+    color:var(--qa-ink)!important;
+    background:var(--qa-option)!important;
+    border-color:var(--qa-border)!important;
   }
   :root .edu-play :is([data-edu="answer"],[data-edu="left"],[data-edu="right"],
     [data-edu="order"],[data-edu="remove"])[aria-pressed="true"] {
-    color:#102c24!important;
-    background:#bcebd4!important;
+    color:var(--qa-selected-ink)!important;
+    background:var(--qa-selected)!important;
     outline:3px solid #e5b857;
   }
-  :root .edu-play .edu-feedback :is(h2,p) {color:#fff!important}
+  #app :is(.edu-feedback,.wall-feedback)[data-correct=true],#app .review-good {
+    color:var(--qa-success-ink)!important;background:var(--qa-success-bg)!important;
+  }
+  #app :is(.edu-feedback,.wall-feedback)[data-correct=false],#app :is(.review-wrong,.timer-box.urgent) {
+    color:var(--qa-error-ink)!important;background:var(--qa-error-bg)!important;
+  }
+  #app [data-correct] :is(h2,h3,p,b,small) {color:inherit!important;background:transparent!important}
+  #app :is(.choice,.wall-choice,[data-edu=answer],.study-answers button):disabled {opacity:1;border-style:dashed}
+  #app :is(.choice,.wall-choice,[data-edu=answer]):active:not(:disabled) {box-shadow:inset 0 0 0 2px currentColor}
 }
 /* Consistent lesson breadcrumb and readable explanation panels on both BTEC years. */
 .learning-trail{padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--panel);line-height:1.7}
@@ -1533,7 +1545,7 @@ const Wall=(()=>{
   if(r.phase==='paused')body=`<div class="wall-feedback"><h3>اللعبة متوقفة</h3>${btn('resume','استئناف',busy)}</div>`;
   else if(r.phase==='feedback'){
    const a=r.feedback;
-   body=`<div class="wall-feedback ${a.correct?'wall-right':'wall-wrong'}" role="status"><h3>${a.correct?'إجابة صحيحة!':'راجع الإجابة'}</h3><p>${e(a.prompt)}</p><b>${e(a.answer)}</b><p>${e(a.explanation)}</p><small>صفحة الكتاب ${nf(a.page)}</small>
+   body=`<div class="wall-feedback ${a.correct?'wall-right':'wall-wrong'}" data-correct="${a.correct}" role="status"><h3>${a.correct?'✓ إجابة صحيحة!':'✗ راجع الإجابة'}</h3><p>${e(a.prompt)}</p><b>${e(a.answer)}</b><p>${e(a.explanation)}</p><small>صفحة الكتاب ${nf(a.page)}</small>
    ${r.streak===3?'<p>سلسلة 3 • +50 نقطة</p>':r.streak===5?'<p>سلسلة 5 • +100 نقطة وتراجع إضافي للجدار</p>':r.streak===10?'<p>سلسلة 10 • تجميد الجدار 3 ثوانٍ بعد المتابعة</p>':''}
    <div>${btn('next','متابعة',busy)}</div></div>`;
   }else if(countdown)body='<p class="wall-countdown" aria-live="polite" id="wall-countdown"></p>';
@@ -1981,6 +1993,13 @@ document.addEventListener('click',event=>{
  window.open(url,'_blank','noopener,noreferrer');
  setTimeout(()=>URL.revokeObjectURL(url),60000);
 });
+const questionPlural=new Intl.PluralRules('ar-JO');
+function questionCount(n){
+ const form=questionPlural.select(n);
+ if(form==='one')return 'سؤال واحد';
+ if(form==='two')return 'سؤالان';
+ return nf(n)+' '+({few:'أسئلة',many:'سؤالًا'}[form]||'سؤال');
+}
 const pct=n=>`${Math.max(0,Math.min(100,n||0))}%`;
 const fmt=t=>{t=Math.max(0,Math.ceil(t));return `${String(Math.floor(t/60)).padStart(2,'0')}:${String(t%60).padStart(2,'0')}`;};
 const byLesson=id=>S.units.flatMap(u=>u.lessons).find(x=>x.id===id);
@@ -2683,7 +2702,7 @@ const Educational=(()=>{
  function scopeLabel(){return lesson!=='all'?byLesson(lesson)?.name:unit==='s1_all'?'جميع وحدات السنة الأولى':unit!=='all'?unitLabel(unitFor(unit)):'جميع وحدات السنة الثانية';}
  function view(){restore();if(!g)return catalog();const q=current();if(!q)return catalog();let body='';const feedback=g.feedback;
  if(g.done)return `${g.game!==0?EducationalScenes.outcome(g):''}${g.game===0&&!g.online?`<div class="million-outcome ${g.won?'is-win':'is-loss'}"><h2>${g.won?'اكتمل الفوز!':'انتهت الجولة'}</h2><p>${g.won?(g.cloud?'أجبت عن جميع الأسئلة. المكافأة المؤكدة: '+nf(g.cloud.awardCoins)+' عملات في محفظة المليون.':g.practice?'أكملت التدريب. لا توجد مكافأة مالية لهذه الجولة.':'أجبت عن جميع الأسئلة بنجاح.'):'لم يتحقق الفوز الكامل؛ مكافأة الفوز صفر، والعملات صفر.'}</p></div>`:''}${heroTitle(C.names[g.game],'اكتملت الجولة ضمن: '+scopeLabel())}<section class="surface panel"><h2>${nf(g.score)} نقطة</h2><p>مكافأة الجولة المحفوظة: ${nf(S.results.find(r=>r.id===g.id)?.reward?.xp||0)} XP</p><p>${nf(g.items.filter(x=>x.correct).length)} إجابات صحيحة من ${nf(g.items.length)} • ${nf(g.floors)} طوابق</p><p>${g.online?'أُرسلت إجاباتك إلى خادم الغرفة. النتيجة النهائية تظهر بعد انتهاء لعبكما أو الوقت المشترك.':authState().mode==='guest'?'تقدم الضيف مؤقت.':'النتيجة في تقدم حسابك؛ راجع حالة المزامنة لتأكيد الحفظ السحابي.'}</p>${g.items.map(x=>`<details><summary>${x.correct?'✓':'✕'} ${e(S.byId.get(x.id)?.prompt)}</summary><p>${e(describeAnswer(S.byId.get(x.id)))}</p>${source(S.byId.get(x.id))}</details>`).join('')}${g.online?btn('العودة إلى الألعاب','catalog'):btn('العب مجددًا','replay')+btn('جميع الألعاب','catalog')}</section>`;
- if(feedback)body=`<section class="edu-feedback" role="status"><h2>${feedback.correct?'إجابة صحيحة':'تحتاج إلى مراجعة'}</h2><p>${e(describeAnswer(q))}</p>${source(q)}${btn(g.game===2&&!feedback.correct?'حاول فتح القفل مجددًا':'متابعة','next')}</section>`;
+ if(feedback)body=`<section class="edu-feedback" data-correct="${feedback.correct}" role="status"><h2>${feedback.correct?'✓ إجابة صحيحة':'✗ تحتاج إلى مراجعة'}</h2><p>${e(describeAnswer(q))}</p>${source(q)}${btn(g.game===2&&!feedback.correct?'حاول فتح القفل مجددًا':'متابعة','next')}</section>`;
  else if(g.game===9)body=`<p>انقر بداية الكلمة ونهايتها في الصف نفسه؛ تُقرأ الحروف من اليمين إلى اليسار.</p><div class="edu-word-list">${g.words.map((w,i)=>`<span>${g.found.includes(i)?'✓':''} ${e(g.terms[i])}</span>`).join('')}</div><div class="edu-grid" dir="rtl">${g.grid.flatMap((row,r)=>row.map((ch,c)=>btn(ch,'cell',`${r},${c}`,`aria-label="صف ${r+1} عمود ${c+1} ${ch}" aria-pressed="${g.anchor===`${r},${c}`||g.found.includes(r)&&c<g.words[r].length}"`))).join('')}</div><div role="status">${g.notice||''}</div>`;
  else if(g.game===7)body=`<h2>كوّن المصطلح: ${e(C.terms([q]).find(t=>t.term===g.terms[g.index])?.definition)}</h2><p class="edu-spelling" aria-live="polite">${g.picks.map(id=>g.letters.find(x=>x.id===id).text).join('')||'…'}</p><div class="edu-choices">${g.letters.filter(x=>!g.picks.includes(x.id)).map(x=>btn(x.text,'letter',x.id)).join('')}</div>${btn('تراجع','undo')}${btn('إعادة المحاولة','clear')}${btn('تحقق','spell')}`;
  else if(g.game===12){body=Date.now()<g.previewUntil?`<h2>تذكر ترتيب المفاهيم</h2><ol>${g.sequence.map(id=>`<li>${e(q.payload.left.find(x=>x.id===id).text)}</li>`).join('')}</ol>`:g.recalled.length<g.sequence.length?`<p>أعد التسلسل: ${nf(g.recalled.length)} / ${nf(g.sequence.length)}</p>${q.payload.left.map(x=>btn(x.text,'recall',x.id)).join('')}`:`<h2>والآن صِل المفاهيم بمعانيها</h2>${controls(q)}`;}
@@ -2842,7 +2861,7 @@ const Revision=(()=>{
   const rows=(globalSearch?catalog.flatMap(l=>entries(l.id)):entries(selected.id)).filter(({row,lesson})=>
    (!filter||state().marks?.[row.id]?.[filter])&&(!query||normalize([lesson.title,row.question,row.answer].join(' ')).includes(normalize(query))));
   index=Math.max(0,Math.min(index,rows.length-1));
-  return `<p role="status">${nf(rows.length)} سؤالًا</p>${single&&rows.length?`<div class="study-actions no-print"><button class="btn" data-rev-step="-1" ${index?'':'disabled'}>السابق</button><span>${nf(index+1)} / ${nf(rows.length)}</span><button class="btn" data-rev-step="1" ${index===rows.length-1?'disabled':''}>التالي</button></div>`:''}
+  return `<p role="status">${questionCount(rows.length)}</p>${single&&rows.length?`<div class="study-actions no-print"><button class="btn" data-rev-step="-1" ${index?'':'disabled'}>السابق</button><span>${nf(index+1)} / ${nf(rows.length)}</span><button class="btn" data-rev-step="1" ${index===rows.length-1?'disabled':''}>التالي</button></div>`:''}
    ${(single?rows.slice(index,index+1):rows).map(item=>(globalSearch?`<h2>${button(item.lesson.id,item.lesson.title)}</h2>`:'')+article(item,true)).join('')}`;
  }
  function options(items,current){return items.map(([key,label])=>`<option value="${e(key)}" ${key===current?'selected':''}>${e(label)}</option>`).join('');}
@@ -2944,7 +2963,7 @@ const Ministerial = (() => {
   }
   const {questions, responses, index, level, done} = attempt;
   const total = questions.length;
-  const heading = (firstScope(lesson.id)?'<p class="source-warning">'+FIRST_DRAFT_NOTE+'</p>':'') + (questionsPage?'':title) + `<p>المستوى ${e(DIFF_NAMES[level])} · ${nf(total)} سؤالًا</p>`;
+  const heading = (firstScope(lesson.id)?'<p class="source-warning">'+FIRST_DRAFT_NOTE+'</p>':'') + (questionsPage?'':title) + `<p>المستوى ${e(DIFF_NAMES[level])} · ${questionCount(total)}</p>`;
   if (done) {
    const correct = questions.filter(q => checkAnswer(q, responses.get(q.id))).length;
    return heading + `<p role="status">صحيحة ${nf(correct)} · خاطئة ${nf(answered()-correct)} · غير مجابة ${nf(total-answered())} · النسبة ${nf(Math.round(100*correct/total))}٪</p>
@@ -2993,7 +3012,7 @@ const Ministerial = (() => {
    if (action==='previous') attempt.index = Math.max(0,attempt.index-1);
    if (action==='submit') {
     const remaining = attempt.questions.length-answered();
-    if (!window.confirm(remaining ? `بقي ${nf(remaining)} سؤالًا بلا إجابة. هل تريد التسليم؟` : 'هل تريد تسليم الاختبار؟')) return;
+    if (!window.confirm(remaining ? `بقي ${questionCount(remaining)} بلا إجابة. هل تريد التسليم؟` : 'هل تريد تسليم الاختبار؟')) return;
     attempt.done = true;
    }
   }
@@ -3121,17 +3140,22 @@ const SteamCalculators = (() => {
  }
  function zakat(form,kind) {
   if(kind==='livestock')return livestock(form);
-  let detail='',total;
+  // Keep fractional fils until after the nisab comparison (weights have three decimals).
+  const thousandths=key=>BigInt(Math.round(Number(form.get(key))*1000));
+  let numerator,denominator=1n,detail='';
   if(kind==='gold'){
-   const pure=[24,22,21,18,14].reduce((sum,k)=>sum+Number(form.get('gold'+k))*k/24,0);
-   detail='وزن الذهب الخالص '+digits.format(pure)+' غرام. ';
-   total=Math.round(pure*Number(form.get('price'))*1000);
+   const weighted=[24,22,21,18,14].reduce((sum,k)=>sum+thousandths('gold'+k)*BigInt(k),0n);
+   denominator=24000n;
+   numerator=weighted*thousandths('price');
+   detail='وزن الذهب الخالص '+digits.format(Number(weighted)/24000)+' غرام. ';
   }else if(kind==='shares'){
-   total=Number(form.get('shares'))*Math.round(Number(form.get('shareValue'))*1000);
-  }else total=['cash','trade','metals'].reduce((sum,key)=>sum+Math.round(Number(form.get(key))*1000),0);
-  const nisab=Math.round(Number(form.get('nisab'))*1000);
-  const reason=total<nisab?'المجموع دون النصاب.':form.get('year')!=='yes'?'لم يكتمل الحول الهجري.':'بلغ المال النصاب واكتمل الحول. نسبة الزكاة ٢٫٥٪.';
-  const due=total>=nisab&&form.get('year')==='yes'?total/40000:0;
+   numerator=BigInt(form.get('shares'))*thousandths('shareValue');
+  }else numerator=['cash','trade','metals'].reduce((sum,key)=>sum+thousandths(key),0n);
+  if(numerator>BigInt(Number.MAX_SAFE_INTEGER)*denominator)return 'القيمة الإجمالية تتجاوز نطاق الحساب الدقيق بالفلس.';
+  const total=Number(numerator)/Number(denominator);
+  const below=numerator<thousandths('nisab')*denominator;
+  const reason=below?'المجموع دون النصاب.':form.get('year')!=='yes'?'لم يكتمل الحول الهجري.':'بلغ المال النصاب واكتمل الحول. نسبة الزكاة ٢٫٥٪.';
+  const due=!below&&form.get('year')==='yes'?total/40000:0;
   return `<h3>الزكاة المستحقة · ${money(due)}</h3><p>${detail}القيمة الزكوية ${money(total/1000)}. ${reason}</p>`;
  }
  document.addEventListener('click',event=>{
@@ -3154,6 +3178,7 @@ const SteamCalculators = (() => {
   const form=event.target;
   if(!form.matches('[data-steam-calc]'))return;
   event.preventDefault();
+  if(!form.reportValidity())return;
   const data=new FormData(form);
   form.querySelector('[role=status]').innerHTML=form.dataset.steamCalc==='estate'?inheritance(data):zakat(data,form.dataset.steamCalc);
  });
