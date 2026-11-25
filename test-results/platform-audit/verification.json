@@ -1,0 +1,22 @@
+{
+  "sha256": "98db6687ebcd8a38aa99845e97027efd55588674c13b04d2dac5a27480dace79",
+  "results": {
+    "unit": "ℹ pass 128",
+    "browser": "35 passed, 0 failed.",
+    "accounts": "14 passed, 0 failed.",
+    "duels": "6 passed, 0 failed.",
+    "sqlSecurityAndAccounts": "ℹ pass 41",
+    "lessons": "Passed 204 lesson tab checks, seven widths, two themes, bookmarks, global search, reload and history.",
+    "btec": "PASS: single compendium entry, 8 question units split by year, 51 lesson cards, 25 first-year MP4 videos and resume verified, first-year draft isolated, HTML reader, PDF downloads, cross-semester search and deep links.",
+    "ministerialRelease": "PASS ministerial review exams: all levels, Arabic keyboard controls, grading, results, phone and desktop.",
+    "ministerialPreview": "PASS ministerial review exams: all levels, Arabic keyboard controls, grading, results, phone and desktop.",
+    "academic": "Passed: academic catalog, solutions, cards, account reload, quiz scoring, memorization and six game modes.",
+    "mergedCalculators": "Passed four zakat forms and a two-child inheritance example on mobile.",
+    "completeCheck": "Passed 204 lesson tab checks, seven widths, two themes, bookmarks, global search, reload and history."
+  },
+  "scope": "Chromium, isolated browser clients, PostgreSQL through PGlite, local /islam/ path. The final content revision was rechecked using the separate unit, browser, account, duel and lesson suites.",
+  "skipped": [
+    "Managed Chromium file:// navigation"
+  ],
+  "hostedSupabaseTested": false
+}

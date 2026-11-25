@@ -106,3 +106,9 @@
 ## ملفات التنفيذ وإعادة التحقق
 
 توجد بيانات البطاقات في `data/revision-cards.json` وتصحيحات الحلول في `data/academic-semester-one.json`. يطابق `scripts/revision-data.mjs` المصادر ويطبّق حالات النشر. يبني `scripts/revision-coverage.mjs` مصفوفة الصفحات. يشغّل `npm run print:revision` الطباعة ثم ينسخ البناء ملفات PDF من `public/revision-downloads`. تتضمن واجهات التنفيذ `src/revision.js` و`src/learning.js` و`src/learning.css` و`src/ministerial.js` و`src/academic-semester.js` و`src/book-solutions.js` و`src/enrichment.js` و`src/ui.js`. حُدّثت سكربتات البناء والاستيراد والنشر وتوثيق النشر واختبارات المتصفح وملفات HTML المولدة.
+
+## التحقق من النشر في 25 تشرين الثاني 2026
+
+نُشر إصدار التدقيق من المصدر `42313fd`، واجتاز GitHub Pages عملية النشر. يوثّق سجل الاختبارات بصمة ذلك الإصدار. [سجل الاختبارات](test-results/platform-audit/verification.json) · [عملية النشر](https://github.com/IslamicVisionJO/islam/actions/runs/45477710675)
+
+تضمّن الإصدار اللاحق `18a0936` تعديلات إضافية على تدريب السنة الأولى وصفحات الشرح. تحقّقنا من مطابقة سجل الإصدار على فرع النشر لهذا المصدر، ومن بصمة HTML ووجود ملفات المكثف الثلاثة. أكمل GitHub Pages نشر الالتزام `ac80513` بنجاح. أعادت شبكة البيئة الرمز 403 عند طلب الموقع العام مباشرة. نتائج اختبارات إصدار التدقيق أعلاه تخص النسخة المذكورة في سجلها. [نشر الإصدار اللاحق](https://github.com/IslamicVisionJO/islam/actions/runs/45528685441)
