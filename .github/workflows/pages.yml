@@ -1,6 +1,10 @@
 name: Publish digital platform
 on:
   workflow_dispatch:
+  push:
+    branches: [digital-platform]
+    paths:
+      - src/arcade-games.js
 permissions:
   contents: read
   pages: write
@@ -10,6 +14,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   deploy:
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[publish arcade 2026-11-26]')
     runs-on: ubuntu-latest
     environment:
       name: github-pages
@@ -21,6 +26,9 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: node tests/arcade-browser.spec.mjs
+      - run: node --test tests/arcade-games.test.mjs tests/arcade-rooms.test.mjs
       - run: npm run build
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
