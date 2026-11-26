@@ -1,0 +1,35 @@
+name: Verify arcade games on public website
+on:
+  pull_request:
+    branches: [digital-platform]
+permissions:
+  contents: read
+jobs:
+  production:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Verify public HTML against the deployed build
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected=e5eed415c3596a2a3118ec086ae500383844fbd6f75058c06a0bc3e671d157aa
+          for attempt in $(seq 1 20); do
+            url="https://islamicvisionjo.github.io/islam/?arcade=14bbbb5c-$attempt"
+            if curl -fsSL --max-time 15 "$url" -o /tmp/live.html; then
+              actual=$(sha256sum /tmp/live.html | cut -d' ' -f1)
+              echo "Attempt $attempt: public HTML SHA-256 $actual"
+              if [ "$actual" = "$expected" ]; then
+                grep -Fq 'const ArcadeGames=' /tmp/live.html
+                grep -Fq 'ArcadeGames.cards(bank,unit,lesson)' /tmp/live.html
+                for label in 'تحدي المكعبات' 'غزاة الفضاء' 'تحدي الفقاعات' 'تحدي البلاطات'; do
+                  grep -Fq "$label" /tmp/live.html || exit 1
+                done
+                echo 'Verified: exact deployed build and all four arcade games on the public site.'
+                exit 0
+              fi
+            fi
+            sleep 5
+          done
+          echo 'The public site has not returned the new build yet.'
+          exit 1
