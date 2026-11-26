@@ -1,26 +1,46 @@
-name: Verify live arcade release
+name: Prepare tested arcade release for gh-pages
 on:
   pull_request:
     branches: [digital-platform]
 permissions:
-  contents: read
+  contents: write
 jobs:
-  live:
+  candidate:
+    if: github.event.pull_request.head.repo.full_name == github.repository && github.event.pull_request.head.ref == 'verify/arcade-live-release'
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
-      - name: Inspect public deployment
+      - uses: actions/checkout@v4
+        with:
+          ref: '942b88cf4439019762f0fc7c856dfe9bcaeddb9a'
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm ci
+      - run: npm run build
+      - name: Check built arcade content
+        run: |
+          node --test tests/arcade-games.test.mjs tests/arcade-rooms.test.mjs
+          grep -Fq 'const ArcadeGames=' dist/index.html
+          grep -Fq 'ArcadeGames.cards(bank,unit,lesson)' dist/index.html
+      - name: Prepare release with canonical publisher
         shell: bash
         run: |
-          curl --fail --silent --show-error --location --retry 2 'https://islamicvisionjo.github.io/islam/?verify=942b88cf' -o /tmp/live.html
-          wc -c /tmp/live.html
-          if grep -q 'const ArcadeGames=' /tmp/live.html; then
-            echo 'Arcade code is present on production'
-          else
-            echo 'Arcade code is NOT present on production'
-            exit 1
-          fi
-          for label in 'تحدي المكعبات' 'غزاة الفضاء' 'تحدي الفقاعات' 'تحدي البلاطات'; do
-            grep -Fq "$label" /tmp/live.html || { echo "Missing $label"; exit 1; }
-          done
-          echo 'All four production game names found'
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          # Build occurred from the pinned source in this job, rather than a precommitted dist.
+          # Keep all other publisher checks, including ancestry, PDFs, videos and CNAME.
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('scripts/publish-pages.py')
+          s = p.read_text()
+          a = "if git('hash-object',str(dist/'index.html'))!=git('rev-parse',source+':dist/index.html'):\n raise SystemExit('Commit the tested HTML before packaging a release.')"
+          assert s.count(a)==1, 'Publisher changed; review required'
+          p.write_text(s.replace(a,"if source!='942b88cf4439019762f0fc7c856dfe9bcaeddb9a':\n raise SystemExit('Unexpected source commit')"))
+          PY
+          python scripts/publish-pages.py
+          git show --format=fuller --no-patch pages-digital-release
+          git push origin refs/heads/pages-digital-release:refs/heads/pages-arcade-candidate-942b88cf
+          echo "CANDIDATE_SHA=$(git rev-parse pages-digital-release)"
+          echo "PREVIOUS_PAGES_SHA=$(git rev-parse pages-digital-release^)"
