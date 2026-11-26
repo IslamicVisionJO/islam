@@ -1,0 +1,26 @@
+name: Verify live arcade release
+on:
+  pull_request:
+    branches: [digital-platform]
+permissions:
+  contents: read
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Inspect public deployment
+        shell: bash
+        run: |
+          curl --fail --silent --show-error --location --retry 2 'https://islamicvisionjo.github.io/islam/?verify=942b88cf' -o /tmp/live.html
+          wc -c /tmp/live.html
+          if grep -q 'const ArcadeGames=' /tmp/live.html; then
+            echo 'Arcade code is present on production'
+          else
+            echo 'Arcade code is NOT present on production'
+            exit 1
+          fi
+          for label in 'تحدي المكعبات' 'غزاة الفضاء' 'تحدي الفقاعات' 'تحدي البلاطات'; do
+            grep -Fq "$label" /tmp/live.html || { echo "Missing $label"; exit 1; }
+          done
+          echo 'All four production game names found'
