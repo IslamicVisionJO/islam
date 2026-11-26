@@ -1,0 +1,21 @@
+name: Arcade browser checks
+on:
+  pull_request:
+    branches: [digital-platform]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  chromium:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: node tests/arcade-browser.spec.mjs
+      - run: node --test tests/arcade-games.test.mjs tests/arcade-rooms.test.mjs
+      - run: npm run build
