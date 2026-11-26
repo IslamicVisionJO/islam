@@ -1,46 +1,35 @@
-name: Prepare tested arcade release for gh-pages
+name: Verify arcade games on public website
 on:
   pull_request:
     branches: [digital-platform]
 permissions:
-  contents: write
+  contents: read
 jobs:
-  candidate:
-    if: github.event.pull_request.head.repo.full_name == github.repository && github.event.pull_request.head.ref == 'verify/arcade-live-release'
+  production:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: '942b88cf4439019762f0fc7c856dfe9bcaeddb9a'
-          fetch-depth: 0
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '24'
-      - run: npm ci
-      - run: npm run build
-      - name: Check built arcade content
-        run: |
-          node --test tests/arcade-games.test.mjs tests/arcade-rooms.test.mjs
-          grep -Fq 'const ArcadeGames=' dist/index.html
-          grep -Fq 'ArcadeGames.cards(bank,unit,lesson)' dist/index.html
-      - name: Prepare release with canonical publisher
+      - name: Verify public HTML against the deployed build
         shell: bash
         run: |
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          # Build occurred from the pinned source in this job, rather than a precommitted dist.
-          # Keep all other publisher checks, including ancestry, PDFs, videos and CNAME.
-          python - <<'PY'
-          from pathlib import Path
-          p = Path('scripts/publish-pages.py')
-          s = p.read_text()
-          a = "if git('hash-object',str(dist/'index.html'))!=git('rev-parse',source+':dist/index.html'):\n raise SystemExit('Commit the tested HTML before packaging a release.')"
-          assert s.count(a)==1, 'Publisher changed; review required'
-          p.write_text(s.replace(a,"if source!='942b88cf4439019762f0fc7c856dfe9bcaeddb9a':\n raise SystemExit('Unexpected source commit')"))
-          PY
-          python scripts/publish-pages.py
-          git show --format=fuller --no-patch pages-digital-release
-          git push origin refs/heads/pages-digital-release:refs/heads/pages-arcade-candidate-942b88cf
-          echo "CANDIDATE_SHA=$(git rev-parse pages-digital-release)"
-          echo "PREVIOUS_PAGES_SHA=$(git rev-parse pages-digital-release^)"
+          set -euo pipefail
+          expected=e5eed415c3596a2a3118ec086ae500383844fbd6f75058c06a0bc3e671d157aa
+          for attempt in $(seq 1 20); do
+            url="https://islamicvisionjo.github.io/islam/?arcade=14bbbb5c-$attempt"
+            if curl -fsSL --max-time 15 "$url" -o /tmp/live.html; then
+              actual=$(sha256sum /tmp/live.html | cut -d' ' -f1)
+              echo "Attempt $attempt: public HTML SHA-256 $actual"
+              if [ "$actual" = "$expected" ]; then
+                grep -Fq 'const ArcadeGames=' /tmp/live.html
+                grep -Fq 'ArcadeGames.cards(bank,unit,lesson)' /tmp/live.html
+                for label in 'تحدي المكعبات' 'غزاة الفضاء' 'تحدي الفقاعات' 'تحدي البلاطات'; do
+                  grep -Fq "$label" /tmp/live.html || exit 1
+                done
+                echo 'Verified: exact deployed build and all four arcade games on the public site.'
+                exit 0
+              fi
+            fi
+            sleep 5
+          done
+          echo 'The public site has not returned the new build yet.'
+          exit 1
