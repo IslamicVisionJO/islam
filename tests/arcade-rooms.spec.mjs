@@ -7,17 +7,28 @@ import {simulation,loadGame,eventIndex} from '../public/arcade/replay.mjs';
 const base=process.env.ARCADE_TEST_URL||'http://127.0.0.1:4173/islam/';
 const {db,serialize}=await createDuelServer({educationalFiles:[]});
 const browser=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox']});
-async function rpc(uid,action,p={}){
+async function rpc(uid,action,p={},social=false){
  return serialize(()=>db.transaction(async tx=>{
   await tx.exec('set local role authenticated');
   await tx.query("select set_config('request.jwt.claims',$1,true)",[JSON.stringify({sub:uid,session_id:'a'+uid.slice(1),amr:[{method:'password'}]})]);
-  return (await tx.query('select public.arcade_room($1,$2::jsonb) v',[action,JSON.stringify(p)])).rows[0].v;
+  return (await tx.query(social?'select public.arcade_social($1,$2::jsonb) v':'select public.arcade_room($1,$2::jsonb) v',[action,JSON.stringify(p)])).rows[0].v;
  }));
 }
 try{
  await db.exec('create role service_role');
- for(const name of ['014_arcade_rooms','015_arcade_bank'])await db.exec(await readFile('supabase/migrations/'+name+'.sql','utf8'));
+ for(const name of ['014_arcade_rooms','015_arcade_bank','016_arcade_social'])await db.exec(await readFile('supabase/migrations/'+name+'.sql','utf8'));
+ const social=(uid,action,p={})=>rpc(uid,action,p,true);
+ const hostCode=(await social(ids.host,'list')).code,guestCode=(await social(ids.guest,'list')).code;
+ await social(ids.host,'request',{code:guestCode});assert.equal((await social(ids.guest,'accept',{code:hostCode})).contacts[0].accepted,true);
+ await social(ids.host,'report',{question:'s1_u01_l01_q401',note:'اختبار محلي للبلاغ'});
+ await assert.rejects(social(ids.guest,'reports'));assert.equal((await social(ids.admin,'reports')).length,1);
  await assert.rejects(rpc(ids.guest,'admin',{}),/administrator_required/);
+ await rpc(ids.admin,'admin',{game:'blocks',points:125,levels:['easy','medium']});
+ await assert.rejects(rpc(ids.host,'create',{game:'blocks',level:'hard',duration:45,capacity:2,mode:'versus',lessons:['s1_u01_l01']}),/level_disabled/);
+ await social(ids.admin,'competition_create',{title:'مسابقة الاختبار',game:'blocks',days:1});
+ const cup=(await social(ids.host,'competitions'))[0];assert.ok(cup.id);
+ // Match timestamps below are advanced in the database to exercise the entire round.
+ await db.query("update school_private.arcade_competitions set opens=opens-interval '2 minutes' where id=$1",[cup.id]);
  for(const [game,mode] of [['blocks','versus'],['space','coop'],['tiles','versus'],['bubbles','versus']]){
   const args={game,mode,capacity:2,duration:45,level:'easy',lessons:['s1_u01_l01']};
   const ctxs=await Promise.all([browser.newContext(),browser.newContext()]);
@@ -36,7 +47,9 @@ try{
    const [a,b]=pages;
    await a.locator('[data-mode]').selectOption(mode);
    await a.locator('[data-act=create]').click();await a.locator('code').waitFor({timeout:8000});
-   const code=await a.locator('code').textContent();await b.locator('[data-code]').fill(code);await b.locator('[data-act=join]').click();
+   const code=await a.locator('code').textContent();
+   const waiting=(await db.query('select id from school_private.arcade_rooms where code=$1',[code])).rows[0].id;
+   await social(ids.host,'invite',{room:waiting,code:guestCode});assert.equal((await social(ids.guest,'list')).invites[0].code,code);await b.locator('[data-code]').fill(code);await b.locator('[data-act=join]').click();
    await a.locator('[data-act=ready]').click();await b.locator('[data-act=ready]').click();await Promise.all(pages.map(p=>p.locator('canvas').waitFor()));
    const rid=(await db.query('select id from school_private.arcade_rooms where code=$1',[code])).rows[0].id;
    await assert.rejects(rpc(ids.outsider,'state',{room:rid}));
@@ -52,6 +65,8 @@ try{
    const sim=simulation(state,await loadGame(game));sim.advance(45*60,eventIndex(state.events),state.players);
    for(let n=0;n<2;n++)await db.query('select public.arcade_verify_commit($1,$2::jsonb)',[rid,JSON.stringify(state.players.map(p=>sim.score(p.slot)))]);
    await Promise.all(pages.map(p=>p.getByRole('heading',{name:'انتهت المباراة'}).waitFor()));
+   if(game==='blocks'){assert.equal(state.knowledgePoints,125);assert.equal((await social(ids.host,'competition_scores',{id:cup.id})).length,2);}
+   assert.equal((await social(ids.host,'ranking')).length,2);
    assert.equal((await rpc(ids.host,'history')).filter(r=>r.id===rid).length,1);
    console.log('PASS two independent browser sessions:',game,mode);
   }finally{await Promise.all(ctxs.map(c=>c.close()));}

@@ -14,6 +14,10 @@ create table if not exists school_private.arcade_events(
  primary key(room,uid,seq),foreign key(room,uid) references school_private.arcade_players(room,uid) on delete cascade);
 create index if not exists arcade_players_lookup on school_private.arcade_players(uid,room);
 create table if not exists school_private.arcade_disabled(game text primary key);
+alter table school_private.arcade_rooms add column if not exists knowledge_points int not null default 100;
+create table if not exists school_private.arcade_rules(game text primary key,knowledge_points int not null default 100 check(knowledge_points between 25 and 200),allowed_levels text[] not null default array['easy','medium','hard']);
+alter table school_private.arcade_rules enable row level security;
+revoke all on school_private.arcade_rules from public,anon,authenticated;
 alter table school_private.arcade_rooms enable row level security;
 alter table school_private.arcade_players enable row level security;
 alter table school_private.arcade_events enable row level security;
@@ -37,10 +41,17 @@ begin
    else insert into school_private.arcade_disabled values(game) on conflict do nothing;end if;
   end if;
   if p_data?'question' then update school_private.arcade_bank set enabled=(p_data->>'questionEnabled')::boolean where id=p_data->>'question';end if;
+  if p_data?'points' then
+   if game not in ('blocks','space','tiles','bubbles') or game is null or (p_data->>'points')::int not between 25 and 200
+    or jsonb_typeof(p_data->'levels') is distinct from 'array' or jsonb_array_length(p_data->'levels') not between 1 and 3
+    or exists(select 1 from jsonb_array_elements_text(p_data->'levels') x where x not in ('easy','medium','hard')) then raise exception 'invalid_rules';end if;
+   insert into school_private.arcade_rules values(game,(p_data->>'points')::int,array(select jsonb_array_elements_text(p_data->'levels')))
+   on conflict on constraint arcade_rules_pkey do update set knowledge_points=excluded.knowledge_points,allowed_levels=excluded.allowed_levels;
+  end if;
   return jsonb_build_object('disabled',(select coalesce(jsonb_agg(d.game),'[]') from school_private.arcade_disabled d),'rooms',(select count(*) from school_private.arcade_rooms),'players',(select count(distinct uid) from school_private.arcade_players));
  end if;
  if p_action='ranking' then
-  return coalesce((select jsonb_agg(to_jsonb(z)) from (select p.name,sum(p.skill+100*(select count(*) from jsonb_each(p.answers) a where (a.value->>'correct')::boolean)) as points,count(*) as matches from school_private.arcade_players p join school_private.arcade_rooms rm on rm.id=p.room where rm.status='finished' and not p.left_room and rm.created_at>=case p_data->>'period' when 'week' then t-interval '7 days' when 'month' then t-interval '30 days' else '-infinity'::timestamptz end group by p.uid,p.name order by points desc limit 50) z),'[]');
+  return coalesce((select jsonb_agg(to_jsonb(z)) from (select p.name,sum(p.skill+rm.knowledge_points*(select count(*) from jsonb_each(p.answers) a where (a.value->>'correct')::boolean)) as points,count(*) as matches from school_private.arcade_players p join school_private.arcade_rooms rm on rm.id=p.room where rm.status='finished' and not p.left_room and rm.created_at>=case p_data->>'period' when 'week' then t-interval '7 days' when 'month' then t-interval '30 days' else '-infinity'::timestamptz end group by p.uid,p.name order by points desc limit 50) z),'[]');
  end if;
  if p_action='history' then
   return coalesce((select jsonb_agg(to_jsonb(z)) from(select rm.id,rm.game,rm.status,rm.created_at,p.skill,p.left_room from school_private.arcade_players p join school_private.arcade_rooms rm on rm.id=p.room where p.uid=u order by rm.created_at desc limit 30)z),'[]');end if;
@@ -52,13 +63,27 @@ begin
    duration:=(p_data->>'duration')::int;capacity:=coalesce((p_data->>'capacity')::int,2);mode:=coalesce(p_data->>'mode','versus');
    select array_agg(distinct x order by x) into scope from jsonb_array_elements_text(p_data->'lessons') x;
    if game is null or game not in ('blocks','space','bubbles','tiles') or lvl is null or lvl not in ('easy','medium','hard') or duration is null or duration not between 30 and 300 or capacity not between 2 and 4 or mode not in ('versus','coop') or (mode='coop' and (game<>'space' or capacity<>2)) or coalesce(cardinality(scope),0) not between 1 and 51 then raise exception 'invalid_settings';end if;
+   if exists(select 1 from school_private.arcade_rules rule where rule.game=p_data->>'game' and not lvl=any(rule.allowed_levels)) then raise exception 'level_disabled';end if;
    if exists(select 1 from school_private.arcade_disabled d where d.game=p_data->>'game') then raise exception 'game_disabled';end if;
    if p_action='random' then select rm.id into rid from school_private.arcade_rooms rm where rm.public_queue and rm.status='waiting' and rm.game=p_data->>'game' and rm.level=lvl and rm.lessons=scope and rm.seconds=duration and rm.capacity=capacity and rm.mode=coalesce(p_data->>'mode','versus') and (select count(*) from school_private.arcade_players p where p.room=rm.id)<capacity order by rm.created_at limit 1;end if;
    if rid is null then
     if (select count(*) from school_private.arcade_rooms where owner_id=u and created_at>t-interval '1 hour')>=30 then raise exception 'room_rate_limit';end if;
-    select jsonb_agg(x.question order by x.draw) into deck from(select b.question,random() draw from school_private.arcade_bank b where b.enabled and b.lesson=any(scope) and b.level=lvl order by draw limit greatest(1,duration/30))x;
+    with candidates as (
+     select b.question as q,random() as draw from school_private.arcade_bank b
+     where b.enabled and b.lesson=any(scope) and b.level=lvl
+     order by draw limit greatest(1,duration/30)
+    ), offset_choice as (select floor(random()*4)::int as amount),
+    positioned as (
+     select q,draw,((row_number() over(order by draw)-1+amount)%4)::int as target
+     from candidates cross join offset_choice
+    )
+    select jsonb_agg(q||jsonb_build_object('correct',target,'options',(
+     select jsonb_agg(q->'options'->((pos-target+(q->>'correct')::int+4)%4) order by pos)
+     from generate_series(0,3) pos
+    )) order by draw) into deck from positioned;
     if coalesce(jsonb_array_length(deck),0)<greatest(1,duration/30) then raise exception 'insufficient_questions';end if;
     insert into school_private.arcade_rooms(code,owner_id,game,level,lessons,seconds,capacity,mode,public_queue,seed,deck) values(upper(substr(replace(gen_random_uuid()::text,'-',''),1,10)),u,game,lvl,scope,duration,capacity,mode,p_action='random',(random()*2147483646)::int,deck) returning id into rid;
+    update school_private.arcade_rooms set knowledge_points=coalesce((select rule.knowledge_points from school_private.arcade_rules rule where rule.game=p_data->>'game'),100) where id=rid;
    end if;
   elsif rid is null then select id into rid from school_private.arcade_rooms where code=upper(trim(p_data->>'code')) and status='waiting';end if;
   if rid is null then raise exception 'room_not_found';end if;
@@ -102,9 +127,9 @@ begin
  update school_private.arcade_players set seen=t where room=rid and uid=u;
  idx:=greatest(0,coalesce(tick_now,0))/1800;
  if tick_now>=0 and tick_now%1800>=1140 and idx<jsonb_array_length(r.deck) then current_question:=(r.deck->idx)-'correct'-'explanation';end if;
- return jsonb_build_object('id',rid,'code',r.code,'status',r.status,'game',r.game,'level',r.level,'mode',r.mode,'capacity',r.capacity,'seed',r.seed,'seconds',r.seconds,'starts',r.starts,'deadline',r.deadline,'now',t,'slot',me.slot,'index',idx,'question',current_question,
+ return jsonb_build_object('id',rid,'code',r.code,'status',r.status,'knowledgePoints',r.knowledge_points,'game',r.game,'level',r.level,'mode',r.mode,'capacity',r.capacity,'seed',r.seed,'seconds',r.seconds,'starts',r.starts,'deadline',r.deadline,'now',t,'slot',me.slot,'index',idx,'question',current_question,
  'players',(select jsonb_agg(jsonb_build_object('slot',p.slot,'name',p.name,'ready',p.ready,'seen',p.seen,'left',p.left_room,'skill',p.skill,'answers',case when r.status='finished' or tick_now>=r.seconds*60 then p.answers else (select coalesce(jsonb_object_agg(a.key,a.value),'{}') from jsonb_each(p.answers)a where a.key::int<idx or (a.key::int=idx and tick_now%1800>=1740) or p.uid=u) end,'lastSeq',p.last_seq) order by p.slot) from school_private.arcade_players p where p.room=rid),
- 'events',(select coalesce(jsonb_agg(jsonb_build_object('slot',p.slot,'seq',e.seq,'tick',e.tick,'action',e.action,'value',e.value) order by e.tick,p.slot,e.seq),'[]') from school_private.arcade_events e join school_private.arcade_players p using(room,uid) where e.room=rid and e.seq>coalesce((p_data->'since'->>p.slot)::int,0)),
+ 'events',(select coalesce(jsonb_agg(jsonb_build_object('slot',p.slot,'seq',e.seq,'tick',e.tick,'action',e.action,'value',e.value) order by e.tick,p.slot,e.seq),'[]') from school_private.arcade_events e join school_private.arcade_players p using(room,uid) where e.room=rid and e.seq>coalesce((p_data->'since'->>(p.slot::text))::int,0)),
  'review',case when r.status='finished' then r.deck end);
 end;$$;
 revoke all on function public.arcade_room(text,jsonb) from public,anon;

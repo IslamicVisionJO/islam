@@ -34,7 +34,7 @@ export async function mount(panel,host){
   for(const [k,v] of Object.entries({semester,unit,level,duration,mode,scope}))if(f.elements[k])f.elements[k].value=v;
   const n=available(),need=count();
   f.querySelector('.inventory').textContent=`المتاح ${n} سؤالًا، وتحتاج الجولة إلى ${need}. `+(n<need?'اختر نطاقًا أوسع أو مستوى آخر.':mode==='online'&&!host.userId?'سجّل الدخول إلى حساب المنصة للعب مع الآخرين.':'');
-  const submit=f.querySelector('[type=submit]');submit.textContent=mode==='solo'?'ابدأ الجولة':'فتح ردهة المواجهات';submit.disabled=n<need||(mode==='online'&&!host.userId);
+  const submit=f.querySelector('[type=submit]');submit.textContent=mode==='solo'?'ابدأ الجولة':'فتح ردهة المواجهات';submit.disabled=mode==='online'?!host.userId:n<need;
  }
  panel.addEventListener('change',e=>{
   if(screen!=='setup')return;
@@ -47,15 +47,16 @@ export async function mount(panel,host){
   if(a==='back')host.close();if(a==='setup')reset();
   if(a==='admin'&&host.isAdmin){screen='admin';import('./admin.mjs').then(m=>{if(!destroyed)m.mountAdmin(panel,host.rpc,reset);});}
   if(a==='history'){
-   screen='history';const rows=host.history().filter(r=>r.game===id),best=Math.max(0,...rows.map(r=>r.score));
-   panel.innerHTML=controls()+`<section><h1>سجل ${game.title}</h1><p>الجولات المحفوظة ${rows.length} · أفضل نتيجة ${best}</p>${rows.map(r=>`<p>${escape(new Date(r.at).toLocaleDateString('ar'))} · ${escape(r.score)} نقطة · ${escape(r.correct)} إجابات صحيحة من ${escape(r.answered)}</p>`).join('')}<button data-do="setup">العودة للإعدادات</button></section>`;
+   screen='history';const rows=host.history().filter(r=>r.game===id),wins=rows.filter(r=>r.win).length,answered=rows.reduce((s,r)=>s+r.answered,0),correct=rows.reduce((s,r)=>s+r.correct,0),best=Math.max(0,...rows.map(r=>r.score));
+   panel.innerHTML=controls()+`<section><h1>سجل ${game.title}</h1><p>الجولات المحفوظة ${rows.length} · مرات الفوز ${wins} · أفضل نتيجة ${best} · دقة المعرفة ${answered?Math.round(100*correct/answered):0}٪</p>${rows.map(r=>`<p>${escape(new Date(r.at).toLocaleDateString('ar'))} · ${escape(r.score)} نقطة · ${escape(r.correct)} إجابات صحيحة من ${escape(r.answered)}</p>`).join('')}<button data-do="setup">العودة للإعدادات</button></section>`;
   }
  },listen);
  panel.addEventListener('submit',async e=>{
-  if(screen!=='setup')return;e.preventDefault();if(busy||available()<count())return;busy=true;
+  if(screen!=='setup')return;e.preventDefault();if(busy||mode==='solo'&&available()<count())return;busy=true;
   const settings={game:id,level,duration,lessons:lessonIds()};
   try{
    if(mode==='online'){
+    await host.rpc('arcade_room',{p_action:'history',p_data:{}});
     const {openLobby}=await import('./online.mjs');if(destroyed)return;screen='room';
     const dispose=await openLobby({container:panel,rpc:host.rpc,verify:host.verify,userId:host.userId,isAdmin:host.isAdmin,settings,onExit:reset});
     if(destroyed)dispose?.();else cleanRoom=dispose;return;

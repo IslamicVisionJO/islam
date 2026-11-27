@@ -287,7 +287,7 @@ const Auth=(()=>{
   return data;
  }
  async function arcadeRpc(name,args){
-  if(name!=='arcade_room')throw Error('طلب غير صالح.');
+  if(!['arcade_room','arcade_social'].includes(name))throw Error('طلب غير صالح.');
   requireAccount();const id=state.user.id;await checkSession(id);
   const {data,error}=await client.rpc(name,args);await checkSession(id);
   if(error)throw Error(error.message);return data;

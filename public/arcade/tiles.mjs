@@ -121,9 +121,9 @@ export function createGame({ rng = Math.random, level = 'medium', sound = () => 
     endSegment();
   }
 
-  function reward() {
-    if (!lives || checkpoint === 0 || rewarded >= checkpoint) return;
-    rewarded = checkpoint;
+  function reward(questionNumber = checkpoint) {
+    if (!lives || questionNumber <= 0 || rewarded >= questionNumber) return;
+    rewarded = questionNumber;
     if (lives < rules.lives) lives++;
     else shield = true;
     sound('reward');

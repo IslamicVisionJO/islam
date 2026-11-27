@@ -1,0 +1,25 @@
+{
+  "method": "Chromium headless, 390x844 viewport, 360x480 canvas, 100 animation frames per game; simulation plus Canvas command submission",
+  "measurements": [
+    {
+      "game": "blocks",
+      "medianMs": 0.19999999925494194,
+      "p95Ms": 0.8000000007450581
+    },
+    {
+      "game": "space",
+      "medianMs": 0.30000000074505806,
+      "p95Ms": 1.199999999254942
+    },
+    {
+      "game": "bubbles",
+      "medianMs": 0.4000000022351742,
+      "p95Ms": 3.699999999254942
+    },
+    {
+      "game": "tiles",
+      "medianMs": 0.19999999925494194,
+      "p95Ms": 0.8000000007450581
+    }
+  ]
+}

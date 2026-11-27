@@ -183,9 +183,10 @@ export function createGame({rng=Math.random,level='easy',sound=()=>{}}={}) {
     remainder+=dt;
     while(remainder+1e-10>=1/60&&!over){remainder-=1/60;tick(1/60);}
   }
-  function reward(){
-    if(over||checkpoint===0||rewarded===checkpoint)return;
-    rewarded=checkpoint;slow=9;incoming=Math.max(0,incoming-1);attack++;
+  function reward(questionNumber){
+    const key=questionNumber===undefined?checkpoint:questionNumber;
+    if(over||key<=0||rewarded===key)return;
+    rewarded=key;slow=9;incoming=Math.max(0,incoming-1);attack++;
     effect={text:'إبطاء السقوط',time:1.3};sound('reward');
   }
   function renderTile(c,x,y,size,type){

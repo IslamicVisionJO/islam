@@ -19,7 +19,7 @@ export function simulation(room,createGame,sound=()=>{}){
   for(;tick<target;tick++){
    const phase=tick%1800,index=Math.floor(tick/1800);
    if(phase===1740)for(const player of players){
-    if(player.answers?.[index]?.correct)(coop?boards[0]:boards[player.slot]).reward(coop?player.slot:0);
+    if(player.answers?.[index]?.correct)(coop?boards[0]:boards[player.slot]).reward(room.game==='space'?(coop?player.slot:0):index+1);
    }
    if(phase>=1140&&phase<1740)continue;
    for(const e of events.get(tick)||[]){

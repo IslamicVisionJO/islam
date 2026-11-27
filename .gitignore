@@ -1,4 +1,4 @@
-node_modules/
+node_modules
 artifacts/
 *.zip
 # Media build outputs are reproduced from public/; avoid committing a duplicate copy.

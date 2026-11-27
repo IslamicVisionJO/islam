@@ -3,7 +3,7 @@ import {simulation,eventIndex,loadGame} from './replay.mjs';
 
 const esc=text=>String(text??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const labels={waiting:'انتظار اللاعبين',playing:'مباراة جارية',expired:'انتهت مهلة الغرفة',cancelled:'أُلغيت الغرفة',finished:'انتهت المباراة'};
-const messages={insufficient_questions:'مخزون الأسئلة المعتمدة لهذا النطاق لا يكفي لمدة المباراة.',room_not_found:'رمز الغرفة غير صالح أو انتهى الانتظار.',room_full:'اكتمل عدد اللاعبين.',game_disabled:'اللعبة موقوفة حاليًا.',room_rate_limit:'بلغت حد إنشاء الغرف لهذه الساعة.'};
+const messages={insufficient_questions:'مخزون الأسئلة المعتمدة لهذا النطاق لا يكفي لمدة المباراة.',room_not_found:'رمز الغرفة غير صالح أو انتهى الانتظار.',room_full:'اكتمل عدد اللاعبين.',game_disabled:'اللعبة موقوفة حاليًا.',level_disabled:'أوقفت الإدارة هذا المستوى للمواجهات الجديدة.',room_rate_limit:'بلغت حد إنشاء الغرف لهذه الساعة.'};
 const button=(action,text)=>`<button type="button" data-act="${action}">${text}</button>`;
 const timeText=seconds=>Math.floor(seconds/60)+':'+String(seconds%60).padStart(2,'0');
 
@@ -14,12 +14,12 @@ export async function openLobby({container,rpc,verify,userId,settings,onExit}){
  const storage='learning-arcade-room:'+userId;
  container.innerHTML=`<section class="net" dir="rtl"><style>
  .net{max-width:52rem;margin:auto;color:#edf7f6;background:#0e2034;padding:clamp(12px,3vw,28px);border-radius:18px;font:inherit}.net h2{margin:10px 0}.net button,.net input,.net select{font:inherit;border:1px solid #75a9b9;background:#183950;color:white;padding:8px 12px;border-radius:9px;min-height:42px}.net button{cursor:pointer}.net button:focus-visible{outline:3px solid #ffdc87}.net button:disabled{opacity:.55}.net label{display:grid;gap:4px}.net-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:9px 0}.net canvas{width:min(100%,360px,49vh);height:auto;display:block;margin:auto;touch-action:none;background:#081527}.net [data-status]{color:#ffdd92}.net [data-controls]{direction:ltr}.net [data-controls] button{touch-action:none;user-select:none}.net [data-quiz]:not(:empty){padding:12px;background:#fff;color:#12243b;border-radius:12px}.net [data-quiz] button{display:block;margin:4px 0;width:100%;text-align:start}.net ol{padding-inline-start:22px}.net-head{display:flex;align-items:center;justify-content:space-between}.net code{font-size:1.3em;letter-spacing:.12em;color:#ffe49d}
- </style><div class="net-head"><h2>${esc(games[settings.game]?.title)} · أونلاين</h2>${button('exit','رجوع')}</div><p data-status role="status"></p><div data-screen></div></section>`;
+ </style><div class="net-head"><h2>${esc(games[settings.game]?.title)} · أونلاين</h2>${button('exit','رجوع')}</div><button type="button" data-act="friends">الأصدقاء والدعوات</button><div data-social></div><p data-status role="status"></p><div data-screen></div></section>`;
  const root=container.querySelector('.net'),body=root.querySelector('[data-screen]'),status=root.querySelector('[data-status]');
  const report=t=>{status.textContent=t;};
  const call=(a,d={})=>rpc('arcade_room',{p_action:a,p_data:d});
  function main(){
-  screen='menu';body.innerHTML=`<p>النتيجة تجمع نقاط اللعبة و١٠٠ نقطة لكل إجابة صحيحة. تعتمد لوحة الترتيب نتيجة التحقق على الخادم.</p><div class="net-row"><label>نوع المواجهة<select data-mode><option value="versus">تنافسية</option>${settings.game==='space'?'<option value="coop">تعاون ثنائي</option>':''}</select></label><label>عدد اللاعبين<select data-cap><option>2</option><option>3</option><option>4</option></select></label></div><div class="net-row">${button('create','إنشاء غرفة خاصة')}${button('random','البحث عن منافس')}</div><div class="net-row"><label>رمز الغرفة<input data-code dir="ltr" maxlength="10" autocomplete="off"></label>${button('join','انضمام')}</div><div class="net-row">${button('history','سجل مبارياتي')}${button('ranking','لوحة الترتيب')}<select aria-label="مدة الترتيب" data-period><option value="week">الأسبوع</option><option value="month">الشهر</option><option value="all">الكل</option></select></div><div data-list></div>`;
+  screen='menu';body.innerHTML=`<p>النتيجة تجمع نقاط اللعب ومكافآت الإجابات الصحيحة وفق إعدادات الغرفة. تعتمد لوحة الترتيب نتيجة التحقق على الخادم.</p><div class="net-row"><label>نوع المواجهة<select data-mode><option value="versus">تنافسية</option>${settings.game==='space'?'<option value="coop">تعاون ثنائي</option>':''}</select></label><label>عدد اللاعبين<select data-cap><option>2</option><option>3</option><option>4</option></select></label></div><div class="net-row">${button('create','إنشاء غرفة خاصة')}${button('random','البحث عن منافس')}</div><div class="net-row"><label>رمز الغرفة<input data-code dir="ltr" maxlength="10" autocomplete="off"></label>${button('join','انضمام')}</div><div class="net-row">${button('history','سجل مبارياتي')}${button('ranking','لوحة الترتيب')}<select aria-label="مدة الترتيب" data-period><option value="week">الأسبوع</option><option value="month">الشهر</option><option value="all">الكل</option></select></div><div data-list></div>`;
  }
  const nowTick=()=>room?.starts?Math.floor((Date.now()+offset-Date.parse(room.starts))*.06):-1;
  function ingest(state,sent){
@@ -48,7 +48,7 @@ export async function openLobby({container,rpc,verify,userId,settings,onExit}){
  function people(){return room.players.map(p=>`<li>${esc(p.name)} ${p.slot===room.slot?'(أنت)':''} · ${p.left?'غادر':Date.now()+offset-Date.parse(p.seen)>8000?'الاتصال متأخر':p.ready?'جاهز':'متصل'}</li>`).join('');}
  function render(){
   if(room.status==='waiting'){
-   screen='waiting';body.innerHTML=`<h3>غرفة الانتظار</h3><p>رمز الدعوة <code>${esc(room.code)}</code></p><p>${esc(games[room.game].title)} · ${esc(levels[room.level])} · ${timeText(room.seconds)} · ${room.capacity} لاعبين</p><ol>${people()}</ol><div class="net-row">${button('invite','مشاركة الدعوة')}${room.players[room.slot].ready?'بانتظار بقية اللاعبين':button('ready','أنا جاهز')}${button('leave','مغادرة الغرفة')}</div>`;return;
+   screen='waiting';body.innerHTML=`<h3>غرفة الانتظار</h3><p>رمز الدعوة <code>${esc(room.code)}</code></p><p>${esc(games[room.game].title)} · ${esc(levels[room.level])} · ${timeText(room.seconds)} · ${room.capacity} لاعبين · ${room.knowledgePoints} نقطة للإجابة الصحيحة</p><ol>${people()}</ol><div class="net-row">${button('invite','مشاركة الدعوة')}${room.players[room.slot].ready?'بانتظار بقية اللاعبين':button('ready','أنا جاهز')}${button('leave','مغادرة الغرفة')}</div>`;return;
   }
   if(room.status==='playing'){
    if(screen!=='play'){
@@ -61,7 +61,7 @@ export async function openLobby({container,rpc,verify,userId,settings,onExit}){
   }
   if(screen==='result')return;
   screen='result';cancelAnimationFrame(raf);
-  const rows=room.players.map(p=>({...p,correct:Object.values(p.answers).filter(a=>a.correct).length})).map(p=>({...p,total:p.left?0:p.skill+100*p.correct})).sort((a,b)=>b.total-a.total);
+  const rows=room.players.map(p=>({...p,correct:Object.values(p.answers).filter(a=>a.correct).length})).map(p=>({...p,total:p.left?0:p.skill+room.knowledgePoints*p.correct})).sort((a,b)=>b.total-a.total);
   const winners=rows.filter(p=>!p.left&&p.total===Math.max(...rows.filter(x=>!x.left).map(x=>x.total)));
   const myAnswers=room.players[room.slot].answers;
   body.innerHTML=`<h3>${esc(labels[room.status]||room.status)}</h3>${room.status==='finished'?`<p>${room.mode==='coop'?'نتيجة الفريق '+rows.reduce((n,p)=>n+p.total,0):winners.length>1?'تعادل':winners[0]?'الفائز '+esc(winners[0].name):'غادر اللاعبون'}</p><ol>${rows.map(p=>`<li>${esc(p.name)} · ${p.total} نقطة · ${p.correct} إجابات صحيحة</li>`).join('')}</ol>${room.review.map((q,i)=>`<details><summary>${myAnswers[i]?.correct?'✓':'✗'} ${esc(q.prompt)}</summary><p>${esc(q.options[q.correct])} · ${esc(q.explanation)} · ص ${esc(q.pages.join('، '))}</p></details>`).join('')}`:''}<div class="net-row">${button('again','مباراة جديدة')}</div>`;
@@ -100,7 +100,7 @@ export async function openLobby({container,rpc,verify,userId,settings,onExit}){
     if(expired&&before-verificationAt>5000){verificationAt=before;await verify(room.id);}
     if(queued.length&&!expired&&nowTick()-queued[0].tick<=110)await update('input',{events:queued.slice(0,40)});
     else{
-     if(queued.length){queued=[];seq=room.players[room.slot].lastSeq;engine=null;held.clear();}
+     if(queued.length){queued=[];seq=room.players[room.slot].lastSeq;indexed=eventIndex([...all.values()]);engine=null;held.clear();}
      await update('state');
     }
     if(screen!=='result')report('');
@@ -111,6 +111,10 @@ export async function openLobby({container,rpc,verify,userId,settings,onExit}){
  }
  root.addEventListener('click',async e=>{
   const a=e.target.closest('[data-act]')?.dataset.act;if(!a)return;
+  if(a==='friends'){
+   try{const {contacts}=await import('./social.mjs');await contacts(root.querySelector('[data-social]'),rpc,room?.status==='waiting'?room.id:null,code=>update('join',{code}));}
+   catch{report('تعذر تحميل الأصدقاء. تحقق من تفعيل خدمة الدعوات.');}return;
+  }
   if(a==='exit'){onExit?.();return;}
   if(a==='invite'){
    try{if(navigator.share)await navigator.share({text:'انضم إلى غرفتي في '+games[room.game].title+' · الرمز '+room.code});else await navigator.clipboard.writeText(room.code);report('رمز الغرفة '+room.code);}catch{}return;

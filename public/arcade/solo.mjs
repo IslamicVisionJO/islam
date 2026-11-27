@@ -29,9 +29,15 @@ export function runSolo(panel,host){
  function answer(choice){
   if(phase!=='question')return;phase='feedback';const q=questions[index++],correct=choice===q.correct;
   records.push({q,choice,correct});streak=correct?streak+1:0;best=Math.max(best,streak);
-  if(correct)engine.reward();audio.play(correct?'correct':'wrong');
+  if(correct)engine.reward(game==='space'?0:index);audio.play(correct?'correct':'wrong');
   overlay(correct?'✓ إجابة صحيحة':choice===null?'انتهى وقت السؤال':'✕ الإجابة الصحيحة',q.options[q.correct]);
   const reason=document.createElement('p');reason.textContent=q.explanation+' · ص '+q.pages.join('، ');veil.append(reason,button('متابعة اللعب',resumePlay));
+  if(host.userId)veil.append(button('الإبلاغ عن السؤال',()=>{
+   const input=document.createElement('textarea');input.maxLength=400;input.placeholder='ما الذي يحتاج إلى تصحيح؟';input.setAttribute('aria-label',input.placeholder);
+   const status=document.createElement('small');const send=document.createElement('button');send.textContent='إرسال البلاغ';
+   send.onclick=async()=>{if(input.value.trim().length<3){status.textContent='أضف وصفًا للمشكلة.';return;}send.disabled=true;try{await host.rpc('arcade_social',{p_action:'report',p_data:{question:q.id,note:input.value.trim()}});input.remove();send.remove();status.textContent='استُلم البلاغ.';}catch{status.textContent='تعذّر إرسال البلاغ.';send.disabled=false;}};
+   veil.append(input,send,status);
+  }));
  }
  function pause(){
   if(!['play','question'].includes(phase))return;prior=phase;phase='paused';release();
@@ -47,6 +53,7 @@ export function runSolo(panel,host){
   const add=(tag,text)=>{const el=document.createElement(tag);el.textContent=text;panel.append(el);return el;};
   add('h1',win?'فزت بالجولة':reason==='exit'?'أنهيت الجولة':'انتهت الجولة');add('p',`نقاط اللعب ${engine.score} · نقاط المعرفة ${correct*100} · المجموع ${score}`);
   add('p',`إجابات صحيحة ${correct} من ${records.length} · الدقة ${records.length?Math.round(correct/records.length*100):0}٪ · أفضل سلسلة ${best} · خبرة ${xp}`);
+  if(win&&best>=2&&!host.history().some(r=>r.game===game&&r.win&&r.best>=2))add('h2','إنجاز جديد · إتقان '+games[game].title);
   for(const {q} of records.filter(r=>!r.correct)){
    add('h3',host.lessons.find(l=>l.id===q.lesson)?.title||'مراجعة الدرس');add('p',q.prompt);add('p',q.options[q.correct]+' · '+q.explanation+' · ص '+q.pages.join('، '));
   }
