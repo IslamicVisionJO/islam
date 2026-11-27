@@ -297,5 +297,11 @@ const Auth=(()=>{
   const {data,error}=await client.functions.invoke('arcade-verify',{body:{room}});
   await checkSession(id);if(error)throw Error('تعذر التحقق من النتيجة على الخادم.');return data;
  }
- return {arcadeRpc,arcadeVerify,wallRpc,steamRpc,knowledgeRpc,millionRpc,init,current,prepareStorage,signInEmail,signUpEmail,enterGuest,signOut,syncNow,flush,resolveConflict,resetProgress,adminRoster,adminStudentDetails,adminAllowAccount,adminDisableAccount,publicConfig,duelRpc};
+ // Unranked arcade rooms: authenticated, unguessable channel, no student metadata or reward writes.
+ async function arcadeChannel(code){
+  if(!/^[a-f0-9]{32}$/.test(code))throw Error('رمز الغرفة غير صالح');
+  requireAccount();const id=state.user.id;await checkSession(id);
+  return {channel:client.channel('arcade-practice-v1:'+code,{config:{broadcast:{self:false,ack:true}}}),remove:ch=>client.removeChannel(ch)};
+ }
+ return {arcadeRpc,arcadeVerify,arcadeChannel,wallRpc,steamRpc,knowledgeRpc,millionRpc,init,current,prepareStorage,signInEmail,signUpEmail,enterGuest,signOut,syncNow,flush,resolveConflict,resetProgress,adminRoster,adminStudentDetails,adminAllowAccount,adminDisableAccount,publicConfig,duelRpc};
 })();
