@@ -131,6 +131,14 @@ function validateBackup(data,byId){
  }
  if(records.profile!==undefined){
   const p=records.profile;if(!object(p)||!text(p.name,64)||!finite(p.xp)||p.coins!==undefined&&!finite(p.coins)||p.level!==undefined&&!integer(p.level))fail('بيانات المستخدم');
+  if(p.arcade!==undefined){
+   if(!object(p.arcade)||!Array.isArray(p.arcade.history)||p.arcade.history.length>150)fail('سجل الألعاب التفاعلية');
+   const ids=new Set();
+   for(const r of p.arcade.history){
+    if(!object(r)||!text(r.id,160)||!r.id||ids.has(r.id)||!date(r.at)||!['tiles','blocks','space','bubbles'].includes(r.game)||!integer(r.score,1e9)||!integer(r.answered,100)||!integer(r.correct,r.answered)||!integer(r.best,r.correct)||!integer(r.xp,30)||typeof r.win!=='boolean')fail('نتيجة الألعاب التفاعلية');
+    ids.add(r.id);
+   }
+  }
   if(p.educationalActive!==undefined){
    const g=p.educationalActive;
    if(!object(g)||!text(g.id,160)||!integer(g.game,12)||!Array.isArray(g.ids)||g.ids.length<1||g.ids.length>15||new Set(g.ids).size!==g.ids.length||g.ids.some(qid=>!id(qid)||byId&&!byId.has(qid))||!integer(g.index,Math.max(0,g.ids.length-1))||!finite(g.score,1e9)||typeof g.done!=='boolean'||!scope(g.unit)||g.lesson!=='all'&&!lessonId(g.lesson)||!Array.isArray(g.items)||g.items.length>g.ids.length||JSON.stringify(g).length>100000)fail('جلسة الألعاب التعليمية');

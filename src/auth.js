@@ -286,5 +286,16 @@ const Auth=(()=>{
   }
   return data;
  }
- return {wallRpc,steamRpc,knowledgeRpc,millionRpc,init,current,prepareStorage,signInEmail,signUpEmail,enterGuest,signOut,syncNow,flush,resolveConflict,resetProgress,adminRoster,adminStudentDetails,adminAllowAccount,adminDisableAccount,publicConfig,duelRpc};
+ async function arcadeRpc(name,args){
+  if(name!=='arcade_room')throw Error('طلب غير صالح.');
+  requireAccount();const id=state.user.id;await checkSession(id);
+  const {data,error}=await client.rpc(name,args);await checkSession(id);
+  if(error)throw Error(error.message);return data;
+ }
+ async function arcadeVerify(room){
+  requireAccount();const id=state.user.id;await checkSession(id);
+  const {data,error}=await client.functions.invoke('arcade-verify',{body:{room}});
+  await checkSession(id);if(error)throw Error('تعذر التحقق من النتيجة على الخادم.');return data;
+ }
+ return {arcadeRpc,arcadeVerify,wallRpc,steamRpc,knowledgeRpc,millionRpc,init,current,prepareStorage,signInEmail,signUpEmail,enterGuest,signOut,syncNow,flush,resolveConflict,resetProgress,adminRoster,adminStudentDetails,adminAllowAccount,adminDisableAccount,publicConfig,duelRpc};
 })();

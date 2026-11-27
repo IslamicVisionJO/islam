@@ -389,7 +389,7 @@ async function initialize(){
  try{
   const [units,data]=[EMBEDDED_LESSONS,EMBEDDED_QUESTIONS];
   const hasRefinedBank = typeof MINISTERIAL_REVIEW!=='undefined' && MINISTERIAL_REVIEW!==null;
-  S.units=[...units,...FIRST_BTEC_LESSONS.map(u=>({...u,theme:u.theme||'السنة الأولى BTEC',lessons:u.lessons.map(l=>({...l,unitId:u.id}))}))];
+  S.units=[...units,...(typeof FIRST_BTEC_LESSONS==='undefined'?[]:FIRST_BTEC_LESSONS).map(u=>({...u,theme:u.theme||'السنة الأولى BTEC',lessons:u.lessons.map(l=>({...l,unitId:u.id}))}))];
   S.questions=data.questions||[];
   const lessonRanges=new Map((hasRefinedBank?LEARNING_DATA.units:[]).flatMap(unit=>unit.lessons.map(lesson=>[lesson.id,lesson])));
   S.valid=S.questions.filter(q=>{
